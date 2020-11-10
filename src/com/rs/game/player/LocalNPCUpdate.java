@@ -303,10 +303,10 @@ public final class LocalNPCUpdate {
 
 	private void applyHitMask(NPC n, OutputStream data, boolean secondary) {
 		if (secondary) {
-			data.writeSmart(n.getNextHit2().getDamage());
+			data.writeSmart(n.getNextHit2().getDamage() /10);
 			data.writeByte128(n.getNextHit2().getMark());
 		} else {
-			data.writeSmart(n.getNextHit1().getDamage());
+			data.writeSmart(n.getNextHit1().getDamage()/10);
 			data.writeByte128(n.getNextHit1().getMark());
 			int amtHP = n.getHitpoints();
 			int maxHP = n.getMaxHitpoints();
