@@ -1,0 +1,498 @@
+//Version = 592
+0 - {130=1804, 131=1807, 134=1805, 135=1806}
+160 - {871=6, 872=35, 873=12, 874=35, 875=5, 876=35, 845=Missing My Mummy, 877=7, 846=Missing My Mummy (sort), 878=35, 847=155, 879=22, 848=1, 880=35, 850=51006655, 856=1, 859=63, 860=55, 861=10}
+280 - {597=-1}
+283 - {595=1778, 596=Photo Booth, 597=1, 477=1369, 478=1}
+284 - {871=16, 872=69, 873=9, 874=70, 875=4, 876=75, 845=Within the Light, 877=8, 846=Within the Light (sort), 878=75, 847=161, 848=3, 850=38538339, 856=1, 859=77}
+295 - {792=Page boy, 788=354, 789=37, 790=336, 791=318}
+296 - {792=Half up, half down, 788=355, 789=38, 790=337, 791=319}
+297 - {792=Asymmetric fringe, 788=359, 789=39, 790=341, 791=323}
+298 - {792=Headband, 788=357, 789=40, 790=339, 791=321}
+302 - {792=Dragon variant, 788=310, 789=27, 790=346, 791=328}
+303 - {792=Mullet, 788=315, 789=28, 790=351, 791=333}
+304 - {792=Mohawk shaved, 788=312, 789=29, 790=348, 791=330}
+306 - {923=-1, 924=Guide to Construction, 813=8463, 925=A helpful book about how to add rooms and furniture to your house.}
+307 - {923=-1, 924=Party Pete's Bumper Book of Games, 813=7681, 925=Instructions for a variety of party games you can play in your house.}
+308 - {923=620, 924=Witch's Diary, 813=2408, 925=The diary of Nora T. Hagg, a witch who lives in Taverley.}
+309 - {923=545, 924=Dwarf Multicannon Manual, 813=5, 925=Instructions for the operation of the multicannon.}
+310 - {923=543, 924=Volatile chemicals, 813=711, 925=The recipe for an explosive compound, found in the library of the Dig Site.}
+311 - {923=548, 924=Book of the Elemental Shield, 813=2886, 925=Information about a lost workshop and a special shield that can be made there.}
+312 - {923=537, 924=Fenkenstrain's Journal, 813=4203, 925=The unreadable journal of the unspeakable Dr Fenkenstrain.}
+313 - {923=566, 924=The Ruins of Uzer, 813=4616, 925=Notes made by Varmen, an archaeologist excavating the ruins of Uzer.}
+314 - {923=580, 924=A History of the Goblin Race, 813=5009, 925=A list of old goblin tribes and their symbols.}
+315 - {923=564, 924=Book of Haricanto, 813=4248, 925=A book of rituals by Haricanto, an ancient sorcerer from the East.}
+316 - {923=564, 924=Translation Manual, 813=4249, 925=For translating text written in the language of the Eastern lands.}
+317 - {923=541, 924=Translation Primer, 813=4655, 925=A translation of the cuneiform writing found on a stone tablet.}
+318 - {923=567, 924=Gnome-English Translation Dictionary, 813=784, 925=Common words in the ancient Gnome language, translated into the modern tongue by Anita.}
+319 - {923=567, 924=Glough's Journal, 813=785, 925=The journal of Glough, former Tree Guardian of the Grand Tree.}
+320 - {923=573, 924=Jossik's Diary, 813=3845, 925=The diary of Jossik, keeper of the Lighthouse.}
+321 - {923=573, 924=Ancient Diary, 813=3846, 925=The diary of Silas, describing his encounters in the caves beneath the Lighthouse.}
+322 - {923=573, 924=Lighthouse Manual, 813=3847, 925=Lightomatic Deluxe 500 Maintenance, Upkeep and Users' Manual: Second Edition.}
+323 - {923=578, 924=Shaman's tome, 813=729, 925=Notes made by Ungadulu, shaman of a tribe in the Kharazi Jungle.}
+324 - {923=578, 924=Book of Binding, 813=730, 925=An ancient tome on Demonology, including information about how to fight demons with holy water.}
+325 - {923=618, 924=Managing Thine Kingdom - for Noobes, 813=3901, 925=Advisor Ghrim's book of advice about how to manage a kingdom.}
+326 - {923=592, 924=The Tale of Scorpius, 813=600, 925=A history of the study of astronomy, or possibly astrology.}
+327 - {923=625, 924=The Journal of Randas, 813=1493, 925=The Journal of Randas, who came to grief in the Underground Pass.}
+328 - {923=625, 924=History of Iban, 813=1494, 925=Kardia's account of how she created Iban.}
+329 - {923=600, 924=Big Book o' Bangs, 813=3230, 925=A book of instructions for the manufacture of fire oil.}
+330 - {923=601, 924=The Cadarn Lineage, 813=4209, 925=Golrie's book about the history of the Cadarn elf clan.}
+331 - {923=601, 924=Crystal Singing for Beginners, 813=4313, 925=Ilfeen's book about the elven art of crystal chanting.}
+332 - {923=607, 924=Diary of Herbi Flax, 813=3395, 925=The diary of Herbi Flax, a villager of Mort'ton, detailing his investigation of the Flamtaer temple.}
+338 - {556=A varied landscape littered with lava pits, crumbled walls and dead trees., 557=0, 555=Clan Wars classic}
+339 - {556=A barren plateau rising from a sea of lava. Very few obstacles., 555=Plateau}
+340 - {556=An abandoned mine featuring low obstacles such as rocks and puddles., 555=Forsaken quarry}
+341 - {556=A dead forest featuring high obstacles such as trees., 555=Blasted forest}
+342 - {556=Small turrets are scattered around this battlefield. Good for sniping., 555=Turrets}
+343 - {581=30261}
+344 - {581=42290, 582=10373, 583=672, 584=94, 585=1831, 586=0, 587=50}
+345 - {478=0}
+405 - {595=1283, 596=General Store, 597=0, 477=951, 478=0}
+406 - {595=1284, 596=Sword Shop, 597=0, 477=952}
+407 - {595=1285, 596=Magic Shop, 597=0, 477=953}
+408 - {595=1286, 596=Axe Shop, 597=0, 477=954}
+409 - {595=1287, 596=Helmet Shop, 597=0, 477=955}
+410 - {595=1288, 596=Bank, 597=0, 477=1156}
+411 - {595=1289, 596=Quest Start, 597=-1, 477=1157}
+412 - {595=1290, 596=Amulet Shop, 597=0, 477=1158, 478=1}
+413 - {595=1291, 596=Mining Site, 597=2, 477=1159}
+414 - {595=1292, 596=Furnace, 597=1, 477=1160}
+415 - {595=1293, 596=Anvil, 597=1, 477=1161}
+416 - {595=1294, 596=Combat Training, 597=1, 477=1162}
+417 - {595=1295, 596=Dungeon, 597=-1, 477=949}
+418 - {595=1296, 596=Staff Shop, 597=0, 477=1163}
+419 - {595=1297, 596=Platebody Shop, 597=0, 477=1164}
+420 - {595=1298, 596=Platelegs Shop, 597=0, 477=1165}
+421 - {595=1299, 596=Scimitar Shop, 597=0, 477=1166}
+422 - {595=1300, 596=Archery Shop, 597=0, 477=1167}
+423 - {595=1301, 596=Shield Shop, 597=0, 477=1168}
+424 - {595=1302, 596=Altar, 597=1, 477=1169}
+425 - {595=1303, 596=Herbalist, 597=0, 477=1170, 478=1}
+426 - {595=1304, 596=Jewellery Shop, 597=0, 477=1171}
+427 - {595=1305, 596=Gem Shop, 597=0, 477=1172}
+428 - {595=1306, 596=Crafting Shop, 597=0, 477=1173}
+429 - {595=1307, 596=Candle Shop, 597=0, 477=1174, 478=1}
+430 - {595=1308, 596=Fishing Shop, 597=0, 477=1175}
+431 - {595=1309, 596=Fishing Spot, 597=2, 477=1176}
+432 - {595=1310, 596=Clothes Shop, 597=0, 477=1177}
+433 - {595=1311, 596=Apothecary, 597=1, 477=1178}
+434 - {595=1312, 596=Silk Trader, 597=0, 477=1179}
+435 - {595=1313, 596=Kebab Seller, 597=0, 477=1180}
+436 - {595=1314, 596=Pub / Bar, 597=0, 477=1181}
+437 - {595=1315, 596=Mace Shop, 597=0, 477=1182}
+438 - {595=1316, 596=Tannery, 597=1, 477=1183}
+439 - {595=1317, 596=Rare Trees, 597=2, 477=1184}
+440 - {595=1318, 596=Spinning Wheel, 597=1, 477=1185}
+441 - {595=1319, 596=Food Shop, 597=0, 477=1186}
+442 - {595=1320, 596=Cookery Shop, 597=0, 477=1187}
+443 - {595=1321, 596=Minigame, 597=-1, 477=1188}
+444 - {595=1322, 596=Water Source, 597=2, 477=1189}
+445 - {595=1323, 596=Cooking Range, 597=1, 477=1190}
+446 - {595=1324, 596=Plateskirt Shop, 597=0, 477=1191}
+447 - {595=1325, 596=Pottery Wheel, 597=1, 477=1192}
+448 - {595=1326, 596=Windmill, 597=1, 477=1193}
+449 - {595=1327, 596=Mining Shop, 597=0, 477=1194}
+450 - {595=1328, 596=Chainmail Shop, 597=0, 477=1195}
+451 - {595=1329, 596=Silver Shop, 597=0, 477=1196, 478=1}
+452 - {595=1330, 596=Fur Trader, 597=0, 477=1197}
+453 - {595=1331, 596=Spice Shop, 597=0, 477=1198, 478=1}
+454 - {595=1332, 596=Agility Training, 597=1, 477=1199, 478=1}
+455 - {595=1333, 596=Vegetable Store, 597=0, 477=1200, 478=1}
+456 - {595=1334, 596=Slayer Master, 597=1, 477=1201, 478=1}
+457 - {595=1335, 596=Hairdresser, 597=1, 477=1202}
+458 - {595=1336, 596=Farming Patch, 597=1, 477=1205, 478=1}
+459 - {595=1337, 596=Makeover Mage, 597=1, 477=1203}
+460 - {595=1338, 596=Guide, 597=1, 477=1204}
+461 - {595=1339, 596=Transportation, 597=1, 477=1206}
+462 - {595=1340, 596=POH Portal, 597=-1, 477=1214, 478=1}
+463 - {595=1341, 596=Farming Shop, 597=0, 477=1207, 478=1}
+464 - {595=1342, 596=Loom, 597=1, 477=1208, 478=1}
+465 - {595=1343, 596=Brewery, 597=1, 477=1209, 478=1}
+466 - {595=1344, 596=Dairy Churn, 597=1, 477=1210, 478=1}
+467 - {595=1346, 596=Hunter Training, 597=1, 477=1211, 478=1}
+468 - {595=1348, 596=Hunter Store, 597=0, 477=1212, 478=1}
+469 - {595=1350, 596=Estate Agent, 597=1, 477=1215, 478=1}
+470 - {595=1351, 596=Sawmill, 597=1, 477=1216, 478=1}
+471 - {595=1353, 596=Shortcut, 597=-1, 477=1217, 478=1}
+472 - {595=1354, 596=Woodcutting Stump, 597=1, 477=1218, 478=1}
+473 - {595=1355, 596=Holiday Event, 597=-1, 477=1219}
+474 - {595=1356, 596=Sandpit, 597=2, 477=1220, 478=1}
+475 - {595=1357, 596=Achievement Diary, 597=-1, 477=1221}
+476 - {595=1359, 596=Summoning Obelisk, 597=1, 477=1222, 478=1}
+477 - {595=1360, 596=Summoning Store, 597=0, 477=1224, 478=1}
+478 - {595=1361, 596=Grand Exchange, 597=0, 477=1228}
+479 - {595=1375, 596=Pet Shop, 597=0, 477=1225, 478=1}
+480 - {595=1376, 596=Mini Obelisk, 597=1, 477=1223, 478=1}
+481 - {595=1377, 596=Distractions/Diversions, 597=-1, 477=1226, 478=1}
+482 - {595=1463, 596=Fired Up Beacon, 597=1, 477=1227, 478=1}
+483 - {595=1358, 596=Vambrace exchange, 597=1, 477=1260, 478=1}
+484 - {898=1, 845=The Curse of Arrav, 846=Curse of Arrav, The (sort), 847=156, 848=3, 850=56036218, 856=1, 859=150, 860=155, 861=144, 862=112, 863=96, 871=23, 872=41, 873=14, 874=64, 875=18, 876=37, 877=16, 878=61, 879=2, 880=64, 881=4, 882=64, 883=17, 884=66}
+485 - {595=1783, 596=Tools for Games, 597=0, 477=1270}
+488 - {848=0, 850=55070129, 871=18, 856=1, 872=25, 859=85, 845=Fur 'n' Seek, 846=Fur 'n' Seek (sort), 847=154}
+501 - {923=526, 924=The Shield of Arrav, 813=757, 925=The history of the legendary shield of Arrav.}
+502 - {923=622, 924=Tourist Guide to Ardougne, 813=1856, 925=An excessively enthusiastic introduction to Ardougne, containing the full name of Lord Handlemort.}
+503 - {923=561, 924=Book on Baxtorian, 813=292, 925=The history of Baxtorian, his wife and his lost treasure.}
+504 - {684=12583006, 654=12, 655=13, 656=24, 688=12583009, 657=24, 658=0, 659=0, 660=7, 661=12583008, 662=2167, 663=2168, 664=2169, 665=2170, 316=12582912}
+505 - {684=12648499, 654=15, 655=15, 656=24, 688=12648502, 657=24, 658=10, 659=11, 660=5, 661=12648501, 662=2163, 663=2164, 664=2165, 665=2166, 316=12648448}
+506 - {684=28180542, 654=12, 655=12, 656=24, 688=28180545, 657=24, 658=5, 659=5, 660=6, 661=28180544, 662=2171, 663=2172, 664=2173, 665=2174, 316=28180480}
+507 - {130=1692, 131=1700, 134=1693, 135=1694}
+508 - {672=507, 673=274, 675=2244, 676=2245, 152=12451858, 153=12451857, 61=2252, 670=12451860, 782=2243, 671=12451859}
+509 - {871=17, 872=46, 873=16, 874=46, 875=2, 876=46, 845=The Chosen Commander, 846=Chosen Commander, The, 847=152, 848=2, 850=44766429, 854=52579471, 695=54306188, 855=0, 856=1, 859=129}
+510 - {848=0, 856=4, 845=Unstable Foundations, 846=Unstable Foundations (sort), 847=147}
+511 - {848=0, 850=585354506, 691=608, 854=48418057, 856=0, 845=Black Knights' Fortress, 846=Black Knights' Fortress (sort), 847=159, 895=13}
+512 - {845=Cook's Assistant, 846=Cook's Assistant (sort), 847=1, 848=0, 850=52595855, 691=278, 948=Speak to the cook in the kitchen of Lumbridge Castle., 949=A pot, a bucket., 694=1, 950=No specific combat, but watch out for local goblins!, 855=1, 951=1 Quest Point, 300 Cooking XP, 500 coins, 20 sardines and access to the cook's range., 856=0, 952=2379}
+513 - {848=0, 856=0, 850=52514144, 845=Demon Slayer, 846=Demon Slayer (sort), 847=2}
+514 - {848=0, 856=0, 850=48385402, 845=Doric's Quest, 846=Doric's Quest (sort), 847=3}
+515 - {848=2, 850=52284706, 856=0, 845=Dragon Slayer, 846=Dragon Slayer (sort), 847=4, 895=33}
+516 - {845=Ernest the Chicken, 846=Ernest the Chicken (sort), 847=5, 848=0, 850=50990337, 691=285, 948=Speak to Veronica outside Draynor Manor., 949=None, 694=1, 950=None, but watch out for those trees in the manor grounds., 951=4 Quest Points, 3,000 coins, 10 eggs and 300 feathers., 856=0, 952=2382}
+517 - {848=0, 856=0, 850=48450998, 845=Goblin Diplomacy, 846=Goblin Diplomacy (sort), 847=6}
+518 - {848=0, 850=587746394, 854=50859097, 856=0, 845=Imp Catcher, 846=Imp Catcher (sort), 847=7}
+519 - {848=1, 850=48778510, 871=14, 856=0, 872=10, 845=The Knight's Sword, 846=Knight's Sword, The, 847=8}
+520 - {848=0, 856=0, 850=50056369, 845=Pirate's Treasure, 846=Pirate's Treasure (sort), 847=9}
+521 - {848=0, 856=0, 850=54103131, 845=Prince Ali Rescue, 846=Prince Ali Rescue (sort), 847=10}
+522 - {845=The Restless Ghost, 846=Restless Ghost, The, 847=11, 848=0, 850=53202057, 691=456, 948=Speak to Father Aereck in the church east of Lumbridge Castle., 949=Armour to survive a level 13 skeleton warlock attack., 694=1, 950=Facing a level 13 skeleton warlock., 951=1 Quest Point, 125 Prayer XP and five ancient bones that each give 200 Prayer XP., 856=0, 952=2381}
+523 - {848=0, 850=52579681, 855=1, 856=0, 845=Romeo & Juliet, 846=Romeo & Juliet (sort), 847=12}
+524 - {845=Rune Mysteries, 846=Rune Mysteries (sort), 847=13, 848=0, 850=321031316, 691=741, 948=Speak to Duke Horacio, upstairs in Lumbridge Castle., 949=None, 854=52513929, 694=1, 950=None, 855=1, 951=1 Quest Point, access to the Runecrafting skill and an air talisman., 856=0, 952=2378}
+525 - {845=Sheep Shearer, 846=Sheep Shearer (sort), 847=14, 848=0, 850=52251847, 691=758, 948=Speak with Fred the farmer at his farm, north-west of Lumbridge., 949=None, 694=1, 950=None, 855=1, 951=1 Quest Point, 150 Crafting XP and 2,000 coins., 856=0, 952=2380}
+526 - {848=0, 850=52563366, 851=52546880, 856=0, 845=Shield of Arrav, 846=Shield of Arrav (sort), 847=15}
+527 - {848=0, 856=0, 850=50744516, 845=Vampire Slayer, 846=Vampire Slayer (sort), 847=16}
+528 - {848=0, 856=0, 850=48630918, 845=Witch's Potion, 846=Witch's Potion (sort), 847=17}
+529 - {871=17, 872=15, 873=18, 874=18, 875=12, 876=19, 845=Animal Magnetism, 877=4, 846=Animal Magnetism (sort), 878=30, 847=18, 879=8, 848=1, 880=35, 850=50695455, 856=1, 859=11, 860=5, 861=84}
+530 - {871=1, 872=30, 873=14, 874=40, 875=13, 876=50, 845=Between a Rock..., 846=Between a Rock... (sort), 847=19, 848=2, 850=46278584, 854=44732033, 856=1, 859=34, 860=47}
+531 - {848=1, 850=43109286, 871=9, 856=1, 872=5, 873=4, 874=30, 875=7, 876=30, 845=Big Chompy Bird Hunting, 846=Big Chompy Bird Hunting (sort), 847=20}
+532 - {848=0, 850=42454279, 856=1, 859=83, 845=Biohazard, 846=Biohazard (sort), 847=21}
+533 - {871=16, 872=42, 873=12, 874=45, 875=13, 876=50, 845=Cabin Fever, 877=4, 846=Cabin Fever (sort), 878=40, 847=22, 848=2, 850=60231079, 856=1, 859=9, 860=92}
+534 - {848=0, 856=1, 850=42077363, 845=Clock Tower, 846=Clock Tower (sort), 847=23}
+535 - {848=3, 850=53758677, 856=1, 859=10, 860=63, 845=Contact!, 846=Contact! (sort), 847=24}
+536 - {848=1, 850=40045546, 856=1, 859=20, 860=66, 845=Zogre Flesh Eaters, 846=Zogre Flesh Eaters (sort), 847=25}
+537 - {848=1, 850=57150875, 871=17, 856=1, 872=25, 873=12, 874=20, 859=11, 860=84, 845=Creature of Fenkenstrain, 846=Creature of Fenkenstrain (sort), 847=26}
+538 - {871=22, 872=5, 873=14, 874=20, 875=17, 876=22, 845=Darkness of Hallowvale, 877=16, 846=Darkness of Hallowvale (sort), 878=26, 847=27, 879=12, 848=1, 880=32, 881=6, 850=57199776, 882=33, 883=2, 884=40, 856=1, 859=64}
+539 - {871=16, 872=23, 873=17, 874=23, 845=Death to the Dorgeshuun, 846=Death to the Dorgeshuun (sort), 847=28, 848=1, 850=54306188, 853=52579471, 854=52579471, 856=1, 859=69}
+540 - {848=0, 856=1, 850=47451593, 845=Death Plateau, 846=Death Plateau (sort), 847=29}
+541 - {864=113, 871=18, 872=10, 873=11, 874=50, 875=6, 876=50, 845=Desert Treasure, 877=17, 846=Desert Treasure (sort), 878=53, 847=30, 848=3, 850=52038625, 856=1, 859=32, 860=108, 861=106, 862=84, 863=50}
+542 - {871=13, 872=65, 873=9, 874=50, 875=20, 876=50, 845=Devious Minds, 846=Devious Minds (sort), 847=31, 848=2, 850=55774628, 856=1, 859=113, 860=115, 861=3}
+543 - {848=1, 850=55119113, 871=17, 856=1, 872=25, 873=15, 874=10, 875=16, 876=10, 845=The Dig Site, 846=Dig Site, The, 847=32}
+544 - {848=0, 856=1, 850=47926685, 845=Druidic Ritual, 846=Druidic Ritual (sort), 847=33}
+545 - {848=0, 856=1, 850=42077572, 845=Dwarf Cannon, 846=Dwarf Cannon (sort), 847=34}
+546 - {848=2, 850=315919714, 898=1, 854=47467876, 871=15, 856=1, 872=31, 859=113, 860=33, 845=Eadgar's Ruse, 846=Eadgar's Ruse (sort), 847=35}
+547 - {848=0, 850=42699968, 871=21, 856=1, 872=27, 845=Eagles' Peak, 846=Eagles' Peak (sort), 847=36}
+548 - {848=0, 850=44486041, 871=13, 856=1, 872=20, 873=14, 874=20, 875=12, 876=20, 845=Elemental Workshop I, 846=Elemental Workshop I (sort), 847=37}
+549 - {848=1, 850=55119113, 871=6, 856=1, 872=20, 873=13, 874=30, 859=37, 845=Elemental Workshop II, 846=Elemental Workshop II (sort), 847=38}
+550 - {871=12, 872=50, 873=11, 874=45, 875=5, 876=43, 845=Enakhra's Lament, 877=6, 846=Enakhra's Lament (sort), 878=39, 847=39, 848=2, 850=52267890, 856=1}
+551 - {871=12, 872=36, 873=19, 874=30, 875=11, 876=20, 845=Enlightened Journey, 846=Enlightened Journey (sort), 847=40, 848=1, 850=46075163, 856=1, 895=21}
+552 - {848=1, 850=39357787, 871=6, 856=1, 872=46, 873=22, 874=5, 859=56, 845=The Eyes of Glouphrie, 846=Eyes of Glouphrie, The, 847=41}
+553 - {848=2, 850=50416826, 856=1, 859=68, 860=80, 845=Fairytale I - Growing Pains, 846=Fairytale I - Growing Pains (sort), 847=42}
+554 - {871=15, 872=57, 873=19, 874=49, 875=17, 876=40, 845=Fairytale II - Cure a Queen, 846=Fairytale II - Cure a Queen (sort), 847=43, 848=2, 850=50416826, 856=1, 859=42}
+555 - {871=14, 872=40, 873=13, 874=40, 875=12, 876=40, 845=Family Crest, 877=6, 846=Family Crest (sort), 878=59, 847=44, 848=2, 850=53742924, 856=1}
+556 - {848=1, 850=54103178, 871=17, 856=1, 872=30, 845=The Feud, 846=Feud, The, 847=45}
+557 - {848=2, 856=1, 850=42060930, 845=Fight Arena, 846=Fight Arena (sort), 847=46}
+558 - {848=0, 850=46255522, 851=47123868, 871=10, 856=1, 872=10, 845=Fishing Contest, 846=Fishing Contest (sort), 847=47}
+559 - {871=19, 872=17, 873=7, 874=22, 845=Forgettable Tale..., 846=Forgettable Tale... (sort), 847=48, 848=1, 850=46327781, 854=44732033, 856=1, 859=54, 860=47}
+560 - {848=1, 850=43535957, 871=12, 856=1, 872=40, 873=8, 874=40, 875=9, 876=25, 845=The Fremennik Trials, 846=Fremennik Trials, The, 847=49}
+561 - {848=1, 856=1, 850=41307559, 845=Waterfall Quest, 846=Waterfall Quest (sort), 847=50}
+562 - {848=1, 850=52874645, 871=19, 856=1, 872=25, 859=26, 845=Garden of Tranquillity, 846=Garden of Tranquillity (sort), 847=51}
+563 - {848=0, 856=1, 850=51629395, 845=Gertrude's Cat, 846=Gertrude's Cat (sort), 847=52}
+564 - {848=1, 850=60280245, 871=16, 856=1, 872=25, 873=7, 874=20, 859=11, 860=84, 845=Ghosts Ahoy, 846=Ghosts Ahoy (sort), 847=53}
+565 - {871=6, 872=33, 873=11, 874=16, 875=17, 876=14, 845=The Giant Dwarf, 877=12, 846=Giant Dwarf, The, 878=12, 847=54, 848=1, 850=46589842, 854=44732033, 856=1}
+566 - {848=1, 850=57183249, 871=12, 856=1, 872=20, 873=17, 874=25, 845=The Golem, 846=Golem, The, 847=55}
+567 - {848=2, 850=40390055, 871=16, 856=1, 872=25, 845=The Grand Tree, 846=Grand Tree, The, 847=56}
+568 - {848=1, 850=41815068, 871=17, 856=1, 872=17, 873=12, 874=49, 845=The Hand in the Sand, 846=Hand in the Sand, The, 847=57}
+569 - {848=2, 850=56429754, 871=16, 856=1, 872=15, 873=12, 874=35, 859=84, 845=Haunted Mine, 846=Haunted Mine (sort), 847=58}
+570 - {848=0, 856=1, 850=42060996, 845=Hazeel Cult, 846=Hazeel Cult (sort), 847=59}
+571 - {871=15, 872=25, 873=14, 874=50, 875=10, 876=53, 845=Heroes' Quest, 877=7, 846=Heroes' Quest (sort), 878=53, 847=60, 848=2, 850=47599029, 856=1, 859=15, 860=4, 861=33, 862=68, 895=56, 863=72}
+572 - {848=1, 850=45288891, 871=0, 856=1, 872=20, 859=72, 845=Holy Grail, 846=Holy Grail (sort), 847=61}
+573 - {848=2, 850=41094705, 871=16, 856=1, 872=35, 845=Horror from the Deep, 846=Horror from the Deep (sort), 847=62}
+574 - {848=1, 850=54364958, 856=1, 859=52, 845=Icthlarin's Little Helper, 846=Icthlarin's Little Helper (sort), 847=63}
+575 - {871=14, 872=15, 873=12, 874=25, 875=6, 876=7, 845=In Aid of the Myreque, 846=In Aid of the Myreque (sort), 847=64, 848=1, 850=57452141, 854=57281930, 856=1, 859=65}
+576 - {848=1, 850=57396627, 871=16, 856=1, 872=25, 859=80, 845=In Search of the Myreque, 846=In Search of the Myreque (sort), 847=65}
+577 - {848=0, 850=46009358, 856=1, 859=33, 845=Jungle Potion, 846=Jungle Potion (sort), 847=66}
+578 - {845=Legends' Quest, 846=Legends' Quest (sort), 847=67, 848=3, 850=44715285, 856=1, 859=60, 860=44, 861=114, 862=50, 863=99, 871=16, 872=50, 873=12, 874=50, 875=15, 876=45, 877=6, 878=56, 879=14, 880=52, 881=5, 882=42, 883=13, 884=50, 885=2, 886=50, 887=17, 888=50, 889=8, 890=50, 895=107}
+579 - {848=2, 850=51596421, 871=12, 856=1, 872=31, 873=8, 874=36, 845=Lost City, 846=Lost City (sort), 847=68}
+580 - {871=14, 872=17, 873=16, 874=13, 875=17, 876=13, 845=The Lost Tribe, 846=Lost Tribe, The, 847=69, 848=1, 850=321047700, 854=52513929, 856=1, 859=13, 860=6}
+581 - {871=12, 872=61, 873=1, 874=40, 875=11, 876=49, 845=Lunar Diplomacy, 877=15, 846=Lunar Diplomacy (sort), 878=5, 847=70, 879=6, 848=2, 880=65, 881=14, 850=42929768, 882=60, 883=8, 884=55, 856=1, 859=49, 860=68, 861=13, 862=99}
+582 - {848=1, 850=39947540, 856=1, 859=84, 860=11, 845=Making History, 846=Making History (sort), 847=71}
+583 - {848=1, 856=1, 850=45288891, 845=Merlin's Crystal, 846=Merlin's Crystal (sort), 847=72}
+584 - {848=3, 850=40390055, 856=1, 859=56, 860=110, 845=Monkey Madness, 846=Monkey Madness (sort), 847=73}
+585 - {848=0, 856=1, 850=42699914, 845=Monk's Friend, 846=Monk's Friend (sort), 847=74}
+586 - {848=1, 850=46059098, 871=16, 856=1, 872=20, 845=Mountain Daughter, 846=Mountain Daughter (sort), 847=75}
+587 - {871=4, 872=60, 873=17, 874=50, 845=Mourning's Ends Part I, 846=Mourning's Ends Part I (sort), 847=76, 848=3, 850=37522506, 851=36146264, 856=1, 859=90, 860=98, 861=20}
+588 - {848=3, 850=38538342, 856=1, 859=76, 845=Mourning's Ends Part II, 846=Mourning's Ends Part II (sort), 847=77}
+589 - {848=0, 856=1, 850=44928493, 845=Murder Mystery, 846=Murder Mystery (sort), 847=78}
+590 - {898=1, 871=8, 872=10, 873=19, 874=29, 845=My Arm's Big Adventure, 846=My Arm's Big Adventure (sort), 847=79, 848=1, 850=315057994, 854=46534250, 695=583444291, 856=1, 859=35, 860=45, 861=66}
+591 - {848=0, 850=56338087, 854=55791025, 856=1, 859=84, 860=11, 845=Nature Spirit, 846=Nature Spirit (sort), 847=80}
+592 - {848=0, 856=1, 850=39963762, 845=Observatory Quest, 846=Observatory Quest (sort), 847=81}
+593 - {871=12, 872=25, 873=15, 874=18, 875=16, 876=36, 845=One Small Favour, 877=13, 846=One Small Favour (sort), 878=30, 847=82, 848=2, 850=46451623, 856=1, 859=13, 860=99}
+594 - {848=0, 856=1, 850=42028297, 845=Plague City, 846=Plague City (sort), 847=83}
+595 - {848=0, 856=1, 850=52776336, 845=Priest in Peril, 846=Priest in Peril (sort), 847=84}
+596 - {848=0, 856=1, 850=55070129, 845=Rag and Bone Man, 846=Rag and Bone Man (sort), 847=85}
+597 - {848=1, 850=51629395, 856=1, 859=63, 845=Ratcatchers, 846=Ratcatchers (sort), 847=86}
+598 - {848=5, 850=52595855, 871=7, 856=1, 872=10, 859=1, 845=Recipe for Disaster, 846=Recipe for Disaster (sort), 847=87}
+599 - {848=0, 850=585354506, 691=608, 854=48418057, 856=1, 859=159, 860=33, 845=Recruitment Drive, 846=Recruitment Drive (sort), 847=88}
+600 - {848=3, 871=16, 856=1, 696=1, 872=56, 859=114, 845=Regicide, 846=Regicide (sort), 847=89}
+601 - {848=3, 850=37522506, 851=36146264, 856=1, 859=89, 860=50, 845=Roving Elves, 846=Roving Elves (sort), 847=90}
+602 - {848=2, 850=309366545, 854=41045770, 871=16, 856=1, 872=40, 873=18, 874=40, 859=107, 845=Royal Trouble, 846=Royal Trouble (sort), 847=91}
+603 - {871=19, 872=40, 873=10, 874=50, 875=5, 876=47, 845=Rum Deal, 877=12, 846=Rum Deal (sort), 878=42, 847=92, 879=18, 848=2, 880=42, 850=60165586, 856=1, 859=25}
+604 - {848=1, 850=849562957, 854=44256591, 871=5, 856=1, 872=31, 845=Scorpion Catcher, 846=Scorpion Catcher (sort), 847=93}
+605 - {848=1, 850=44535012, 871=11, 856=1, 872=30, 845=Sea Slug, 846=Sea Slug (sort), 847=94}
+606 - {871=12, 872=30, 873=20, 874=30, 875=18, 876=30, 845=The Slug Menace, 877=17, 846=Slug Menace, The, 878=30, 847=95, 848=1, 850=49106222, 856=1, 859=94, 860=115}
+607 - {848=1, 850=56741101, 871=15, 856=1, 872=15, 873=12, 874=20, 845=Shades of Mort'ton, 846=Shades of Mort'ton (sort), 847=96}
+608 - {848=1, 850=53578839, 871=12, 856=1, 872=30, 859=2, 860=55, 845=Shadow of the Storm, 846=Shadow of the Storm (sort), 847=97}
+609 - {848=0, 856=1, 850=42863844, 845=Sheep Herder, 846=Sheep Herder (sort), 847=98}
+610 - {848=2, 850=47270794, 871=16, 856=1, 872=32, 873=12, 874=20, 859=66, 845=Shilo Village, 846=Shilo Village (sort), 847=99}
+611 - {848=0, 856=1, 850=54201725, 845=A Soul's Bane, 846=Soul's Bane, A, 847=100}
+612 - {871=6, 872=33, 873=4, 874=37, 875=14, 876=37, 845=Spirits of the Elid, 877=17, 846=Spirits of the Elid (sort), 878=37, 847=101, 848=1, 850=56380254, 856=1}
+613 - {871=6, 872=66, 873=7, 874=62, 875=10, 876=62, 845=Swan Song, 877=13, 846=Swan Song (sort), 878=45, 847=102, 879=11, 848=3, 880=42, 881=12, 850=38473280, 882=40, 856=1, 859=82, 860=51, 895=101}
+614 - {871=16, 872=15, 873=7, 874=30, 875=10, 876=5, 845=Tai Bwo Wannai Trio, 846=Tai Bwo Wannai Trio (sort), 847=103, 848=1, 850=313969681, 854=45583376, 856=1}
+615 - {848=1, 850=47795686, 856=1, 859=63, 845=A Tail of Two Cats, 846=Tail of Two Cats, A, 847=104}
+616 - {871=12, 872=20, 873=11, 874=49, 875=14, 876=20, 845=Tears of Guthix, 846=Tears of Guthix (sort), 847=105, 848=1, 850=590144813, 854=51940452, 695=52864326, 856=1, 895=44}
+617 - {848=2, 850=42208504, 871=4, 856=1, 872=40, 873=17, 874=42, 845=Temple of Ikov, 846=Temple of Ikov (sort), 847=106}
+618 - {848=2, 850=309464852, 854=41045770, 856=1, 859=49, 860=60, 845=Throne of Miscellania, 846=Throne of Miscellania (sort), 847=107}
+619 - {848=1, 850=54103080, 871=9, 856=1, 872=10, 873=13, 874=20, 845=The Tourist Trap, 846=Tourist Trap, The, 847=108}
+620 - {848=1, 856=1, 850=47992193, 845=Witch's House, 846=Witch's House (sort), 847=109}
+621 - {848=1, 856=1, 850=41667679, 845=Tree Gnome Village, 846=Tree Gnome Village (sort), 847=110}
+622 - {848=1, 850=45730926, 871=17, 856=1, 872=21, 845=Tribal Totem, 846=Tribal Totem (sort), 847=111}
+623 - {848=2, 850=314746705, 854=46534250, 871=16, 856=1, 872=28, 859=113, 845=Troll Romance, 846=Troll Romance (sort), 847=112}
+624 - {848=2, 850=47451593, 871=16, 856=1, 872=15, 859=29, 845=Troll Stronghold, 846=Troll Stronghold (sort), 847=113}
+625 - {848=2, 850=310627553, 854=42142935, 871=4, 856=1, 872=25, 859=21, 845=Underground Pass, 846=Underground Pass (sort), 847=114}
+626 - {848=1, 850=49106222, 856=1, 859=69, 860=84, 845=Wanted!, 861=88, 846=Wanted! (sort), 847=115, 895=33}
+627 - {871=16, 872=25, 873=15, 874=14, 875=6, 876=14, 845=Watchtower, 877=14, 846=Watchtower (sort), 878=40, 847=116, 879=17, 848=1, 880=15, 850=578604073, 854=41684008, 856=1}
+628 - {871=21, 872=10, 873=16, 874=30, 875=12, 876=30, 845=Cold War, 877=22, 846=Cold War (sort), 878=34, 847=117, 848=1, 850=42503362, 856=1}
+629 - {871=22, 872=20, 873=16, 874=40, 875=12, 876=46, 845=The Fremennik Isles, 877=8, 846=Fremennik Isles, The, 878=56, 847=118, 848=2, 850=43388542, 856=1, 859=49}
+630 - {848=0, 850=43256975, 871=22, 856=1, 872=10, 845=Tower of Life, 846=Tower of Life (sort), 847=119}
+631 - {898=1, 871=5, 872=50, 873=12, 874=16, 875=22, 876=30, 845=The Great Brain Robbery, 846=Great Brain Robbery, The, 847=120, 848=2, 850=60328850, 856=1, 859=26, 860=22}
+632 - {848=1, 850=53529862, 871=20, 856=1, 872=35, 845=What Lies Below, 846=What Lies Below (sort), 847=121}
+633 - {848=1, 850=44666513, 871=11, 856=1, 872=40, 873=8, 874=50, 859=49, 845=Olaf's Quest, 846=Olaf's Quest (sort), 847=122}
+634 - {871=0, 872=15, 873=5, 874=25, 845=Another Slice of H.A.M., 846=Another Slice of H.A.M. (sort), 847=123, 848=1, 850=313234675, 854=52579471, 695=54306188, 856=1, 859=28, 860=32, 861=54}
+635 - {848=3, 850=575137897, 854=35082088, 856=1, 859=35, 860=70, 845=Dream Mentor, 846=Dream Mentor (sort), 847=124}
+636 - {871=19, 872=45, 873=15, 874=52, 875=17, 876=58, 845=Grim Tales, 877=16, 846=Grim Tales (sort), 878=59, 847=125, 879=8, 848=3, 880=71, 850=47369596, 856=1, 859=109}
+637 - {871=6, 872=45, 873=1, 874=65, 845=King's Ransom, 846=King's Ransom (sort), 847=126, 848=2, 850=44928480, 856=1, 859=159, 860=61, 861=78, 862=82}
+638 - {871=16, 872=45, 873=4, 874=47, 875=2, 876=60, 845=The Path of Glouphrie, 877=18, 846=Path of Glouphrie, The, 878=56, 847=127, 879=17, 848=2, 880=56, 850=41667679, 856=1, 859=41, 860=50}
+639 - {871=16, 872=55, 873=19, 874=53, 875=18, 876=59, 845=Back to my Roots, 877=8, 846=Back to my Roots (sort), 878=72, 847=128, 848=3, 850=43175152, 856=1, 859=42, 860=57, 861=82, 862=111}
+640 - {871=5, 872=30, 873=16, 874=36, 875=10, 876=36, 845=Land of the Goblins, 877=17, 846=Land of the Goblins (sort), 878=36, 847=129, 879=15, 848=2, 880=37, 850=54306188, 853=52579471, 854=52579471, 856=1, 859=123, 860=47}
+641 - {871=17, 872=60, 873=16, 874=50, 875=2, 876=60, 845=Dealing with Scabaras, 877=11, 846=Dealing with Scabaras (sort), 878=21, 847=130, 848=3, 850=53725904, 856=1, 859=45, 860=24, 861=25}
+642 - {848=0, 856=1, 850=47943026, 845=Wolf Whistle, 846=Wolf Whistle (sort), 847=131}
+643 - {871=21, 872=48, 873=11, 874=51, 875=8, 876=58, 845=As a First Resort, 846=As a First Resort (sort), 847=132, 848=2, 850=41814822, 856=1, 859=25}
+644 - {848=3, 850=35834995, 871=9, 856=1, 872=42, 873=22, 874=44, 859=89, 845=Catapult Construction, 846=Catapult Construction (sort), 847=133}
+645 - {848=1, 850=44420306, 871=14, 856=1, 872=46, 859=95, 845=Kennith's Concerns, 846=Kennith's Concerns (sort), 847=134}
+646 - {871=22, 872=20, 873=16, 874=29, 875=18, 876=31, 845=Legacy of Seergaze, 877=14, 846=Legacy of Seergaze (sort), 878=35, 847=135, 879=11, 848=2, 880=40, 881=12, 850=56298913, 882=47, 883=6, 884=49, 856=1, 859=27}
+647 - {871=22, 872=10, 873=19, 874=10, 875=21, 876=10, 845=Perils of Ice Mountain, 877=17, 846=Perils of Ice Mountain (sort), 878=11, 847=136, 848=0, 850=49237355, 856=1}
+648 - {871=0, 872=40, 873=14, 874=41, 875=12, 876=43, 845=TokTz-Ket-Dill, 877=2, 846=TokTz-Ket-Dill (sort), 878=45, 847=137, 879=22, 848=2, 880=50, 850=41145404, 854=46812255, 695=46966115, 856=1}
+649 - {896=85, 871=12, 872=25, 873=18, 874=35, 845=Smoking Kills, 846=Smoking Kills (sort), 847=138, 848=1, 850=55036849, 856=1, 859=11, 860=63}
+650 - {871=16, 872=60, 873=17, 874=63, 875=12, 876=66, 845=Rocking Out, 877=13, 846=Rocking Out (sort), 878=69, 847=139, 848=3, 850=60083108, 851=60771752, 853=60083108, 856=1, 859=120}
+651 - {871=22, 872=40, 873=5, 874=35, 875=19, 876=26, 845=Spirit of Summer, 877=23, 846=Spirit of Summer (sort), 878=19, 847=140, 848=1, 850=52842126, 856=1, 859=11}
+652 - {848=1, 850=39947540, 856=1, 859=71, 860=33, 845=Meeting History, 846=Meeting History (sort), 847=141}
+653 - {848=1, 850=52776336, 871=11, 856=1, 872=43, 859=84, 845=All Fired Up, 846=All Fired Up (sort), 847=142}
+654 - {871=23, 872=23, 873=8, 874=37, 875=21, 876=35, 845=Summer's End, 877=14, 846=Summer's End (sort), 878=45, 847=143, 879=11, 848=2, 880=47, 881=5, 850=53005971, 882=55, 856=1, 859=140}
+655 - {864=44, 865=121, 866=51, 898=1, 871=16, 872=51, 873=21, 874=51, 875=13, 876=54, 845=Defender of Varrock, 877=14, 846=Defender of Varrock (sort), 878=59, 847=144, 848=2, 850=589385127, 854=52481448, 856=1, 859=15, 860=8, 861=12, 862=2, 863=106}
+656 - {897=1, 898=1, 845=While Guthix Sleeps, 846=While Guthix Sleeps (sort), 847=145, 848=4, 850=44633392, 856=1, 859=144, 860=124, 861=57, 862=126, 863=67, 864=77, 865=127, 866=87, 867=143, 868=102, 869=105, 870=25, 871=23, 872=23, 873=21, 874=55, 875=17, 876=60, 877=1, 878=65, 879=19, 880=65, 881=15, 882=65, 883=6, 884=75, 895=270}
+657 - {848=2, 850=37588522, 871=9, 856=1, 872=53, 873=11, 874=55, 875=12, 876=52, 845=In Pyre Need, 846=In Pyre Need (sort), 847=146}
+658 - {848=0, 856=1, 850=52530347, 845=Myths of the White Lands, 846=Myths of the White Lands (sort), 847=148}
+659 - {848=0, 856=1, 850=44272948, 845=Swept Away, 846=Swept Away (sort), 847=153}
+660 - {736=135, 737=1, 738=, 734=Level 01<br>Thick Skin<br>Increases your Defence by 5%, 735=115}
+661 - {736=136, 737=4, 738=You need a Prayer level of at least 4 to use Burst of Strength., 734=Level 04<br>Burst of Strength<br>Increases your Strength by 5%, 735=116}
+662 - {736=137, 737=7, 738=You need a Prayer level of at least 7 to use Clarity of Thought., 734=Level 07<br>Clarity of Thought<br>Increases your Attack by 5%, 735=117}
+663 - {736=138, 737=10, 738=You need a Prayer level of at least 10 to use Rock Skin., 734=Level 10<br>Rock Skin<br>Increases your Defence by 10%, 735=118}
+664 - {736=139, 737=13, 738=You need a Prayer level of at least 13 to use Superhuman Strength., 734=Level 13<br>Superhuman Strength<br>Increases your Strength by 10%, 735=119}
+665 - {736=140, 737=16, 738=You need a Prayer level of at least 16 to use Improved Reflexes., 734=Level 16<br>Improved Reflexes<br>Increases your Attack by 10%, 735=120}
+666 - {736=141, 737=19, 738=You need a Prayer level of at least 19 to use Rapid Restore., 734=Level 19<br>Rapid Restore<br>2x restore rate for all stats<br>except Hitpoints, Summoning and Prayer, 735=121}
+667 - {736=142, 737=22, 738=You need a Prayer level of at least 22 to use Rapid Heal., 734=Level 22<br>Rapid Heal<br>2x restore rate for the<br>Hitpoints stat, 735=122}
+668 - {736=143, 737=25, 738=You need a Prayer level of at least 25 to use Protect Item., 734=Level 25<br>Protect Item<br>Keep 1 extra item if you die, 735=123}
+669 - {736=144, 737=28, 738=You need a Prayer level of at least 28 to use Steel Skin., 734=Level 28<br>Steel Skin<br>Increases your Defence by 15%, 735=124}
+670 - {736=145, 737=31, 738=You need a Prayer level of at least 31 to use Ultimate Strength., 734=Level 31<br>Ultimate Strength<br>Increases your Strength by 15%, 735=125}
+671 - {736=146, 737=34, 738=You need a Prayer level of at least 34 to use Incredible Reflexes., 734=Level 34<br>Incredible Reflexes<br>Increases your Attack by 15%, 735=126}
+672 - {736=147, 737=37, 738=You need a Prayer level of at least 37 to use Protect from Magic., 734=Level 37<br>Protect from Magic<br>Protection from magical attacks, 735=127}
+673 - {736=148, 737=40, 738=You need a Prayer level of at least 40 to use Protect from Missiles., 734=Level 40<br>Protect from Missiles<br>Protection from ranged attacks, 735=128}
+674 - {736=149, 737=43, 738=You need a Prayer level of at least 43 to use Protect from Melee., 734=Level 43<br>Protect from Melee<br>Protection from melee attacks, 735=129}
+675 - {736=151, 737=46, 738=You need a Prayer level of at least 46 to use Retribution., 739=1, 734=Level 46<br>Retribution<br>Inflicts damage to nearby<br>targets if you die, 735=131}
+676 - {736=150, 737=49, 738=You need a Prayer level of at least 49 to use Redemption., 739=1, 734=Level 49<br>Redemption<br>Heals you when damaged<br>and Hitpoints falls<br>below 10%, 735=130}
+677 - {736=152, 737=52, 738=You need a Prayer level of at least 52 to use Smite., 739=1, 734=Level 52<br>Smite<br>1/4 of damage dealt is <br>also removed from <br>opponent's Prayer, 735=132}
+678 - {736=153, 737=8, 738=You need a Prayer level of at least 8 to use Sharp Eye., 734=Level 08<br>Sharp Eye<br>Increases your Ranged by 5%, 735=133}
+679 - {736=154, 737=9, 738=You need a Prayer level of at least 9 to use Mystic Will., 734=Level 09<br>Mystic Will<br>Increases your Magic by 5%, 735=134}
+680 - {736=506, 737=26, 738=You need a Prayer level of at least 26 to use Hawk Eye., 734=Level 26<br>Hawk Eye<br>Increases your Ranged by 10%, 735=502}
+681 - {736=507, 737=27, 738=You need a Prayer level of at least 27 to use Mystic Lore., 734=Level 27<br>Mystic Lore<br>Increases your Magic by 10%, 735=503}
+682 - {736=508, 737=44, 738=You need a Prayer level of at least 44 to use Eagle Eye., 734=Level 44<br>Eagle Eye<br>Increases your Ranged by 15%, 735=504}
+683 - {736=509, 737=45, 738=You need a Prayer level of at least 45 to use Mystic Might., 734=Level 45<br>Mystic Might<br>Increases your Magic by 15%, 735=505}
+684 - {736=948, 737=35, 738=You need a Prayer level of at least 35 to use Protect from Summoning., 739=1, 734=Level 35<br>Protect from Summoning<br>Reduces the damage dealt through Summoning scrolls and prevents the use of a familiar's special attack., 735=944}
+685 - {736=949, 737=60, 738=You need a Prayer level of 60, a Defence level of 65 and have completed the King's Ransom quest's Knight Wave reward to use Chivalry., 739=1, 734=Level 60<br>Chivalry<br>Increases your Defence by 20%, Strength by 18%, and Attack by 15%., 735=945}
+686 - {736=950, 737=70, 738=You need a Prayer level of 70, a Defence level of 70 and to have completed the King's Ransom quest's Knight Wave reward to use Piety., 739=1, 734=Level 70<br>Piety<br>Increases your Defence by 25%, Strength by 23%, and Attack by 20%., 735=946}
+694 - {871=21, 872=41, 873=16, 874=50, 875=6, 876=57, 845=Glorious Memories, 877=15, 846=Glorious Memories (sort), 878=43, 847=149, 848=3, 850=43568731, 856=1, 859=75, 860=118, 861=91}
+695 - {871=17, 872=38, 873=22, 874=45, 875=21, 876=45, 845=Hunt for Red Raktuber, 846=Hunt for Red Raktuber (sort), 847=151, 848=1, 850=42470592, 856=1, 859=117, 860=94}
+696 - {871=6, 872=10, 873=14, 874=8, 875=11, 876=6, 845=The Tale of the Muspah, 877=8, 846=Tale of the Muspah, The (sort), 878=10, 847=150, 848=0, 850=44830355, 856=1}
+697 - {792=Bald, 788=45, 789=0, 790=243, 791=244}
+698 - {792=Bun, 788=46, 789=1, 790=199, 791=221}
+699 - {792=Dreadlocks, 788=47, 789=2, 790=200, 791=222}
+700 - {792=Long, 788=48, 789=3, 790=201, 791=223}
+701 - {792=Short, 788=49, 789=4, 790=202, 791=224}
+702 - {792=Pigtails, 788=50, 789=5, 790=203, 791=225}
+703 - {792=Crew cut, 788=51, 789=6, 790=204, 791=226}
+704 - {792=Close-cropped, 788=52, 789=7, 790=205, 791=227}
+705 - {792=Wild spikes, 788=53, 789=8, 790=206, 791=228}
+706 - {792=Spikes, 788=54, 789=9, 790=207, 791=229}
+707 - {792=Side ponytail, 788=135, 789=10, 790=209, 791=231}
+708 - {792=Curls, 788=136, 789=11, 790=210, 791=232}
+709 - {792=Wind braids, 788=137, 789=12, 790=211, 791=233}
+710 - {792=Ponytail, 788=138, 789=13, 790=212, 791=234}
+711 - {792=Ring braids, 788=139, 789=14, 790=213, 791=235}
+712 - {792=Four ponies, 788=140, 789=15, 790=214, 791=236}
+713 - {792=Flip, 788=141, 789=16, 790=215, 791=237}
+714 - {792=Layered flip, 788=142, 789=17, 790=216, 791=238}
+715 - {792=Straight, 788=143, 789=18, 790=217, 791=239}
+716 - {792=Long braids, 788=144, 789=19, 790=218, 791=240}
+717 - {792=Curtains, 788=145, 789=20, 790=219, 791=241}
+718 - {792=Earmuffs, 788=146, 789=21, 790=220, 791=242}
+719 - {792=Fringe, 788=269, 789=22, 790=281, 791=283}
+720 - {792=Pinned up, 788=270, 789=23, 790=282, 791=284}
+721 - {792=Layered, 788=271, 789=24, 790=285, 791=287}
+722 - {792=Top knot, 788=272, 789=25, 790=286, 791=288}
+723 - {792=Pinned bun, 788=273, 789=26, 790=289, 791=290}
+724 - {792=Ponytail spiked, 788=274, 789=27, 790=291, 791=294}
+725 - {792=Pixie, 788=275, 789=28, 790=292, 791=295}
+726 - {792=Odango, 788=276, 789=29, 790=293, 791=296}
+727 - {792=Bun with fringe, 788=277, 789=30, 790=301, 791=297}
+728 - {792=Pigtails with fringe, 788=278, 789=31, 790=302, 791=298}
+729 - {792=French twist, 788=279, 789=32, 790=303, 791=299}
+730 - {792=Princess, 788=280, 789=33, 790=304, 791=300}
+731 - {792=Two buns and fringe, 788=353, 789=34, 790=335, 791=317}
+732 - {792=Short hair with fringe, 788=356, 789=35, 790=338, 791=320}
+733 - {792=Long hair with fringe, 788=362, 789=36, 790=344, 791=326}
+734 - {845=Bloom, 682=2, 683=1577}
+735 - {684=12583006, 654=12, 655=15, 656=24, 688=12583009, 657=24, 658=0, 659=0, 660=6, 661=12583008, 662=2167, 663=2168, 664=2169, 665=2170, 316=12582912}
+736 - {684=12648499, 654=15, 655=15, 656=24, 688=12648502, 657=24, 658=10, 659=11, 660=5, 661=12648501, 662=2163, 663=2164, 664=2165, 665=2166, 316=12648448}
+737 - {684=28180542, 654=12, 655=12, 656=24, 688=28180545, 657=24, 658=5, 659=5, 660=6, 661=28180544, 662=2171, 663=2172, 664=2173, 665=2174, 316=28180480}
+738 - {871=21, 872=61, 873=11, 874=61, 875=2, 876=69, 845=Forgiveness of a Chaos Dwarf, 846=Forgiveness of a Chaos Dwarf, 847=160, 848=3, 856=1, 859=48, 860=19}
+739 - {673=274, 675=2244, 676=2245, 692=1, 693=1, 152=49479732, 153=49479733, 61=2252, 782=2243}
+740 - {923=530, 924=The Arzinian Being of Bordanzan, 813=4568, 925=A book about a terrifying entity that was encountered in the mines of Keldagrim.}
+741 - {792=Bald, 788=0, 789=0, 790=0, 791=0}
+742 - {792=Dreadlocks, 788=1, 789=1, 790=169, 791=170}
+743 - {792=Long hair, 788=2, 789=2, 790=171, 791=172}
+744 - {792=Medium hair, 788=3, 789=3, 790=173, 791=174}
+745 - {792=Monk, 788=4, 789=4, 790=175, 791=176}
+746 - {792=Short, 788=5, 789=5, 790=177, 791=178}
+747 - {792=Close-cropped, 788=6, 789=6, 790=179, 791=180}
+748 - {792=Wild spikes, 788=7, 789=7, 790=181, 791=182}
+749 - {792=Spikes, 788=8, 789=8, 790=183, 791=184}
+750 - {792=Mohawk, 788=91, 789=9, 790=185, 791=186}
+751 - {792=Wind braids, 788=92, 789=10, 790=187, 791=188}
+752 - {792=Quiff, 788=93, 789=11, 790=189, 791=190}
+753 - {792=Samurai, 788=94, 789=12, 790=191, 791=192}
+754 - {792=Prince, 788=95, 789=13, 790=193, 791=194}
+755 - {792=Curtains, 788=96, 789=14, 790=195, 791=196}
+756 - {792=Curtains long, 788=97, 789=15, 790=197, 791=198}
+757 - {792=Side-part spikey, 788=261, 789=16, 790=245, 791=246}
+758 - {792=Top knot, 788=262, 789=17, 790=247, 791=250}
+759 - {792=Ponytail spikey, 788=263, 789=18, 790=248, 791=251}
+760 - {792=Long swept fringe, 788=264, 789=19, 790=249, 791=252}
+761 - {792=Evanstyle, 788=265, 789=20, 790=253, 791=254}
+762 - {792=Dragon, 788=266, 789=21, 790=255, 791=257}
+763 - {792=Warrior curtains, 788=267, 789=22, 790=256, 791=258}
+764 - {792=Comb-over, 788=268, 789=23, 790=259, 791=260}
+765 - {792=Warrior, 788=309, 789=24, 790=345, 791=327}
+766 - {792=Liberty spikes, 788=314, 789=25, 790=350, 791=332}
+767 - {792=Ducktail, 788=313, 789=26, 790=349, 791=331}
+768 - {923=574, 924=The Little Book of Embalming, 813=4686, 925=How to embalm the dead in accordance with the practices of Sophanem and Menaphos, by Bod E Wrapper.}
+769 - {923=608, 924=The Confession of Ellemar, 813=6749, 925=Ellemar's explanation for his attempt to summon the demon Agrith-Naar.}
+770 - {923=-1, 924=Legend of the Brothers, 813=4707, 925=The tale of the 6 brothers whose remains were interred in the Barrows of Morytania.}
+771 - {923=536, 924=Book of Portraiture, 813=4817, 925=How to draw a portrait.}
+772 - {923=597, 924=The Ratpits Manual, 813=6767, 925=The rules of the ratpits.}
+775 - {595=1464, 596=Resting Spot, 597=1, 477=1240}
+828 - {923=-1, 924=Abyssal Research Notes, 813=5520, 925=A Zamorakian researcher's notes on the discovery and nature of the Abyss.}
+829 - {845=Visible levels, 682=1, 683=1578}
+830 - {845=Remove roofs, 682=7, 683=1579}
+831 - {845=Ground decoration, 682=7, 683=1577}
+832 - {845=Texture detail, 682=1, 683=1581}
+833 - {845=Idle animations, 682=7, 683=2397}
+834 - {845=Flickering effects, 682=7, 683=1577}
+835 - {845=Ground textures, 682=1, 683=1580}
+836 - {845=Character shadows, 682=7, 683=1577}
+837 - {845=Scenery shadows, 682=6, 683=1582}
+838 - {845=Lighting detail, 682=6, 683=1581}
+839 - {845=Water detail, 682=7, 683=1581}
+840 - {845=Fog, 682=7, 683=1577}
+841 - {845=Anti-aliasing, 682=2, 683=1583}
+842 - {845=Particles, 682=7, 683=2398}
+843 - {845=Ground blending, 682=5, 683=1577}
+844 - {845=Custom cursors, 682=7, 683=1577}
+845 - {683=-1}
+846 - {923=588, 924=Journal of Nissyen Edern, 813=6649, 925=The journal of Nissyen Edern, an elf who served with the Death Guard.}
+847 - {923=587, 924=The Creation of Prifddinas, 813=6073, 925=The origin of the elf race.}
+848 - {923=587, 924=Exploration of the Eastern Realm, 813=6075, 925=The expansion of the elven domain into the lands east of Tirannwn.}
+849 - {923=587, 924=Settlement of the East, 813=6077, 925=The settlement of the eastern lands by the Cadarn clan.}
+850 - {923=587, 924=The Great Divide, 813=6079, 925=The attempt by the forces of Baxtorian to return to Tirannwn and restore peace to Prifddinas.}
+851 - {923=582, 924=Drozal's Journal, 813=6755, 925=The journal of Drozal, a follower of Zamorak who briefly lived in the outpost north of Ardougne.}
+852 - {923=-1, 924=Gianne's Cook Book, 813=2167, 925=The collected recipes of Aluft Gianne.}
+853 - {923=-1, 924=The Blurberry Cocktail Guide, 813=2023, 925=Recipes for the cocktails sold in Blurberry's bar.}
+854 - {923=-1, 924=RuneScape Account Security, 813=9003, 925=Security tips, including how to choose a secure password and good recovery questions.}
+855 - {923=-1, 924=Stronghold of Security - Notes, 813=9004, 925=Some notes on the layout of the Stronghold of Security, and the creatures found therein.}
+856 - {923=581, 924=Basics of Magic, 813=9078, 925=A Primer in the Mystical Arts, by a member of the Moonclan.}
+857 - {923=613, 924=Dionysius: A Legend in his own Lifetime, 813=7951, 925=The biography of Dionysius, a modern-day hero.}
+858 - {923=-1, 924=Pie Recipes, 813=7162, 925=Recipes for a variety of pies.}
+859 - {923=-1, 924=Brewin' Guide, 813=8989, 925=How to make Mos Le'Harmless Rum in the Trouble Brewing minigame.}
+860 - {923=-1, 924=Magic Training Arena Lore Book, 813=6891, 925=Information about the Magic Training Arena north-east of Al-Kharid.}
+861 - {923=602, 924=Armod's Burnt Diary, 813=7965, 925=The diary of Arnod, a young Fremennik who caused political strife between Miscellania and Etceteria.}
+862 - {923=602, 924=AMCE Lift-In-A-Box User Manual, 813=7972, 925=Troubleshooting your AMCE Lift-In-A-Box.}
+863 - {923=533, 924=The Little Book o' Piracy, 813=7144, 925=How to act and talk like a pirate.}
+864 - {923=632, 924=The Journal of Sin'keth Magis, 813=11002, 925=The journal of Sin'keth Magis, a member of the Dagon'hai.}
+865 - {923=632, 924=The Fall of the Dagon'hai, 813=11001, 925=An account of how the Dagon'hai order came to Varrock and were subsequently banished.}
+866 - {923=-1, 924=The Diary of Tarn Razorlor, 813=10587, 925=Tarn Razorlor's diary, into which is bound the spell needed to enhance the powers of the Salve amulet.}
+867 - {923=547, 924=William Oddity's Guide to the Avian, 813=10173, 925=William Oddity's notes on useful species of bird, including the mysterious giant eagles.}
+868 - {923=547, 924=The Journal of Arthur Artimus, 813=10179, 925=The journal of Arthur Artimus, a brigand who had a hideout in Eagles' Peak.}
+869 - {923=590, 924=Farmer Gricoller's Farming Manual, 813=9903, 925=How to grow healthy crops, even in difficult areas.}
+870 - {923=-1, 924=Queen Help, 813=10562, 925=How to make and use an Omega Egg in the Barbarian Assault minigame.}
+871 - {923=631, 924=Prayer of Deliverance from Poisons, 813=10890, 925=Allows you to cure yourself of poison through prayer.}
+872 - {923=575, 924=Histories of the Hallowland, 813=7634, 925=The history of Morytania in the times before the darkness fell upon it.}
+873 - {923=575, 924=The Sleeping Seven, 813=7633, 925=An account of the seven priestly warriors who fought against the forces of evil in Hallowvale.}
+874 - {923=575, 924=Modern day Morytania, 813=7635, 925=A guide to Morytania as it is today.}
+875 - {923=549, 924=Book of the Elemental Helm, 813=9717, 925=The discovery of the technique whereby one's consciousness may be instilled into an ingot of 'primed' elemental metal.}
+876 - {923=552, 924=Crystal Singing for Beginners, 813=9627, 925=Oaknock's translation of an introduction to the elven art of crystal chanting.}
+877 - {923=628, 924=Clockwork Toys - Chapter 1.0, 813=10594, 925=A book about clockwork mechanisms, with a note about how to make a clockwork suit that can be controlled from the inside.}
+878 - {923=634, 924=The Book of the Big High War God, 813=10999, 925=A goblin history book, telling of how they fought for the Big High War God, and of the prophecy of the Chosen Commander.}
+879 - {923=-1, 924=Barbarian skills, 813=11340, 925=A record of instructions received from Otto Godblessed.}
+880 - {923=-1, 924='My Notes', 813=11339, 925=Discoveries from the ancient cavern beneath the lake.}
+881 - {923=-1, 924=Beyond Trollheim, 813=11677, 925=Nestor Peregrine, a dwarven explorer, wrote this account of his discovery of a vast battlefield beneath the mountains beyond Trollheim.}
+882 - {923=-1, 924=Ultimate Guide to Glassblowing, 813=11656, 925=A guide to the craft of Glassblowing, by Fritz the Glassblower of Entrana.}
+883 - {923=638, 924=Yewnock's notes, 813=11750, 925=Yewknock's notes on the use of devices such as singing bowls to enable mortals to chant crystals.}
+884 - {923=641, 924='My Notes', 813=11973, 925=Discoveries about the Scarabites living east of Sophanem.}
+885 - {923=648, 924=TzHaar Tourist Guide, 813=13244, 925=Advice for tourists planning to visit the TzHaar city.}
+886 - {923=887, 924=Ancient Hymnal, 813=15391, 925=A hymnal of chanted Zarosian Curses}
+887 - {848=3, 850=56036218, 898=1, 871=5, 856=1, 872=50, 859=31, 860=30, 845=The Temple at Senntisten, 861=156, 846=Temple at Senntisten, The (sort), 847=157}
+888 - {736=2355, 737=50, 738=You need a Prayer level of at least 50 to use Protect Item., 739=1, 734=Level 50<br>Protect Item<br>Keep 1 extra item if you die, 735=2329}
+889 - {736=2351, 737=50, 738=You need a Prayer level of at least 50 to use Sap Warrior., 739=1, 734=Level 50<br>Sap Warrior<br>Drains 10% of enemy Attack, Strength and Defence, increasing to 20% over time., 735=2325}
+890 - {736=2352, 737=52, 738=You need a Prayer level of at least 52 to use Sap Ranger., 739=1, 734=Level 52<br>Sap Ranger<br>Drains 10% of enemy Ranged and Defence, increasing to 20% over time., 735=2326}
+891 - {736=2350, 737=54, 738=You need a Prayer level of at least 54 to use Sap Mage., 739=1, 734=Level 54<br>Sap Mage<br>Drains 10% of enemy Magic and Defence, increasing to 20% over time., 735=2324}
+892 - {736=2349, 737=56, 738=You need a Prayer level of at least 56 to use Sap Spirit., 739=1, 734=Level 56<br>Sap Spirit<br>Drains enemy special attack energy., 735=2323}
+893 - {736=2371, 737=59, 738=You need a Prayer level of at least 59 to use Berserker., 739=1, 734=Level 59<br>Berserker<br>Boosted stats last 15% longer, 735=2345}
+894 - {736=2365, 737=62, 738=You need a Prayer level of at least 62 to use Deflect Summoning., 739=1, 734=Level 62<br>Deflect Summoning<br>Reduces damage dealt from Summoning scrolls, prevents the use of a familiar's special attack, and can deflect some of the damage back to the attacker., 735=2339}
+895 - {736=2367, 737=65, 738=You need a Prayer level of at least 65 to use Deflect Magic., 739=1, 734=Level 65<br>Deflect Magic<br>Protects against magical attacks and can deflect some of the damage back to the attacker., 735=2341}
+896 - {736=2366, 737=68, 738=You need a Prayer level of at least 68 to use Deflect Missiles., 739=1, 734=Level 68<br>Deflect Missiles<br>Protects against ranged attacks and can deflect some of the damage back to the attacker., 735=2340}
+897 - {736=2354, 737=71, 738=You need a Prayer level of at least 71 to use Deflect Melee., 739=1, 734=Level 71<br>Deflect Melee<br>Protects against melee attacks and can deflect some of the damage back to the attacker., 735=2328}
+898 - {736=2357, 737=74, 738=You need a Prayer level of at least 74 to use Leech Attack., 739=1, 734=Level 74<br>Leech Attack<br>Boosts Attack by 5%, increasing to 10% over time, while draining enemy Attack by 10%, increasing to 25% over time., 735=2331}
+899 - {736=2358, 737=76, 738=You need a Prayer level of at least 76 to use Leech Ranged., 739=1, 734=Level 76<br>Leech Ranged<br>Boosts Ranged by 5%, increasing to 10% over time, while draining enemy Ranged by 10%, increasing to 25% over time., 735=2332}
+900 - {736=2359, 737=78, 738=You need a Prayer level of at least 78 to use Leech Magic., 739=1, 734=Level 78<br>Leech Magic<br>Boosts Magic by 5%, increasing to 10% over time, while draining enemy Magic by 10%, increasing to 25% over time., 735=2333}
+901 - {736=2360, 737=80, 738=You need a Prayer level of at least 80 to use Leech Defence., 739=1, 734=Level 80<br>Leech Defence<br>Boosts Defence by 5%, increasing to 10% over time, while draining enemy Defence by 10%, increasing to 25% over time., 735=2334}
+902 - {736=2362, 737=82, 738=You need a Prayer level of at least 82 to use Leech Strength., 739=1, 734=Level 82<br>Leech Strength<br>Boosts Strength by 5%, increasing to 10% over time, while draining enemy Strength by 10%, increasing to 25% over time., 735=2336}
+903 - {736=2363, 737=84, 738=You need a Prayer level of at least 84 to use Leech Energy., 739=1, 734=Level 84<br>Leech Energy<br>Drains enemy run energy, while increasing your own, 735=2337}
+904 - {736=2372, 737=86, 738=You need a Prayer level of at least 86 to use Leech Special Attack., 739=1, 734=Level 86<br>Leech Special Attack<br>Drains enemy special attack energy, while increasing your own, 735=2346}
+905 - {736=2348, 737=89, 738=You need a Prayer level of at least 89 to use Wrath., 739=1, 734=Level 89<br>Wrath<br>Inflicts damage to nearby<br>targets if you die, 735=2322}
+906 - {736=2356, 737=92, 738=You need a Prayer level of at least 92 to use Soul Split., 739=1, 734=Level 92<br>Soul Split<br>1/5 of damage dealt is <br>also removed from <br>opponent's Prayer and added to your Hitpoints, 735=2330}
+907 - {736=2347, 737=95, 738=You need a Prayer level of at least 95 to use Turmoil., 739=1, 734=Level 95<br>Turmoil<br>Increases Attack and Defence by 15%, plus 15% of enemy's level, and Strength by 23%, plus 10% of enemy's level., 735=2321}
+908 - {845=CPU usage, 682=7, 683=867}
+935 - {936=40018, 938=39610, 940=1, 935=Honest Jimmy}
+936 - {936=39992, 938=39639, 940=1, 935=Bert the Sandman}
+937 - {936=39606, 938=39692, 940=1, 935=Advisor Ghrim}
+938 - {936=39907, 938=39907, 940=1, 941=Spria, 942=35469, 935=Turael}
+939 - {940=0, 938=39869, 935=Lanthus}
+940 - {936=39031, 938=34607, 940=1, 935=Sumona}
+941 - {936=39954, 938=39954, 940=1, 941=Achtryn, 942=35498, 935=Mazchna}
+942 - {936=39789, 938=39789, 940=1, 941=Lapalok, 942=35497, 935=Duradel}
+943 - {936=39680, 938=39680, 940=0, 935=Vannaka}
+944 - {936=40000, 938=39983, 940=1, 935=Murphy}
+945 - {936=2925, 937=1000, 938=2925, 940=0, 935=Chaeldar}
+946 - {936=39916, 938=40006, 940=1, 941=Cyrisus, 942=39916, 935=Cyrisus}
+947 - {944=225, 935=Larry, 936=39772, 938=39697, 940=1, 941=Chuck, 942=42543, 943=800}
+948 - {936=50668, 938=50668, 940=0, 935=Kuradal}
+949 - {936=24992, 944=-1, 937=1307, 938=24991, 940=1, 935=Random}
+950 - {936=50841, 938=50842, 940=1, 935=Dark mage}
+951 - {898=1, 871=2, 872=75, 873=0, 874=75, 875=18, 876=65, 845=Blood Runs Deep, 846=Blood Runs Deep (sort), 847=163, 848=3, 850=34213720, 856=1, 859=149}
+954 - {871=6, 872=27, 873=20, 874=20, 875=22, 876=25, 845=Rune Mechanics, 846=Rune Mechanics (sort), 847=165, 848=0, 850=59396816, 854=55020777, 856=1, 859=13, 860=131}
+955 - {898=1, 871=6, 872=75, 873=5, 874=70, 875=14, 876=66, 845=Nomad's Requiem, 877=21, 846=Nomad's Requiem (sort), 878=65, 847=162, 879=22, 848=4, 880=60, 850=30936170, 856=1, 859=126}
+963 - {845=Textures, 682=4, 683=1577}
+966 - {936=39845, 938=39845, 935=Pikkupstix}
