@@ -6,3 +6,6 @@ matrix592server.iml
 .settings/
 suspected_dupers.txt
 Server592.iml
+data/characters/
+data/logs/
+data/positions.txt
