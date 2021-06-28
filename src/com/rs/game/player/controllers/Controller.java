@@ -16,8 +16,9 @@ public abstract class Controller {
 
 	protected Player player;
 
-	public final void setPlayer(Player player) {
+	public final Controller setPlayer(Player player) {
 		this.player = player;
+		return this;
 	}
 
 	public Player getPlayer() {

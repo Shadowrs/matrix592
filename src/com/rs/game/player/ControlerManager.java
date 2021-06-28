@@ -174,10 +174,7 @@ public final class ControlerManager implements Serializable {
 	}
 
 	public void moved() {
-		final String last = this.lastControler;
-		if (Wilderness.isAtWild(player.getLastWorldTile())) // do everytime
-			startControler(player, "Wilderness");
-		startControler(player, last); // restore
+		Wilderness.posCheck(player);
 		if (this.controler == null || !inited)
 			return;
 		this.controler.moved();

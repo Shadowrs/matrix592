@@ -7,6 +7,7 @@ import com.rs.game.ForceMovement;
 import com.rs.game.WorldObject;
 import com.rs.game.WorldTile;
 import com.rs.game.npc.NPC;
+import com.rs.game.player.ControlerManager;
 import com.rs.game.player.Player;
 import com.rs.game.player.Skills;
 import com.rs.game.player.actions.thieving.Thieving;
@@ -17,6 +18,10 @@ import com.rs.utils.Utils;
 public class Wilderness extends Controller {
 
 	private boolean showingSkull;
+
+	public static void posCheck(Player player) {
+		ControllerHandler.getControler("Wilderness").setPlayer(player).moved();
+	}
 
 	@Override
 	public void start() {
@@ -252,6 +257,7 @@ public class Wilderness extends Controller {
 			removeIcon();
 			removeControler();
 		} else if ((player.getX() == 3386 || player.getX() == 3387) && player.getY() == 3615) {
+			// dungeoneering first tile towards the eastern section. stop pvp crossing this 'invisible' border
 			removeIcon();
 			player.setCanPvp(false);
 			removeControler();
