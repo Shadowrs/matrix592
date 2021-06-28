@@ -5,7 +5,7 @@ Changes to base:
 - replaced some but not all usages of 'fastExecutor' with engine-correct calls (ask for info)- specifically Item Switching and Prayers
 
 
-Client download (38mb)
+[Client download](https://www.dropbox.com/s/zfhp3ftzqmqpxn5/Client592.zip?dl=0) (38mb)
 <br>
 IMPORTANT: client HD only works when run with Java 6 JRE. Zipped client comes with JRE6 bundled (~110mb packed) and a windows .bat file to run the client using bundled jre6.
 <br>
