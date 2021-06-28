@@ -90,9 +90,8 @@ public class ButtonHandler {
 		}
 		final int slotId = stream.readUnsignedShortLE();
 		final int slotId2 = stream.readUnsignedShortLE();
-		if (Settings.DEBUG || player.debugOn) {
-			player.debug("packet "+packetId + "," + interfaceId + "," + componentId + "," + slotId + "," + slotId2);
-		}
+		if (Settings.DEBUG || player.debugOn)
+			player.debug("InterfaceId " + interfaceId + ", componentId " + componentId + ", slotId " + slotId + ", slotId2 " + slotId2 + ", PacketId: " + packetId);
 
 		if (!player.getControlerManager().processButtonClick(interfaceId, componentId, slotId, slotId2, packetId))
 			return;
@@ -1394,8 +1393,6 @@ public class ButtonHandler {
 		} else if (interfaceId == 742) {
 			player.closeInterfaces();
 		}
-		if (Settings.DEBUG)
-			Logger.log("ButtonHandler", "InterfaceId " + interfaceId + ", componentId " + componentId + ", slotId " + slotId + ", slotId2 " + slotId2 + ", PacketId: " + packetId);
 	}
 
 	public static void sendRemove(Player player, int slotId) {
@@ -1505,7 +1502,7 @@ public class ButtonHandler {
 	}
 
 	public static boolean sendWear2(Player player, int slotId, int itemId) {
-		player.debug("slot "+slotId + ", " + itemId);
+		player.debug("sendWear2 slot "+slotId + ", " + itemId);
 		if (player.hasFinished() || player.isDead())
 			return false;
 		player.stopAll(false, false);
