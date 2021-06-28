@@ -68,12 +68,15 @@ import com.rs.utils.Utils;
 
 import io.netty.channel.Channel;
 
+/**
+ * remember to mark all non-serialized (stuff that should not be saved to players gamesave file) as transient (aka excluded)
+ */
 public class Player extends Entity {
 
 	public static final int TELE_MOVE_TYPE = 127, WALK_MOVE_TYPE = 1, RUN_MOVE_TYPE = 2;
 
 	private static final long serialVersionUID = 2011932556974180375L;
-	public LinkedList<GamePacketListener.PendingPacket> pendingPackets;
+	public transient LinkedList<GamePacketListener.PendingPacket> pendingPackets;
 
 	// transient stuff
 	private transient String username;
@@ -2378,7 +2381,7 @@ public class Player extends Entity {
 	}
 
 	public boolean canSpawn() {
-		if (getMostDamageReceivedSourcePlayer().getRights() == 2)
+		if (this.getRights() == 2)
 			return true;
 		if (Wilderness.isAtWild(this) || getControlerManager().getControler() instanceof FightPitsArena || getControlerManager().getControler() instanceof CorpBeastControler || getControlerManager().getControler() instanceof PestControlLobby || getControlerManager().getControler() instanceof PestControlGame || getControlerManager().getControler() instanceof ZGDControler || getControlerManager().getControler() instanceof GodWars || getControlerManager().getControler() instanceof DuelArena || getControlerManager().getControler() instanceof CastleWarsPlaying || getControlerManager().getControler() instanceof CastleWarsWaiting || getControlerManager().getControler() instanceof FightCaves || FfaZone.inPvpArea(this) || getControlerManager().getControler() instanceof NomadsRequiem || getControlerManager().getControler() instanceof WarControler || getControlerManager().getControler() instanceof JailControler) {
 			return false;

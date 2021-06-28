@@ -221,17 +221,26 @@ public class SerializableFilesManager {
 		if (!f.exists()) {
 			return null;
 		}
-		ObjectInputStream in = new ObjectInputStream(new FileInputStream(f));
-		Object object = in.readObject();
-		in.close();
+		ObjectInputStream in = null;
+		Object object = null;
+		try {
+			in = new ObjectInputStream(new FileInputStream(f));
+			object = in.readObject();
+		} finally {
+			in.close();
+		}
 		return object;
 	}
 
 	public static final void storeSerializableClass(Serializable o, File f) throws IOException {
 
-		ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(f));
-		out.writeObject(o);
-		out.close();
+		ObjectOutputStream out = null;
+		try {
+			out = new ObjectOutputStream(new FileOutputStream(f));
+			out.writeObject(o);
+		} finally {
+			out.close();
+		}
 	}
 
 	public static boolean fileExists(String dir) {
