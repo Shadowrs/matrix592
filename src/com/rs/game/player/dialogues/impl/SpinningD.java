@@ -48,12 +48,12 @@ public class SpinningD extends Dialogue {
 				final int levelReq = LEVELS[componentIndex];
 				if (player.getSkills().getLevel(Skills.CRAFTING) < levelReq) {
 					end();
-					player.getSocialManager().sendGameMessage("You need a Crafting level of " + levelReq + " in order to spin a " + ItemDefinitions.getItemDefinitions(PRODUCT[componentIndex]).getName().toLowerCase() + ".");
+					player.message("You need a Crafting level of " + levelReq + " in order to spin a " + ItemDefinitions.getItemDefinitions(PRODUCT[componentIndex]).getName().toLowerCase() + ".");
 					return false;
 				}
 				int leatherAmount = player.getInventory().getAmountOf(INGREDIENT[componentIndex]);
 				if (leatherAmount == 0) {
-					player.getSocialManager().sendGameMessage("You need a piece of " + ItemDefinitions.getItemDefinitions(INGREDIENT[componentIndex]).getName().toLowerCase() + " in order to make a " + ItemDefinitions.getItemDefinitions(PRODUCT[componentIndex]).getName().toLowerCase() + ".");
+					player.message("You need a piece of " + ItemDefinitions.getItemDefinitions(INGREDIENT[componentIndex]).getName().toLowerCase() + " in order to make a " + ItemDefinitions.getItemDefinitions(PRODUCT[componentIndex]).getName().toLowerCase() + ".");
 					end();
 					return false;
 				}

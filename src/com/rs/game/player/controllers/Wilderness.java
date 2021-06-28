@@ -56,7 +56,7 @@ public class Wilderness extends Controller {
 			changed = true;
 		}
 		if (changed)
-			player.getSocialManager().sendGameMessage("Your extreme potion bonus has been reduced.");
+			player.message("Your extreme potion bonus has been reduced.");
 	}
 
 	@Override
@@ -74,7 +74,7 @@ public class Wilderness extends Controller {
 		if (target.getAttackedBy() != player && player.getAttackedBy() != target)
 			player.setWildernessSkull();
 		if (player.getCombatDefinitions().getSpellId() <= 0 && Utils.inCircle(new WorldTile(3105, 3933, 0), target, 24)) {
-			player.getSocialManager().sendGameMessage("You can only use magic in the arena.");
+			player.message("You can only use magic in the arena.");
 			return false;
 		}
 		return true;
@@ -85,7 +85,7 @@ public class Wilderness extends Controller {
 		if (target instanceof Player) {
 			Player p2 = (Player) target;
 			if (player.isCanPvp() && !p2.isCanPvp()) {
-				player.getSocialManager().sendGameMessage("That player is not in the wilderness.");
+				player.message("That player is not in the wilderness.");
 				return false;
 			}
 			if (canHit(target))
@@ -108,11 +108,11 @@ public class Wilderness extends Controller {
 	@Override
 	public boolean processMagicTeleport(WorldTile toTile) {
 		if (getWildLevel() > 20) {
-			player.getSocialManager().sendGameMessage("A mysterious force prevents you from teleporting.");
+			player.message("A mysterious force prevents you from teleporting.");
 			return false;
 		}
 		if (player.getTeleBlockDelay() > Utils.currentTimeMillis()) {
-			player.getSocialManager().sendGameMessage("A mysterious force prevents you from teleporting.");
+			player.message("A mysterious force prevents you from teleporting.");
 			return false;
 		}
 		return true;
@@ -122,11 +122,11 @@ public class Wilderness extends Controller {
 	@Override
 	public boolean processItemTeleport(WorldTile toTile) {
 		if (getWildLevel() > 30) {
-			player.getSocialManager().sendGameMessage("A mysterious force prevents you from teleporting.");
+			player.message("A mysterious force prevents you from teleporting.");
 			return false;
 		}
 		if (player.getTeleBlockDelay() > Utils.currentTimeMillis()) {
-			player.getSocialManager().sendGameMessage("A mysterious force prevents you from teleporting.");
+			player.message("A mysterious force prevents you from teleporting.");
 			return false;
 		}
 		return true;
@@ -135,7 +135,7 @@ public class Wilderness extends Controller {
 	@Override
 	public boolean processObjectTeleport(WorldTile toTile) {
 		if (player.getTeleBlockDelay() > Utils.currentTimeMillis()) {
-			player.getSocialManager().sendGameMessage("A mysterious force prevents you from teleporting.");
+			player.message("A mysterious force prevents you from teleporting.");
 			return false;
 		}
 		return true;
@@ -170,7 +170,7 @@ public class Wilderness extends Controller {
 			}, 2);
 			return false;
 		} else if (object.getId() == 2557 || object.getId() == 65717) {
-			player.getSocialManager().sendGameMessage("It seems it is locked, maybe you should try something else.");
+			player.message("It seems it is locked, maybe you should try something else.");
 			return false;
 		}
 		return true;
@@ -203,7 +203,7 @@ public class Wilderness extends Controller {
 				if (loop == 0) {
 					player.setNextAnimation(new Animation(2304));
 				} else if (loop == 1) {
-					player.getSocialManager().sendGameMessage("Oh dear, you have died.");
+					player.message("Oh dear, you have died.");
 				} else if (loop == 3) {
 					Player killer = player.getMostDamageReceivedSourcePlayer();
 					if (killer != null) {

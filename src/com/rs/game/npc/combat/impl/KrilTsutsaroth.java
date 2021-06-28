@@ -82,7 +82,7 @@ public class KrilTsutsaroth extends CombatScript {
 					npc.playSound(3274, 2);
 					player.getPrayer().drainPrayer((Math.round(damage / 2)));
 					player.setPrayerDelay(Utils.getRandom(5) + 5);
-					player.getSocialManager().sendGameMessage("K'ril Tsutsaroth slams through your protection prayer, leaving you feeling drained.");
+					player.message("K'ril Tsutsaroth slams through your protection prayer, leaving you feeling drained.");
 				}
 				npc.setNextAnimation(new Animation(damage <= 463 ? 14963 : 14384));
 				delayHit(npc, 0, e, getMeleeHit(npc, getRandomMaxHit(npc, damage, NPCCombatDefinitions.MELEE, e)));

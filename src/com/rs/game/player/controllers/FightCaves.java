@@ -70,8 +70,8 @@ public class FightCaves extends Controller {
 		if (interfaceId == 182 && (componentId == 6 || componentId == 13)) {
 			if (!logoutAtEnd) {
 				logoutAtEnd = true;
-				player.getSocialManager().sendGameMessage("<col=ff0000>You will be logged out automatically at the end of this wave.");
-				player.getSocialManager().sendGameMessage("<col=ff0000>If you log out sooner, you will have to repeat this wave.");
+				player.message("<col=ff0000>You will be logged out automatically at the end of this wave.");
+				player.message("<col=ff0000>If you log out sooner, you will have to repeat this wave.");
 			} else
 				player.forceLogout();
 			return false;
@@ -265,7 +265,7 @@ public class FightCaves extends Controller {
 				if (loop == 0) {
 					player.setNextAnimation(new Animation(2304));
 				} else if (loop == 1) {
-					player.getSocialManager().sendGameMessage("You have been defeated!");
+					player.message("You have been defeated!");
 				} else if (loop == 3) {
 					player.reset();
 					exitCave(1);
@@ -301,7 +301,7 @@ public class FightCaves extends Controller {
 				if (type == 4) {
 					player.reset();
 					player.getDialogueManager().startDialogue("SimpleNPCMessage", THHAAR_MEJ_JAL, "You even defeated Tz Tok-Jad, I am most impressed! Please accept this gift as a reward.");
-					player.getSocialManager().sendGameMessage("You were victorious!!");
+					player.message("You were victorious!!");
 					player.getInventory().addItemDrop(6570, 1);
 					player.getInventory().addItemDrop(6529, 16064 * Settings.DROP_QUANTITY_RATE);
 				} else if (getCurrentWave() == 1)

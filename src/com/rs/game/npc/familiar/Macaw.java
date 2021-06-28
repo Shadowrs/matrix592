@@ -33,7 +33,7 @@ public class Macaw extends Familiar {
 			specialLock--;
 		else if (specialLock == 0) {
 			specialLock = -1;
-			getOwner().getSocialManager().sendGameMessage("Your macaw feels rested and ready for flight again.");
+			getOwner().message("Your macaw feels rested and ready for flight again.");
 		}
 	}
 
@@ -60,7 +60,7 @@ public class Macaw extends Familiar {
 	@Override
 	public boolean submitSpecial(Object object) {
 		if (specialLock > 0) {
-			getOwner().getSocialManager().sendGameMessage("Your macaw is too tired to continue searching for herbs.");
+			getOwner().message("Your macaw is too tired to continue searching for herbs.");
 			return false;
 		}
 		specialLock = 100;

@@ -217,7 +217,7 @@ public final class ObjectHandler {
 			return;
 		} else if (object.getId() == 5949) {
 			final boolean isSouth = player.getY() > 9553;
-			player.getSocialManager().sendGameMessage("You leap across with a mighty leap!");
+			player.message("You leap across with a mighty leap!");
 			WorldTasksManager.schedule(new WorldTask() {
 				int ticks = 0;
 
@@ -265,22 +265,22 @@ public final class ObjectHandler {
 						player.getInventory().addItem(hunterNpc.getEquipment().getId(), 1);
 						player.getSkills().addXp(Skills.HUNTER, hunterNpc.getXp());
 					} else {
-						player.getSocialManager().sendGameMessage("This isn't your trap.");
+						player.message("This isn't your trap.");
 					}
 				} else if (id == HunterEquipment.BOX.getObjectId() || id == 19192) {
 					if (OwnedObjectManager.removeObject(player, object)) {
 						player.setNextAnimation(new Animation(5208));
 						player.getInventory().addItem(HunterEquipment.BOX.getId(), 1);
 					} else
-						player.getSocialManager().sendGameMessage("This isn't your trap.");
+						player.message("This isn't your trap.");
 				} else if (id == HunterEquipment.BRID_SNARE.getObjectId() || id == 19174) {
 					if (OwnedObjectManager.removeObject(player, object)) {
 						player.setNextAnimation(new Animation(5207));
 						player.getInventory().addItem(HunterEquipment.BRID_SNARE.getId(), 1);
 					} else
-						player.getSocialManager().sendGameMessage("This isn't your trap.");
+						player.message("This isn't your trap.");
 				} else if (id == 77461) {
-					player.getSocialManager().sendGameMessage("Looks like you need special gloves to make this jump.");
+					player.message("Looks like you need special gloves to make this jump.");
 					return;
 				} else if (id == 2350 && (object.getX() == 3352 && object.getY() == 3417 && object.getPlane() == 0))
 					player.useStairs(832, new WorldTile(3177, 5731, 0), 1, 2);
@@ -563,7 +563,7 @@ public final class ObjectHandler {
 				// heroes guild
 				else if (id == 2624 || id == 2625) {
 					if (!player.getQuestManager().completedQuest(Quests.HEROES_QUEST)) {
-						player.getSocialManager().sendGameMessage("Please come back after you have Heroes' Quest quest requiriments.");
+						player.message("Please come back after you have Heroes' Quest quest requiriments.");
 						return;
 					}
 					player.lock(1);
@@ -642,7 +642,7 @@ public final class ObjectHandler {
 					player.addWalkSteps(object.getX(), player.getY() == y ? y + 1 : y, 1, false);
 				} else if (id == 2391 || id == 2392) {
 					if (!player.getQuestManager().completedQuest(Quests.LEGENDS_QUEST)) {
-						player.getSocialManager().sendGameMessage("Please come back after you have Legends' Quest quest requiriments.");
+						player.message("Please come back after you have Legends' Quest quest requiriments.");
 						return;
 					}
 					player.lock(1);
@@ -698,7 +698,7 @@ public final class ObjectHandler {
 							boolean isFailed = Utils.getRandom(3) == 0;
 							if (isFailed) {
 								player.applyHit(new Hit(player, Utils.random(20, 50), HitLook.REGULAR_DAMAGE));
-								player.getSocialManager().sendGameMessage("You skid your knee across the rocks.");
+								player.message("You skid your knee across the rocks.");
 							}
 							boolean isTravelingEast = id == 5847 ? player.getX() >= 2760 : (x == 2817 && y == 3630) && player.getX() >= 2817;
 							boolean isTravelingNorth = isTravelingEast ? false : (x == 2846 && y == 3620) ? player.getY() >= 3620 : player.getY() >= 3675;
@@ -764,7 +764,7 @@ public final class ObjectHandler {
 					player.useStairs(833, new WorldTile(2329, 10353, 2), 1, 2);
 				else if (id == 16150) { // portal
 					if (!player.getShosRewards()[0]) {
-						player.getSocialManager().sendGameMessage("You can't use this portal without looting the rewards on this floor first.");
+						player.message("You can't use this portal without looting the rewards on this floor first.");
 						return;
 					}
 					player.useStairs(-1, new WorldTile(1914, 5222, 0), 0, 1);
@@ -772,7 +772,7 @@ public final class ObjectHandler {
 					player.useStairs(828, new WorldTile(2042, 5245, 0), 1, 2, "You climb down the ladder to the next level.");
 				else if (id == 16082) { // portal
 					if (!player.getShosRewards()[1]) {
-						player.getSocialManager().sendGameMessage("You can't use this portal without looting the rewards on this floor first.");
+						player.message("You can't use this portal without looting the rewards on this floor first.");
 						return;
 					}
 					player.useStairs(-1, new WorldTile(2021, 5223, 0), 0, 1);
@@ -782,7 +782,7 @@ public final class ObjectHandler {
 					player.useStairs(828, new WorldTile(2123, 5252, 0), 1, 2, "You climb down the ladder to the next level.");
 				else if (id == 16116) { // portal
 					if (!player.getShosRewards()[2]) {
-						player.getSocialManager().sendGameMessage("You can't use this portal without looting the rewards on this floor first.");
+						player.message("You can't use this portal without looting the rewards on this floor first.");
 						return;
 					}
 					player.useStairs(-1, new WorldTile(2146, 5287, 0), 0, 1);
@@ -823,7 +823,7 @@ public final class ObjectHandler {
 				else if (id == 7134)
 					Runecrafting.enterChoasAltar(player);
 				else if (id == 7138)
-					player.getSocialManager().sendGameMessage("A strange power blocks your exit..");
+					player.message("A strange power blocks your exit..");
 				else if (id == 26341) {
 					player.useStairs(827, new WorldTile(2882, 5311, 0), 2, 1, "You climb down the rope...");
 					player.getControlerManager().startControler("GodWars");
@@ -838,7 +838,7 @@ public final class ObjectHandler {
 						}
 					}
 					if (player.getEquipment().wearingArmour() || hasEquip) {
-						player.getSocialManager().sendGameMessage("The monk notices that you tried to fool him. Deposit your armor near the deposite box to travel to Entrana.");
+						player.message("The monk notices that you tried to fool him. Deposit your armor near the deposite box to travel to Entrana.");
 						return;
 					}
 					Runecrafting.enterLawAltar(player);
@@ -875,7 +875,7 @@ public final class ObjectHandler {
 					player.useStairs(828, new WorldTile(2358, 5215, 0), 1, 2, "You climb down the ladder to the next level.");
 				else if (id == 16050) { // portal
 					if (!player.getShosRewards()[3]) {
-						player.getSocialManager().sendGameMessage("You can't use this portal without looting the rewards on this floor first.");
+						player.message("You can't use this portal without looting the rewards on this floor first.");
 						return;
 					}
 					player.useStairs(-1, new WorldTile(2341, 5219, 0), 0, 1);
@@ -911,19 +911,19 @@ public final class ObjectHandler {
 					}, 0);
 				} else if (id == 16135) {
 					if (player.getShosRewards()[0]) {
-						player.getSocialManager().sendGameMessage("You have already claimed your reward from this level.");
+						player.message("You have already claimed your reward from this level.");
 						return;
 					}
 					player.getDialogueManager().startDialogue("StrongHoldOfSecurityRewards", 0);
 				} else if (id == 16077) {
 					if (player.getShosRewards()[1]) {
-						player.getSocialManager().sendGameMessage("You have already claimed your reward from this level.");
+						player.message("You have already claimed your reward from this level.");
 						return;
 					}
 					player.getDialogueManager().startDialogue("StrongHoldOfSecurityRewards", 1);
 				} else if (id == 16118) {
 					if (player.getShosRewards()[2]) {
-						player.getSocialManager().sendGameMessage("You have already claimed your reward from this level.");
+						player.message("You have already claimed your reward from this level.");
 						return;
 					}
 					player.getDialogueManager().startDialogue("StrongHoldOfSecurityRewards", 2);
@@ -963,7 +963,7 @@ public final class ObjectHandler {
 					if (World.isSpawnedObject(object))
 						return;
 					if (!player.getQuestManager().completedQuest(Quests.ELEMENTAL_WORKSHOP_I)) {
-						player.getSocialManager().sendGameMessage("Please come back after you have Elemental Workshop I quest requiriments.");
+						player.message("Please come back after you have Elemental Workshop I quest requiriments.");
 						return;
 					}
 					player.lock(1);
@@ -978,9 +978,9 @@ public final class ObjectHandler {
 				else if (id == 77053 && object.getX() == 2809 && object.getY() == 10001)
 					player.useStairs(-1, new WorldTile(2795, 3616, 0), 0, 1);
 				else if (id == 21585)
-					player.getSocialManager().sendGameMessage("The doors seem to be frozen shut. Perhaps there is another way to enter.");
+					player.message("The doors seem to be frozen shut. Perhaps there is another way to enter.");
 				else if (id == 21584) {
-					player.getSocialManager().sendGameMessage("The doors seem to be barricaded by a pile of rocks. You decide to enter anyways.");
+					player.message("The doors seem to be barricaded by a pile of rocks. You decide to enter anyways.");
 					player.useStairs(-1, new WorldTile(2394, 10299, 1), 1, 2);
 				} else if (id == 21598)
 					player.useStairs(-1, new WorldTile(2402, 3887, 0), 1, 2);
@@ -995,7 +995,7 @@ public final class ObjectHandler {
 					if (World.isSpawnedObject(object))
 						return;
 					if (!player.getQuestManager().completedQuest(Quests.IN_SEARCH_OF_THE_MYREQUE)) {
-						player.getSocialManager().sendGameMessage("Please come back after you have Elemental Workshop I quest requiriments.");
+						player.message("Please come back after you have Elemental Workshop I quest requiriments.");
 						return;
 					}
 					WorldObject opened = new WorldObject(object.getId(), object.getType(), object.getRotation() - 1, object.getX(), object.getY(), object.getPlane());
@@ -1070,7 +1070,7 @@ public final class ObjectHandler {
 					player.useStairs(-1, object, 1, 2);
 					player.useStairs(10579, new WorldTile(3221, 9618, 0), 1, 2);
 					player.getControlerManager().startControler("UnderGroundDungeon", false, true);
-					player.getSocialManager().sendGameMessage("You squeeze through the hole.");
+					player.message("You squeeze through the hole.");
 					return;
 				} else if (id == 36002) {
 					player.getControlerManager().startControler("UnderGroundDungeon", true, false);
@@ -1141,7 +1141,7 @@ public final class ObjectHandler {
 							} else if (ticks == 3)
 								player.setNextWorldTile(tile);
 							else if (ticks == 4) {
-								player.getSocialManager().sendGameMessage("Your feet skid as you land floor.");
+								player.message("Your feet skid as you land floor.");
 								stop();
 								return;
 							}
@@ -1230,7 +1230,7 @@ public final class ObjectHandler {
 					}, 10);
 					Magic.sendTeleportSpell(player, 6601, -1, 1118, -1, 0, 0, new WorldTile(2591, 4320, 0), 9, false, Magic.OBJECT_TELEPORT);
 				} else if (id == 2873 || id == 2874 || id == 2875) {
-					player.getSocialManager().sendGameMessage("You kneel and begin to chant to " + objectDef.name.replace("Statue of ", "") + "...");
+					player.message("You kneel and begin to chant to " + objectDef.name.replace("Statue of ", "") + "...");
 					player.setNextAnimation(new Animation(645));
 					WorldTasksManager.schedule(new WorldTask() {
 
@@ -1259,7 +1259,7 @@ public final class ObjectHandler {
 				} else if (id == 77377 || id == 77379 || id == 77375 || id == 77373 || id == 77371) {
 					final HatchetDefinitions hatchet = Woodcutting.getHatchet(player);
 					if (hatchet == null) {
-						player.getSocialManager().sendGameMessage("You dont have the required level to use that axe or you don't have a hatchet.");
+						player.message("You dont have the required level to use that axe or you don't have a hatchet.");
 						return;
 					}
 					player.lock();
@@ -1374,7 +1374,7 @@ public final class ObjectHandler {
 				} else if (id == 2353 && (object.getX() == 3177 && object.getY() == 5730 && object.getPlane() == 0))
 					player.useStairs(828, new WorldTile(3353, 3416, 0), 1, 2);
 				else if (id == 11554 || id == 11552)
-					player.getSocialManager().sendGameMessage("That rock is currently unavailable.");
+					player.message("That rock is currently unavailable.");
 				else if (id == 38279)
 					player.getDialogueManager().startDialogue("RunespanPortalD");
 				else if (id == 31359) {
@@ -1385,14 +1385,14 @@ public final class ObjectHandler {
 				else if (id == 8966)
 					player.useStairs(-1, new WorldTile(2523, 3739, 0), 1, 2);
 				else if (id == 76219) {
-					player.getSocialManager().sendGameMessage("You search the shelves...");
+					player.message("You search the shelves...");
 					player.lock();
 					WorldTasksManager.schedule(new WorldTask() {
 
 						@Override
 						public void run() {
 							player.unlock();
-							player.getSocialManager().sendGameMessage("...and among the strange paraphernalia, you find an empty beer glass.");
+							player.message("...and among the strange paraphernalia, you find an empty beer glass.");
 							player.getInventory().addItem(SqirkFruitSqueeze.BEER_GLASS, 1);
 						}
 					}, 2);
@@ -1543,7 +1543,7 @@ public final class ObjectHandler {
 					FightPits.enterLobby(player, false);
 				else if (id == 9293) {
 					if (player.getSkills().getLevel(Skills.AGILITY) < 70) {
-						player.getSocialManager().sendGameMessage("You need an agility level of 70 to use this obstacle.", true);
+						player.message("You need an agility level of 70 to use this obstacle.", true);
 						return;
 					}
 					int x = player.getX() == 2886 ? 2892 : 2886;
@@ -1560,14 +1560,14 @@ public final class ObjectHandler {
 					// dungeon
 					// cut
 					if (player.getSkills().getLevel(Skills.AGILITY) < 53) {
-						player.getSocialManager().sendGameMessage("You need an agility level of 53 to use this obstacle.");
+						player.message("You need an agility level of 53 to use this obstacle.");
 						return;
 					}
 					final boolean running = player.getRun();
 					player.setRunHidden(false);
 					player.lock(8);
 					player.addWalkSteps(x == 3150 ? 3155 : 3149, 9906, -1, false);
-					player.getSocialManager().sendGameMessage("You pulled yourself through the pipes.", true);
+					player.message("You pulled yourself through the pipes.", true);
 					WorldTasksManager.schedule(new WorldTask() {
 						boolean secondloop;
 
@@ -1658,10 +1658,10 @@ public final class ObjectHandler {
 				else if (id == 30963)
 					player.getBank().openBank();
 				else if (id == 6045)
-					player.getSocialManager().sendGameMessage("You search the cart but find nothing.");
+					player.message("You search the cart but find nothing.");
 				else if (id == 5906) {
 					if (player.getSkills().getLevel(Skills.AGILITY) < 42) {
-						player.getSocialManager().sendGameMessage("You need an agility level of 42 to use this obstacle.");
+						player.message("You need an agility level of 42 to use this obstacle.");
 						return;
 					}
 					player.lock();
@@ -1802,14 +1802,14 @@ public final class ObjectHandler {
 					player.useStairs(828, new WorldTile(2510, 3644, 0), 1, 2);
 				else if (id == 4546) {
 					if (player.getY() <= 10002) {
-						player.getSocialManager().sendGameMessage("This door cannot be opened from this side.");
+						player.message("This door cannot be opened from this side.");
 						return;
 					}
 					player.lock(2);
 					player.addWalkSteps(2513, 10002, 1, false);
 				} else if (id == 4545) {
 					if (player.getY() >= 10003) {
-						player.getSocialManager().sendGameMessage("This door cannot be opened from this side.");
+						player.message("This door cannot be opened from this side.");
 						return;
 					}
 					player.lock(2);
@@ -1885,12 +1885,12 @@ public final class ObjectHandler {
 					// That was an hour of collecting coords :fp: Now ima kill
 					// myself.
 				} else if (id == 27254) {// Edgeville portal
-					player.getSocialManager().sendGameMessage("You enter the portal...");
+					player.message("You enter the portal...");
 					player.useStairs(10584, new WorldTile(3087, 3488, 0), 2, 3, "..and are transported to Edgeville.");
 					player.addWalkSteps(1598, 4506, -1, false);
 				} else if (id == 12202) {// mole entrance
 					if (!player.getInventory().containsOneItem(952)) {
-						player.getSocialManager().sendGameMessage("You need a spade to dig this.");
+						player.message("You need a spade to dig this.");
 						return;
 					}
 					if (player.getX() != object.getX() || player.getY() != object.getY()) {
@@ -1942,7 +1942,7 @@ public final class ObjectHandler {
 					player.getControlerManager().startControler("Wilderness");
 				} else if (id == 38815 && object.getX() == 3209 && object.getY() == 3780 && object.getPlane() == 0) {
 					if (player.getSkills().getLevelForXp(Skills.WOODCUTTING) < 37 || player.getSkills().getLevelForXp(Skills.MINING) < 45 || player.getSkills().getLevelForXp(Skills.SUMMONING) < 23 || player.getSkills().getLevelForXp(Skills.FIREMAKING) < 47 || player.getSkills().getLevelForXp(Skills.PRAYER) < 55) {
-						player.getSocialManager().sendGameMessage("You need 23 Summoning, 37 Woodcutting, 45 Mining, 47 Firemaking and 55 Prayer to enter this dungeon.");
+						player.message("You need 23 Summoning, 37 Woodcutting, 45 Mining, 47 Firemaking and 55 Prayer to enter this dungeon.");
 						return;
 					}
 					player.stopAll();
@@ -1958,7 +1958,7 @@ public final class ObjectHandler {
 						player.getInventory().deleteItem(954, 1);
 						player.setKalphiteLairEntrance();
 					} else
-						player.getSocialManager().sendGameMessage("You need a rope to climb down.");
+						player.message("You need a rope to climb down.");
 				} else if (id == 3829) {
 					if (object.getX() == 3419 && object.getY() == 9510) {
 						player.useStairs(828, new WorldTile(3226, 3108, 0), 1, 2);
@@ -2073,7 +2073,7 @@ public final class ObjectHandler {
 					if (OwnedObjectManager.isPlayerObject(player, object))
 						DwarfMultiCannon.fire(player);
 					else
-						player.getSocialManager().sendGameMessage("This is not your cannon!");
+						player.message("This is not your cannon!");
 
 				} else if (id == 9)
 					DwarfMultiCannon.pickupCannon(player, 3, object);
@@ -2082,7 +2082,7 @@ public final class ObjectHandler {
 				else if (id == 7)
 					DwarfMultiCannon.pickupCannon(player, 1, object);
 				else if (id == 172)
-					player.getSocialManager().sendGameMessage("This chest is securely locked shut.");
+					player.message("This chest is securely locked shut.");
 				else if (id == 16944)
 					FairyRings.openRingInterface(player, object, false);
 				else if (id == 31080// copper rocks
@@ -2136,7 +2136,7 @@ public final class ObjectHandler {
 						break;
 					case "open chest":
 						if (objectDef.containsOption(0, "Search"))
-							player.getSocialManager().sendGameMessage("You search the chest but find nothing.");
+							player.message("You search the chest but find nothing.");
 						break;
 					case "spirit tree":
 						player.getDialogueManager().startDialogue("SpiritTreeD", (object.getId() == 68973 && object.getId() == 68974) ? 3637 : 3636);
@@ -2150,9 +2150,9 @@ public final class ObjectHandler {
 							player.lock(2);
 							if (Utils.getRandom(1) == 0) {
 								player.addWalkSteps(player.getX(), player.getY() < y ? object.getY() + 2 : object.getY() - 1, -1, false);
-								player.getSocialManager().sendGameMessage("You squeeze though the web.");
+								player.message("You squeeze though the web.");
 							} else
-								player.getSocialManager().sendGameMessage("You fail to squeeze though the web; perhaps you should try again.");
+								player.message("You fail to squeeze though the web; perhaps you should try again.");
 						}
 						break;
 					case "web":
@@ -2167,7 +2167,7 @@ public final class ObjectHandler {
 							if (bar != null)
 								ForgingInterface.sendSmithingInterface(player, bar);
 							else
-								player.getSocialManager().sendGameMessage("You have no bars which you have smithing level to use.");
+								player.message("You have no bars which you have smithing level to use.");
 						}
 						break;
 					case "potter's wheel":
@@ -2272,23 +2272,23 @@ public final class ObjectHandler {
 							final int maxPrayer = player.getSkills().getLevelForXp(Skills.PRAYER) * 10;
 							if (player.getPrayer().getPrayerpoints() < maxPrayer) {
 								player.lock(5);
-								player.getSocialManager().sendGameMessage("You pray to the gods...", true);
+								player.message("You pray to the gods...", true);
 								player.setNextAnimation(new Animation(645));
 								WorldTasksManager.schedule(new WorldTask() {
 									@Override
 									public void run() {
 										player.getPrayer().restorePrayer(maxPrayer);
-										player.getSocialManager().sendGameMessage("...and recharged your prayer.", true);
+										player.message("...and recharged your prayer.", true);
 									}
 								}, 2);
 							} else
-								player.getSocialManager().sendGameMessage("You already have full prayer.");
+								player.message("You already have full prayer.");
 							if (id == 6552)
 								player.getDialogueManager().startDialogue("AncientAltar");
 						}
 						break;
 					default:
-						player.getSocialManager().sendGameMessage("Nothing interesting happens.");
+						player.message("Nothing interesting happens.");
 						break;
 					}
 				}
@@ -2315,9 +2315,9 @@ public final class ObjectHandler {
 			player.lock(3);
 			player.setNextAnimation(new Animation(8502));
 			player.getSkills().set(Skills.SUMMONING, summonLevel);
-			player.getSocialManager().sendGameMessage("You have recharged your Summoning points.", true);
+			player.message("You have recharged your Summoning points.", true);
 		} else
-			player.getSocialManager().sendGameMessage("You already have full Summoning points.");
+			player.message("You already have full Summoning points.");
 	}
 
 	private static void handleOption2(final Player player, final InputStream stream) {
@@ -2404,7 +2404,7 @@ public final class ObjectHandler {
 							player.getBank().depositAllInventory(false);
 							player.getBank().depositAllEquipment(false);
 							player.getBank().depositAllBob(false);
-							player.getSocialManager().sendGameMessage("You deposit all of your items into the deposit box");
+							player.message("You deposit all of your items into the deposit box");
 						}
 						break;
 					case "spirit tree":
@@ -2432,7 +2432,7 @@ public final class ObjectHandler {
 							renewSummoningPoints(player);
 						break;
 					default:
-						player.getSocialManager().sendGameMessage("Nothing interesting happens.");
+						player.message("Nothing interesting happens.");
 						break;
 					}
 				}
@@ -2489,7 +2489,7 @@ public final class ObjectHandler {
 					handleStaircases(player, object, 3);
 					break;
 				default:
-					player.getSocialManager().sendGameMessage("Nothing interesting happens.");
+					player.message("Nothing interesting happens.");
 					break;
 				}
 				if (Settings.DEBUG)
@@ -2531,7 +2531,7 @@ public final class ObjectHandler {
 				else {
 					switch (objectDef.name.toLowerCase()) {
 					default:
-						player.getSocialManager().sendGameMessage("Nothing interesting happens.");
+						player.message("Nothing interesting happens.");
 						break;
 					}
 				}
@@ -2560,7 +2560,7 @@ public final class ObjectHandler {
 						PuroPuro.pushThrough(player, object);
 						break;
 					default:
-						player.getSocialManager().sendGameMessage("Nothing interesting happens.");
+						player.message("Nothing interesting happens.");
 						break;
 					}
 				}
@@ -2573,7 +2573,7 @@ public final class ObjectHandler {
 	private static void handleOptionExamine(final Player player, final InputStream stream) {
 		final int id = stream.readUnsignedShort();
 		ObjectDefinitions def = ObjectDefinitions.getObjectDefinitions(id);
-		player.getSocialManager().sendGameMessage("It's a " + def.name + ".");
+		player.message("It's a " + def.name + ".");
 		if (Settings.DEBUG)
 			Logger.log("ObjectHandler", "examined object id : " + def.id + " name: " + def.name);
 	}
@@ -2581,9 +2581,9 @@ public final class ObjectHandler {
 	private static void slashWeb(Player player, WorldObject object) {
 		if (Utils.getRandom(1) == 0) {
 			World.spawnObjectTemporary(new WorldObject(object.getId() + 1, object.getType(), object.getRotation(), object.getX(), object.getY(), object.getPlane()), 60000);
-			player.getSocialManager().sendGameMessage("You slash through the web!");
+			player.message("You slash through the web!");
 		} else
-			player.getSocialManager().sendGameMessage("You fail to cut through the web.");
+			player.message("You fail to cut through the web.");
 	}
 
 	private static boolean handleGate(Player player, WorldObject object) {
@@ -2913,7 +2913,7 @@ public final class ObjectHandler {
 						player.getDialogueManager().startDialogue("SimpleMessage", "You can't cook that on a " + (objectDef.name.equals("Fire") ? "fire" : "range") + ".");
 						break;
 					default:
-						player.getSocialManager().sendGameMessage("Nothing interesting happens.");
+						player.message("Nothing interesting happens.");
 						break;
 					}
 					if (Settings.DEBUG)

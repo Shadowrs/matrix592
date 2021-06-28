@@ -22,7 +22,7 @@ public final class Runecrafting {
 	}
 
 	private static void enterAltar(Player player, WorldTile dest) {
-		player.getSocialManager().sendGameMessage("A mysterious force grabs hold of you.");
+		player.message("A mysterious force grabs hold of you.");
 		player.useStairs(-1, dest, 0, 1);
 	}
 
@@ -109,7 +109,7 @@ public final class Runecrafting {
 		player.lock(5);
 		runes *= Settings.CRAFT_RATE;
 		player.getInventory().addItem(rune, runes);
-		player.getSocialManager().sendGameMessage("You bind the temple's power into " + ItemDefinitions.getItemDefinitions(rune).getName().toLowerCase() + "s.");
+		player.message("You bind the temple's power into " + ItemDefinitions.getItemDefinitions(rune).getName().toLowerCase() + "s.");
 	}
 
 	public static boolean hasRcingSuit(Player player) {
@@ -131,13 +131,13 @@ public final class Runecrafting {
 			x = "east";
 		if (absY <= yPos)
 			y = "North";
-		p.getSocialManager().sendGameMessage("The talisman pulls towards " + y + "-" + x + ".");
+		p.message("The talisman pulls towards " + y + "-" + x + ".");
 	}
 
 	public static void checkPouch(Player p, int i) {
 		if (i < 0)
 			return;
-		p.getSocialManager().sendGameMessage("This pouch has " + p.getPouches()[i] + " rune essences in it.");
+		p.message("This pouch has " + p.getPouches()[i] + " rune essences in it.");
 	}
 
 	public static final int[] POUCH_SIZE = { 3, 6, 9, 12 };
@@ -146,7 +146,7 @@ public final class Runecrafting {
 		if (i < 0)
 			return;
 		if (LEVEL_REQ[i] > p.getSkills().getLevel(Skills.RUNECRAFTING)) {
-			p.getSocialManager().sendGameMessage("You need a runecrafting level of " + LEVEL_REQ[i] + " to fill this pouch.");
+			p.message("You need a runecrafting level of " + LEVEL_REQ[i] + " to fill this pouch.");
 			return;
 		}
 		int essenceToAdd = POUCH_SIZE[i] - p.getPouches()[i];
@@ -159,11 +159,11 @@ public final class Runecrafting {
 			p.getPouches()[i] += essenceToAdd;
 		}
 		if (!p.getInventory().containsOneItem(PURE_ESSENCE)) {
-			p.getSocialManager().sendGameMessage("You don't have any essence with you.", false);
+			p.message("You don't have any essence with you.", false);
 			return;
 		}
 		if (essenceToAdd == 0) {
-			p.getSocialManager().sendGameMessage("Your pouch is full.", false);
+			p.message("Your pouch is full.", false);
 			return;
 		}
 	}
@@ -179,7 +179,7 @@ public final class Runecrafting {
 			p.getPouches()[i] -= toAdd;
 		}
 		if (toAdd == 0) {
-			p.getSocialManager().sendGameMessage("Your pouch has no essence left in it.", false);
+			p.message("Your pouch has no essence left in it.", false);
 			return;
 		}
 	}

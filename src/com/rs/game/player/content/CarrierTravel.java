@@ -141,11 +141,11 @@ public class CarrierTravel {
 		int cost = ship.getCosts()[shipIndex];
 		if (cost != -1) {
 			if (player.getInventory().getCoinsAmount() < cost) {
-				player.getSocialManager().sendGameMessage("You don't have enough money for that.");
+				player.message("You don't have enough money for that.");
 				return false;
 			}
 			player.getInventory().deleteItem(new Item(995, cost));
-			player.getSocialManager().sendGameMessage("You pay the fare and sail to " + ship.getFixedName(returning) + ".");
+			player.message("You pay the fare and sail to " + ship.getFixedName(returning) + ".");
 		}
 		final boolean isFare = ship.toString().contains("Fare");
 		if (isFare) {
@@ -160,7 +160,7 @@ public class CarrierTravel {
 					}
 				}
 				if (player.getEquipment().wearingArmour() || hasEquip) {
-					player.getSocialManager().sendGameMessage("The monk notices that you tried to fool him. Deposit your armor near the deposite box to travel to Entrana.");
+					player.message("The monk notices that you tried to fool him. Deposit your armor near the deposite box to travel to Entrana.");
 					return false;
 				}
 			}

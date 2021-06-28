@@ -148,7 +148,7 @@ public class InventoryOptionsHandler {
 				if (player.getX() == 3005 && player.getY() == 3376 || player.getX() == 2999 && player.getY() == 3375 || player.getX() == 2996 && player.getY() == 3377 || player.getX() == 2989 && player.getY() == 3378 || player.getX() == 2987 && player.getY() == 3387 || player.getX() == 2984 && player.getY() == 3387) {
 					// mole
 					player.setNextWorldTile(new WorldTile(1752, 5137, 0));
-					player.getSocialManager().sendGameMessage("You seem to have dropped down into a network of mole tunnels.");
+					player.message("You seem to have dropped down into a network of mole tunnels.");
 					return;
 				} else if (player.withinDistance(new WorldTile(2748, 3734, 0), 2)) {
 					player.lock();
@@ -161,10 +161,10 @@ public class InventoryOptionsHandler {
 							player.setNextWorldTile(new WorldTile(2696, 10121, 0));
 						}
 					});
-					player.getSocialManager().sendGameMessage("You fall through the ground into a network of tunnels.");
+					player.message("You fall through the ground into a network of tunnels.");
 					return;
 				}
-				player.getSocialManager().sendGameMessage("You find nothing.");
+				player.message("You find nothing.");
 			}
 
 		});
@@ -240,7 +240,7 @@ public class InventoryOptionsHandler {
 		/*
 		 * else if (itemId == 299) { if (player.isCanPvp()) { player.getPackets()
 		 * .sendGameMessage("You cant plant a seed while doing this action."); return; } else if (World.getObjectWithSlot(player,
-		 * Region.OBJECT_SLOT_STANDART) != null) { player.getSocialManager().sendGameMessage ("You can't plant a flower here."); return; }
+		 * Region.OBJECT_SLOT_STANDART) != null) { player.message( ("You can't plant a flower here."); return; }
 		 * player.setNextAnimation(new Animation(827)); World.spawnObjectTemporary(new WorldObject(2980 + Utils.random(8), 10, 0,
 		 * player.getX(), player.getY(), player.getPlane()), 25000); player.getInventory().deleteItem(299, 1);
 		 * WorldTasksManager.schedule(new WorldTask() {
@@ -406,13 +406,13 @@ public class InventoryOptionsHandler {
 				return;
 			else if (contains(22498, 554, itemUsed, usedWith) || contains(22498, 22448, itemUsed, usedWith)) {
 				if (player.getSkills().getLevel(Skills.FARMING) < 80) {
-					player.getSocialManager().sendGameMessage("You need a Farming level of 80 in order to make a polypore staff.");
+					player.message("You need a Farming level of 80 in order to make a polypore staff.");
 					return;
 				} else if (!player.getInventory().containsItem(22448, 3000)) {
-					player.getSocialManager().sendGameMessage("You need 3,000 polypore spores in order to make a polypore staff.");
+					player.message("You need 3,000 polypore spores in order to make a polypore staff.");
 					return;
 				} else if (!player.getInventory().containsItem(554, 15000)) {
-					player.getSocialManager().sendGameMessage("You need 15,000 fire runes in order to make a polypore staff.");
+					player.message("You need 15,000 fire runes in order to make a polypore staff.");
 					return;
 				}
 				player.setNextAnimation(new Animation(15434));
@@ -421,15 +421,15 @@ public class InventoryOptionsHandler {
 				player.getInventory().deleteItem(22448, 3000);
 				player.getInventory().deleteItem(22498, 1);
 				player.getInventory().addItem(22494, 1);
-				player.getSocialManager().sendGameMessage("You attach the polypore spores and infuse the fire runes to the stick in order to create a staff.");
+				player.message("You attach the polypore spores and infuse the fire runes to the stick in order to create a staff.");
 			} else if (contains(22496, 22448, itemUsed, usedWith)) {
 				if (player.getSkills().getLevel(Skills.FARMING) < 80) {
-					player.getSocialManager().sendGameMessage("You need a Farming level of 80 in order to recharge polypore staff.");
+					player.message("You need a Farming level of 80 in order to recharge polypore staff.");
 					return;
 				}
 				int charges = 3000 - player.getCharges().getCharges(22496);
 				if (!player.getInventory().containsItem(22448, charges)) {
-					player.getSocialManager().sendGameMessage("You need " + charges + " polypore spores in order to recharge polypore staff.");
+					player.message("You need " + charges + " polypore spores in order to recharge polypore staff.");
 					return;
 				}
 				player.setNextAnimation(new Animation(15434));
@@ -438,7 +438,7 @@ public class InventoryOptionsHandler {
 				player.getInventory().deleteItem(22496, 1);
 				player.getCharges().resetCharges(22496);
 				player.getInventory().addItem(22494, 1);
-				player.getSocialManager().sendGameMessage("You attach the polypore spores to the staff.");
+				player.message("You attach the polypore spores to the staff.");
 			} else if (contains(11710, 11712, itemUsed, usedWith) || contains(11710, 11714, itemUsed, usedWith) || contains(11712, 11714, itemUsed, usedWith))
 				GodswordCreating.joinPieces(player, false);
 			else if (contains(11690, 11702, itemUsed, usedWith))
@@ -450,9 +450,9 @@ public class InventoryOptionsHandler {
 			else if (contains(11690, 11708, itemUsed, usedWith))
 				GodswordCreating.attachHilt(player, 3);
 			else if (contains(SpiritshieldCreating.HOLY_ELIXIR, SpiritshieldCreating.SPIRIT_SHIELD, itemUsed, usedWith))
-				player.getSocialManager().sendGameMessage("The shield must be blessed at an altar.");
+				player.message("The shield must be blessed at an altar.");
 			else if (contains(SpiritshieldCreating.SPIRIT_SHIELD, 13746, itemUsed, usedWith) || contains(SpiritshieldCreating.SPIRIT_SHIELD, 13748, itemUsed, usedWith) || contains(SpiritshieldCreating.SPIRIT_SHIELD, 13750, itemUsed, usedWith) || contains(SpiritshieldCreating.SPIRIT_SHIELD, 13752, itemUsed, usedWith))
-				player.getSocialManager().sendGameMessage("You need a blessed spirit shield to attach the sigil to.");
+				player.message("You need a blessed spirit shield to attach the sigil to.");
 			else if (contains(SqirkFruitSqueeze.SqirkFruit.AUTUMM.getFruitId(), Herblore.PESTLE_AND_MORTAR, itemUsed, usedWith))
 				player.getDialogueManager().startDialogue("SqirkFruitSqueeze", SqirkFruit.AUTUMM);
 			else if (contains(SqirkFruitSqueeze.SqirkFruit.SPRING.getFruitId(), Herblore.PESTLE_AND_MORTAR, itemUsed, usedWith))
@@ -463,20 +463,20 @@ public class InventoryOptionsHandler {
 				player.getDialogueManager().startDialogue("SqirkFruitSqueeze", SqirkFruit.WINTER);
 			else if (contains(4151, 21369, itemUsed, usedWith)) {
 				if (!player.getSkills().hasRequiriments(Skills.ATTACK, 75, Skills.SLAYER, 80)) {
-					player.getSocialManager().sendGameMessage("You need an attack level of 75 and slayer level of 80 in order to attach the whip vine to the whip.");
+					player.message("You need an attack level of 75 and slayer level of 80 in order to attach the whip vine to the whip.");
 					return;
 				}
 				player.getInventory().replaceItem(21371, 1, toSlot);
 				player.getInventory().deleteItem(fromSlot, itemUsed);
-				player.getSocialManager().sendGameMessage("You attach the whip vine to the abbysal whip.");
+				player.message("You attach the whip vine to the abbysal whip.");
 			} else if (contains(985, 987, itemUsed, usedWith)) { // crystal key
 				// make
 				player.getInventory().deleteItem(toSlot, usedWith);
 				itemUsed.setId(989);
 				player.getInventory().refresh(fromSlot);
-				player.getSocialManager().sendGameMessage("You join the two halves of the key together.");
+				player.message("You join the two halves of the key together.");
 			} else
-				player.getSocialManager().sendGameMessage("Nothing interesting happens.");
+				player.message("Nothing interesting happens.");
 			if (Settings.DEBUG)
 				Logger.log("ItemHandler", "Used:" + itemUsed.getId() + ", With:" + usedWith.getId());
 		} else if (interfaceId == 192 && interfaceId2 == Inventory.INVENTORY_INTERFACE && !player.getInterfaceManager().containsInventoryInter()) {
@@ -515,7 +515,7 @@ public class InventoryOptionsHandler {
 		else if (itemId == 21371) {
 			player.getInventory().replaceItem(4151, 1, slotId);
 			player.getInventory().addItem(21369, 1);
-			player.getSocialManager().sendGameMessage("You split the whip vine from the abbysal whip.");
+			player.message("You split the whip vine from the abbysal whip.");
 		} else if (itemId == 4155) {
 			player.getInterfaceManager().sendInterface(1309);
 			player.getPackets().sendIComponentText(1309, 37, "List Co-Op Partner");
@@ -585,7 +585,7 @@ public class InventoryOptionsHandler {
 		if (player.getPetManager().spawnPet(itemId, true))
 			return;
 		if (player.isStarter()) {
-			player.getSocialManager().sendGameMessage("You can't drop for the first half hour after creating account.");
+			player.message("You can't drop for the first half hour after creating account.");
 			return;
 		}
 		player.getInventory().deleteItem(slotId, item);

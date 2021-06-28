@@ -106,7 +106,7 @@ public class GemCutting extends Action {
 
 	public boolean checkAll(Player player) {
 		if (!player.getInventory().containsOneItem(1755)) {
-			player.getSocialManager().sendGameMessage("You do not have the required items to cut this.");
+			player.message("You do not have the required items to cut this.");
 			return false;
 		}
 		if (player.getSkills().getLevel(Skills.CRAFTING) < gem.getLevelRequired()) {
@@ -140,7 +140,7 @@ public class GemCutting extends Action {
 		player.getInventory().deleteItem(gem.getUncut(), 1);
 		player.getInventory().addItem(gem.getCut(), 1);
 		player.getSkills().addXp(Skills.CRAFTING, gem.getExperience());
-		player.getSocialManager().sendGameMessage("You cut the " + ItemDefinitions.getItemDefinitions(gem.getUncut()).getName().toLowerCase() + ".", true);
+		player.message("You cut the " + ItemDefinitions.getItemDefinitions(gem.getUncut()).getName().toLowerCase() + ".", true);
 		quantity--;
 		if (quantity <= 0)
 			return -1;

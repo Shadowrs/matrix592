@@ -72,13 +72,13 @@ public class JewllerySmithing {
 								return false;
 							int level = LEVEL[actionPrimaryIndex][actionSecondaryIndex];
 							if (player.getSkills().getLevel(Skills.CRAFTING) < level) {
-								player.getSocialManager().sendGameMessage("You need a Crafting level of " + level + ".");
+								player.message("You need a Crafting level of " + level + ".");
 								return false;
 							} else if (!player.getInventory().containsItem(2357, 1)) {
-								player.getSocialManager().sendGameMessage("You need a gold bar in order to create jewellery.");
+								player.message("You need a gold bar in order to create jewellery.");
 								return false;
 							} else if (actionSecondaryIndex != 0 && !player.getInventory().containsItem(GEMS[actionSecondaryIndex], 1)) {
-								player.getSocialManager().sendGameMessage("You are missing required the requried items in order to create this type of jewellery.");
+								player.message("You are missing required the requried items in order to create this type of jewellery.");
 								return false;
 							}
 							return true;
@@ -109,7 +109,7 @@ public class JewllerySmithing {
 
 	public static void ringTransformation(Player player, final int itemId) {
 		if (player.getActionManager().getAction() != null) {
-			player.getSocialManager().sendGameMessage("Please finish what you are doing before transforming.");
+			player.message("Please finish what you are doing before transforming.");
 			return;
 		}
 		player.getActionManager().setAction(new Action() {

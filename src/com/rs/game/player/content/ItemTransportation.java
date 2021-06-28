@@ -28,7 +28,7 @@ public class ItemTransportation {
 			player.stopAll(); // nowhere option
 			return false;
 		} else if (hasCharges(index) && !isScrollTeleport(index) && (item.getId() == 10362 || !item.getName().toLowerCase().contains("("))) {
-			player.getSocialManager().sendGameMessage("Your " + item.getName().toLowerCase() + " has ran out of charges. You need to recharge it if you wish it use it once more.");
+			player.message("Your " + item.getName().toLowerCase() + " has ran out of charges. You need to recharge it if you wish it use it once more.");
 			return false;
 		}
 		return true;
@@ -50,7 +50,7 @@ public class ItemTransportation {
 						player.getEquipment().deleteItem(item.getId(), item.getAmount());
 					else
 						player.getInventory().deleteItem(slot, item);
-					player.getSocialManager().sendGameMessage("Your " + item.getName().toLowerCase().replace(" (1)", "") + " has crumbled to dust.");
+					player.message("Your " + item.getName().toLowerCase().replace(" (1)", "") + " has crumbled to dust.");
 				} else {
 					if (newItemId == 20652)
 						newItemId = 2572;

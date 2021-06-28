@@ -305,10 +305,10 @@ public class NPC extends Entity implements Serializable {
 							// att
 							if (Utils.getRandom(4) == 0) {
 								if (p2.getPrayer().reachedMax(0)) {
-									p2.getSocialManager().sendGameMessage("Your opponent has been weakened so much that your sap curse has no effect.", true);
+									p2.message("Your opponent has been weakened so much that your sap curse has no effect.", true);
 								} else {
 									p2.getPrayer().increaseLeechBonus(0);
-									p2.getSocialManager().sendGameMessage("Your curse drains Attack from the enemy, boosting your Attack.", true);
+									p2.message("Your curse drains Attack from the enemy, boosting your Attack.", true);
 								}
 								p2.setNextAnimation(new Animation(12569));
 								p2.setNextGraphics(new Graphics(2214));
@@ -326,10 +326,10 @@ public class NPC extends Entity implements Serializable {
 							if (p2.getPrayer().usingPrayer(1, 10)) {
 								if (Utils.getRandom(7) == 0) {
 									if (p2.getPrayer().reachedMax(3)) {
-										p2.getSocialManager().sendGameMessage("Your opponent has been weakened so much that your leech curse has no effect.", true);
+										p2.message("Your opponent has been weakened so much that your leech curse has no effect.", true);
 									} else {
 										p2.getPrayer().increaseLeechBonus(3);
-										p2.getSocialManager().sendGameMessage("Your curse drains Attack from the enemy, boosting your Attack.", true);
+										p2.message("Your curse drains Attack from the enemy, boosting your Attack.", true);
 									}
 									p2.setNextAnimation(new Animation(12575));
 									p2.getPrayer().setBoostedLeech(true);
@@ -346,10 +346,10 @@ public class NPC extends Entity implements Serializable {
 							if (p2.getPrayer().usingPrayer(1, 14)) {
 								if (Utils.getRandom(7) == 0) {
 									if (p2.getPrayer().reachedMax(7)) {
-										p2.getSocialManager().sendGameMessage("Your opponent has been weakened so much that your leech curse has no effect.", true);
+										p2.message("Your opponent has been weakened so much that your leech curse has no effect.", true);
 									} else {
 										p2.getPrayer().increaseLeechBonus(7);
-										p2.getSocialManager().sendGameMessage("Your curse drains Strength from the enemy, boosting your Strength.", true);
+										p2.message("Your curse drains Strength from the enemy, boosting your Strength.", true);
 									}
 									p2.setNextAnimation(new Animation(12575));
 									p2.getPrayer().setBoostedLeech(true);
@@ -370,10 +370,10 @@ public class NPC extends Entity implements Serializable {
 						if (p2.getPrayer().usingPrayer(1, 2)) { // sap range
 							if (Utils.getRandom(4) == 0) {
 								if (p2.getPrayer().reachedMax(1)) {
-									p2.getSocialManager().sendGameMessage("Your opponent has been weakened so much that your sap curse has no effect.", true);
+									p2.message("Your opponent has been weakened so much that your sap curse has no effect.", true);
 								} else {
 									p2.getPrayer().increaseLeechBonus(1);
-									p2.getSocialManager().sendGameMessage("Your curse drains Range from the enemy, boosting your Range.", true);
+									p2.message("Your curse drains Range from the enemy, boosting your Range.", true);
 								}
 								p2.setNextAnimation(new Animation(12569));
 								p2.setNextGraphics(new Graphics(2217));
@@ -390,10 +390,10 @@ public class NPC extends Entity implements Serializable {
 						} else if (p2.getPrayer().usingPrayer(1, 11)) {
 							if (Utils.getRandom(7) == 0) {
 								if (p2.getPrayer().reachedMax(4)) {
-									p2.getSocialManager().sendGameMessage("Your opponent has been weakened so much that your leech curse has no effect.", true);
+									p2.message("Your opponent has been weakened so much that your leech curse has no effect.", true);
 								} else {
 									p2.getPrayer().increaseLeechBonus(4);
-									p2.getSocialManager().sendGameMessage("Your curse drains Range from the enemy, boosting your Range.", true);
+									p2.message("Your curse drains Range from the enemy, boosting your Range.", true);
 								}
 								p2.setNextAnimation(new Animation(12575));
 								p2.getPrayer().setBoostedLeech(true);
@@ -412,10 +412,10 @@ public class NPC extends Entity implements Serializable {
 						if (p2.getPrayer().usingPrayer(1, 3)) { // sap mage
 							if (Utils.getRandom(4) == 0) {
 								if (p2.getPrayer().reachedMax(2)) {
-									p2.getSocialManager().sendGameMessage("Your opponent has been weakened so much that your sap curse has no effect.", true);
+									p2.message("Your opponent has been weakened so much that your sap curse has no effect.", true);
 								} else {
 									p2.getPrayer().increaseLeechBonus(2);
-									p2.getSocialManager().sendGameMessage("Your curse drains Magic from the enemy, boosting your Magic.", true);
+									p2.message("Your curse drains Magic from the enemy, boosting your Magic.", true);
 								}
 								p2.setNextAnimation(new Animation(12569));
 								p2.setNextGraphics(new Graphics(2220));
@@ -432,10 +432,10 @@ public class NPC extends Entity implements Serializable {
 						} else if (p2.getPrayer().usingPrayer(1, 12)) {
 							if (Utils.getRandom(7) == 0) {
 								if (p2.getPrayer().reachedMax(5)) {
-									p2.getSocialManager().sendGameMessage("Your opponent has been weakened so much that your leech curse has no effect.", true);
+									p2.message("Your opponent has been weakened so much that your leech curse has no effect.", true);
 								} else {
 									p2.getPrayer().increaseLeechBonus(5);
-									p2.getSocialManager().sendGameMessage("Your curse drains Magic from the enemy, boosting your Magic.", true);
+									p2.message("Your curse drains Magic from the enemy, boosting your Magic.", true);
 								}
 								p2.setNextAnimation(new Animation(12575));
 								p2.getPrayer().setBoostedLeech(true);
@@ -456,10 +456,10 @@ public class NPC extends Entity implements Serializable {
 					if (p2.getPrayer().usingPrayer(1, 13)) { // leech defence
 						if (Utils.getRandom(10) == 0) {
 							if (p2.getPrayer().reachedMax(6)) {
-								p2.getSocialManager().sendGameMessage("Your opponent has been weakened so much that your leech curse has no effect.", true);
+								p2.message("Your opponent has been weakened so much that your leech curse has no effect.", true);
 							} else {
 								p2.getPrayer().increaseLeechBonus(6);
-								p2.getSocialManager().sendGameMessage("Your curse drains Defence from the enemy, boosting your Defence.", true);
+								p2.message("Your curse drains Defence from the enemy, boosting your Defence.", true);
 							}
 							p2.setNextAnimation(new Animation(12575));
 							p2.getPrayer().setBoostedLeech(true);
@@ -592,12 +592,12 @@ public class NPC extends Entity implements Serializable {
 			for (Drop drop : dropL) {
 				Player luckyPlayer = players.get(Utils.random(players.size()));
 				Item item = sendDrop(luckyPlayer, drop);
-				luckyPlayer.getSocialManager().sendGameMessage("<col=00FF00>You received: " + item.getAmount() + " " + item.getName() + ".");
+				luckyPlayer.message("<col=00FF00>You received: " + item.getAmount() + " " + item.getName() + ".");
 				for (Player p2 : players) {
 					if (p2 == luckyPlayer)
 						continue;
-					p2.getSocialManager().sendGameMessage("<col=66FFCC>" + luckyPlayer.getDisplayName() + "</col> received: " + item.getAmount() + " " + item.getName() + ".");
-					p2.getSocialManager().sendGameMessage("Your chance of receiving loot has improved.");
+					p2.message("<col=66FFCC>" + luckyPlayer.getDisplayName() + "</col> received: " + item.getAmount() + " " + item.getName() + ".");
+					p2.message("Your chance of receiving loot has improved.");
 				}
 			}
 		}

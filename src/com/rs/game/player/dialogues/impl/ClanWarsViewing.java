@@ -19,7 +19,7 @@ public final class ClanWarsViewing extends Dialogue {
 	@Override
 	public void run(int interfaceId, int componentId) {
 		end();
-		player.getSocialManager().sendGameMessage("There are no clan wars going on currently.");
+		player.message("There are no clan wars going on currently.");
 	}
 
 	@Override

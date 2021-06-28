@@ -85,7 +85,7 @@ public class HerbCleaning {
 		if (herb == null)
 			return false;
 		if (player.getSkills().getLevel(Skills.HERBLORE) < herb.getLevel()) {
-			player.getSocialManager().sendGameMessage("You do not have the required level to clean this.");
+			player.message("You do not have the required level to clean this.");
 			return true;
 		}
 		WorldTasksManager.schedule(new WorldTask() {
@@ -99,7 +99,7 @@ public class HerbCleaning {
 				i.setId(herb.getCleanId());
 				player.getInventory().refresh(slotId);
 				player.getSkills().addXp(Skills.HERBLORE, herb.getExperience());
-				player.getSocialManager().sendGameMessage("You clean the herb.", true);
+				player.message("You clean the herb.", true);
 			}
 
 		});

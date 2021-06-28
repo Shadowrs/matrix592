@@ -17,7 +17,7 @@ public class Voidshifter extends Familiar {
 	public void processNPC() {
 		super.processNPC();
 		if (getOwner().getHitpoints() <= (getOwner().getMaxHitpoints() * .1) && !getOwner().isDead()) {
-			getOwner().getSocialManager().sendGameMessage("Your void shifter sacrafices its life to protect you.");
+			getOwner().message("Your void shifter sacrafices its life to protect you.");
 			Magic.sendTeleportSpell((Player) getOwner(), 14388, -1, 1503, 1502, 0, 0, new WorldTile(2662, 2649, 0), 3, true, Magic.OBJECT_TELEPORT);
 			sendDeath(getOwner());
 			return;

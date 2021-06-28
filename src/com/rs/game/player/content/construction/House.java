@@ -65,7 +65,7 @@ public class House implements Serializable {
 
 	public void expelGuests() {
 		if (!isOwnerInside()) {
-			player.getSocialManager().sendGameMessage("You can only expel guests when you are in your own house.");
+			player.message("You can only expel guests when you are in your own house.");
 			return;
 		}
 		kickGuests();
@@ -182,7 +182,7 @@ public class House implements Serializable {
 		if (room == null)
 			return;
 		if (room.plane == (up ? 2 : 0)) {
-			player.getSocialManager().sendGameMessage("You are on the " + (up ? "highest" : "lowest") + " possible level so you cannot add a room " + (up ? "above" : "under") + " here.");
+			player.message("You are on the " + (up ? "highest" : "lowest") + " possible level so you cannot add a room " + (up ? "above" : "under") + " here.");
 			return;
 		}
 		RoomReference roomTo = getRoom(roomX, roomY, room.plane + (up ? 1 : -1));
@@ -190,12 +190,12 @@ public class House implements Serializable {
 			if (buildMode)
 				player.getDialogueManager().startDialogue("CreateRoomStairsD", room, up);
 			else
-				player.getSocialManager().sendGameMessage("These stairs do not lead anywhere.");
+				player.message("These stairs do not lead anywhere.");
 			// start dialogue
 			return;
 		}
 		if (roomTo.getStaircaseSlot() == -1) {
-			player.getSocialManager().sendGameMessage("These stairs do not lead anywhere.");
+			player.message("These stairs do not lead anywhere.");
 			return;
 		}
 		player.useStairs(-1, new WorldTile(player.getX(), player.getY(), player.getPlane() + (up ? 1 : -1)), 0, 1);
@@ -219,19 +219,19 @@ public class House implements Serializable {
 			return;
 		Room room = rooms[slot];
 		if ((room == Room.DUNGEON_CORRIDOR || room == Room.DUNGEON_JUNCTION || room == Room.DUNGEON_PIT || room == Room.DUNGEON_STAIRS) && position[2] != 0) {
-			player.getSocialManager().sendGameMessage("That room can only be built underground.");
+			player.message("That room can only be built underground.");
 			return;
 		}
 		if ((room == Room.GARDEN || room == Room.FORMAL_GARDEN || room == Room.MENAGERIE) && position[2] != 1) {
-			player.getSocialManager().sendGameMessage("That room can only be built on ground.");
+			player.message("That room can only be built on ground.");
 			return;
 		}
 		if (room.getLevel() > player.getSkills().getLevel(Skills.CONSTRUCTION)) {
-			player.getSocialManager().sendGameMessage("You need a Construction level of " + room.getLevel() + " to build this room.");
+			player.message("You need a Construction level of " + room.getLevel() + " to build this room.");
 			return;
 		}
 		if (player.getInventory().getCoinsAmount() < room.getPrice()) {
-			player.getSocialManager().sendGameMessage("You don't have enough coins to build this room.");
+			player.message("You don't have enough coins to build this room.");
 			return;
 		}
 		player.getDialogueManager().startDialogue("CreateRoomD", new RoomReference(room, position[0], position[1], position[2], 0));
@@ -248,7 +248,7 @@ public class House implements Serializable {
 																				// to
 																				// drop
 																				// money
-			player.getSocialManager().sendGameMessage("You don't have enough coins to build this room.");
+			player.message("You don't have enough coins to build this room.");
 			return;
 		}
 		player.getInventory().deleteItem(new Item(995, room.room.getPrice()));
@@ -326,17 +326,17 @@ public class House implements Serializable {
 			return;
 		final HObject piece = build.getPieces()[slot];
 		if (player.getSkills().getLevel(Skills.CONSTRUCTION) < piece.getLevel()) {
-			player.getSocialManager().sendGameMessage("Your level of construction is too low for this build.");
+			player.message("Your level of construction is too low for this build.");
 			return;
 		}
 		for (Item item : piece.getRequirements())
 			System.out.println(item.getId() + ", " + item.getAmount());
 		if (!player.getInventory().containsItems(piece.getRequirements())) {
-			player.getSocialManager().sendGameMessage("You dont have the right materials.");
+			player.message("You dont have the right materials.");
 			return;
 		}
 		if (build.isWater() ? !hasWaterCan() : (!player.getInventory().containsOneItem(HouseConstants.HAMMER) || !player.getInventory().containsOneItem(HouseConstants.SAW))) {
-			player.getSocialManager().sendGameMessage(build.isWater() ? "You will need a watering can with some water in it instead of hammer and saw to build plants." : "You will need a hammer and saw to build furniture.");
+			player.message(build.isWater() ? "You will need a watering can with some water in it instead of hammer and saw to build plants." : "You will need a hammer and saw to build furniture.");
 			return;
 		}
 		final ObjectReference oref = room.addObject(build, slot);
@@ -462,7 +462,7 @@ public class House implements Serializable {
 
 	public void switchLock(Player player) {
 		if (!isOwner(player)) {
-			player.getSocialManager().sendGameMessage("You can only lock your own house.");
+			player.message("You can only lock your own house.");
 			return;
 		}
 		locked = !locked;
@@ -477,11 +477,11 @@ public class House implements Serializable {
 	public static void enterHouse(Player player, String username) {
 		Player owner = World.getPlayerByDisplayName(username);
 		if (owner == null || !owner.isRunning() || !player.getFriendsIgnores().isOnline(owner) || owner.getHouse().locked) {
-			player.getSocialManager().sendGameMessage("That player is offline, or has privacy mode enabled.");
+			player.message("That player is offline, or has privacy mode enabled.");
 			return;
 		}
 		if (owner.getHouse().location == null || !player.withinDistance(owner.getHouse().location.getTile(), 16)) {
-			player.getSocialManager().sendGameMessage("Your house is at " + Utils.formatPlayerNameForDisplay(owner.getHouse().location.name()) + ".");
+			player.message("Your house is at " + Utils.formatPlayerNameForDisplay(owner.getHouse().location.name()) + ".");
 			return;
 		}
 	}
@@ -489,12 +489,12 @@ public class House implements Serializable {
 	public boolean joinHouse(final Player player) {
 		if (!isOwner(player)) { // not owner
 			if (!isOwnerInside() || !loaded) {
-				player.getSocialManager().sendGameMessage("That player is offline, or has privacy mode enabled."); // TODO
+				player.message("That player is offline, or has privacy mode enabled."); // TODO
 																												// message
 				return false;
 			}
 			if (buildMode) {
-				player.getSocialManager().sendGameMessage("The owner currently has build mode turned on.");
+				player.message("The owner currently has build mode turned on.");
 				return false;
 			}
 		}
@@ -530,7 +530,7 @@ public class House implements Serializable {
 	public static void leaveHouse(Player player) {
 		Controller controller = player.getControlerManager().getControler();
 		if (controller == null || !(controller instanceof HouseControler)) {
-			player.getSocialManager().sendGameMessage("You're not in a house.");
+			player.message("You're not in a house.");
 			return;
 		}
 		((HouseControler) controller).getHouse().leaveHouse(player, KICKED);

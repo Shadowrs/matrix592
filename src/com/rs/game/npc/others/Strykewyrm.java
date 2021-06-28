@@ -56,7 +56,7 @@ public class Strykewyrm extends NPC {
 			return;
 		if (!npc.isAtMultiArea() || !player.isAtMultiArea()) {
 			if (player.getAttackedBy() != npc && player.getAttackedByDelay() > Utils.currentTimeMillis()) {
-				player.getSocialManager().sendGameMessage("You are already in combat.");
+				player.message("You are already in combat.");
 				return;
 			}
 			if (npc.getAttackedBy() != player && npc.getAttackedByDelay() > Utils.currentTimeMillis()) {
@@ -65,7 +65,7 @@ public class Strykewyrm extends NPC {
 					// player has priority over
 					// npc on single areas
 				} else {
-					player.getSocialManager().sendGameMessage("That npc is already in combat.");
+					player.message("That npc is already in combat.");
 					return;
 				}
 			}
@@ -73,19 +73,19 @@ public class Strykewyrm extends NPC {
 		switch (npc.getId()) {
 		case 9462:
 			if (player.getSkills().getLevel(18) < 93) {
-				player.getSocialManager().sendGameMessage("You need at least a slayer level of 93 to fight this.");
+				player.message("You need at least a slayer level of 93 to fight this.");
 				return;
 			}
 			break;
 		case 9464:
 			if (player.getSkills().getLevel(18) < 77) {
-				player.getSocialManager().sendGameMessage("You need at least a slayer level of 77 to fight this.");
+				player.message("You need at least a slayer level of 77 to fight this.");
 				return;
 			}
 			break;
 		case 9466:
 			if (player.getSkills().getLevel(18) < 73) {
-				player.getSocialManager().sendGameMessage("You need at least a slayer level of 73 to fight this.");
+				player.message("You need at least a slayer level of 73 to fight this.");
 				return;
 			}
 			break;

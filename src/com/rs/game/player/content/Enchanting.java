@@ -39,7 +39,7 @@ public class Enchanting {
 			}
 		}
 		if (secondaryIndex == -1) {
-			player.getSocialManager().sendGameMessage("This spell can only be cast on amulets, necklaces, rings, braclets or shapes in the training arena.");
+			player.message("This spell can only be cast on amulets, necklaces, rings, braclets or shapes in the training arena.");
 			return;
 		} else if (!Magic.checkSpellLevel(player, JEWLERY_LEVELS[primaryIndex]))
 			return;

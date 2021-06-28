@@ -47,7 +47,7 @@ public class Bullant extends Familiar {
 	public boolean submitSpecial(Object object) {
 		Player player = (Player) object;
 		if (player.getRunEnergy() == 100) {
-			player.getSocialManager().sendGameMessage("This wouldn't effect you at all.");
+			player.message("This wouldn't effect you at all.");
 			return false;
 		}
 		int agilityLevel = getOwner().getSkills().getLevel(Skills.AGILITY);

@@ -58,7 +58,7 @@ public class PriceCheckManager {
 		if (item == null)
 			return;
 		if (!ItemConstants.isTradeable(item)) {
-			player.getSocialManager().sendGameMessage("That item isn't tradeable.");
+			player.message("That item isn't tradeable.");
 			return;
 		}
 		Item[] itemsBefore = pcInv.getItemsCopy();

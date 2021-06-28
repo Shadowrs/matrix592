@@ -56,7 +56,7 @@ public final class FfaZone extends Controller {
 				if (loop == 0) {
 					player.setNextAnimation(new Animation(2304));
 				} else if (loop == 1) {
-					player.getSocialManager().sendGameMessage("Oh dear, you have died.");
+					player.message("Oh dear, you have died.");
 				} else if (loop == 3) {
 					if (risk) {
 						Player killer = player.getMostDamageReceivedSourcePlayer();

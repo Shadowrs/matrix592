@@ -178,7 +178,7 @@ public class NewPlayerController extends Controller {
 				ips.add(ip);
 				player.getInventory().addItem(new Item(995, 1000000));
 			} else {
-				player.getSocialManager().sendGameMessage("You have already received starting items on another account.");
+				player.message("You have already received starting items on another account.");
 			}
 			player.getInventory().addItem(new Item(1333, 1));
 			player.getInventory().addItem(new Item(1323, 1));
@@ -191,12 +191,12 @@ public class NewPlayerController extends Controller {
 			player.getInventory().addItem(new Item(3853, 1));
 			player.getInventory().addItem(new Item(386, 100));
 		}
-		player.getSocialManager().sendGameMessage("Welcome to " + Settings.SERVER_NAME + ".");
+		player.message("Welcome to " + Settings.SERVER_NAME + ".");
 		if (Settings.ECONOMY)
-			player.getSocialManager().sendGameMessage("The server is currently running in economy mode.");
+			player.message("The server is currently running in economy mode.");
 		else if (Settings.ECONOMY_TEST)
-			player.getSocialManager().sendGameMessage("The server is currently running in economy test mode.");
+			player.message("The server is currently running in economy test mode.");
 		else
-			player.getSocialManager().sendGameMessage("The server is currently running in spawn mode.");
+			player.message("The server is currently running in spawn mode.");
 	}
 }

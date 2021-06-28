@@ -35,17 +35,17 @@ public class LivingMineralMining extends MiningBase {
 
 	private boolean checkAll(Player player) {
 		if (axeDefinitions == null) {
-			player.getSocialManager().sendGameMessage("You do not have a pickaxe or do not have the required level to use the pickaxe.");
+			player.message("You do not have a pickaxe or do not have the required level to use the pickaxe.");
 			return false;
 		}
 		if (!hasMiningLevel(player))
 			return false;
 		if (!player.getInventory().hasFreeSlots()) {
-			player.getSocialManager().sendGameMessage("Not enough space in your inventory.");
+			player.message("Not enough space in your inventory.");
 			return false;
 		}
 		if (!rock.canMine(player)) {
-			player.getSocialManager().sendGameMessage("You must wait at least one minute before you can mine a living rock creature that someone else defeated.");
+			player.message("You must wait at least one minute before you can mine a living rock creature that someone else defeated.");
 			return false;
 		}
 		return true;
@@ -53,7 +53,7 @@ public class LivingMineralMining extends MiningBase {
 
 	private boolean hasMiningLevel(Player player) {
 		if (73 > player.getSkills().getLevel(Skills.MINING)) {
-			player.getSocialManager().sendGameMessage("You need a mining level of 73 to mine this rock.");
+			player.message("You need a mining level of 73 to mine this rock.");
 			return false;
 		}
 		return true;
@@ -76,7 +76,7 @@ public class LivingMineralMining extends MiningBase {
 	private void addOre(Player player) {
 		player.getSkills().addXp(Skills.MINING, 25);
 		player.getInventory().addItem(15263, Utils.random(5, 25));
-		player.getSocialManager().sendGameMessage("You manage to mine some living minerals.", true);
+		player.message("You manage to mine some living minerals.", true);
 	}
 
 	private boolean checkRock(Player player) {

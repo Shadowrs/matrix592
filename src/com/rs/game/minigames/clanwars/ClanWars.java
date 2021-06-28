@@ -144,7 +144,7 @@ public final class ClanWars implements Serializable {
 		}
 		if (rule == Rules.NO_MAGIC) {
 			if (get(Rules.NO_RANGE) && get(Rules.NO_MELEE)) {
-				player.getSocialManager().sendGameMessage("You can't activate all combat style rules, how would you fight?");
+				player.message("You can't activate all combat style rules, how would you fight?");
 				return;
 			} else {
 				magicRuleCount = ++magicRuleCount % 4;
@@ -153,7 +153,7 @@ public final class ClanWars implements Serializable {
 			return;
 		}
 		if (magicRuleCount != 0 && ((rule == Rules.NO_MELEE && get(Rules.NO_RANGE)) || (rule == Rules.NO_RANGE && get(Rules.NO_MELEE)))) {
-			player.getSocialManager().sendGameMessage("You can't activate all combat style rules, how would you fight?");
+			player.message("You can't activate all combat style rules, how would you fight?");
 		} else {
 			rules.set(rule.ordinal(), !rules.get(rule.ordinal()));
 		}
@@ -355,16 +355,16 @@ public final class ClanWars implements Serializable {
 					other.getInterfaceManager().removeScreenInterface();
 					for (Player p : firstTeam.getPlayers()) {
 						if (p != player && p != other) {
-							p.getSocialManager().sendGameMessage("<col=FF0000>Your clan has been challenged to a clan war!</col>");
-							p.getSocialManager().sendGameMessage("<col=FF0000>Step through the purple portal in the Challenge Hall.</col>");
-							p.getSocialManager().sendGameMessage("<col=FF0000>Battle will commence in 2 minutes.</col>");
+							p.message("<col=FF0000>Your clan has been challenged to a clan war!</col>");
+							p.message("<col=FF0000>Step through the purple portal in the Challenge Hall.</col>");
+							p.message("<col=FF0000>Battle will commence in 2 minutes.</col>");
 						}
 					}
 					for (Player p : secondTeam.getPlayers()) {
 						if (p != player && p != other) {
-							p.getSocialManager().sendGameMessage("<col=FF0000>Your clan has been challenged to a clan war!</col>");
-							p.getSocialManager().sendGameMessage("<col=FF0000>Step through the purple portal in the Challenge Hall.</col>");
-							p.getSocialManager().sendGameMessage("<col=FF0000>Battle will commence in 2 minutes.</col>");
+							p.message("<col=FF0000>Your clan has been challenged to a clan war!</col>");
+							p.message("<col=FF0000>Step through the purple portal in the Challenge Hall.</col>");
+							p.message("<col=FF0000>Battle will commence in 2 minutes.</col>");
 						}
 					}
 					firstTeam.setClanWars(ClanWars.this);
@@ -403,12 +403,12 @@ public final class ClanWars implements Serializable {
 		p.getInterfaceManager().setOverlay(265, false);
 		if (hasWar && c.timer.isStarted() && c.isKnockOut()) {
 			hasWar = false;
-			p.getSocialManager().sendGameMessage("The war has already started!");
+			p.message("The war has already started!");
 			p.getTemporaryAttributtes().put("view_prefix", c.firstTeam == p.getCurrentFriendChat() ? 0 : 1);
 		}
 		if (hasWar) {
 			if (c.get(Rules.NO_FAMILIARS) && p.getFamiliar() != null) {
-				p.getSocialManager().sendGameMessage("You can't enter the clan war with a familiar.");
+				p.message("You can't enter the clan war with a familiar.");
 				return;
 			}
 			if (c.get(Rules.NO_PRAYER)) {
@@ -547,10 +547,10 @@ public final class ClanWars implements Serializable {
 		String firstMessage = "Your clan " + (firstType < 4 ? "drawed." : firstType < 8 ? "is victorious!" : "has been defeated!");
 		String secondMessage = "Your clan " + (secondType < 4 ? "drawed." : secondType < 8 ? "is victorious!" : "has been defeated!");
 		for (Player player : firstTeam.getPlayers()) {
-			player.getSocialManager().sendGameMessage(firstMessage);
+			player.message(firstMessage);
 		}
 		for (Player player : secondTeam.getPlayers()) {
-			player.getSocialManager().sendGameMessage(secondMessage);
+			player.message(secondMessage);
 		}
 		CoresManager.slowExecutor.schedule(new Runnable() {
 			@Override

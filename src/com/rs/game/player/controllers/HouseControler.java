@@ -31,7 +31,7 @@ public class HouseControler extends Controller {
 		System.out.println(object.getXInChunk() + ", " + object.getYInChunk() + ", 5");
 		if (object.getDefinitions().containsOption(4, "Build")) {
 			if (!house.isOwner(player)) {
-				player.getSocialManager().sendGameMessage("You can only do that in your own house.");
+				player.message("You can only do that in your own house.");
 				return false;
 			}
 			if (house.isDoor(object)) {
@@ -47,7 +47,7 @@ public class HouseControler extends Controller {
 			}
 		} else if (object.getDefinitions().containsOption(4, "Remove")) {
 			if (!house.isOwner(player)) {
-				player.getSocialManager().sendGameMessage("You can only do that in your own house.");
+				player.message("You can only do that in your own house.");
 				return false;
 			}
 			house.openRemoveBuild(object);
@@ -61,12 +61,12 @@ public class HouseControler extends Controller {
 		if (object.getId() == HouseConstants.HObject.EXIT_PORTAL.getId())
 			house.leaveHouse(player, House.KICKED);
 		else if (object.getId() == HouseConstants.HObject.CLAY_FIREPLACE.getId() || object.getId() == HouseConstants.HObject.STONE_FIREPLACE.getId() || object.getId() == HouseConstants.HObject.MARBLE_FIREPLACE.getId())
-			player.getSocialManager().sendGameMessage("Use some logs on the fireplace in order to light it.");
+			player.message("Use some logs on the fireplace in order to light it.");
 		else if (object.getId() >= HouseConstants.HObject.CRUDE_WOODEN_CHAIR.getId() && object.getId() <= HouseConstants.HObject.MAHOGANY_ARMCHAIR.getId()) {
 			int chair = object.getId() - HouseConstants.HObject.CRUDE_WOODEN_CHAIR.getId();
 			player.getActionManager().setAction(new SitChair(player, chair, object));
 		} else if (HouseConstants.Builds.BOOKCASE.containsObject(object))
-			player.getSocialManager().sendGameMessage("You search the bookcase but find nothing.");
+			player.message("You search the bookcase but find nothing.");
 		else if (HouseConstants.Builds.STAIRCASE.containsObject(object) || HouseConstants.Builds.STAIRCASE_DOWN.containsObject(object)) {
 			if (object.getDefinitions().getOption(1).equals("Climb"))
 				player.getDialogueManager().startDialogue("ClimbHouseStairD", object);
@@ -79,11 +79,11 @@ public class HouseControler extends Controller {
 	public boolean handleItemOnObject(WorldObject object, Item item) {
 		if (object.getId() == HouseConstants.HObject.CLAY_FIREPLACE.getId() || object.getId() == HouseConstants.HObject.STONE_FIREPLACE.getId() || object.getId() == HouseConstants.HObject.MARBLE_FIREPLACE.getId()) {
 			if (item.getId() != 1511) {
-				player.getSocialManager().sendGameMessage("Only ordinary logs can be used to light the fireplace.");
+				player.message("Only ordinary logs can be used to light the fireplace.");
 				return false;
 			}
 			if (!player.getInventory().containsOneItem(590)) {
-				player.getSocialManager().sendGameMessage("You do not have the required items to light this.");
+				player.message("You do not have the required items to light this.");
 				return false;
 			}
 			player.lock(2);
@@ -110,7 +110,7 @@ public class HouseControler extends Controller {
 
 	public boolean canDropItem(Item item) {
 		if (house.isBuildMode()) {
-			player.getSocialManager().sendGameMessage("You cannot drop items while in building mode.");
+			player.message("You cannot drop items while in building mode.");
 			return false;
 		}
 		return true;

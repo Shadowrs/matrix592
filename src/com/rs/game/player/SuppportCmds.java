@@ -14,7 +14,7 @@ public class SuppportCmds {
             switch (cmd[0].toLowerCase()) {
             case "sz":
                 if (player.isLocked() || player.getControlerManager().getControler() != null) {
-                    player.getSocialManager().sendGameMessage("You cannot tele anywhere from here.");
+                    player.message("You cannot tele anywhere from here.");
                     return true;
                 }
                 player.setNextWorldTile(new WorldTile(2667, 10396, 0));

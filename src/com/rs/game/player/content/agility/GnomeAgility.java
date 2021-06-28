@@ -142,7 +142,7 @@ public class GnomeAgility {
 		player.setNextAnimation(new Animation(2922));
 		final WorldTile toTile = new WorldTile(2484, 3418, object.getPlane());
 		player.setNextForceMovement(new ForceMovement(new WorldTile(2477, 3418, 3), 1, toTile, 3, ForceMovement.EAST));
-		player.getSocialManager().sendGameMessage("You skilfully run across the Board", true);
+		player.message("You skilfully run across the Board", true);
 		WorldTasksManager.schedule(new WorldTask() {
 
 			@Override
@@ -163,7 +163,7 @@ public class GnomeAgility {
 		player.setRunHidden(false);
 		player.lock(8);
 		player.addWalkSteps(2474, 3429, -1, false);
-		player.getSocialManager().sendGameMessage("You walk carefully across the slippery log...", true);
+		player.message("You walk carefully across the slippery log...", true);
 		WorldTasksManager.schedule(new WorldTask() {
 			boolean secondloop;
 
@@ -177,7 +177,7 @@ public class GnomeAgility {
 					player.setRunHidden(running);
 					setGnomeStage(player, 0);
 					player.getSkills().addXp(Skills.AGILITY, 7.5);
-					player.getSocialManager().sendGameMessage("... and make it safely to the other side.", true);
+					player.message("... and make it safely to the other side.", true);
 					stop();
 				}
 			}
@@ -187,7 +187,7 @@ public class GnomeAgility {
 	public static void climbGnomeObstacleNet(final Player player) {
 		if (player.getY() != 3426)
 			return;
-		player.getSocialManager().sendGameMessage("You climb the netting.", true);
+		player.message("You climb the netting.", true);
 		player.useStairs(828, new WorldTile(player.getX(), 3423, 1), 1, 2);
 		WorldTasksManager.schedule(new WorldTask() {
 			@Override
@@ -200,7 +200,7 @@ public class GnomeAgility {
 	}
 
 	public static void climbUpGnomeTreeBranch(final Player player) {
-		player.getSocialManager().sendGameMessage("You climb the tree...", true);
+		player.message("You climb the tree...", true);
 		player.useStairs(828, new WorldTile(2473, 3420, 2), 1, 2, "... to the plantaform above.");
 		WorldTasksManager.schedule(new WorldTask() {
 			@Override
@@ -231,7 +231,7 @@ public class GnomeAgility {
 					player.getAppearence().setRenderEmote(-1);
 					player.setRunHidden(running);
 					player.getSkills().addXp(Skills.AGILITY, 7);
-					player.getSocialManager().sendGameMessage("You passed the obstacle succesfully.", true);
+					player.message("You passed the obstacle succesfully.", true);
 					stop();
 				}
 			}
@@ -259,7 +259,7 @@ public class GnomeAgility {
 					if (getGnomeStage(player) == 2)
 						setGnomeStage(player, 3);
 					player.getSkills().addXp(Skills.AGILITY, 7);
-					player.getSocialManager().sendGameMessage("You passed the obstacle succesfully.", true);
+					player.message("You passed the obstacle succesfully.", true);
 					stop();
 				}
 			}
@@ -281,7 +281,7 @@ public class GnomeAgility {
 	public static void climbGnomeObstacleNet2(final Player player) {
 		if (player.getY() != 3425)
 			return;
-		player.getSocialManager().sendGameMessage("You climb the netting.", true);
+		player.message("You climb the netting.", true);
 		player.useStairs(828, new WorldTile(player.getX(), player.getY() == 3425 ? 3428 : 3425, 0), 1, 2);
 		WorldTasksManager.schedule(new WorldTask() {
 			@Override
@@ -298,7 +298,7 @@ public class GnomeAgility {
 		player.setRunHidden(false);
 		player.lock(8);
 		player.addWalkSteps(objectX, objectY == 3431 ? 3437 : 3430, -1, false);
-		player.getSocialManager().sendGameMessage("You pulled yourself through the pipes.", true);
+		player.message("You pulled yourself through the pipes.", true);
 		if (getGnomeStage(player) == 5) {
 			removeGnomeStage(player);
 			player.getSkills().addXp(Skills.AGILITY, 39.5);

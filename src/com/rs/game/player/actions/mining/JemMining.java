@@ -21,7 +21,7 @@ public class JemMining extends MiningBase {
 		axeDefinitions = getPickAxeDefinitions(player);
 		if (!checkAll(player))
 			return false;
-		player.getSocialManager().sendGameMessage("You swing your pickaxe at the rock.");
+		player.message("You swing your pickaxe at the rock.");
 		setActionDelay(player, getMiningDelay(player));
 		return true;
 	}
@@ -35,13 +35,13 @@ public class JemMining extends MiningBase {
 
 	private boolean checkAll(Player player) {
 		if (axeDefinitions == null) {
-			player.getSocialManager().sendGameMessage("You do not have a pickaxe or do not have the required level to use the pickaxe.");
+			player.message("You do not have a pickaxe or do not have the required level to use the pickaxe.");
 			return false;
 		}
 		if (!hasMiningLevel(player))
 			return false;
 		if (!player.getInventory().hasFreeSlots()) {
-			player.getSocialManager().sendGameMessage("Not enough space in your inventory.");
+			player.message("Not enough space in your inventory.");
 			return false;
 		}
 		return true;
@@ -49,7 +49,7 @@ public class JemMining extends MiningBase {
 
 	private boolean hasMiningLevel(Player player) {
 		if (45 > player.getSkills().getLevel(Skills.MINING)) {
-			player.getSocialManager().sendGameMessage("You need a mining level of 45 to mine this rock.");
+			player.message("You need a mining level of 45 to mine this rock.");
 			return false;
 		}
 		return true;
@@ -67,7 +67,7 @@ public class JemMining extends MiningBase {
 		World.spawnObjectTemporary(new WorldObject(11193, rock.getType(), rock.getRotation(), rock.getX(), rock.getY(), rock.getPlane()), 60000);
 		if (!player.getInventory().hasFreeSlots()) {
 			player.setNextAnimation(new Animation(-1));
-			player.getSocialManager().sendGameMessage("Not enough space in your inventory.");
+			player.message("Not enough space in your inventory.");
 			return -1;
 		}
 		return -1;
@@ -77,7 +77,7 @@ public class JemMining extends MiningBase {
 		player.getSkills().addXp(Skills.MINING, 65);
 		double random = Utils.random(0, 100);
 		player.getInventory().addItem(random <= 3.5 ? 1617 : random <= 3.7 ? 1619 : random <= 4.1 ? 1621 : random <= 7 ? 1623 : random <= 12.7 ? 1629 : random <= 21.9 ? 1627 : 1625, 1);
-		player.getSocialManager().sendGameMessage("You receive a gem.");
+		player.message("You receive a gem.");
 	}
 
 	private boolean checkRock(Player player) {

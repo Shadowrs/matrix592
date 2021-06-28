@@ -64,7 +64,7 @@ public class Bunyip extends Familiar {
 		for (Fish fish : Fish.values()) {
 			if (fish.getId() == item.getId()) {
 				if (getOwner().getSkills().getLevel(Skills.COOKING) < fish.getLevel()) {
-					getOwner().getSocialManager().sendGameMessage("Your cooking level is not high enough for the bunyip to eat this fish.");
+					getOwner().message("Your cooking level is not high enough for the bunyip to eat this fish.");
 					return false;
 				} else {
 					getOwner().setNextGraphics(new Graphics(1316));
@@ -75,7 +75,7 @@ public class Bunyip extends Familiar {
 				}
 			}
 		}
-		getOwner().getSocialManager().sendGameMessage("Your bunyip cannot eat this.");
+		getOwner().message("Your bunyip cannot eat this.");
 		return false;
 	}
 }

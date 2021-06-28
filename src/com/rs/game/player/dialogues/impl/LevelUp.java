@@ -31,7 +31,7 @@ public final class LevelUp extends Dialogue {
 		String name = Skills.SKILL_NAME[skill];
 		player.getPackets().sendIComponentText(740, 0, "Congratulations, you have just advanced a" + (name.startsWith("A") ? "n" : "") + " " + name + " level!");
 		player.getPackets().sendIComponentText(740, 1, "You have now reached level " + level + ".");
-		player.getSocialManager().sendGameMessage("You've just advanced a" + (name.startsWith("A") ? "n" : "") + " " + name + " level! You have reached level " + level + ".");
+		player.message("You've just advanced a" + (name.startsWith("A") ? "n" : "") + " " + name + " level! You have reached level " + level + ".");
 		player.getVarsManager().sendVarBit(4757, getIconValue(skill));
 		switchFlash(player, skill, true);
 		int musicEffect = SKILL_LEVEL_UP_MUSIC_EFFECTS[skill];

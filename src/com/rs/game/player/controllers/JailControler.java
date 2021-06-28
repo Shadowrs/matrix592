@@ -20,7 +20,7 @@ public class JailControler extends Controller {
 	public void process() {
 		if (player.getJailed() <= Utils.currentTimeMillis()) {
 			player.getControlerManager().getControler().removeControler();
-			player.getSocialManager().sendGameMessage("Your account has been unjailed.", true);
+			player.message("Your account has been unjailed.", true);
 			player.setNextWorldTile(new WorldTile(2677, 10379, 0));
 		}
 	}
@@ -40,7 +40,7 @@ public class JailControler extends Controller {
 				if (loop == 0) {
 					player.setNextAnimation(new Animation(2304));
 				} else if (loop == 1) {
-					player.getSocialManager().sendGameMessage("Oh dear, you have died.");
+					player.message("Oh dear, you have died.");
 				} else if (loop == 3) {
 					player.setNextAnimation(new Animation(-1));
 					player.reset();
@@ -69,19 +69,19 @@ public class JailControler extends Controller {
 
 	@Override
 	public boolean processMagicTeleport(WorldTile toTile) {
-		player.getSocialManager().sendGameMessage("You are currently jailed for your delinquent acts.");
+		player.message("You are currently jailed for your delinquent acts.");
 		return false;
 	}
 
 	@Override
 	public boolean processItemTeleport(WorldTile toTile) {
-		player.getSocialManager().sendGameMessage("You are currently jailed for your delinquent acts.");
+		player.message("You are currently jailed for your delinquent acts.");
 		return false;
 	}
 
 	@Override
 	public boolean processObjectClick1(WorldObject object) {
-		player.getSocialManager().sendGameMessage("You cannot do any activities while being jailed.");
+		player.message("You cannot do any activities while being jailed.");
 		return false;
 	}
 

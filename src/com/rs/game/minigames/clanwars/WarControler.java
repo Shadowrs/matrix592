@@ -54,7 +54,7 @@ public final class WarControler extends Controller {
 				if (loop == 0) {
 					player.setNextAnimation(new Animation(2304));
 				} else if (loop == 1) {
-					player.getSocialManager().sendGameMessage("Oh dear, you have died.");
+					player.message("Oh dear, you have died.");
 				} else if (loop == 3) {
 					if (clanWars.get(Rules.ITEMS_LOST)) {
 						Player killer = player.getMostDamageReceivedSourcePlayer();
@@ -97,7 +97,7 @@ public final class WarControler extends Controller {
 	@Override
 	public boolean canEat(Food food) {
 		if (clanWars.get(Rules.NO_FOOD)) {
-			player.getSocialManager().sendGameMessage("Food has been disabled during this war.");
+			player.message("Food has been disabled during this war.");
 			return false;
 		}
 		return true;
@@ -106,7 +106,7 @@ public final class WarControler extends Controller {
 	@Override
 	public boolean canPot(Pot pot) {
 		if (clanWars.get(Rules.NO_POTIONS)) {
-			player.getSocialManager().sendGameMessage("Potions has been disabled during this war.");
+			player.message("Potions has been disabled during this war.");
 			return false;
 		}
 		return true;
@@ -114,13 +114,13 @@ public final class WarControler extends Controller {
 
 	@Override
 	public boolean processMagicTeleport(WorldTile toTile) {
-		player.getSocialManager().sendGameMessage("You can't teleport out of a clan war!");
+		player.message("You can't teleport out of a clan war!");
 		return false;
 	}
 
 	@Override
 	public boolean processItemTeleport(WorldTile toTile) {
-		player.getSocialManager().sendGameMessage("You can't teleport out of a clan war!");
+		player.message("You can't teleport out of a clan war!");
 		return false;
 	}
 
@@ -147,11 +147,11 @@ public final class WarControler extends Controller {
 			return false;
 		}
 		if (clanWars.getFirstPlayers().contains(player) && clanWars.getFirstPlayers().contains(target)) {
-			player.getSocialManager().sendGameMessage("You can't attack players in your own team.");
+			player.message("You can't attack players in your own team.");
 			return false;
 		}
 		if (clanWars.getSecondPlayers().contains(player) && clanWars.getSecondPlayers().contains(target)) {
-			player.getSocialManager().sendGameMessage("You can't attack players in your own team.");
+			player.message("You can't attack players in your own team.");
 			return false;
 		}
 		if (!clanWars.getTimer().isStarted()) {
@@ -167,13 +167,13 @@ public final class WarControler extends Controller {
 			switch (clanWars.getMagicRuleCount()) {
 			case 1: // Standard spells only.
 				if (player.getCombatDefinitions().getSpellBook() != 0) {
-					player.getSocialManager().sendGameMessage("You can only use modern spells during this war!");
+					player.message("You can only use modern spells during this war!");
 					return false;
 				}
 				break;
 			case 2: // Bind/Snare/Entangle only.
 				if (player.getCombatDefinitions().getSpellBook() != 0) {
-					player.getSocialManager().sendGameMessage("You can only use binding spells during this war!");
+					player.message("You can only use binding spells during this war!");
 					return false;
 				}
 				switch (player.getCombatDefinitions().getSpellId()) {
@@ -182,21 +182,21 @@ public final class WarControler extends Controller {
 				case 81:
 					break;
 				default:
-					player.getSocialManager().sendGameMessage("You can only use binding spells during this war!");
+					player.message("You can only use binding spells during this war!");
 					return false;
 				}
 				break;
 			case 3: // No magic at all.
-				player.getSocialManager().sendGameMessage("Magic combat is not allowed during this war!");
+				player.message("Magic combat is not allowed during this war!");
 				return false;
 			}
 		}
 		if (isRanging && clanWars.get(Rules.NO_RANGE)) {
-			player.getSocialManager().sendGameMessage("Ranged combat is not allowed during this war!");
+			player.message("Ranged combat is not allowed during this war!");
 			return false;
 		}
 		if (!isRanging && clanWars.get(Rules.NO_MELEE) && player.getCombatDefinitions().getSpellId() <= 0) {
-			player.getSocialManager().sendGameMessage("Melee combat is not allowed during this war!");
+			player.message("Melee combat is not allowed during this war!");
 			return false;
 		}
 		return true;

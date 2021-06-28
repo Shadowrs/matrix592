@@ -174,7 +174,7 @@ public class Magic {
 				}
 				int weaponId = player.getEquipment().getWeaponId();
 				if (weaponId != 13867 && weaponId != 13869 && weaponId != 13941 && weaponId != 13943) {
-					player.getSocialManager().sendGameMessage("You need a Zuriel's staff to cast this spell.");
+					player.message("You need a Zuriel's staff to cast this spell.");
 					return false;
 				}
 				break;
@@ -184,7 +184,7 @@ public class Magic {
 				}
 				weaponId = player.getEquipment().getWeaponId();
 				if (weaponId != 13867 && weaponId != 13869 && weaponId != 13941 && weaponId != 13943) {
-					player.getSocialManager().sendGameMessage("You need a Zuriel's staff to cast this spell.");
+					player.message("You need a Zuriel's staff to cast this spell.");
 					return false;
 				}
 				break;
@@ -194,7 +194,7 @@ public class Magic {
 				}
 				weaponId = player.getEquipment().getWeaponId();
 				if (weaponId != 13867 && weaponId != 13869 && weaponId != 13941 && weaponId != 13943) {
-					player.getSocialManager().sendGameMessage("You need a Zuriel's staff to cast this spell.");
+					player.message("You need a Zuriel's staff to cast this spell.");
 					return false;
 				}
 				break;
@@ -204,7 +204,7 @@ public class Magic {
 				}
 				weaponId = player.getEquipment().getWeaponId();
 				if (weaponId != 13867 && weaponId != 13869 && weaponId != 13941 && weaponId != 13943) {
-					player.getSocialManager().sendGameMessage("You need a Zuriel's staff to cast this spell.");
+					player.message("You need a Zuriel's staff to cast this spell.");
 					return false;
 				}
 				break;
@@ -304,7 +304,7 @@ public class Magic {
 				break;
 			case 66: // Sara Strike
 				if (player.getEquipment().getWeaponId() != 2415) {
-					player.getSocialManager().sendGameMessage("You need to be equipping a Saradomin staff to cast this spell.", true);
+					player.message("You need to be equipping a Saradomin staff to cast this spell.", true);
 					return false;
 				}
 				if (!checkSpellRequirements(player, 60, delete, AIR_RUNE, 4, FIRE_RUNE, 1, BLOOD_RUNE, 2))
@@ -312,7 +312,7 @@ public class Magic {
 				break;
 			case 67: // Guthix Claws
 				if (player.getEquipment().getWeaponId() != 2416) {
-					player.getSocialManager().sendGameMessage("You need to be equipping a Guthix Staff or Void Mace to cast this spell.", true);
+					player.message("You need to be equipping a Guthix Staff or Void Mace to cast this spell.", true);
 					return false;
 				}
 				if (!checkSpellRequirements(player, 60, delete, AIR_RUNE, 4, FIRE_RUNE, 1, BLOOD_RUNE, 2))
@@ -320,7 +320,7 @@ public class Magic {
 				break;
 			case 68: // Flame of Zammy
 				if (player.getEquipment().getWeaponId() != 2417) {
-					player.getSocialManager().sendGameMessage("You need to be equipping a Zamorak Staff to cast this spell.", true);
+					player.message("You need to be equipping a Zamorak Staff to cast this spell.", true);
 					return false;
 				}
 				if (!checkSpellRequirements(player, 60, delete, AIR_RUNE, 4, FIRE_RUNE, 4, BLOOD_RUNE, 2))
@@ -379,15 +379,15 @@ public class Magic {
 			if (!Magic.checkSpellLevel(player, (highAlch ? 55 : 21)))
 				return;
 			if (target.getId() == 995) {
-				player.getSocialManager().sendGameMessage("You can't cast " + (highAlch ? "high" : "low") + " alchemy on gold.");
+				player.message("You can't cast " + (highAlch ? "high" : "low") + " alchemy on gold.");
 				return;
 			}
 			if (target.getDefinitions().isDestroyItem() || ItemConstants.getItemDefaultCharges(target.getId()) != -1 || !ItemConstants.isTradeable(target)) {
-				player.getSocialManager().sendGameMessage("You can't convert this item..");
+				player.message("You can't convert this item..");
 				return;
 			}
 			if (target.getAmount() != 1 && !player.getInventory().hasFreeSlots()) {
-				player.getSocialManager().sendGameMessage("Not enough space in your inventory.");
+				player.message("Not enough space in your inventory.");
 				return;
 			}
 			if (!checkRunes(player, true, FIRE_RUNE, highAlch ? 5 : 3, NATURE_RUNE, 1))
@@ -417,16 +417,16 @@ public class Magic {
 			if (!(target instanceof Player))
 				return;
 			if (player.getSkills().getLevel(Skills.MAGIC) < 93) {
-				player.getSocialManager().sendGameMessage("Your Magic level is not high enough for this spell.");
+				player.message("Your Magic level is not high enough for this spell.");
 				return;
 			}
 			Long lastVeng = (Long) player.getTemporaryAttributtes().get("LAST_VENG");
 			if (lastVeng != null && lastVeng + 30000 > Utils.currentTimeMillis()) {
-				player.getSocialManager().sendGameMessage("Players may only cast vengeance once every 30 seconds.");
+				player.message("Players may only cast vengeance once every 30 seconds.");
 				return;
 			}
 			if (!((Player) target).isAcceptingAid()) {
-				player.getSocialManager().sendGameMessage(((Player) target).getDisplayName() + " is not accepting aid");
+				player.message(((Player) target).getDisplayName() + " is not accepting aid");
 				return;
 			}
 			if (((Player) target).getControlerManager().getControler() != null && ((Player) target).getControlerManager().getControler() instanceof DuelArena) {
@@ -436,10 +436,10 @@ public class Magic {
 				return;
 			player.setNextAnimation(new Animation(4411));
 			player.getTemporaryAttributtes().put("LAST_VENG", Utils.currentTimeMillis());
-			player.getSocialManager().sendGameMessage("You cast a vengeance.");
+			player.message("You cast a vengeance.");
 			((Player) target).setNextGraphics(new Graphics(725, 0, 100));
 			((Player) target).setCastVeng(true);
-			((Player) target).getSocialManager().sendGameMessage("You have the power of vengeance!");
+			((Player) target).message("You have the power of vengeance!");
 			break;
 		}
 	}
@@ -448,15 +448,15 @@ public class Magic {
 		switch (spellId) {
 		case 37:
 			if (player.getSkills().getLevel(Skills.MAGIC) < 94) {
-				player.getSocialManager().sendGameMessage("Your Magic level is not high enough for this spell.");
+				player.message("Your Magic level is not high enough for this spell.");
 				return;
 			} else if (player.getSkills().getLevel(Skills.DEFENCE) < 40) {
-				player.getSocialManager().sendGameMessage("You need a Defence level of 40 for this spell");
+				player.message("You need a Defence level of 40 for this spell");
 				return;
 			}
 			Long lastVeng = (Long) player.getTemporaryAttributtes().get("LAST_VENG");
 			if (lastVeng != null && lastVeng + 30000 > Utils.currentTimeMillis()) {
-				player.getSocialManager().sendGameMessage("Players may only cast vengeance once every 30 seconds.");
+				player.message("Players may only cast vengeance once every 30 seconds.");
 				return;
 			}
 			if (!checkRunes(player, true, ASTRAL_RUNE, 4, DEATH_RUNE, 2, EARTH_RUNE, 10))
@@ -465,19 +465,19 @@ public class Magic {
 			player.setNextAnimation(new Animation(4410));
 			player.setCastVeng(true);
 			player.getTemporaryAttributtes().put("LAST_VENG", Utils.currentTimeMillis());
-			player.getSocialManager().sendGameMessage("You cast a vengeance.");
+			player.message("You cast a vengeance.");
 			break;
 		case 39:
 			useHomeTele(player);
 			break;
 		case 74: // vegeance group
 			if (player.getSkills().getLevel(Skills.MAGIC) < 95) {
-				player.getSocialManager().sendGameMessage("Your Magic level is not high enough for this spell.");
+				player.message("Your Magic level is not high enough for this spell.");
 				return;
 			}
 			lastVeng = (Long) player.getTemporaryAttributtes().get("LAST_VENG");
 			if (lastVeng != null && lastVeng + 30000 > Utils.currentTimeMillis()) {
-				player.getSocialManager().sendGameMessage("Players may only cast vengeance once every 30 seconds.");
+				player.message("Players may only cast vengeance once every 30 seconds.");
 				return;
 			}
 			if (!checkRunes(player, true, ASTRAL_RUNE, 4, DEATH_RUNE, 3, EARTH_RUNE, 11))
@@ -492,20 +492,20 @@ public class Magic {
 					if (p2 == null || p2 == player || p2.isDead() || !p2.hasStarted() || p2.hasFinished() || !p2.withinDistance(player, 4) || !player.getControlerManager().canHit(p2))
 						continue;
 					if (!p2.isAcceptingAid()) {
-						player.getSocialManager().sendGameMessage(p2.getDisplayName() + " is not accepting aid");
+						player.message(p2.getDisplayName() + " is not accepting aid");
 						continue;
 					} else if (p2.getControlerManager().getControler() != null && p2.getControlerManager().getControler() instanceof DuelArena) {
 						continue;
 					}
 					p2.setNextGraphics(new Graphics(725, 0, 100));
 					p2.setCastVeng(true);
-					p2.getSocialManager().sendGameMessage("You have the power of vengeance!");
+					p2.message("You have the power of vengeance!");
 					affectedPeopleCount++;
 				}
 			}
 			player.setNextAnimation(new Animation(4411));
 			player.getTemporaryAttributtes().put("LAST_VENG", Utils.currentTimeMillis());
-			player.getSocialManager().sendGameMessage("The spell affected " + affectedPeopleCount + " nearby people.");
+			player.message("The spell affected " + affectedPeopleCount + " nearby people.");
 			break;
 		case 43: // moonclan teleport
 			sendLunarTeleportSpell(player, 69, 66, new WorldTile(2114, 3914, 0), ASTRAL_RUNE, 2, LAW_RUNE, 1, EARTH_RUNE, 2);
@@ -621,7 +621,7 @@ public class Magic {
 			break;
 		case 27: // crossbow bolt enchant
 			if (player.getSkills().getLevel(Skills.MAGIC) < 4) {
-				player.getSocialManager().sendGameMessage("Your Magic level is not high enough for this spell.");
+				player.message("Your Magic level is not high enough for this spell.");
 				return;
 			}
 			player.stopAll();
@@ -674,7 +674,7 @@ public class Magic {
 
 	public static boolean checkSpellLevel(Player player, int level) {
 		if (player.getSkills().getLevel(Skills.MAGIC) < level) {
-			player.getSocialManager().sendGameMessage("Your Magic level is not high enough for this spell.");
+			player.message("Your Magic level is not high enough for this spell.");
 			return false;
 		}
 		return true;
@@ -706,7 +706,7 @@ public class Magic {
 				// runes
 				continue;
 			if (!player.getInventory().containsItem(runeId, amount)) {
-				player.getSocialManager().sendGameMessage("You do not have enough " + ItemDefinitions.getItemDefinitions(runeId).getName().replace("rune", "Rune") + "s to cast this spell.");
+				player.message("You do not have enough " + ItemDefinitions.getItemDefinitions(runeId).getName().replace("rune", "Rune") + "s to cast this spell.");
 				return false;
 			}
 		}
@@ -750,7 +750,7 @@ public class Magic {
 			return;
 		player.setNextAnimation(new Animation(emote));
 		if (startMessage != null)
-			player.getSocialManager().sendGameMessage(startMessage, true);
+			player.message(startMessage, true);
 		player.lock();
 		WorldTasksManager.schedule(new WorldTask() {
 			@Override
@@ -758,7 +758,7 @@ public class Magic {
 				player.unlock();
 				Magic.sendObjectTeleportSpell(player, false, tile);
 				if (endMessage != null)
-					player.getSocialManager().sendGameMessage(endMessage, true);
+					player.message(endMessage, true);
 			}
 		}, 1);
 	}
@@ -775,7 +775,7 @@ public class Magic {
 		if (player.isLocked())
 			return false;
 		if (player.getSkills().getLevel(Skills.MAGIC) < level) {
-			player.getSocialManager().sendGameMessage("Your Magic level is not high enough for this spell.");
+			player.message("Your Magic level is not high enough for this spell.");
 			return false;
 		}
 		if (!checkRunes(player, false, runes))

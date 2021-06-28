@@ -51,7 +51,7 @@ public class SlayerManager implements Serializable {
 	private boolean removePoints(int pointsValue) {
 		int newPoints = slayerPoints - pointsValue;
 		if (newPoints < 0) {
-			player.getSocialManager().sendGameMessage("You don't have enough points to complete this transaction.");
+			player.message("You don't have enough points to complete this transaction.");
 			return false;
 		}
 		slayerPoints -= pointsValue;
@@ -65,7 +65,7 @@ public class SlayerManager implements Serializable {
 			return;
 		learnedAbilities[slot] = true;
 		sendSlayerInterface(ABILITIES_INTERFACE);
-		player.getSocialManager().sendGameMessage("You have unlocked the ability " + ABILITY[slot][3] + "!");
+		player.message("You have unlocked the ability " + ABILITY[slot][3] + "!");
 	}
 
 	public void sendSlayerInterface(int interfaceId) {
@@ -122,28 +122,28 @@ public class SlayerManager implements Serializable {
 				if (removePoints(400)) {
 					player.getSkills().addXp(Skills.SLAYER, 2000);// 40k xp is
 					// good enough
-					player.getSocialManager().sendGameMessage("You begin to feel wiser and more experienced than before.");
+					player.message("You begin to feel wiser and more experienced than before.");
 				}
 			} else if (componentId == 26 || componentId == 33) {
 				if (removePoints(75)) {
 					player.getInventory().addItemDrop(13281, 1);
-					player.getSocialManager().sendGameMessage("The master quickly forges you a fully charged ring of slaying.");
+					player.message("The master quickly forges you a fully charged ring of slaying.");
 				}
 			} else if (componentId == 28 || componentId == 36) {
 				if (removePoints(35)) {
 					player.getInventory().addItemDrop(560, 250);
 					player.getInventory().addItemDrop(558, 1000);
-					player.getSocialManager().sendGameMessage("Here are your runes. Use them wisely.");
+					player.message("Here are your runes. Use them wisely.");
 				}
 			} else if (componentId == 37 || componentId == 34) {
 				if (removePoints(35)) {
 					player.getInventory().addItemDrop(13280, 250);
-					player.getSocialManager().sendGameMessage("Here are your bolts. Use them wisely.");
+					player.message("Here are your bolts. Use them wisely.");
 				}
 			} else if (componentId == 39 || componentId == 35) {
 				if (removePoints(35)) {
 					player.getInventory().addItemDrop(4160, 250);
-					player.getSocialManager().sendGameMessage("Here are your bolts. Use them wisely.");
+					player.message("Here are your bolts. Use them wisely.");
 				}
 			}
 		} else if (interfaceId == ABILITIES_INTERFACE) {
@@ -162,13 +162,13 @@ public class SlayerManager implements Serializable {
 
 	private void cancleCurrentTask() {
 		if (currentTask == null) {
-			player.getSocialManager().sendGameMessage("You don't have an active task to cancle.");
+			player.message("You don't have an active task to cancle.");
 			return;
 		} else {
 			if (removePoints(30)) {
 				skipCurrentTask();
 				setCurrentTask(true);
-				player.getSocialManager().sendGameMessage("Your slayer task has been re-assigned as requested, as a result, your slayer-streak has been reset to 0.");
+				player.message("Your slayer task has been re-assigned as requested, as a result, your slayer-streak has been reset to 0.");
 			}
 		}
 	}
@@ -179,13 +179,13 @@ public class SlayerManager implements Serializable {
 			return;
 		canceledTasks[slot] = null;
 		sendSlayerInterface(ASSIGNMENT_INTERFACE);
-		player.getSocialManager().sendGameMessage("You have re-added " + task.getName().toLowerCase() + " to the assignment list.");
+		player.message("You have re-added " + task.getName().toLowerCase() + " to the assignment list.");
 	}
 
 	private void removeCurrentTask() {
 		if (canceledTasksCount != canceledTasks.length) {
 			if (currentTask == null) {
-				player.getSocialManager().sendGameMessage("You don't have an active task to remove.");
+				player.message("You don't have an active task to remove.");
 				return;
 			} else {
 				if (removePoints(100)) {
@@ -193,7 +193,7 @@ public class SlayerManager implements Serializable {
 						SlayerTask task = canceledTasks[index];
 						if (task == null) {
 							canceledTasks[index] = currentTask;
-							player.getSocialManager().sendGameMessage("You have cancled the task " + currentTask.getName() + " permenantly.");
+							player.message("You have cancled the task " + currentTask.getName() + " permenantly.");
 							skipCurrentTask();
 							sendSlayerInterface(ASSIGNMENT_INTERFACE);
 							return;
@@ -202,7 +202,7 @@ public class SlayerManager implements Serializable {
 				}
 			}
 		} else
-			player.getSocialManager().sendGameMessage("You have reached the maximum limit of cancable tasks, please remove one before continueing.");
+			player.message("You have reached the maximum limit of cancable tasks, please remove one before continueing.");
 	}
 
 	public Object[] calculateTask() {
@@ -248,8 +248,8 @@ public class SlayerManager implements Serializable {
 		player.getSkills().addXp(Skills.SLAYER, damageAdmitted / 5);
 		if (currentTaskCount + otherSocialCount == maximumTaskCount) {
 			if (socialPlayer != null)
-				socialPlayer.getSocialManager().sendGameMessage("You have finished your slayer task, talk to a slayer master for a new one.");
-			player.getSocialManager().sendGameMessage("You have finished your slayer task, talk to a slayer master for a new one.");
+				socialPlayer.message("You have finished your slayer task, talk to a slayer master for a new one.");
+			player.message("You have finished your slayer task, talk to a slayer master for a new one.");
 			resetTask(true, true);
 			return;
 		} else if (currentTaskCount % 10 == 0)
@@ -258,14 +258,14 @@ public class SlayerManager implements Serializable {
 
 	public void checkKillsLeft() {
 		if (currentTask == null) {
-			player.getSocialManager().sendGameMessage("You currently have no slayer task assigned.");
+			player.message("You currently have no slayer task assigned.");
 			return;
 		}
-		player.getSocialManager().sendGameMessage("Your current assignment is: " + currentTask.getName() + "; only " + getCount() + " more to go.");
+		player.message("Your current assignment is: " + currentTask.getName() + "; only " + getCount() + " more to go.");
 		if (socialPlayer != null) {
-			player.getSocialManager().sendGameMessage("Your partner's current assignment is: " + currentTask.getName() + "; only " + player.getSlayerManager().getCount() + " more to go.");
+			player.message("Your partner's current assignment is: " + currentTask.getName() + "; only " + player.getSlayerManager().getCount() + " more to go.");
 			int combinedTasksCount = currentTaskCount + socialPlayer.getSlayerManager().getCurrentTaskCount();
-			player.getSocialManager().sendGameMessage("In total you both have killed " + combinedTasksCount + " out of " + maximumTaskCount + " of the task, only " + (maximumTaskCount - combinedTasksCount));
+			player.message("In total you both have killed " + combinedTasksCount + " out of " + maximumTaskCount + " of the task, only " + (maximumTaskCount - combinedTasksCount));
 		}
 	}
 
@@ -275,19 +275,19 @@ public class SlayerManager implements Serializable {
 
 	public void invitePlayer(Player otherPlayer) {
 		if (currentTask != null) {
-			player.getSocialManager().sendGameMessage("You need to complete your current task before starting a social slayer group.");
+			player.message("You need to complete your current task before starting a social slayer group.");
 			return;
 		} else if (otherPlayer == null || !otherPlayer.withinDistance(player, 7) || player.hasFinished() || otherPlayer.hasFinished()) {
-			player.getSocialManager().sendGameMessage("Your target is no-where to be found.");
+			player.message("Your target is no-where to be found.");
 			return;
 		} else if (otherPlayer.getSlayerManager().getCurrentTask() != null) {
-			player.getSocialManager().sendGameMessage("Your target needs to complete their current task before joining a social slayer group.");
+			player.message("Your target needs to complete their current task before joining a social slayer group.");
 			return;
 		} else if (otherPlayer.getSlayerManager().getSocialPlayer() != null) {
-			player.getSocialManager().sendGameMessage("Your target is already in a social slayer group.");
+			player.message("Your target is already in a social slayer group.");
 			return;
 		} else if (socialPlayer != null) {
-			player.getSocialManager().sendGameMessage("You are already in a social slayer group, leave it in order to start a new one.");
+			player.message("You are already in a social slayer group, leave it in order to start a new one.");
 			return;
 		}
 		if (otherPlayer.getTemporaryAttributtes().get("social_request") == player) {
@@ -296,7 +296,7 @@ public class SlayerManager implements Serializable {
 			return;
 		}
 		player.getTemporaryAttributtes().put("social_request", otherPlayer);
-		player.getSocialManager().sendGameMessage("Sending " + otherPlayer.getDisplayName() + " an invitation...");
+		player.message("Sending " + otherPlayer.getDisplayName() + " an invitation...");
 		otherPlayer.getSocialManager().sendMessage(117, "You have received an invitation to join " + player.getDisplayName() + "'s social slayer group.", player);
 	}
 
@@ -309,8 +309,8 @@ public class SlayerManager implements Serializable {
 
 			@Override
 			public void run() {
-				otherPlayer.getSocialManager().sendGameMessage("Your invitation has been declined.");
-				player.getSocialManager().sendGameMessage("You have declined the invitation.");
+				otherPlayer.message("Your invitation has been declined.");
+				player.message("You have declined the invitation.");
 			}
 		});
 	}
@@ -321,9 +321,9 @@ public class SlayerManager implements Serializable {
 			return;
 		if (initial) {
 			socialPlayer.getSlayerManager().createSocialGroup(false);
-			player.getSocialManager().sendGameMessage("You have created a social group.");
+			player.message("You have created a social group.");
 		} else
-			player.getSocialManager().sendGameMessage("You have just joined " + socialPlayer.getDisplayName() + "'s social group.");
+			player.message("You have just joined " + socialPlayer.getDisplayName() + "'s social group.");
 		this.socialPlayer = socialPlayer;
 	}
 
@@ -331,9 +331,9 @@ public class SlayerManager implements Serializable {
 		if (socialPlayer != null) {
 			if (initial) {
 				socialPlayer.getSlayerManager().resetSocialGroup(false);
-				player.getSocialManager().sendGameMessage("You have left the social slayer group.", true);
+				player.message("You have left the social slayer group.", true);
 			} else
-				player.getSocialManager().sendGameMessage("Your social slayer member has left your group.", true);
+				player.message("Your social slayer member has left your group.", true);
 			socialPlayer = null;
 		}
 	}

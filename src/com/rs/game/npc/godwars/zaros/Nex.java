@@ -311,7 +311,7 @@ public class Nex extends NPC {
 		for (Entity entity : getPossibleTargets()) {
 			if (entity instanceof Player) {
 				Player player = (Player) entity;
-				player.getSocialManager().sendGameMessage("The clouds around you dissapate.");
+				player.message("The clouds around you dissapate.");
 				player.getTemporaryAttributtes().remove("nex_infected");
 			}
 		}

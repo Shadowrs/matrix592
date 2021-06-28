@@ -109,9 +109,9 @@ public abstract class Familiar extends NPC implements Serializable {
 				owner.getSkills().drainSummoning(1);
 			trackDrain = !trackDrain;
 			if (ticks == 2)
-				owner.getSocialManager().sendGameMessage("You have 1 minute before your familiar vanishes.");
+				owner.message("You have 1 minute before your familiar vanishes.");
 			else if (ticks == 1)
-				owner.getSocialManager().sendGameMessage("You have 30 seconds before your familiar vanishes.");
+				owner.message("You have 30 seconds before your familiar vanishes.");
 			else if (ticks == 0) {
 				removeFamiliar();
 				dissmissFamiliar(false);
@@ -150,7 +150,7 @@ public abstract class Familiar extends NPC implements Serializable {
 			if (n.getId() == 14301 || n.getId() == 14302 || n.getId() == 14303 || n.getId() == 14304) {
 				Glacyte glacyte = (Glacyte) n;
 				if (glacyte.getGlacor().getTargetIndex() != -1 && getOwner().getIndex() != glacyte.getGlacor().getTargetIndex()) {
-					getOwner().getSocialManager().sendGameMessage("This isn't your target.");
+					getOwner().message("This isn't your target.");
 					return false;
 				}
 			}
@@ -160,16 +160,16 @@ public abstract class Familiar extends NPC implements Serializable {
 
 	public boolean renewFamiliar() {
 		if (ticks > 5) {
-			owner.getSocialManager().sendGameMessage("You need to have at least two minutes and fifty seconds remaining before you can renew your familiar.", true);
+			owner.message("You need to have at least two minutes and fifty seconds remaining before you can renew your familiar.", true);
 			return false;
 		} else if (!owner.getInventory().getItems().contains(new Item(pouch.getRealPouchId(), 1))) {
-			owner.getSocialManager().sendGameMessage("You need a " + ItemDefinitions.getItemDefinitions(pouch.getRealPouchId()).getName().toLowerCase() + " to renew your familiar's timer.");
+			owner.message("You need a " + ItemDefinitions.getItemDefinitions(pouch.getRealPouchId()).getName().toLowerCase() + " to renew your familiar's timer.");
 			return false;
 		}
 		resetTickets();
 		owner.getInventory().deleteItem(pouch.getRealPouchId(), 1);
 		call(true);
-		owner.getSocialManager().sendGameMessage("You use your remaining pouch to renew your familiar.");
+		owner.message("You use your remaining pouch to renew your familiar.");
 		return true;
 	}
 
@@ -286,7 +286,7 @@ public abstract class Familiar extends NPC implements Serializable {
 			return;
 		if (getAttackedBy() != null && getAttackedByDelay() > Utils.currentTimeMillis()) {
 			// TODO or something as this
-			owner.getSocialManager().sendGameMessage("You cant call your familiar while it under combat.");
+			owner.message("You cant call your familiar while it under combat.");
 			return;
 		}
 		call(false);
@@ -320,7 +320,7 @@ public abstract class Familiar extends NPC implements Serializable {
 			});
 		if (teleTile == null) {
 			if (!sentRequestMoveMessage) {
-				owner.getSocialManager().sendGameMessage("Theres not enough space for your familiar appear.");
+				owner.message("Theres not enough space for your familiar appear.");
 				sentRequestMoveMessage = true;
 			}
 			return;
@@ -370,7 +370,7 @@ public abstract class Familiar extends NPC implements Serializable {
 			public void run() {
 				if (loop == 0) {
 					setNextAnimation(new Animation(defs.getDeathEmote()));
-					owner.getSocialManager().sendGameMessage("Your familiar slowly begins to fade away..");
+					owner.message("Your familiar slowly begins to fade away..");
 				} else if (loop >= defs.getDeathDelay()) {
 					dissmissFamiliar(false);
 					stop();
@@ -427,7 +427,7 @@ public abstract class Familiar extends NPC implements Serializable {
 			owner.getTemporaryAttributtes().remove("FamiliarSpec");
 		else {
 			if (specialEnergy < getSpecialAmount()) {
-				owner.getSocialManager().sendGameMessage("Your special move bar is too low to use this scroll.");
+				owner.message("Your special move bar is too low to use this scroll.");
 				return;
 			}
 			owner.getTemporaryAttributtes().put("FamiliarSpec", Boolean.TRUE);
@@ -451,7 +451,7 @@ public abstract class Familiar extends NPC implements Serializable {
 		if (owner.getTemporaryAttributtes().remove("FamiliarSpec") != null) {
 			int scrollId = Summoning.getScrollId(pouch.getRealPouchId());
 			if (!owner.getInventory().containsItem(scrollId, 1)) {
-				owner.getSocialManager().sendGameMessage("You don't have the scrolls to use this move.");
+				owner.message("You don't have the scrolls to use this move.");
 				return false;
 			}
 			owner.getInventory().deleteItem(scrollId, 1);

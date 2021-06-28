@@ -114,18 +114,18 @@ public final class CastleWars {
 
 	public static void joinPortal(Player player, int team) {
 		if (player.getEquipment().getHatId() != -1 || player.getEquipment().getCapeId() != -1) {
-			player.getSocialManager().sendGameMessage("You cannot wear hats, capes or helms in the arena.");
+			player.message("You cannot wear hats, capes or helms in the arena.");
 			return;
 		}
 		if (player.containsOneItem(4037, 4039)) {
-			player.getSocialManager().sendGameMessage("You cannot take flags in the arena.");
+			player.message("You cannot take flags in the arena.");
 			return;
 		}
 		for (Item item : player.getInventory().getItems().getItems()) {
 			if (item == null)
 				continue;
 			if (Food.forId(item.getId()) != null) {
-				player.getSocialManager().sendGameMessage("You cannot bring food into the arena.");
+				player.message("You cannot bring food into the arena.");
 				return;
 			}
 		}
@@ -134,9 +134,9 @@ public final class CastleWars {
 			team = powerfullestTeam == ZAMORAK ? SARADOMIN : ZAMORAK;
 		} else if (team == powerfullestTeam) {
 			if (team == ZAMORAK)
-				player.getSocialManager().sendGameMessage("The Zamorak team is powerful enough already! Guthix demands balance - join the Saradomin team instead!");
+				player.message("The Zamorak team is powerful enough already! Guthix demands balance - join the Saradomin team instead!");
 			else if (team == SARADOMIN)
-				player.getSocialManager().sendGameMessage("The Saradomin team is powerful enough already! Guthix demands balance - join the Zamorak team instead!");
+				player.message("The Saradomin team is powerful enough already! Guthix demands balance - join the Zamorak team instead!");
 			return;
 		}
 		player.lock(2);
@@ -207,13 +207,13 @@ public final class CastleWars {
 						if (winner != -1) {
 							player.increaseFinishedCastleWars();
 							if (winner == -2) {
-								player.getSocialManager().sendGameMessage("You draw.");
+								player.message("You draw.");
 								player.getInventory().addItem(CW_TICKET, 1 * Settings.DROP_QUANTITY_RATE);
 							} else if (winner == i) {
-								player.getSocialManager().sendGameMessage("You won.");
+								player.message("You won.");
 								player.getInventory().addItem(CW_TICKET, 2 * Settings.DROP_QUANTITY_RATE);
 							} else
-								player.getSocialManager().sendGameMessage("You lost.");
+								player.message("You lost.");
 						}
 					}
 			}
@@ -403,7 +403,7 @@ public final class CastleWars {
 
 		public void addBarricade(int team, Player player) {
 			if (barricadesCount[team] >= 10) {
-				player.getSocialManager().sendGameMessage("Each team in the activity can have a maximum of 10 barricades set up.");
+				player.message("Each team in the activity can have a maximum of 10 barricades set up.");
 				return;
 			}
 			player.getInventory().deleteItem(new Item(4053, 1));
@@ -426,7 +426,7 @@ public final class CastleWars {
 
 			if (flagTeam != team && (player.getEquipment().getWeaponId() != -1 || player.getEquipment().getShieldId() != -1)) {
 				// TODO no space message
-				player.getSocialManager().sendGameMessage("You can't take flag while wearing something in your hands.");
+				player.message("You can't take flag while wearing something in your hands.");
 				return;
 			}
 			if (!droped) {
@@ -519,15 +519,15 @@ public final class CastleWars {
 		if (buy) {
 			int cost = ClientScriptMap.getMap(3059).getIntValue(id);
 			if (!player.getInventory().containsItem(CW_TICKET, cost)) {
-				player.getSocialManager().sendGameMessage("You don't have enough tickets to buy this item.");
+				player.message("You don't have enough tickets to buy this item.");
 				return;
 			}
 			if (!player.getInventory().addItem(new Item(id, 1)))
 				return;
 			player.getInventory().deleteItem(CW_TICKET, cost);
-			player.getSocialManager().sendGameMessage(ClientScriptMap.getMap(3061).getStringValue(id));
+			player.message(ClientScriptMap.getMap(3061).getStringValue(id));
 		} else
-			player.getSocialManager().sendGameMessage(ItemExamines.getExamine(new Item(id)));
+			player.message(ItemExamines.getExamine(new Item(id)));
 	}
 
 	public static boolean handleObjects(Player player, int objectId) {

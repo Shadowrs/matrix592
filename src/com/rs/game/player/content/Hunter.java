@@ -363,20 +363,20 @@ public class Hunter {
 			return;
 		final boolean isImpling = name.toLowerCase().contains("impling");
 		if (!player.getInventory().containsItem(isImpling ? 11260 : 10012, 1)) {
-			player.getSocialManager().sendGameMessage("You don't have an empty " + (isImpling ? "impling jar" : "butterfly jar") + " in which to keep " + (isImpling ? "an impling" : "a butterfly") + ".");
+			player.message("You don't have an empty " + (isImpling ? "impling jar" : "butterfly jar") + " in which to keep " + (isImpling ? "an impling" : "a butterfly") + ".");
 			return;
 		}
 		int weaponId = player.getEquipment().getWeaponId();
 		if (weaponId != 11259 && weaponId != 10010 && isImpling) {
-			player.getSocialManager().sendGameMessage("You need to have a butterfly net equipped in order to capture an impling.");
+			player.message("You need to have a butterfly net equipped in order to capture an impling.");
 			return;
 		}
 		if (player.getSkills().getLevel(Skills.HUNTER) < instance.getLevel()) {
-			player.getSocialManager().sendGameMessage("You need a hunter level of " + instance.getLevel() + " to capture a " + name.toLowerCase() + ".");
+			player.message("You need a hunter level of " + instance.getLevel() + " to capture a " + name.toLowerCase() + ".");
 			return;
 		}
 		player.lock(2);
-		player.getSocialManager().sendGameMessage("You swing your net...");
+		player.message("You swing your net...");
 		player.setNextAnimation(CAPTURE_ANIMATION);
 		WorldTasksManager.schedule(new WorldTask() {
 			@Override
@@ -396,7 +396,7 @@ public class Hunter {
 						player.getInventory().deleteItem(new Item(11260, 1));
 						player.getSkills().addXp(Skills.HUNTER, instance.getRsExperience());
 						npc.setRespawnTask(); // sets loc andfinishes auto
-						player.getSocialManager().sendGameMessage("You manage to catch the " + name.toLowerCase() + " and squeeze it into a jar.");
+						player.message("You manage to catch the " + name.toLowerCase() + " and squeeze it into a jar.");
 						return;
 					}
 				} else {
@@ -416,7 +416,7 @@ public class Hunter {
 							}
 						}, 2);
 					}
-					player.getSocialManager().sendGameMessage("...you stumble and miss the " + name.toLowerCase());
+					player.message("...you stumble and miss the " + name.toLowerCase());
 				}
 			}
 		});
@@ -455,7 +455,7 @@ public class Hunter {
 			instance.effect(player);
 		if (Utils.getRandom(4) == 0) {
 			player.getInventory().deleteItem(new Item(isImpling ? 11260 : 11));
-			player.getSocialManager().sendGameMessage("You press too hard on the jar and the glass shatters in your hands.");
+			player.message("You press too hard on the jar and the glass shatters in your hands.");
 			player.applyHit(new Hit(player, 10, HitLook.REGULAR_DAMAGE));
 		}
 	}
@@ -464,7 +464,7 @@ public class Hunter {
 
 	public static void createLoggedObject(Player player, WorldObject object, boolean kebbits) {
 		if (!player.getInventory().containsOneItem(requiredLogs)) {
-			player.getSocialManager().sendGameMessage("You need to have logs to create this trap.");
+			player.message("You need to have logs to create this trap.");
 			return;
 		}
 		player.lock(3);

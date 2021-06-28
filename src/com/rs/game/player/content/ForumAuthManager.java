@@ -15,14 +15,14 @@ public class ForumAuthManager {
 
 	public static void registerAuth(final Player player, final String username, final String password) {
 		if (!Settings.HOSTED) {
-			player.getSocialManager().sendGameMessage("Can't auth \"" + username + "\" \"" + password + "\", running in local mode.");
+			player.message("Can't auth \"" + username + "\" \"" + password + "\", running in local mode.");
 			return;
 		}
 		if (player.getForumAuthID() != -1) {
-			player.getSocialManager().sendGameMessage("Your forum account is already authorised.");
+			player.message("Your forum account is already authorised.");
 			return;
 		}
-		player.getSocialManager().sendGameMessage("Connecting to auth server...");
+		player.message("Connecting to auth server...");
 		player.lock();
 		CoresManager.slowExecutor.schedule(new Runnable() {
 			@Override
@@ -45,19 +45,19 @@ public class ForumAuthManager {
 						String ranks = spl[2];
 						player.setForumAuthID(userID);
 						player.syncRanksFromForumGroups(ranks);
-						player.getSocialManager().sendGameMessage("Forum account " + username.toString() + " has been authorized to your game account sucessfully.");
+						player.message("Forum account " + username.toString() + " has been authorized to your game account sucessfully.");
 					} else if (response.equals("error")) {
 						throw new RuntimeException();
 					} else if (response.equals("reg-alreadyauthed")) {
-						player.getSocialManager().sendGameMessage("That account is already authorised by someone else.");
+						player.message("That account is already authorised by someone else.");
 					} else if (response.equals("reg-wronginfo")) {
-						player.getSocialManager().sendGameMessage("You have entered incorrect username or password.");
+						player.message("You have entered incorrect username or password.");
 					} else {
-						player.getSocialManager().sendGameMessage("Unexpected server response.");
+						player.message("Unexpected server response.");
 					}
 				} catch (Throwable t) {
 					t.printStackTrace();
-					player.getSocialManager().sendGameMessage("An error occured, please try again later.");
+					player.message("An error occured, please try again later.");
 				}
 				player.unlock();
 			}
@@ -84,15 +84,15 @@ public class ForumAuthManager {
 							} else if (response.equals("notauthed") || response.equals("gusermismatch")) {
 								player.setForumAuthID(-1);
 								player.syncRanksFromForumGroups(new int[] { 2 }); // standart users.
-								player.getSocialManager().sendGameMessage("Your forum account was unauthorised automatically.");
+								player.message("Your forum account was unauthorised automatically.");
 							} else {
-								player.getSocialManager().sendGameMessage("An unknown response was received while trying to verify your forum account auth key.");
+								player.message("An unknown response was received while trying to verify your forum account auth key.");
 							}
 							reader.close();
 
 						} catch (Throwable t) {
 							t.printStackTrace();
-							player.getSocialManager().sendGameMessage("An error occured while trying to verify your forum account auth key.");
+							player.message("An error occured while trying to verify your forum account auth key.");
 						}
 					}
 				}, 0, TimeUnit.MILLISECONDS);
@@ -105,10 +105,10 @@ public class ForumAuthManager {
 				if (extreme)
 					player.setExtremeDonator(true);
 				// temp fix so ppl who don't have forum donator can sync
-				player.getSocialManager().sendGameMessage("You currently don't have have forum account authorised. Talk to closest oracle of dawn to authorize it.");
+				player.message("You currently don't have have forum account authorised. Talk to closest oracle of dawn to authorize it.");
 			}
 		} else {
-			player.getSocialManager().sendGameMessage("Auth cycle skipped: running in nonhost mode.");
+			player.message("Auth cycle skipped: running in nonhost mode.");
 		}
 	}
 

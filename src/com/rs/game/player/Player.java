@@ -1318,10 +1318,10 @@ public class Player extends Entity {
 							} else if (p2.prayer.usingPrayer(1, 1)) { // sap att
 								if (Utils.getRandom(4) == 0) {
 									if (p2.prayer.reachedMax(0)) {
-										p2.getSocialManager().sendGameMessage("Your opponent has been weakened so much that your sap curse has no effect.", true);
+										p2.message("Your opponent has been weakened so much that your sap curse has no effect.", true);
 									} else {
 										p2.prayer.increaseLeechBonus(0);
-										p2.getSocialManager().sendGameMessage("Your curse drains Attack from the enemy, boosting your Attack.", true);
+										p2.message("Your curse drains Attack from the enemy, boosting your Attack.", true);
 									}
 									p2.setNextAnimation(new Animation(12569));
 									p2.setNextGraphics(new Graphics(2214));
@@ -1339,10 +1339,10 @@ public class Player extends Entity {
 								if (p2.prayer.usingPrayer(1, 10)) {
 									if (Utils.getRandom(7) == 0) {
 										if (p2.prayer.reachedMax(3)) {
-											p2.getSocialManager().sendGameMessage("Your opponent has been weakened so much that your leech curse has no effect.", true);
+											p2.message("Your opponent has been weakened so much that your leech curse has no effect.", true);
 										} else {
 											p2.prayer.increaseLeechBonus(3);
-											p2.getSocialManager().sendGameMessage("Your curse drains Attack from the enemy, boosting your Attack.", true);
+											p2.message("Your curse drains Attack from the enemy, boosting your Attack.", true);
 										}
 										p2.setNextAnimation(new Animation(12575));
 										p2.prayer.setBoostedLeech(true);
@@ -1359,10 +1359,10 @@ public class Player extends Entity {
 								if (p2.prayer.usingPrayer(1, 14)) {
 									if (Utils.getRandom(7) == 0) {
 										if (p2.prayer.reachedMax(7)) {
-											p2.getSocialManager().sendGameMessage("Your opponent has been weakened so much that your leech curse has no effect.", true);
+											p2.message("Your opponent has been weakened so much that your leech curse has no effect.", true);
 										} else {
 											p2.prayer.increaseLeechBonus(7);
-											p2.getSocialManager().sendGameMessage("Your curse drains Strength from the enemy, boosting your Strength.", true);
+											p2.message("Your curse drains Strength from the enemy, boosting your Strength.", true);
 										}
 										p2.setNextAnimation(new Animation(12575));
 										p2.prayer.setBoostedLeech(true);
@@ -1383,10 +1383,10 @@ public class Player extends Entity {
 							if (p2.prayer.usingPrayer(1, 2)) { // sap range
 								if (Utils.getRandom(4) == 0) {
 									if (p2.prayer.reachedMax(1)) {
-										p2.getSocialManager().sendGameMessage("Your opponent has been weakened so much that your sap curse has no effect.", true);
+										p2.message("Your opponent has been weakened so much that your sap curse has no effect.", true);
 									} else {
 										p2.prayer.increaseLeechBonus(1);
-										p2.getSocialManager().sendGameMessage("Your curse drains Range from the enemy, boosting your Range.", true);
+										p2.message("Your curse drains Range from the enemy, boosting your Range.", true);
 									}
 									p2.setNextAnimation(new Animation(12569));
 									p2.setNextGraphics(new Graphics(2217));
@@ -1403,10 +1403,10 @@ public class Player extends Entity {
 							} else if (p2.prayer.usingPrayer(1, 11)) {
 								if (Utils.getRandom(7) == 0) {
 									if (p2.prayer.reachedMax(4)) {
-										p2.getSocialManager().sendGameMessage("Your opponent has been weakened so much that your leech curse has no effect.", true);
+										p2.message("Your opponent has been weakened so much that your leech curse has no effect.", true);
 									} else {
 										p2.prayer.increaseLeechBonus(4);
-										p2.getSocialManager().sendGameMessage("Your curse drains Range from the enemy, boosting your Range.", true);
+										p2.message("Your curse drains Range from the enemy, boosting your Range.", true);
 									}
 									p2.setNextAnimation(new Animation(12575));
 									p2.prayer.setBoostedLeech(true);
@@ -1425,10 +1425,10 @@ public class Player extends Entity {
 							if (p2.prayer.usingPrayer(1, 3)) { // sap mage
 								if (Utils.getRandom(4) == 0) {
 									if (p2.prayer.reachedMax(2)) {
-										p2.getSocialManager().sendGameMessage("Your opponent has been weakened so much that your sap curse has no effect.", true);
+										p2.message("Your opponent has been weakened so much that your sap curse has no effect.", true);
 									} else {
 										p2.prayer.increaseLeechBonus(2);
-										p2.getSocialManager().sendGameMessage("Your curse drains Magic from the enemy, boosting your Magic.", true);
+										p2.message("Your curse drains Magic from the enemy, boosting your Magic.", true);
 									}
 									p2.setNextAnimation(new Animation(12569));
 									p2.setNextGraphics(new Graphics(2220));
@@ -1445,10 +1445,10 @@ public class Player extends Entity {
 							} else if (p2.prayer.usingPrayer(1, 12)) {
 								if (Utils.getRandom(7) == 0) {
 									if (p2.prayer.reachedMax(5)) {
-										p2.getSocialManager().sendGameMessage("Your opponent has been weakened so much that your leech curse has no effect.", true);
+										p2.message("Your opponent has been weakened so much that your leech curse has no effect.", true);
 									} else {
 										p2.prayer.increaseLeechBonus(5);
-										p2.getSocialManager().sendGameMessage("Your curse drains Magic from the enemy, boosting your Magic.", true);
+										p2.message("Your curse drains Magic from the enemy, boosting your Magic.", true);
 									}
 									p2.setNextAnimation(new Animation(12575));
 									p2.prayer.setBoostedLeech(true);
@@ -1469,10 +1469,10 @@ public class Player extends Entity {
 						if (p2.prayer.usingPrayer(1, 13)) { // leech defence
 							if (Utils.getRandom(10) == 0) {
 								if (p2.prayer.reachedMax(6)) {
-									p2.getSocialManager().sendGameMessage("Your opponent has been weakened so much that your leech curse has no effect.", true);
+									p2.message("Your opponent has been weakened so much that your leech curse has no effect.", true);
 								} else {
 									p2.prayer.increaseLeechBonus(6);
-									p2.getSocialManager().sendGameMessage("Your curse drains Defence from the enemy, boosting your Defence.", true);
+									p2.message("Your curse drains Defence from the enemy, boosting your Defence.", true);
 								}
 								p2.setNextAnimation(new Animation(12575));
 								p2.prayer.setBoostedLeech(true);
@@ -1490,7 +1490,7 @@ public class Player extends Entity {
 						if (p2.prayer.usingPrayer(1, 15)) {
 							if (Utils.getRandom(10) == 0) {
 								if (getRunEnergy() <= 0) {
-									p2.getSocialManager().sendGameMessage("Your opponent has been weakened so much that your leech curse has no effect.", true);
+									p2.message("Your opponent has been weakened so much that your leech curse has no effect.", true);
 								} else {
 									p2.setRunEnergy(p2.getRunEnergy() > 90 ? 100 : p2.getRunEnergy() + 10);
 									setRunEnergy(p2.getRunEnergy() > 10 ? getRunEnergy() - 10 : 0);
@@ -1511,7 +1511,7 @@ public class Player extends Entity {
 						if (p2.prayer.usingPrayer(1, 16)) {
 							if (Utils.getRandom(10) == 0) {
 								if (combatDefinitions.getSpecialAttackPercentage() <= 0) {
-									p2.getSocialManager().sendGameMessage("Your opponent has been weakened so much that your leech curse has no effect.", true);
+									p2.message("Your opponent has been weakened so much that your leech curse has no effect.", true);
 								} else {
 									p2.combatDefinitions.restoreSpecialAttack();
 									combatDefinitions.desecreaseSpecialAttack(10);
@@ -1535,7 +1535,7 @@ public class Player extends Entity {
 								p2.setNextGraphics(new Graphics(2223));
 								p2.prayer.setBoostedLeech(true);
 								if (combatDefinitions.getSpecialAttackPercentage() <= 0) {
-									p2.getSocialManager().sendGameMessage("Your opponent has been weakened so much that your sap curse has no effect.", true);
+									p2.message("Your opponent has been weakened so much that your sap curse has no effect.", true);
 								} else {
 									combatDefinitions.desecreaseSpecialAttack(10);
 								}

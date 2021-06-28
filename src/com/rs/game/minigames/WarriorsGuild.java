@@ -203,9 +203,9 @@ public class WarriorsGuild extends Controller {
 							player.getSkills().addXp(Skills.DEFENCE, 15);
 							player.setWarriorPoints(DEFENCE, 5);
 							player.setNextAnimation(DEFENCIVE_ANIMATIONS[timer.projectileType]);
-							player.getSocialManager().sendGameMessage("You deflect the incomming attack.");
+							player.message("You deflect the incomming attack.");
 						} else {
-							player.getSocialManager().sendGameMessage("You fail to deflect the incomming attack.");
+							player.message("You fail to deflect the incomming attack.");
 							player.applyHit(new Hit(player, Utils.random(10, 50), HitLook.REGULAR_DAMAGE));
 						}
 					}
@@ -251,7 +251,7 @@ public class WarriorsGuild extends Controller {
 	public boolean processObjectClick1(WorldObject object) {
 		if (object.getId() >= 15624 && object.getId() <= 15630) {
 			if (lastDummy == timer.lastDummy) {
-				player.getSocialManager().sendGameMessage("You have already tagged a dummy.");
+				player.message("You have already tagged a dummy.");
 				return false;
 			}
 			submitDummyHit(object);
@@ -333,7 +333,7 @@ public class WarriorsGuild extends Controller {
 	public boolean handleItemOnObject(final WorldObject object, Item item) {
 		if (object.getId() == 15621) {
 			if (player.getTemporaryAttributtes().get("animator_spawned") != null) {
-				player.getSocialManager().sendGameMessage("You are already in combat with an animation.");
+				player.message("You are already in combat with an animation.");
 				return false;
 			}
 			int realIndex = getIndex(item.getId());
@@ -387,7 +387,7 @@ public class WarriorsGuild extends Controller {
 				if (ARMOUR_SETS[i][j] == checkedId) {
 					for (int k = 0; k < 3; k++) {
 						if (!player.getInventory().containsItem(ARMOUR_SETS[i][k], 1)) {
-							player.getSocialManager().sendGameMessage("You need a full set of " + ARMOUR_TYPE[i] + " to use the animator.");
+							player.message("You need a full set of " + ARMOUR_TYPE[i] + " to use the animator.");
 							return -1;
 						}
 					}
@@ -413,14 +413,14 @@ public class WarriorsGuild extends Controller {
 					player.lock(2);
 					player.getSkills().addXp(Skills.ATTACK, 15);
 					player.setWarriorPoints(ATTACK, 5);
-					player.getSocialManager().sendGameMessage("You whack the dummy sucessfully!");
+					player.message("You whack the dummy sucessfully!");
 					lastDummy = timer.lastDummy;
 				} else {
 					player.lock(5);
 					player.applyHit(new Hit(player, 10, HitLook.REGULAR_DAMAGE));
 					player.setNextAnimation(new Animation(424));
 					player.setNextGraphics(new Graphics(80, 5, 60));
-					player.getSocialManager().sendGameMessage("You whack the dummy whistle using the wrong attack style.");
+					player.message("You whack the dummy whistle using the wrong attack style.");
 				}
 			}
 		});
@@ -482,7 +482,7 @@ public class WarriorsGuild extends Controller {
 			if (componentId == 44) {
 				boolean failure = false;
 				if (cyclopseOption == -1) {
-					player.getSocialManager().sendGameMessage("You must select an option before proceeding to the cyclopes room.");
+					player.message("You must select an option before proceeding to the cyclopes room.");
 					return false;
 				} else if (cyclopseOption == ALL) {
 					for (int i = 0; i < player.getWarriorPoints().length; i++) {
@@ -496,7 +496,7 @@ public class WarriorsGuild extends Controller {
 						failure = true;
 				}
 				if (failure) {
-					player.getSocialManager().sendGameMessage("You don't have enough points to complete this option.");
+					player.message("You don't have enough points to complete this option.");
 					return false;
 				}
 				for (int i = 0; i < 2; i++) {
@@ -513,17 +513,17 @@ public class WarriorsGuild extends Controller {
 			}
 		} else if (interfaceId == 387 && kegCount >= 1) {
 			if (componentId == 6) {
-				player.getSocialManager().sendGameMessage("You can't remove the kegs off your head.");
+				player.message("You can't remove the kegs off your head.");
 				return false;
 			}
 		} else if (interfaceId == 750 && kegCount >= 1) {
 			if (componentId == 4) {
-				player.getSocialManager().sendGameMessage("You cannot do this action while balancing the kegs on your head.");
+				player.message("You cannot do this action while balancing the kegs on your head.");
 				return false;
 			}
 		} else if (interfaceId == 271 || interfaceId == 749 && componentId == 4) {
 			if (player.getPrayer().isAncientCurses()) {
-				player.getSocialManager().sendGameMessage("Harllaak frowns upon using curses in the Warrior's Guild.");
+				player.message("Harllaak frowns upon using curses in the Warrior's Guild.");
 				return false;
 			}
 		}
@@ -603,11 +603,11 @@ public class WarriorsGuild extends Controller {
 		player.lock(7);
 		player.setNextFaceWorldTile(is18LB ? SHOTPUT_FACE_18LB : SHOTPUT_FACE_22LB);
 		if (stage == 0 || stage == 2)
-			player.getSocialManager().sendGameMessage("You take a deep breath and prepare yourself.");
+			player.message("You take a deep breath and prepare yourself.");
 		else if (stage == 1)
-			player.getSocialManager().sendGameMessage("You take a step and throw the shot as hard as you can.");
+			player.message("You take a step and throw the shot as hard as you can.");
 		if ((player.getSkills().getLevel(Skills.STRENGTH) / 100) > Math.random()) {
-			player.getSocialManager().sendGameMessage("You fumble and drop the shot onto your toe. Ow!");
+			player.message("You fumble and drop the shot onto your toe. Ow!");
 			player.applyHit(new Hit(player, 10, HitLook.REGULAR_DAMAGE));
 			player.unlock();
 			return;
@@ -629,11 +629,11 @@ public class WarriorsGuild extends Controller {
 				} else if (ticks >= ((distance / 2) + 5)) {
 					int random = Utils.getRandom(3);
 					if (random == 0)
-						player.getSocialManager().sendGameMessage("The shot is perfectly thrown and gently drops to the floor.");
+						player.message("The shot is perfectly thrown and gently drops to the floor.");
 					else if (random == 1)
-						player.getSocialManager().sendGameMessage("The shot drops to the floor.");
+						player.message("The shot drops to the floor.");
 					else
-						player.getSocialManager().sendGameMessage("The shot falls from the air like a brick, landing with a sickening thud.");
+						player.message("The shot falls from the air like a brick, landing with a sickening thud.");
 					int base = random == 0 ? distance * 7 : random == 1 ? distance * 4 : distance;
 					player.setWarriorPoints(STRENGTH, base + Utils.random(2));
 					player.getTemporaryAttributtes().remove("thrown_delay");
@@ -667,7 +667,7 @@ public class WarriorsGuild extends Controller {
 		player.setNextGraphics(new Graphics(689 - kegCount));
 		player.lock(2);
 		player.applyHit(new Hit(null, Utils.random(20, 40), HitLook.REGULAR_DAMAGE));
-		player.getSocialManager().sendGameMessage("You lose balance and the kegs fall onto your head.");
+		player.message("You lose balance and the kegs fall onto your head.");
 		player.setNextForceTalk(new ForceTalk("Ouch!"));
 		if (kegCount != 1) {
 			player.getSkills().addXp(Skills.STRENGTH, 10 * kegCount);

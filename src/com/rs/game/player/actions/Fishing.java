@@ -179,7 +179,7 @@ public class Fishing extends Action {
 					multipleCatch = true;
 			}
 		}
-		player.getSocialManager().sendGameMessage("You attempt to capture a fish...", true);
+		player.message("You attempt to capture a fish...", true);
 		setActionDelay(player, getFishingDelay(player));
 		return true;
 	}
@@ -233,7 +233,7 @@ public class Fishing extends Action {
 
 	private void addFish(Player player) {
 		Item fish = new Item(spot.getFish()[fishId].getId(), multipleCatch ? 2 : 1);
-		player.getSocialManager().sendGameMessage(getMessage(fish), true);
+		player.message(getMessage(fish), true);
 		player.getInventory().deleteItem(spot.getBait(), 1);
 		double totalXp = spot.getFish()[fishId].getXp();
 		if (hasFishingSuit(player))
@@ -272,11 +272,11 @@ public class Fishing extends Action {
 			return false;
 		}
 		if (!player.getInventory().containsOneItem(spot.getTool())) {
-			player.getSocialManager().sendGameMessage("You need a " + new Item(spot.getTool()).getDefinitions().getName().toLowerCase() + " to fish here.");
+			player.message("You need a " + new Item(spot.getTool()).getDefinitions().getName().toLowerCase() + " to fish here.");
 			return false;
 		}
 		if (spot.getBait() != -1 && !player.getInventory().containsOneItem(spot.getBait())) {
-			player.getSocialManager().sendGameMessage("You don't have " + new Item(spot.getBait()).getDefinitions().getName().toLowerCase() + " to fish here.");
+			player.message("You don't have " + new Item(spot.getBait()).getDefinitions().getName().toLowerCase() + " to fish here.");
 			return false;
 		}
 		if (!player.getInventory().hasFreeSlots()) {

@@ -268,7 +268,7 @@ public class NexCombat extends CombatScript {
 							}
 							remove = true;
 							if (player.getX() == tile.getX() && player.getY() == tile.getY()) {
-								player.getSocialManager().sendGameMessage("The centre of the ice prison freezes you to the bone!");
+								player.message("The centre of the ice prison freezes you to the bone!");
 								player.resetWalkSteps();
 								player.applyHit(new Hit(nex, Utils.random(800), HitLook.REGULAR_DAMAGE));
 							}
@@ -308,8 +308,8 @@ public class NexCombat extends CombatScript {
 								if (player.getX() == tile.getX() && player.getY() == tile.getY()) {
 									player.setNextAnimation(new Animation(1113));
 									player.applyHit(new Hit(nex, Utils.random(350), HitLook.REGULAR_DAMAGE));
-									player.getSocialManager().sendGameMessage("The icicle spikes you to the spot!");
-									player.getSocialManager().sendGameMessage("You've been injured and can't use " + (player.getPrayer().isAncientCurses() ? "deflect curses" : "protection prayers ") + "!");
+									player.message("The icicle spikes you to the spot!");
+									player.message("You've been injured and can't use " + (player.getPrayer().isAncientCurses() ? "deflect curses" : "protection prayers ") + "!");
 									player.resetWalkSteps();
 									player.getPrayer().closeAllPrayers();
 									player.setPrayerDelay(7000);
@@ -360,13 +360,13 @@ public class NexCombat extends CombatScript {
 		if (target instanceof Player) {
 			final Player player = (Player) target;
 			player.getAppearence().setGlowRed(true);
-			player.getSocialManager().sendGameMessage("<col=480000>Nex has marked you as a sacrifice, RUN!");
+			player.message("<col=480000>Nex has marked you as a sacrifice, RUN!");
 			WorldTasksManager.schedule(new WorldTask() {
 				@Override
 				public void run() {
 					player.getAppearence().setGlowRed(false);
 					if (player.withinDistance(nex, 3)) {
-						player.getSocialManager().sendGameMessage("You didn't make it far enough in time - Nex fires a punishing attack!");
+						player.message("You didn't make it far enough in time - Nex fires a punishing attack!");
 						nex.setNextAnimation(new Animation(17414));
 						nex.setNextGraphics(new Graphics(3375));
 						for (final Entity possibleTargets : nex.getPossibleTargets()) {
@@ -636,7 +636,7 @@ public class NexCombat extends CombatScript {
 						@Override
 						public void run() {
 							player.setNextWorldTile(nex);
-							player.getSocialManager().sendGameMessage("You've been injured and you cannot use " + (player.getPrayer().isAncientCurses() ? "protective curses" : "protective prayers") + "!");
+							player.message("You've been injured and you cannot use " + (player.getPrayer().isAncientCurses() ? "protective curses" : "protective prayers") + "!");
 							player.setPrayerDelay(Utils.getRandom(20000) + 5);
 							player.resetWalkSteps();
 							int delay = 5 + Utils.random(5);

@@ -206,7 +206,7 @@ public class EconomyManager {
 						player.getPackets().sendOpenURL(Settings.DONATE_LINK);
 					else if (optionId == 7) { // Ticket
 						if (player.getMuted() > Utils.currentTimeMillis()) {
-							player.getSocialManager().sendGameMessage("You are muted. Please recheck in 48 hours.");
+							player.message("You are muted. Please recheck in 48 hours.");
 							return;
 						}
 						end();
@@ -245,21 +245,21 @@ public class EconomyManager {
 						setManagementPage();
 					} else if (optionId == 7) { // set yell color
 						if (!player.isExtremeDonator()) {
-							player.getSocialManager().sendGameMessage("This feature is only available to extreme donators!");
+							player.message("This feature is only available to extreme donators!");
 							return;
 						}
 						player.getTemporaryAttributtes().put("yellcolor", Boolean.TRUE);
 						player.getPackets().sendInputLongTextScript("Please enter the yell color in HEX format.");
 					} else if (optionId == 8) { // set baby troll name
 						if (!player.isExtremeDonator()) {
-							player.getSocialManager().sendGameMessage("This feature is only available to extreme donators!");
+							player.message("This feature is only available to extreme donators!");
 							return;
 						}
 						player.getTemporaryAttributtes().put("change_troll_name", true);
 						player.getPackets().sendInputLongTextScript("Enter your baby troll name (type none for default):");
 					} else if (optionId == 9) { // redesign character
 						if (!player.isExtremeDonator()) {
-							player.getSocialManager().sendGameMessage("This feature is only available to extreme donators!");
+							player.message("This feature is only available to extreme donators!");
 							return;
 						}
 						end();
@@ -270,7 +270,7 @@ public class EconomyManager {
 				} else if (pageId == 3) { // teleports
 					if (optionId == 0) { // current event
 						if (!eventHappening) {
-							player.getSocialManager().sendGameMessage("No official event is currently happening.");
+							player.message("No official event is currently happening.");
 						} else {
 							Magic.sendNormalTeleportSpell(player, 0, 0, eventTile);
 						}
@@ -311,13 +311,13 @@ public class EconomyManager {
 				} else if (pageId == 10) { // display name management
 					if (optionId == 0) { // set display name
 						if (!player.isDonator()) {
-							player.getSocialManager().sendGameMessage("This feature is only available to donators!");
+							player.message("This feature is only available to donators!");
 							return;
 						}
 						player.getTemporaryAttributtes().put("setdisplay", Boolean.TRUE);
 						player.getPackets().sendInputLongTextScript("Enter display name you want to be set:");
 					} else if (optionId == 1) { // remove display name
-						player.getSocialManager().sendGameMessage(DisplayNames.removeDisplayName(player) ? "Your display name was successfully removed." : "You don't have display name to remove.");
+						player.message(DisplayNames.removeDisplayName(player) ? "Your display name was successfully removed." : "You don't have display name to remove.");
 					} else if (optionId == 2) { // back
 						setManagementPage();
 					}

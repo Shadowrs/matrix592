@@ -22,28 +22,28 @@ public class Summoning {
 
 	public static void spawnFamiliar(Player player, Pouch pouch) {
 		if (player.getFamiliar() != null || player.getPet() != null) {
-			player.getSocialManager().sendGameMessage("You already have a follower.");
+			player.message("You already have a follower.");
 			return;
 		}
 		if (!player.getControlerManager().canSummonFamiliar() || player.getSkills().getLevel(Skills.SUMMONING) < pouch.getSummoningCost())
 			return;
 		int levelReq = getRequiredLevel(pouch.getRealPouchId());
 		if (player.getSkills().getLevelForXp(Skills.SUMMONING) < levelReq) {
-			player.getSocialManager().sendGameMessage("You need a summoning level of " + levelReq + " in order to use this pouch.");
+			player.message("You need a summoning level of " + levelReq + " in order to use this pouch.");
 			return;
 		}
 		if (player.getCurrentFriendChat() != null) {
 			ClanWars war = player.getCurrentFriendChat().getClanWars();
 			if (war != null) {
 				if (war.get(Rules.NO_FAMILIARS) && (war.getFirstPlayers().contains(player) || war.getSecondPlayers().contains(player))) {
-					player.getSocialManager().sendGameMessage("You can't summon familiars during this war.");
+					player.message("You can't summon familiars during this war.");
 					return;
 				}
 			}
 		}
 		final Familiar npc = createFamiliar(player, pouch);
 		if (npc == null) {
-			player.getSocialManager().sendGameMessage("This familiar is not added yet.");
+			player.message("This familiar is not added yet.");
 			return;
 		}
 		player.getInventory().deleteItem(pouch.getRealPouchId(), 1);
@@ -341,10 +341,10 @@ public class Summoning {
 					sendItemList(player, infusingScroll, creationCount, slotId);
 					break itemCount;
 				} else if (!player.getInventory().hasFreeSlots()) {
-					player.getSocialManager().sendGameMessage("You currently have no space in your inventory.");
+					player.message("You currently have no space in your inventory.");
 					break itemCount;
 				} else if (player.getSkills().getLevelForXp(Skills.SUMMONING) < level) {
-					player.getSocialManager().sendGameMessage("You need a summoning level of " + level + " to create this pouch.");
+					player.message("You need a summoning level of " + level + " to create this pouch.");
 					break itemCount;
 				}
 				hasRequirements = true;
@@ -376,8 +376,8 @@ public class Summoning {
 		if (pouch == null)
 			return;
 		if (infusingScroll)
-			player.getSocialManager().sendGameMessage("This scroll requires 1 " + ItemDefinitions.getItemDefinitions(pouch.getRealPouchId()).name.toLowerCase() + ".");
+			player.message("This scroll requires 1 " + ItemDefinitions.getItemDefinitions(pouch.getRealPouchId()).name.toLowerCase() + ".");
 		else
-			player.getSocialManager().sendGameMessage(getRequirementsMessage(pouch.getRealPouchId()));
+			player.message(getRequirementsMessage(pouch.getRealPouchId()));
 	}
 }

@@ -554,7 +554,7 @@ public class Slayer {
 		for (final WorldObject object : objects) {
 			if (!object.withinDistance(player, 3) || object.getId() != 22545)
 				continue;
-			player.getSocialManager().sendGameMessage("The bell re-sounds loudly throughout the cavern.");
+			player.message("The bell re-sounds loudly throughout the cavern.");
 			WorldTasksManager.schedule(new WorldTask() {
 
 				@Override

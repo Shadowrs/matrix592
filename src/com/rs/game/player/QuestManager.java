@@ -88,7 +88,7 @@ public final class QuestManager implements Serializable {
 		completedQuests.add(quest);
 		questStages.remove(quest);
 		sendCompletedQuestsData(quest);
-		player.getSocialManager().sendGameMessage("<col=ff0000>You have completed quest: " + Utils.formatPlayerNameForDisplay(quest.toString()) + ".");
+		player.message("<col=ff0000>You have completed quest: " + Utils.formatPlayerNameForDisplay(quest.toString()) + ".");
 		// message completed quest
 	}
 

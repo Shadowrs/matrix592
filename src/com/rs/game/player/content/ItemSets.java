@@ -51,28 +51,28 @@ public class ItemSets {
 			return;
 		Sets set = getSet(id);
 		if (set == null) {
-			player.getSocialManager().sendGameMessage("This isn't a set item, you can't break it up into component parts.");
+			player.message("This isn't a set item, you can't break it up into component parts.");
 			return;
 		}
 		if (player.getInventory().getFreeSlots() < set.items.length - 1) {
-			player.getSocialManager().sendGameMessage("You don't have enough inventory space for the component parts.");
+			player.message("You don't have enough inventory space for the component parts.");
 			return;
 		}
 		player.getInventory().deleteItem(slot, item);
 		for (int itemId : set.items)
 			player.getInventory().addItem(itemId, 1);
-		player.getSocialManager().sendGameMessage("You sucessfully traded your item components for a set!");
+		player.message("You sucessfully traded your item components for a set!");
 	}
 
 	public static void exchangeSet(Player player, int id) {
 		Sets set = getSet(id);
 		if (set == null) {
-			player.getSocialManager().sendGameMessage("This isn't a set item.");
+			player.message("This isn't a set item.");
 			return;
 		}
 		for (int itemId : set.items) {
 			if (player.getRights() != 2 && !player.getInventory().containsItem(itemId, 1)) {
-				player.getSocialManager().sendGameMessage("You don't have the parts to make up this set.");
+				player.message("You don't have the parts to make up this set.");
 				return;
 			}
 		}
@@ -84,22 +84,22 @@ public class ItemSets {
 	public static void examineSet(Player player, int id) {
 		Sets set = getSet(id);
 		if (set == null) {
-			player.getSocialManager().sendGameMessage("This isn't a set item.");
+			player.message("This isn't a set item.");
 			return;
 		}
-		player.getSocialManager().sendGameMessage(ItemExamines.getExamine(new Item(id, 1)));
+		player.message(ItemExamines.getExamine(new Item(id, 1)));
 	}
 
 	public static void sendComponents(Player player, int id) {
 		Sets set = getSet(id);
 		if (set == null) {
-			player.getSocialManager().sendGameMessage("This isn't a set item.");
+			player.message("This isn't a set item.");
 			return;
 		}
 		String message = ClientScriptMap.getMap(1088).getStringValue(id);
 		if (message == null)
 			return;
-		player.getSocialManager().sendGameMessage(message);
+		player.message(message);
 	}
 
 	public static void openSets(Player player) {
@@ -116,12 +116,12 @@ public class ItemSets {
 			return;
 		long totalAmount = (long) requestCount * (long) amountPerPack;
 		if (totalAmount <= 0 || totalAmount > Integer.MAX_VALUE) {
-			player.getSocialManager().sendGameMessage("Can't open pack, amount too big.");
+			player.message("Can't open pack, amount too big.");
 			return;
 		}
 		player.lock(1);
 		player.getInventory().deleteItem(packItem, requestCount);
 		player.getInventory().addItem(new Item(openedItem, (int) totalAmount));
-		player.getSocialManager().sendGameMessage("You open the spirit shard pack and receive " + totalAmount + " " + ItemDefinitions.getItemDefinitions(openedItem).getName().toLowerCase() + ".");
+		player.message("You open the spirit shard pack and receive " + totalAmount + " " + ItemDefinitions.getItemDefinitions(openedItem).getName().toLowerCase() + ".");
 	}
 }

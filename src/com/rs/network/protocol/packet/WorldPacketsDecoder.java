@@ -226,7 +226,7 @@ public final class WorldPacketsDecoder {
 			if (player.isLocked())
 				return;
 			if (player.getFreezeDelay() >= Utils.currentTimeMillis()) {
-				player.getSocialManager().sendGameMessage("A magical force prevents you from moving.");
+				player.message("A magical force prevents you from moving.");
 				return;
 			}
 			boolean forceRun = stream.readUnsignedByte() == 1;
@@ -302,11 +302,11 @@ public final class WorldPacketsDecoder {
 							return;
 					}
 					if (!player.isCanPvp() || !p2.isCanPvp()) {
-						player.getSocialManager().sendGameMessage("You can only attack players in a player-vs-player area.");
+						player.message("You can only attack players in a player-vs-player area.");
 						return;
 					}
 					if (!player.getFamiliar().canAttack(p2)) {
-						player.getSocialManager().sendGameMessage("You can only use your familiar in a multi-zone area.");
+						player.message("You can only use your familiar in a multi-zone area.");
 						return;
 					} else {
 						player.getFamiliar().setSpecial(interfaceId == 662 && componentId == 74 || interfaceId == 747 && componentId == 18);
@@ -337,12 +337,12 @@ public final class WorldPacketsDecoder {
 						if (!player.getControlerManager().canAttack(p2))
 							return;
 						if (!player.isCanPvp() || !p2.isCanPvp()) {
-							player.getSocialManager().sendGameMessage("You can only attack players in a player-vs-player area.");
+							player.message("You can only attack players in a player-vs-player area.");
 							return;
 						}
 						if (!p2.isAtMultiArea() || !player.isAtMultiArea()) {
 							if (player.getAttackedBy() != p2 && player.getAttackedByDelay() > Utils.currentTimeMillis()) {
-								player.getSocialManager().sendGameMessage("That " + (player.getAttackedBy() instanceof Player ? "player" : "npc") + " is already in combat.");
+								player.message("That " + (player.getAttackedBy() instanceof Player ? "player" : "npc") + " is already in combat.");
 								return;
 							}
 							if (p2.getAttackedBy() != player && p2.getAttackedByDelay() > Utils.currentTimeMillis()) {
@@ -355,7 +355,7 @@ public final class WorldPacketsDecoder {
 									// npc on single
 									// areas
 								} else {
-									player.getSocialManager().sendGameMessage("That player is already in combat.");
+									player.message("That player is already in combat.");
 									return;
 								}
 							}
@@ -399,12 +399,12 @@ public final class WorldPacketsDecoder {
 						if (!player.getControlerManager().canAttack(p2))
 							return;
 						if (!player.isCanPvp() || !p2.isCanPvp()) {
-							player.getSocialManager().sendGameMessage("You can only attack players in a player-vs-player area.");
+							player.message("You can only attack players in a player-vs-player area.");
 							return;
 						}
 						if (!p2.isAtMultiArea() || !player.isAtMultiArea()) {
 							if (player.getAttackedBy() != p2 && player.getAttackedByDelay() > Utils.currentTimeMillis()) {
-								player.getSocialManager().sendGameMessage("That " + (player.getAttackedBy() instanceof Player ? "player" : "npc") + " is already in combat.");
+								player.message("That " + (player.getAttackedBy() instanceof Player ? "player" : "npc") + " is already in combat.");
 								return;
 							}
 							if (p2.getAttackedBy() != player && p2.getAttackedByDelay() > Utils.currentTimeMillis()) {
@@ -417,7 +417,7 @@ public final class WorldPacketsDecoder {
 									// npc on single
 									// areas
 								} else {
-									player.getSocialManager().sendGameMessage("That player is already in combat.");
+									player.message("That player is already in combat.");
 									return;
 								}
 							}
@@ -462,7 +462,7 @@ public final class WorldPacketsDecoder {
 				player.setRun(forceRun);
 			if (interfaceId != Inventory.INVENTORY_INTERFACE) {
 				if (!npc.getDefinitions().hasAttackOption()) {
-					player.getSocialManager().sendGameMessage("You can't attack this npc.");
+					player.message("You can't attack this npc.");
 					return;
 				}
 			}
@@ -474,7 +474,7 @@ public final class WorldPacketsDecoder {
 				else if (npc instanceof Familiar) {
 					Familiar familiar = (Familiar) npc;
 					if (familiar != player.getFamiliar()) {
-						player.getSocialManager().sendGameMessage("This is not your familiar!");
+						player.message("This is not your familiar!");
 						return;
 					}
 				}
@@ -493,16 +493,16 @@ public final class WorldPacketsDecoder {
 					if (npc instanceof Familiar) {
 						Familiar familiar = (Familiar) npc;
 						if (familiar == player.getFamiliar()) {
-							player.getSocialManager().sendGameMessage("You can't attack your own familiar.");
+							player.message("You can't attack your own familiar.");
 							return;
 						}
 						if (!player.getFamiliar().canAttack(familiar.getOwner())) {
-							player.getSocialManager().sendGameMessage("You can only attack players in a player-vs-player area.");
+							player.message("You can only attack players in a player-vs-player area.");
 							return;
 						}
 					}
 					if (!player.getFamiliar().canAttack(npc)) {
-						player.getSocialManager().sendGameMessage("You can only use your familiar in a multi-zone area.");
+						player.message("You can only use your familiar in a multi-zone area.");
 						return;
 					} else {
 						player.getFamiliar().setSpecial(interfaceId == 662 && componentId == 74 || interfaceId == 747 && componentId == 18);
@@ -535,21 +535,21 @@ public final class WorldPacketsDecoder {
 						if (npc instanceof Familiar) {
 							Familiar familiar = (Familiar) npc;
 							if (familiar == player.getFamiliar()) {
-								player.getSocialManager().sendGameMessage("You can't attack your own familiar.");
+								player.message("You can't attack your own familiar.");
 								return;
 							}
 							if (!familiar.canAttack(player)) {
-								player.getSocialManager().sendGameMessage("You can't attack this npc.");
+								player.message("You can't attack this npc.");
 								return;
 							}
 						} else if (!npc.isForceMultiAttacked()) {
 							if (!npc.isAtMultiArea() || !player.isAtMultiArea()) {
 								if (player.getAttackedBy() != npc && player.getAttackedByDelay() > Utils.currentTimeMillis()) {
-									player.getSocialManager().sendGameMessage("You are already in combat.");
+									player.message("You are already in combat.");
 									return;
 								}
 								if (npc.getAttackedBy() != player && npc.getAttackedByDelay() > Utils.currentTimeMillis()) {
-									player.getSocialManager().sendGameMessage("This npc is already in combat.");
+									player.message("This npc is already in combat.");
 									return;
 								}
 							}
@@ -595,21 +595,21 @@ public final class WorldPacketsDecoder {
 						if (npc instanceof Familiar) {
 							Familiar familiar = (Familiar) npc;
 							if (familiar == player.getFamiliar()) {
-								player.getSocialManager().sendGameMessage("You can't attack your own familiar.");
+								player.message("You can't attack your own familiar.");
 								return;
 							}
 							if (!familiar.canAttack(player)) {
-								player.getSocialManager().sendGameMessage("You can't attack this npc.");
+								player.message("You can't attack this npc.");
 								return;
 							}
 						} else if (!npc.isForceMultiAttacked()) {
 							if (!npc.isAtMultiArea() || !player.isAtMultiArea()) {
 								if (player.getAttackedBy() != npc && player.getAttackedByDelay() > Utils.currentTimeMillis()) {
-									player.getSocialManager().sendGameMessage("You are already in combat.");
+									player.message("You are already in combat.");
 									return;
 								}
 								if (npc.getAttackedBy() != player && npc.getAttackedByDelay() > Utils.currentTimeMillis()) {
-									player.getSocialManager().sendGameMessage("This npc is already in combat.");
+									player.message("This npc is already in combat.");
 									return;
 								}
 							}
@@ -683,12 +683,12 @@ public final class WorldPacketsDecoder {
 			if (!player.getControlerManager().canAttack(p2))
 				return;
 			if (!player.isCanPvp() || !p2.isCanPvp()) {
-				player.getSocialManager().sendGameMessage("You can only attack players in a player-vs-player area.");
+				player.message("You can only attack players in a player-vs-player area.");
 				return;
 			}
 			if (!p2.isAtMultiArea() || !player.isAtMultiArea()) {
 				if (player.getAttackedBy() != p2 && player.getAttackedByDelay() > Utils.currentTimeMillis()) {
-					player.getSocialManager().sendGameMessage("You are already in combat.");
+					player.message("You are already in combat.");
 					return;
 				}
 				if (p2.getAttackedBy() != player && p2.getAttackedByDelay() > Utils.currentTimeMillis()) {
@@ -697,7 +697,7 @@ public final class WorldPacketsDecoder {
 						// player has priority over
 						// npc on single areas
 					} else {
-						player.getSocialManager().sendGameMessage("That player is already in combat.");
+						player.message("That player is already in combat.");
 						return;
 					}
 				}
@@ -755,21 +755,21 @@ public final class WorldPacketsDecoder {
 						return;
 					player.stopAll();
 					if (player.isStarter()) {
-						player.getSocialManager().sendGameMessage("You can't trade for the first half hour after creating account.");
+						player.message("You can't trade for the first half hour after creating account.");
 						return;
 					}
 					if (player.isCantTrade() || player.getControlerManager().getControler() != null) {
-						player.getSocialManager().sendGameMessage("You are busy.");
+						player.message("You are busy.");
 						return;
 					}
 					if (p2.getInterfaceManager().containsScreenInter() || p2.isCantTrade() || p2.getControlerManager().getControler() != null
 
 							|| p2.isLocked()) {
-						player.getSocialManager().sendGameMessage("The other player is busy.");
+						player.message("The other player is busy.");
 						return;
 					}
 					if (!p2.withinDistance(player, 14)) {
-						player.getSocialManager().sendGameMessage("Unable to find target " + p2.getDisplayName());
+						player.message("Unable to find target " + p2.getDisplayName());
 						return;
 					}
 					if (p2.getTemporaryAttributtes().get("TradeTarget") == player) {
@@ -779,7 +779,7 @@ public final class WorldPacketsDecoder {
 						return;
 					}
 					player.getTemporaryAttributtes().put("TradeTarget", p2);
-					player.getSocialManager().sendGameMessage("Sending " + p2.getDisplayName() + " a request...");
+					player.message("Sending " + p2.getDisplayName() + " a request...");
 					p2.getSocialManager().sendTradeRequestMessage(player);
 				}
 			}));
@@ -831,21 +831,21 @@ public final class WorldPacketsDecoder {
 			if (npc instanceof Familiar) {
 				Familiar familiar = (Familiar) npc;
 				if (familiar == player.getFamiliar()) {
-					player.getSocialManager().sendGameMessage("You can't attack your own familiar.");
+					player.message("You can't attack your own familiar.");
 					return;
 				}
 				if (!familiar.canAttack(player)) {
-					player.getSocialManager().sendGameMessage("You can't attack this npc.");
+					player.message("You can't attack this npc.");
 					return;
 				}
 			} else if (!npc.isForceMultiAttacked()) {
 				if (!npc.isAtMultiArea() || !player.isAtMultiArea()) {
 					if (player.getAttackedBy() != npc && player.getAttackedByDelay() > Utils.currentTimeMillis()) {
-						player.getSocialManager().sendGameMessage("You are already in combat.");
+						player.message("You are already in combat.");
 						return;
 					}
 					if (npc.getAttackedBy() != player && npc.getAttackedByDelay() > Utils.currentTimeMillis()) {
-						player.getSocialManager().sendGameMessage("This npc is already in combat.");
+						player.message("This npc is already in combat.");
 						return;
 					}
 				}
@@ -1034,15 +1034,15 @@ public final class WorldPacketsDecoder {
 				player.getNotes().edit(value);
 			else if (player.getTemporaryAttributtes().remove("change_pass") == Boolean.TRUE) {
 				if (value.length() < 5 || value.length() > 15) {
-					player.getSocialManager().sendGameMessage("Password length is limited to 5-15 characters.");
+					player.message("Password length is limited to 5-15 characters.");
 					return;
 				}
 				player.setPassword(Encrypt.encryptSHA1(value));
-				player.getSocialManager().sendGameMessage("You have changed your password! Your new password is \"" + value + "\".");
+				player.message("You have changed your password! Your new password is \"" + value + "\".");
 			} else if (player.getTemporaryAttributtes().remove("change_troll_name") == Boolean.TRUE) {
 				value = Utils.formatPlayerNameForDisplay(value);
 				if (value.length() < 3 || value.length() > 14) {
-					player.getSocialManager().sendGameMessage("You can't use a name shorter than 3 or longer than 14 characters.");
+					player.message("You can't use a name shorter than 3 or longer than 14 characters.");
 					return;
 				}
 				if (value.equalsIgnoreCase("none")) {
@@ -1055,23 +1055,23 @@ public final class WorldPacketsDecoder {
 				}
 			} else if (player.getTemporaryAttributtes().remove("yellcolor") == Boolean.TRUE) {
 				if (value.length() != 6) {
-					player.getSocialManager().sendGameMessage("The HEX yell color you wanted to pick cannot be longer and shorter then 6.");
+					player.message("The HEX yell color you wanted to pick cannot be longer and shorter then 6.");
 				} else if (Utils.containsInvalidCharacter(value) || value.contains("_")) {
-					player.getSocialManager().sendGameMessage("The requested yell color can only contain numeric and regular characters.");
+					player.message("The requested yell color can only contain numeric and regular characters.");
 				} else {
 					player.setYellColor(value);
-					player.getSocialManager().sendGameMessage("Your yell color has been changed to <col=" + player.getYellColor() + ">" + player.getYellColor() + "</col>.");
+					player.message("Your yell color has been changed to <col=" + player.getYellColor() + ">" + player.getYellColor() + "</col>.");
 				}
 			} else if (player.getTemporaryAttributtes().remove("setdisplay") == Boolean.TRUE) {
 				if (Utils.invalidAccountName(Utils.formatPlayerNameForProtocol(value))) {
-					player.getSocialManager().sendGameMessage("Name contains invalid characters or is too short/long.");
+					player.message("Name contains invalid characters or is too short/long.");
 					return;
 				}
 				if (!DisplayNames.setDisplayName(player, value)) {
-					player.getSocialManager().sendGameMessage("This name is already in use.");
+					player.message("This name is already in use.");
 					return;
 				}
-				player.getSocialManager().sendGameMessage("Your display name was successfully changed.");
+				player.message("Your display name was successfully changed.");
 			}
 		} else if (packetId == ENTER_INTEGER_PACKET) {
 			if (!player.isRunning() || player.isDead())
@@ -1195,7 +1195,7 @@ public final class WorldPacketsDecoder {
 			NPCHandler.handleExamine(player, stream);
 		} else if (packetId == ITEM_GROUND_EXAMINE_PACKET) {
 			int itemId = stream.readUnsignedShort();
-			player.getSocialManager().sendGameMessage(ItemExamines.getExamine(new Item(itemId)));
+			player.message(ItemExamines.getExamine(new Item(itemId)));
 		} else if (packetId == JOIN_FRIEND_CHAT_PACKET) {
 			if (!player.hasStarted())
 				return;
@@ -1232,7 +1232,7 @@ public final class WorldPacketsDecoder {
 			if (!player.hasStarted())
 				return;
 			if (player.getMuted() > Utils.currentTimeMillis()) {
-				player.getSocialManager().sendGameMessage("You temporary muted. Recheck in 48 hours.");
+				player.message("You temporary muted. Recheck in 48 hours.");
 				return;
 			}
 			String username = stream.readString();
@@ -1298,7 +1298,7 @@ public final class WorldPacketsDecoder {
 				return;
 			}
 			if (player.getMuted() > Utils.currentTimeMillis()) {
-				player.getSocialManager().sendGameMessage("You temporary muted. Recheck in 48 hours.");
+				player.message("You temporary muted. Recheck in 48 hours.");
 				return;
 			}
 			if (message.substring(0, 1).equalsIgnoreCase("/") && !message.substring(1, 2).equalsIgnoreCase("/"))

@@ -38,7 +38,7 @@ public class DreadNip extends NPC {
 
 	private void finish(int index) {
 		if (index != -1) {
-			owner.getSocialManager().sendGameMessage(DREADNIP_MESSAGES[index]);
+			owner.message(DREADNIP_MESSAGES[index]);
 			owner.getTemporaryAttributtes().remove("hasDN");
 		}
 		this.finish();

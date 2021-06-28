@@ -46,13 +46,13 @@ public class PotteryFurnace extends Dialogue {
 				int ingredientAmount = player.getInventory().getAmountOf(INGREDIENTS[componentIndex]);
 				if (ingredientAmount == 0) {
 					end();
-					player.getSocialManager().sendGameMessage("You need a " + ItemDefinitions.getItemDefinitions(INGREDIENTS[componentIndex]).getName().toLowerCase() + " in order to use the furnace.");
+					player.message("You need a " + ItemDefinitions.getItemDefinitions(INGREDIENTS[componentIndex]).getName().toLowerCase() + " in order to use the furnace.");
 					return false;
 				}
 				final int levelReq = LEVELS[componentIndex];
 				if (player.getSkills().getLevel(Skills.CRAFTING) < levelReq) {
 					end();
-					player.getSocialManager().sendGameMessage("You need a crafting level of " + levelReq + " in order to spin this.");
+					player.message("You need a crafting level of " + levelReq + " in order to spin this.");
 					return false;
 				}
 				int requestedAmount = SkillsDialogue.getQuantity(player);

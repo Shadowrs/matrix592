@@ -136,7 +136,7 @@ public class NomadsRequiem extends Controller {
 				if (loop == 0) {
 					player.setNextAnimation(new Animation(2304));
 				} else if (loop == 1) {
-					player.getSocialManager().sendGameMessage("Oh dear, you have died.");
+					player.message("Oh dear, you have died.");
 				} else if (loop == 3) {
 					leave(2);
 					player.getControlerManager().startControler("DeathEvent", new WorldTile(1894, 3173, 0), player.hasSkull());

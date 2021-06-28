@@ -60,7 +60,7 @@ public class Pyrelord extends Familiar {
 			return false;
 		Long time = (Long) familiar.getTemporaryAttributtes().get("Fire");
 		if (Firemaking.checkAll(player, fire, true) && (time != null && time < Utils.currentTimeMillis() || time == null)) {
-			player.getSocialManager().sendGameMessage("The pyrelord attempts to light the logs.");
+			player.message("The pyrelord attempts to light the logs.");
 			player.getInventory().deleteItem(fire.getLogId(), 1);
 			final WorldTile tile = new WorldTile(familiar);
 			World.addGroundItem(new Item(fire.getLogId(), 1), tile, player, true, 180);
@@ -73,7 +73,7 @@ public class Pyrelord extends Familiar {
 						if (!familiar.addWalkSteps(familiar.getX() + 1, familiar.getY(), 1))
 							if (!familiar.addWalkSteps(familiar.getX(), familiar.getY() + 1, 1))
 								familiar.addWalkSteps(familiar.getX(), familiar.getY() - 1, 1);
-					player.getSocialManager().sendGameMessage("The pyrelord uses its intense heat to light the logs.");
+					player.message("The pyrelord uses its intense heat to light the logs.");
 					WorldTasksManager.schedule(new WorldTask() {
 						@Override
 						public void run() {

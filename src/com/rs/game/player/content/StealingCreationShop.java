@@ -41,7 +41,7 @@ public class StealingCreationShop {
 	public static void purchase(Player player) {
 		boolean[] requestedList = (boolean[]) player.getTemporaryAttributtes().get("sc_shop_selected");
 		if (requestedList == null) {
-			player.getSocialManager().sendGameMessage("You have nothing selected to purchase / re-charge");
+			player.message("You have nothing selected to purchase / re-charge");
 			return;
 		}
 		int totalCost = 0;
@@ -50,11 +50,11 @@ public class StealingCreationShop {
 				totalCost += POINTS_COST[index];
 		}
 		if (player.getStealingCreationPoints() < totalCost) {
-			player.getSocialManager().sendGameMessage("You don't have enough points.");
+			player.message("You don't have enough points.");
 			resetSelection(player);
 			return;
 		} else if (player.getInventory().getFreeSlots() < requestedList.length) {
-			player.getSocialManager().sendGameMessage("You don't have enough space for the requested items.");
+			player.message("You don't have enough space for the requested items.");
 			resetSelection(player);
 			return;
 		}

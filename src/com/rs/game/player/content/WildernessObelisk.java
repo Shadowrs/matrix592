@@ -22,7 +22,7 @@ public class WildernessObelisk {
 		final int index = id - 65616;
 		final WorldTile center = OBELISK_CENTER_TILES[index];
 		if (IS_ACTIVE[index]) {
-			player.getSocialManager().sendGameMessage("The obelisk is already active.");
+			player.message("The obelisk is already active.");
 			return;
 		}
 		IS_ACTIVE[index] = true;

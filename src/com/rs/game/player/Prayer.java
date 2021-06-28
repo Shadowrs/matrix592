@@ -263,46 +263,46 @@ public class Prayer implements Serializable {
 		if (ancientcurses) {
 			if (prayerId == 1) {
 				if (leechBonuses[0] > 0)
-					player.getSocialManager().sendGameMessage("Your Attack is now unaffected by sap and leech curses.", true);
+					player.message("Your Attack is now unaffected by sap and leech curses.", true);
 				adjustStat(0, 0);
 				adjustStat(1, 0);
 				adjustStat(2, 0);
 				leechBonuses[0] = 0;
 			} else if (prayerId == 2) {
 				if (leechBonuses[1] > 0)
-					player.getSocialManager().sendGameMessage("Your Range is now unaffected by sap and leech curses.", true);
+					player.message("Your Range is now unaffected by sap and leech curses.", true);
 				adjustStat(2, 0);
 				adjustStat(4, 0);
 				leechBonuses[1] = 0;
 			} else if (prayerId == 3) {
 				if (leechBonuses[2] > 0)
-					player.getSocialManager().sendGameMessage("Your Magic is now unaffected by sap and leech curses.", true);
+					player.message("Your Magic is now unaffected by sap and leech curses.", true);
 				adjustStat(2, 0);
 				adjustStat(5, 0);
 				leechBonuses[2] = 0;
 			} else if (prayerId == 10) {
 				if (leechBonuses[3] > 0)
-					player.getSocialManager().sendGameMessage("Your Attack is now unaffected by sap and leech curses.", true);
+					player.message("Your Attack is now unaffected by sap and leech curses.", true);
 				adjustStat(0, 0);
 				leechBonuses[3] = 0;
 			} else if (prayerId == 11) {
 				if (leechBonuses[4] > 0)
-					player.getSocialManager().sendGameMessage("Your Ranged is now unaffected by sap and leech curses.", true);
+					player.message("Your Ranged is now unaffected by sap and leech curses.", true);
 				adjustStat(4, 0);
 				leechBonuses[4] = 0;
 			} else if (prayerId == 12) {
 				if (leechBonuses[5] > 0)
-					player.getSocialManager().sendGameMessage("Your Magic is now unaffected by sap and leech curses.", true);
+					player.message("Your Magic is now unaffected by sap and leech curses.", true);
 				adjustStat(5, 0);
 				leechBonuses[5] = 0;
 			} else if (prayerId == 13) {
 				if (leechBonuses[6] > 0)
-					player.getSocialManager().sendGameMessage("Your Defence is now unaffected by sap and leech curses.", true);
+					player.message("Your Defence is now unaffected by sap and leech curses.", true);
 				adjustStat(2, 0);
 				leechBonuses[6] = 0;
 			} else if (prayerId == 14) {
 				if (leechBonuses[7] > 0)
-					player.getSocialManager().sendGameMessage("Your Strength is now unaffected by sap and leech curses.", true);
+					player.message("Your Strength is now unaffected by sap and leech curses.", true);
 				adjustStat(1, 0);
 				leechBonuses[7] = 0;
 			} else if (prayerId == 19) {
@@ -374,7 +374,7 @@ public class Prayer implements Serializable {
 			if (player.getCurrentFriendChat() != null) {
 				ClanWars war = player.getCurrentFriendChat().getClanWars();
 				if (war != null && war.get(Rules.NO_PRAYER) && (war.getFirstPlayers().contains(player) || war.getSecondPlayers().contains(player))) {
-					player.getSocialManager().sendGameMessage("Prayer has been disabled during this war.");
+					player.message("Prayer has been disabled during this war.");
 					return;
 				}
 			}
@@ -431,35 +431,35 @@ public class Prayer implements Serializable {
 		if (getPrayerBook() == 0) {
 			if (prayerId == 25) {
 				if (!player.getQuestManager().completedQuest(Quests.KINGS_RANSOM)) {
-					player.getSocialManager().sendGameMessage("You need a Prayer level of 60, a Defence level of 65 and have completed the King's Ransom quest's Knight Wave reward to use Chivalry.");
+					player.message("You need a Prayer level of 60, a Defence level of 65 and have completed the King's Ransom quest's Knight Wave reward to use Chivalry.");
 					return false;
 				}
 			} else if (prayerId == 27) {
 				if (!player.getQuestManager().completedQuest(Quests.KINGS_RANSOM) || player.getSkills().getLevelForXp(Skills.DEFENCE) < 70) {
-					player.getSocialManager().sendGameMessage("You need a Prayer level of 70, a Defence level of 70 and have completed the King's Ransom quest's Knight Wave reward to use Piety.");
+					player.message("You need a Prayer level of 70, a Defence level of 70 and have completed the King's Ransom quest's Knight Wave reward to use Piety.");
 					return false;
 				}
 			}
 		} else if (getPrayerBook() == 1) {
 			if (player.getSkills().getLevelForXp(Skills.DEFENCE) < 30) {
-				player.getSocialManager().sendGameMessage("You need a defence level of at least 30 to use this prayer.");
+				player.message("You need a defence level of at least 30 to use this prayer.");
 				return false;
 			}
 		}
 		if (player.getSkills().getLevelForXp(5) < prayerLvls[this.getPrayerBook()][prayerId]) {
-			player.getSocialManager().sendGameMessage("You need a prayer level of at least " + prayerLvls[getPrayerBook()][prayerId] + " to use this prayer.");
+			player.message("You need a prayer level of at least " + prayerLvls[getPrayerBook()][prayerId] + " to use this prayer.");
 			return false;
 		}
 		if (player.getPrayerDelay() >= Utils.currentTimeMillis()) {
 			if (ancientcurses && prayerId >= 6 && prayerId <= 9 || prayerId >= 16 && prayerId <= 19) {
-				player.getSocialManager().sendGameMessage("You are currently injured and cannot use protection prayers!");
+				player.message("You are currently injured and cannot use protection prayers!");
 				return false;
 			}
 		}
 		if (player.getCurrentFriendChat() != null) {
 			ClanWars war = player.getCurrentFriendChat().getClanWars();
 			if (war != null && war.get(Rules.NO_PRAYER) && (war.getFirstPlayers().contains(player) || war.getSecondPlayers().contains(player))) {
-				player.getSocialManager().sendGameMessage("Prayer has been disabled during this war.");
+				player.message("Prayer has been disabled during this war.");
 				return false;
 			}
 		}
@@ -671,7 +671,7 @@ public class Prayer implements Serializable {
 	private boolean checkPrayer() {
 		if (prayerpoints <= 0) {
 			player.getPackets().sendSound(2672, 0, 1);
-			player.getSocialManager().sendGameMessage("Please recharge your prayer at the Lumbridge Church.");
+			player.message("Please recharge your prayer at the Lumbridge Church.");
 			return false;
 		}
 		return true;

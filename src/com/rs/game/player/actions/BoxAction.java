@@ -176,7 +176,7 @@ public class BoxAction extends Action {
 	public boolean start(Player player) {
 		if (!checkAll(player))
 			return false;
-		player.getSocialManager().sendGameMessage("You start setting up the trap..");
+		player.message("You start setting up the trap..");
 		player.setNextAnimation(new Animation(5208));
 		player.lock(3);
 		setActionDelay(player, 2);
@@ -211,18 +211,18 @@ public class BoxAction extends Action {
 		}
 		int trapAmt = getTrapAmount(player);
 		if (OwnedObjectManager.getObjectsforValue(player, hunt.getObjectId()) == trapAmt) {
-			player.getSocialManager().sendGameMessage("You can't setup more than " + trapAmt + " traps.");
+			player.message("You can't setup more than " + trapAmt + " traps.");
 			return false;
 		}
 		if (!World.isTileFree(0, player.getX(), player.getY(), player.getPlane())) {
-			player.getSocialManager().sendGameMessage("You can't setup your trap here.");
+			player.message("You can't setup your trap here.");
 			return false;
 		}
 		List<WorldObject> objects = World.getRegion(player.getRegionId()).getSpawnedObjects();
 		if (objects != null) {
 			for (WorldObject object : objects) {
 				if (object.getX() == player.getX() && object.getY() == player.getY() && object.getPlane() == player.getPlane()) {
-					player.getSocialManager().sendGameMessage("You can't setup your trap here.");
+					player.message("You can't setup your trap here.");
 					return false;
 				}
 			}

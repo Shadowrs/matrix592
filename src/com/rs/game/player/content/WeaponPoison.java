@@ -44,14 +44,14 @@ public class WeaponPoison {
 			return false;
 		int amt = item.getAmount() > Settings.CRAFT_RATE * 15 ? Settings.CRAFT_RATE * 15 : item.getAmount();
 		if (amt > 1 && !player.getInventory().hasFreeSlots()) {
-			player.getSocialManager().sendGameMessage("Not enough space in your inventory.");
+			player.message("Not enough space in your inventory.");
 			return false;
 		}
 		player.getInventory().deleteItem(item.getId(), amt);
 		player.getInventory().addItem(weapon.poisonIds[type], amt);
 		player.getInventory().deleteItem(POISON[type], 1);
 		player.getInventory().addItem(Pots.VIAL, 1);
-		player.getSocialManager().sendGameMessage("You dip the tip of the " + item.getName() + " in the weapon poison.");
+		player.message("You dip the tip of the " + item.getName() + " in the weapon poison.");
 		return true;
 	}
 

@@ -68,17 +68,17 @@ public class FriendChatsManager {
 	private void joinChat(Player player) {
 		synchronized (this) {
 			if (!player.getUsername().equals(owner) && !settings.hasRankToJoin(player.getUsername()) && player.getRights() < 2) {
-				player.getSocialManager().sendGameMessage("You do not have a enough rank to join this friends chat channel.");
+				player.message("You do not have a enough rank to join this friends chat channel.");
 				return;
 			}
 			if (players.size() >= 100) {
-				player.getSocialManager().sendGameMessage("This chat is full.");
+				player.message("This chat is full.");
 				return;
 			}
 			Long bannedSince = bannedPlayers.get(player.getUsername());
 			if (bannedSince != null) {
 				if (bannedSince + 3600000 > Utils.currentTimeMillis()) {
-					player.getSocialManager().sendGameMessage("You have been banned from this channel.");
+					player.message("You have been banned from this channel.");
 					return;
 				}
 				bannedPlayers.remove(player.getUsername());
@@ -101,7 +101,7 @@ public class FriendChatsManager {
 				player.setCurrentFriendChatOwner(null);
 				player.disableLootShare();
 				player.closeInterfaces();
-				player.getSocialManager().sendGameMessage("You have left the channel.");
+				player.message("You have left the channel.");
 				player.getPackets().sendFriendsChatChannel();
 			}
 			if (clanWars != null) {
@@ -130,7 +130,7 @@ public class FriendChatsManager {
 				return;
 			Player kicked = getPlayerByDisplayName(name);
 			if (kicked == null) {
-				player.getSocialManager().sendGameMessage("This player is not this channel.");
+				player.message("This player is not this channel.");
 				return;
 			}
 			if (rank <= getRank(kicked.getRights(), kicked.getUsername()))
@@ -141,8 +141,8 @@ public class FriendChatsManager {
 			players.remove(kicked);
 			bannedPlayers.put(kicked.getUsername(), Utils.currentTimeMillis());
 			kicked.getPackets().sendFriendsChatChannel();
-			kicked.getSocialManager().sendGameMessage("You have been kicked from the friends chat channel.");
-			player.getSocialManager().sendGameMessage("You have kicked " + kicked.getUsername() + " from friends chat channel.");
+			kicked.message("You have been kicked from the friends chat channel.");
+			player.message("You have kicked " + kicked.getUsername() + " from friends chat channel.");
 			refreshChannel();
 
 		}
@@ -153,7 +153,7 @@ public class FriendChatsManager {
 			players.add(player);
 			player.setCurrentFriendChat(this);
 			player.setCurrentFriendChatOwner(owner);
-			player.getSocialManager().sendGameMessage("You are now talking in the friends chat channel " + settings.getChatName());
+			player.message("You are now talking in the friends chat channel " + settings.getChatName());
 			refreshChannel();
 		}
 	}
@@ -165,7 +165,7 @@ public class FriendChatsManager {
 				player.setCurrentFriendChatOwner(null);
 				player.disableLootShare();
 				player.getPackets().sendFriendsChatChannel();
-				player.getSocialManager().sendGameMessage("You have been removed from this channel!");
+				player.message("You have been removed from this channel!");
 			}
 		}
 		synchronized (cachedFriendChats) {
@@ -177,7 +177,7 @@ public class FriendChatsManager {
 	public void sendQuickMessage(Player player, QuickChatMessage message) {
 		synchronized (this) {
 			if (!player.getUsername().equals(owner) && !settings.canTalk(player) && player.getRights() < 2) {
-				player.getSocialManager().sendGameMessage("You do not have a enough rank to talk on this friends chat channel.");
+				player.message("You do not have a enough rank to talk on this friends chat channel.");
 				return;
 			}
 			String formatedName = Utils.formatPlayerNameForDisplay(player.getUsername());
@@ -191,7 +191,7 @@ public class FriendChatsManager {
 	public void sendMessage(Player player, ChatMessage message) {
 		synchronized (this) {
 			if (!player.getUsername().equals(owner) && !settings.canTalk(player) && player.getRights() < 2) {
-				player.getSocialManager().sendGameMessage("You do not have a enough rank to talk on this friends chat channel.");
+				player.message("You do not have a enough rank to talk on this friends chat channel.");
 				return;
 			}
 			String formatedName = Utils.formatPlayerNameForDisplay(player.getUsername());
@@ -205,11 +205,11 @@ public class FriendChatsManager {
 	public void sendDiceMessage(Player player, String message) {
 		synchronized (this) {
 			if (!player.getUsername().equals(owner) && !settings.canTalk(player) && player.getRights() < 2) {
-				player.getSocialManager().sendGameMessage("You do not have a enough rank to talk on this friends chat channel.");
+				player.message("You do not have a enough rank to talk on this friends chat channel.");
 				return;
 			}
 			for (Player p2 : players) {
-				p2.getSocialManager().sendGameMessage(message);
+				p2.message(message);
 			}
 		}
 	}
@@ -266,7 +266,7 @@ public class FriendChatsManager {
 			if (chat == null)
 				return;
 			chat.destroyChat();
-			player.getSocialManager().sendGameMessage("Your friends chat channel has now been disabled!");
+			player.message("Your friends chat channel has now been disabled!");
 		}
 	}
 
@@ -305,48 +305,48 @@ public class FriendChatsManager {
 
 	public static void toogleLootShare(Player player) {
 		if (player.getCurrentFriendChat() == null) {
-			player.getSocialManager().sendGameMessage("You need to be in a Friends Chat channel to activate LootShare.");
+			player.message("You need to be in a Friends Chat channel to activate LootShare.");
 			player.refreshToogleLootShare();
 			return;
 		}
 		if (!player.getUsername().equals(player.getCurrentFriendChat().getOwnerName()) && !player.getCurrentFriendChat().settings.hasRankToLootShare(player.getUsername())) {
-			player.getSocialManager().sendGameMessage("You must be on channel owner's Friend List ot use LootShare on this channel.");
+			player.message("You must be on channel owner's Friend List ot use LootShare on this channel.");
 			player.refreshToogleLootShare();
 			return;
 		}
 		player.toogleLootShare();
 		if (player.isToogleLootShare())
-			player.getSocialManager().sendGameMessage("LootShare is now active.");
+			player.message("LootShare is now active.");
 	}
 
 	public static void joinChat(String ownerName, Player player) {
 		synchronized (cachedFriendChats) {
 			if (player.getCurrentFriendChat() != null)
 				return;
-			player.getSocialManager().sendGameMessage("Attempting to join channel...");
+			player.message("Attempting to join channel...");
 			String formatedName = Utils.formatPlayerNameForProtocol(ownerName);
 			FriendChatsManager chat = cachedFriendChats.get(formatedName);
 			if (chat == null) {
 				Player owner = World.getPlayerByDisplayName(ownerName);
 				if (owner == null) {
 					if (!SerializableFilesManager.containsPlayer(formatedName)) {
-						player.getSocialManager().sendGameMessage("The channel you tried to join does not exist.");
+						player.message("The channel you tried to join does not exist.");
 						return;
 					}
 					owner = SerializableFilesManager.loadPlayer(formatedName);
 					if (owner == null) {
-						player.getSocialManager().sendGameMessage("The channel you tried to join does not exist.");
+						player.message("The channel you tried to join does not exist.");
 						return;
 					}
 					owner.setUsername(formatedName);
 				}
 				FriendsIgnores settings = owner.getFriendsIgnores();
 				if (!settings.hasFriendChat()) {
-					player.getSocialManager().sendGameMessage("The channel you tried to join does not exist.");
+					player.message("The channel you tried to join does not exist.");
 					return;
 				}
 				if (!player.getUsername().equals(ownerName) && !settings.hasRankToJoin(player.getUsername()) && player.getRights() < 2) {
-					player.getSocialManager().sendGameMessage("You do not have a enough rank to join this friends chat channel.");
+					player.message("You do not have a enough rank to join this friends chat channel.");
 					return;
 				}
 				chat = new FriendChatsManager(owner);

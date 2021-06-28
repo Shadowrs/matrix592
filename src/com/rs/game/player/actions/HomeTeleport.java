@@ -59,7 +59,7 @@ public class HomeTeleport extends Action {
 	@Override
 	public boolean process(Player player) {
 		if (player.getAttackedByDelay() + 10000 > Utils.currentTimeMillis()) {
-			player.getSocialManager().sendGameMessage("You can't home teleport until 10 seconds after the end of combat.");
+			player.message("You can't home teleport until 10 seconds after the end of combat.");
 			return false;
 		}
 		return true;

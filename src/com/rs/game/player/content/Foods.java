@@ -468,7 +468,7 @@ public class Foods {
 			@Override
 			public void effect(Object object) {
 				Player player = (Player) object;
-				player.getSocialManager().sendGameMessage("You don't really like it much.", true);
+				player.message("You don't really like it much.", true);
 			}
 		},
 
@@ -476,7 +476,7 @@ public class Foods {
 			@Override
 			public void effect(Object object) {
 				Player player = (Player) object;
-				player.getSocialManager().sendGameMessage("It hurts to see a grown " + (player.getAppearence().isMale() ? "male" : "female") + " cry.");
+				player.message("It hurts to see a grown " + (player.getAppearence().isMale() ? "male" : "female") + " cry.");
 			}
 		},
 
@@ -492,8 +492,8 @@ public class Foods {
 			@Override
 			public void effect(Object object) {
 				Player player = (Player) object;
-				player.getSocialManager().sendGameMessage("You drink the beer. You feel slightly reinvigorated...");
-				player.getSocialManager().sendGameMessage("...and slightly dizzy too.");
+				player.message("You drink the beer. You feel slightly reinvigorated...");
+				player.message("...and slightly dizzy too.");
 				int level = player.getSkills().getLevel(Skills.ATTACK);
 				player.getSkills().set(Skills.ATTACK, level <= 0 ? 0 : level - 2);
 				level = player.getSkills().getLevel(Skills.STRENGTH);
@@ -506,8 +506,8 @@ public class Foods {
 			@Override
 			public void effect(Object object) {
 				Player player = (Player) object;
-				player.getSocialManager().sendGameMessage("You drink the wine. You feel slightly reinvigorated...");
-				player.getSocialManager().sendGameMessage("...and slightly dizzy too.");
+				player.message("You drink the wine. You feel slightly reinvigorated...");
+				player.message("...and slightly dizzy too.");
 				player.heal(70);
 				int level = player.getSkills().getLevel(Skills.ATTACK);
 				player.getSkills().set(Skills.ATTACK, level <= 0 ? 0 : level - 4);
@@ -536,7 +536,7 @@ public class Foods {
 		if (!player.getControlerManager().canEat(food))
 			return true;
 		String name = ItemDefinitions.getItemDefinitions(food.getId()).getName().toLowerCase();
-		player.getSocialManager().sendGameMessage("You eat the " + name + ".");
+		player.message("You eat the " + name + ".");
 		player.setNextAnimationNoPriority(EAT_ANIM);
 		long foodDelay = name.contains("half") ? 600 : 1800;
 		player.addFoodDelay(foodDelay);
@@ -547,7 +547,7 @@ public class Foods {
 		int hp = player.getHitpoints();
 		player.heal(food.getHeal() * 10, food.getExtraHP() * 10);
 		if (player.getHitpoints() > hp)
-			player.getSocialManager().sendGameMessage("It heals some health.");
+			player.message("It heals some health.");
 		player.getInventory().refresh();
 		if (food.effect != null) {
 			food.effect.effect(player);

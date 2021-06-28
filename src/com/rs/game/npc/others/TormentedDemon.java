@@ -85,7 +85,7 @@ public final class TormentedDemon extends NPC {
 			Player player = (Player) hit.getSource();
 			if ((player.getEquipment().getWeaponId() == 6746 || player.getEquipment().getWeaponId() == 2402) && hit.getLook() == HitLook.MELEE_DAMAGE && hit.getDamage() > 0) {
 				shieldTimer = 60;
-				player.getSocialManager().sendGameMessage("The demon is temporarily weakend by your weapon.");
+				player.message("The demon is temporarily weakend by your weapon.");
 			}
 		}
 		if (shieldTimer <= 0) {// 75% of damage is absorbed
@@ -142,7 +142,7 @@ public final class TormentedDemon extends NPC {
 					Player player = World.getPlayers().get(npcIndex);
 					if (player == null || player.isDead() || player.hasFinished() || !player.hasStarted() || !player.withinDistance(tile, 3))
 						continue;
-					player.getSocialManager().sendGameMessage("The demon's magical attack splashes on you.");
+					player.message("The demon's magical attack splashes on you.");
 					player.applyHit(new Hit(this, 281, HitLook.MAGIC_DAMAGE, 1));
 				}
 			}

@@ -36,7 +36,7 @@ public class ChargesManager implements Serializable {
 					item.setId(newId);
 					player.getEquipment().refresh(slot);
 					player.getAppearence().generateAppearenceData();
-					player.getSocialManager().sendGameMessage("Your " + item.getDefinitions().getName() + " degraded.");
+					player.message("Your " + item.getDefinitions().getName() + " degraded.");
 				}
 			}
 			int defaultCharges = ItemConstants.getItemDefaultCharges(item.getId());
@@ -94,11 +94,11 @@ public class ChargesManager implements Serializable {
 		int charges = getCharges(id);
 		int maxCharges = ItemConstants.getItemDefaultCharges(id);
 		int percentage = reverse ? (charges == 0 ? 0 : (100 - (charges * 100 / maxCharges))) : charges == 0 ? 100 : (charges * 100 / maxCharges);
-		player.getSocialManager().sendGameMessage(message.replace(REPLACE, String.valueOf(percentage)));
+		player.message(message.replace(REPLACE, String.valueOf(percentage)));
 	}
 
 	public void checkCharges(String message, int id) {
-		player.getSocialManager().sendGameMessage(message.replace(REPLACE, String.valueOf(getCharges(id))));
+		player.message(message.replace(REPLACE, String.valueOf(getCharges(id))));
 	}
 
 	public int getCharges(int id) {
@@ -182,7 +182,7 @@ public class ChargesManager implements Serializable {
 		player.getEquipment().getItems().set(slot, new Item(newId, 1));
 		player.getEquipment().refresh(slot);
 		player.getAppearence().generateAppearenceData();
-		player.getSocialManager().sendGameMessage("Your " + item.getDefinitions().getName() + " degraded.");
+		player.message("Your " + item.getDefinitions().getName() + " degraded.");
 	}
 
 	private void degrade(int itemId, int defaultCharges, int slot) {
@@ -195,9 +195,9 @@ public class ChargesManager implements Serializable {
 				int newId = ItemConstants.getItemDegrade(itemId);
 				player.getEquipment().getItems().set(slot, newId != -1 ? new Item(newId, 1) : null);
 				if (newId == -1)
-					player.getSocialManager().sendGameMessage("Your " + ItemDefinitions.getItemDefinitions(itemId).getName() + " became into dust.");
+					player.message("Your " + ItemDefinitions.getItemDefinitions(itemId).getName() + " became into dust.");
 				else
-					player.getSocialManager().sendGameMessage("Your " + ItemDefinitions.getItemDefinitions(itemId).getName() + " degraded.");
+					player.message("Your " + ItemDefinitions.getItemDefinitions(itemId).getName() + " degraded.");
 				player.getEquipment().refresh(slot);
 				player.getAppearence().generateAppearenceData();
 				return;

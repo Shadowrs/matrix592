@@ -109,10 +109,10 @@ public class PlayerCombat extends Action {
 			if (isRanging == 0) {
 				return (int) (meleeAttack(player) * multiplier);
 			} else if (isRanging == 1) {
-				player.getSocialManager().sendGameMessage("This ammo is not very effective with this weapon.");
+				player.message("This ammo is not very effective with this weapon.");
 				return -1;
 			} else if (isRanging == 3) {
-				player.getSocialManager().sendGameMessage("You dont have any ammo in your backpack.");
+				player.message("You dont have any ammo in your backpack.");
 				return -1;
 			} else {
 				return (int) (rangeAttack(player) * multiplier);
@@ -453,7 +453,7 @@ public class PlayerCombat extends Action {
 					delayMagicHit(2, hit);
 					World.sendProjectile(player, target, 1842, 18, 18, 50, 50, 0, 0);
 				} else {
-					player.getSocialManager().sendGameMessage("This player is already effected by this spell.", true);
+					player.message("This player is already effected by this spell.", true);
 				}
 				return 5;
 			case 84:// air surge
@@ -542,7 +542,7 @@ public class PlayerCombat extends Action {
 					return 4;
 				}
 				if (target instanceof Player) {
-					((Player) target).getSocialManager().sendGameMessage("You feel slowed down.");
+					((Player) target).message("You feel slowed down.");
 				}
 				target.getTemporaryAttributtes().put("miasmic_immunity", Boolean.TRUE);
 				target.getTemporaryAttributtes().put("miasmic_effect", Boolean.TRUE);
@@ -573,7 +573,7 @@ public class PlayerCombat extends Action {
 					return 4;
 				}
 				if (target instanceof Player) {
-					((Player) target).getSocialManager().sendGameMessage("You feel slowed down.");
+					((Player) target).message("You feel slowed down.");
 				}
 				target.getTemporaryAttributtes().put("miasmic_immunity", Boolean.TRUE);
 				target.getTemporaryAttributtes().put("miasmic_effect", Boolean.TRUE);
@@ -607,7 +607,7 @@ public class PlayerCombat extends Action {
 						delayMagicHit(2, getMagicHit(player, damage));
 						if (target.getTemporaryAttributtes().get("miasmic_immunity") != Boolean.TRUE) {
 							if (target instanceof Player) {
-								((Player) target).getSocialManager().sendGameMessage("You feel slowed down.");
+								((Player) target).message("You feel slowed down.");
 							}
 							target.getTemporaryAttributtes().put("miasmic_immunity", Boolean.TRUE);
 							target.getTemporaryAttributtes().put("miasmic_effect", Boolean.TRUE);
@@ -652,7 +652,7 @@ public class PlayerCombat extends Action {
 						delayMagicHit(2, getMagicHit(player, damage));
 						if (target.getTemporaryAttributtes().get("miasmic_immunity") != Boolean.TRUE) {
 							if (target instanceof Player) {
-								((Player) target).getSocialManager().sendGameMessage("You feel slowed down.");
+								((Player) target).message("You feel slowed down.");
 							}
 							target.getTemporaryAttributtes().put("miasmic_immunity", Boolean.TRUE);
 							target.getTemporaryAttributtes().put("miasmic_effect", Boolean.TRUE);
@@ -1019,10 +1019,10 @@ public class PlayerCombat extends Action {
 					p.getSkills().drainLevel(0, p.getSkills().getLevel(0) / 10);
 					p.getSkills().drainLevel(1, p.getSkills().getLevel(1) / 10);
 					p.getSkills().drainLevel(2, p.getSkills().getLevel(2) / 10);
-					p.getSocialManager().sendGameMessage("Your melee skills have been drained.");
-					player.getSocialManager().sendGameMessage("Your spell weakened your enemy.");
+					p.message("Your melee skills have been drained.");
+					player.message("Your spell weakened your enemy.");
 				}
-				player.getSocialManager().sendGameMessage("Your magic surged with extra power.");
+				player.message("Your magic surged with extra power.");
 			}
 		}
 		if (target instanceof NPC) {
@@ -1044,14 +1044,14 @@ public class PlayerCombat extends Action {
 		if (player.getCombatDefinitions().isUsingSpecialAttack()) {
 			int specAmt = getSpecialAmmount(weaponId);
 			if (specAmt == 0) {
-				player.getSocialManager().sendGameMessage("This weapon has no special Attack, if you still see special bar please relogin.");
+				player.message("This weapon has no special Attack, if you still see special bar please relogin.");
 				player.getCombatDefinitions().desecreaseSpecialAttack(0);
 				return combatDelay;
 			}
 			if (player.getCombatDefinitions().hasRingOfVigour())
 				specAmt *= 0.9;
 			if (player.getCombatDefinitions().getSpecialAttackPercentage() < specAmt) {
-				player.getSocialManager().sendGameMessage("You don't have enough power left.");
+				player.message("You don't have enough power left.");
 				player.getCombatDefinitions().desecreaseSpecialAttack(0);
 				return combatDelay;
 			}
@@ -1211,7 +1211,7 @@ public class PlayerCombat extends Action {
 				dropAmmo(player, -1);
 				break;
 			default:
-				player.getSocialManager().sendGameMessage("This weapon has no special Attack, if you still see special bar please relogin.");
+				player.message("This weapon has no special Attack, if you still see special bar please relogin.");
 				return combatDelay;
 			}
 		} else {
@@ -1395,7 +1395,7 @@ public class PlayerCombat extends Action {
 		if (hit != 0 && hit < ((max_hit / 3) * 2) || new Random().nextInt(3) != 0) {
 			return;
 		}
-		player.getSocialManager().sendGameMessage("You fired an extra shot.");
+		player.message("You fired an extra shot.");
 		World.sendProjectile(player, target, gfxId, startHeight - 5, endHeight - 5, speed, delay, curve - 5 < 0 ? 0 : curve - 5, startDistanceOffset);
 		delayHit(hitDelay, weaponId, attackStyle, getRangeHit(player, getRandomMaxHit(player, weaponId, attackStyle, true)));
 		if (hit > (max_hit - 10)) {
@@ -1802,7 +1802,7 @@ public class PlayerCombat extends Action {
 				soundId = 2541;
 				break;
 			default:
-				player.getSocialManager().sendGameMessage("This weapon has no special Attack, if you still see special bar please relogin.");
+				player.message("This weapon has no special Attack, if you still see special bar please relogin.");
 				return combatDelay;
 			}
 		} else {
@@ -1834,7 +1834,7 @@ public class PlayerCombat extends Action {
 									p.getSkills().drainLevel(i, 7);
 								}
 							}
-							p.getSocialManager().sendGameMessage("Your stats have been drained!");
+							p.message("Your stats have been drained!");
 						}
 						if (!nextTarget) {
 							nextTarget = true;
@@ -2086,7 +2086,7 @@ public class PlayerCombat extends Action {
 			return (int) Math.floor(baseDamage * specMultiplier * otherBonus);
 		} else {
 			if (weaponId == 24338 && target instanceof Player) {
-				player.getSocialManager().sendGameMessage("The royal crossbow feels weak and unresponsive against other players.");
+				player.message("The royal crossbow feels weak and unresponsive against other players.");
 				return 60;
 			}
 			double rangedLvl = player.getSkills().getLevel(Skills.RANGE);
@@ -2552,7 +2552,7 @@ public class PlayerCombat extends Action {
 									if (target instanceof Player) {
 										Player targetPlayer = (Player) target;
 										targetPlayer.setTeleBlockDelay((targetPlayer.getPrayer().usingPrayer(0, 17) || targetPlayer.getPrayer().usingPrayer(1, 7) ? 100000 : 300000));
-										targetPlayer.getSocialManager().sendGameMessage("You have been teleblocked.", true);
+										targetPlayer.message("You have been teleblocked.", true);
 									}
 								}
 							}
@@ -2877,29 +2877,29 @@ public class PlayerCombat extends Action {
 				}
 				int slayerLevel = Slayer.getLevelRequirement(n.getName());
 				if (slayerLevel > player.getSkills().getLevel(Skills.SLAYER)) {
-					player.getSocialManager().sendGameMessage("You need a slayer level of " + slayerLevel + " to know how to wound this monster.");
+					player.message("You need a slayer level of " + slayerLevel + " to know how to wound this monster.");
 					return false;
 				}
 				if (n.getId() == 879) {
 					if (player.getEquipment().getWeaponId() != 2402 && player.getCombatDefinitions().getAutoCastSpell() <= 0 && !hasPolyporeStaff(player)) {
-						player.getSocialManager().sendGameMessage("I'd better wield Silverlight first.");
+						player.message("I'd better wield Silverlight first.");
 						return false;
 					}
 				} else if (n.getId() >= 14084 && n.getId() <= 14139) {
 					int weaponId = player.getEquipment().getWeaponId();
 					if (!((weaponId >= 13117 && weaponId <= 13146) || (weaponId >= 21580 && weaponId <= 21582)) && player.getCombatDefinitions().getAutoCastSpell() <= 0 && !hasPolyporeStaff(player)) {
-						player.getSocialManager().sendGameMessage("I'd better wield a silver weapon first.");
+						player.message("I'd better wield a silver weapon first.");
 						return false;
 					}
 				} else if (n.getId() == 6222 || n.getId() == 6223 || n.getId() == 6225 || n.getId() == 6227 || (n.getId() >= 6232 && n.getId() <= 6246)) {
 					if (isRanging(player) == 0) {
-						player.getSocialManager().sendGameMessage("The Aviansie is flying too high for you to attack using melee.");
+						player.message("The Aviansie is flying too high for you to attack using melee.");
 						return false;
 					}
 				} else if (n.getId() == 14301 || n.getId() == 14302 || n.getId() == 14303 || n.getId() == 14304) {
 					Glacyte glacyte = (Glacyte) n;
 					if (glacyte.getGlacor().getTargetIndex() != -1 && player.getIndex() != glacyte.getGlacor().getTargetIndex()) {
-						player.getSocialManager().sendGameMessage("This isn't your target.");
+						player.message("This isn't your target.");
 						return false;
 					}
 				}
@@ -2909,11 +2909,11 @@ public class PlayerCombat extends Action {
 
 			if (!target.isAtMultiArea() || !player.isAtMultiArea()) {
 				if (player.getAttackedBy() != target && player.getAttackedByDelay() > Utils.currentTimeMillis()) {
-					player.getSocialManager().sendGameMessage("You are already in combat.");
+					player.message("You are already in combat.");
 					return false;
 				}
 				if (target.getAttackedBy() != player && target.getAttackedByDelay() > Utils.currentTimeMillis()) {
-					player.getSocialManager().sendGameMessage("That " + (player.getAttackedBy() instanceof Player ? "player" : "npc") + " is already in combat.");
+					player.message("That " + (player.getAttackedBy() instanceof Player ? "player" : "npc") + " is already in combat.");
 					return false;
 				}
 			}
@@ -2971,14 +2971,14 @@ public class PlayerCombat extends Action {
 		player.getCombatDefinitions().switchUsingSpecialAttack();
 		int specAmt = getSpecialAmmount(weaponId);
 		if (specAmt == 0) {
-			player.getSocialManager().sendGameMessage("This weapon has no special Attack, if you still see special bar please relogin.");
+			player.message("This weapon has no special Attack, if you still see special bar please relogin.");
 			player.getCombatDefinitions().desecreaseSpecialAttack(0);
 			return false;
 		}
 		if (player.getCombatDefinitions().hasRingOfVigour())
 			specAmt *= 0.9;
 		if (player.getCombatDefinitions().getSpecialAttackPercentage() < specAmt) {
-			player.getSocialManager().sendGameMessage("You don't have enough power left.");
+			player.message("You don't have enough power left.");
 			player.getCombatDefinitions().desecreaseSpecialAttack(0);
 			return false;
 		}

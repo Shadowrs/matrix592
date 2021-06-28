@@ -51,11 +51,11 @@ public class LightSource {
 		if (slot == -1)
 			return false;
 		else if (!forceExtinguish && player.getControlerManager().getControler() != null && player.getControlerManager().getControler() instanceof UnderGroundDungeon) {
-			player.getSocialManager().sendGameMessage("You cannot extinguish the " + item.getName().toLowerCase() + " as you will not have a light source.");
+			player.message("You cannot extinguish the " + item.getName().toLowerCase() + " as you will not have a light source.");
 			return false;
 		}
 		player.getInventory().replaceItem(LIGHT_SOURCES[0][slot], item.getAmount(), itemSlot);
-		player.getSocialManager().sendGameMessage("You extinguish the " + item.getName().toLowerCase() + ".");
+		player.message("You extinguish the " + item.getName().toLowerCase() + ".");
 		return true;
 	}
 
@@ -65,11 +65,11 @@ public class LightSource {
 		if (slot == -1)
 			return false;
 		else if (!player.getInventory().containsOneItem(590)) {
-			player.getSocialManager().sendGameMessage("You need a tinderbox in order to light the " + item.getName().toLowerCase() + ".");
+			player.message("You need a tinderbox in order to light the " + item.getName().toLowerCase() + ".");
 			return false;
 		}
 		player.getInventory().replaceItem(LIGHT_SOURCES[1][slot], item.getAmount(), itemSlot);
-		player.getSocialManager().sendGameMessage("You light the " + item.getName().toLowerCase() + ".");
+		player.message("You light the " + item.getName().toLowerCase() + ".");
 		return true;
 	}
 }

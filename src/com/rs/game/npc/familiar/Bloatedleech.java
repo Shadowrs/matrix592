@@ -46,7 +46,7 @@ public class Bloatedleech extends Familiar {
 		Player player = (Player) object;
 		final int damage = Utils.random(100) + 50;
 		if (player.getHitpoints() - damage <= 0) {
-			player.getSocialManager().sendGameMessage("You don't have enough life points to use this special.");
+			player.message("You don't have enough life points to use this special.");
 			return false;
 		}
 		if (player.getPoison().isPoisoned())

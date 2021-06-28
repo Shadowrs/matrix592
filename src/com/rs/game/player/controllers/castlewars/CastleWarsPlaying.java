@@ -41,7 +41,7 @@ public class CastleWarsPlaying extends Controller {
 	public boolean processNPCClick2(NPC n) {
 		if (n.getId() == 1532 && n instanceof CastleWarBarricade) {
 			if (!player.getInventory().containsItem(590, 1)) {
-				player.getSocialManager().sendGameMessage("You do not have the required items to light this.");
+				player.message("You do not have the required items to light this.");
 				return false;
 			}
 			CastleWarBarricade barricade = (CastleWarBarricade) n;
@@ -58,13 +58,13 @@ public class CastleWarsPlaying extends Controller {
 	public boolean processButtonClick(int interfaceId, int componentId, int slotId, int slotId2, int packetId) {
 		if (interfaceId == 387) {
 			if (componentId == 9 || componentId == 6) {
-				player.getSocialManager().sendGameMessage("You can't remove your team's colours.");
+				player.message("You can't remove your team's colours.");
 				return false;
 			}
 			if (componentId == 15) {
 				int weaponId = player.getEquipment().getWeaponId();
 				if (weaponId == 4037 || weaponId == 4039) {
-					player.getSocialManager().sendGameMessage("You can't remove enemy's flag.");
+					player.message("You can't remove enemy's flag.");
 					return false;
 				}
 			}
@@ -73,7 +73,7 @@ public class CastleWarsPlaying extends Controller {
 			if (item != null) {
 				if (item.getId() == 4053) {
 					if (player.getX() == 2422 && player.getY() == 3076 || player.getX() == 2426 && player.getY() == 3080 || player.getX() == 2423 && player.getY() == 3076 || player.getX() == 2426 && player.getY() == 3081 || player.getX() == 2373 && player.getY() == 3127 || player.getX() == 2373 && player.getY() == 3126 || player.getX() == 2376 && player.getY() == 3131 || player.getX() == 2377 && player.getY() == 3131 || CastleWars.isBarricadeAt(player)) {
-						player.getSocialManager().sendGameMessage("You cannot place a barracade here!");
+						player.message("You cannot place a barracade here!");
 						return false;
 					}
 					CastleWars.addBarricade(team, player);
@@ -90,7 +90,7 @@ public class CastleWarsPlaying extends Controller {
 	@Override
 	public boolean canDropItem(Item item) {
 		if (item.getDefinitions().getName().toLowerCase().contains("flag")) {
-			player.getSocialManager().sendGameMessage("You cannot just drop the flag!");
+			player.message("You cannot just drop the flag!");
 			return false;
 		}
 		return true;
@@ -107,13 +107,13 @@ public class CastleWarsPlaying extends Controller {
 	@Override
 	public boolean canEquip(int slotId, int itemId) {
 		if (slotId == Equipment.SLOT_CAPE || slotId == Equipment.SLOT_HAT) {
-			player.getSocialManager().sendGameMessage("You can't remove your team's colours.");
+			player.message("You can't remove your team's colours.");
 			return false;
 		}
 		if (slotId == Equipment.SLOT_WEAPON || slotId == Equipment.SLOT_SHIELD) {
 			int weaponId = player.getEquipment().getWeaponId();
 			if (weaponId == 4037 || weaponId == 4039) {
-				player.getSocialManager().sendGameMessage("You can't remove enemy's flag.");
+				player.message("You can't remove enemy's flag.");
 				return false;
 			}
 		}
@@ -125,7 +125,7 @@ public class CastleWarsPlaying extends Controller {
 		if (target instanceof Player) {
 			if (canHit(target))
 				return true;
-			player.getSocialManager().sendGameMessage("You can't attack your team.");
+			player.message("You can't attack your team.");
 			return false;
 		}
 		return true;
@@ -179,7 +179,7 @@ public class CastleWarsPlaying extends Controller {
 				if (loop == 0) {
 					player.setNextAnimation(new Animation(2304));
 				} else if (loop == 1) {
-					player.getSocialManager().sendGameMessage("Oh dear, you have died.");
+					player.message("Oh dear, you have died.");
 				} else if (loop == 3) {
 					int weaponId = player.getEquipment().getWeaponId();
 					if (weaponId == 4037 || weaponId == 4039) {
@@ -252,7 +252,7 @@ public class CastleWarsPlaying extends Controller {
 					return false;
 				}
 			}
-			player.getSocialManager().sendGameMessage("You need to bring a flag back here!");
+			player.message("You need to bring a flag back here!");
 			return false;
 		} else if (id == 4902 || id == 4903) { // take flag
 			if (id == 4902 && team == CastleWars.SARADOMIN) {
@@ -260,13 +260,13 @@ public class CastleWarsPlaying extends Controller {
 					CastleWars.addScore(player, team, CastleWars.ZAMORAK);
 					return false;
 				}
-				player.getSocialManager().sendGameMessage("Saradomin won't let you take his flag!");
+				player.message("Saradomin won't let you take his flag!");
 			} else if (id == 4903 && team == CastleWars.ZAMORAK) {
 				if (player.getEquipment().getWeaponId() == 4037) {
 					CastleWars.addScore(player, team, CastleWars.SARADOMIN);
 					return false;
 				}
-				player.getSocialManager().sendGameMessage("Zamorak won't let you take his flag!");
+				player.message("Zamorak won't let you take his flag!");
 			} else {
 				// take flag
 				CastleWars.takeFlag(player, team, id == 4902 ? CastleWars.SARADOMIN : CastleWars.ZAMORAK, object, false);
@@ -415,7 +415,7 @@ public class CastleWarsPlaying extends Controller {
 
 	public void passBarrier(WorldObject object) {
 		if (hasFlag()) {
-			player.getSocialManager().sendGameMessage("You can't cross barrier with flag.");
+			player.message("You can't cross barrier with flag.");
 			return;
 		}
 		if (object.getRotation() == 0 || object.getRotation() == 2) {

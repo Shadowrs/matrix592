@@ -132,7 +132,7 @@ public class ItemConstants {
 					continue;
 				}
 				if (player.getSkills().getLevel(skill) < 99) {
-					player.getSocialManager().sendGameMessage("You must have the maximum level of each skill in order to use this cape.");
+					player.message("You must have the maximum level of each skill in order to use this cape.");
 					return false;
 				}
 			}
@@ -143,49 +143,49 @@ public class ItemConstants {
 					continue;
 				}
 				if (player.getSkills().getLevel(skill) < 99) {
-					player.getSocialManager().sendGameMessage("You must have the maximum level of each skill in order to use this cape.");
+					player.message("You must have the maximum level of each skill in order to use this cape.");
 					return false;
 				}
 			}
 
 			if (!player.isCompletedStealingCreation()) {
-				player.getSocialManager().sendGameMessage("You need to complete at least once stealing creation minigame to use this cape.");
+				player.message("You need to complete at least once stealing creation minigame to use this cape.");
 				return false;
 			}
 			if (!player.isCapturedCastleWarsFlag()) {
-				player.getSocialManager().sendGameMessage("You need to capture Castle Wars Flag at least once to use this cape.");
+				player.message("You need to capture Castle Wars Flag at least once to use this cape.");
 				return false;
 			}
 			if (!player.isWonFightPits()) {
-				player.getSocialManager().sendGameMessage("You need to win at least once fight pits minigame to use this cape.");
+				player.message("You need to win at least once fight pits minigame to use this cape.");
 				return false;
 			}
 			if (!player.isKilledQueenBlackDragon()) {
-				player.getSocialManager().sendGameMessage("You need to have killed the Queen Black Dragon atleast once to use this cape.");
+				player.message("You need to have killed the Queen Black Dragon atleast once to use this cape.");
 				return false;
 			}
 			if (!player.getQuestManager().completedQuest(Quests.NOMADS_REQUIEM)) {
-				player.getSocialManager().sendGameMessage("You need to have completed Nomad's Requiem miniquest to use this cape.");
+				player.message("You need to have completed Nomad's Requiem miniquest to use this cape.");
 				return false;
 			}
 		} else if (item.getId() == 6570 || item.getId() == 10566 || item.getId() == 10637) { // temporary
 			if (!player.isCompletedFightCaves()) {
-				player.getSocialManager().sendGameMessage("You need to complete at least once fight cave minigame to use this cape.");
+				player.message("You need to complete at least once fight cave minigame to use this cape.");
 				return false;
 			}
 		} else if (item.getId() == 8856) {
 			if (!WarriorsGuild.inCatapultArea(player)) {
-				player.getSocialManager().sendGameMessage("You may not equip this shield outside of the catapult room in the Warrior's Guild.");
+				player.message("You may not equip this shield outside of the catapult room in the Warrior's Guild.");
 				return false;
 			}
 		} else if (item.getId() == 19784) {
 			if (!player.getQuestManager().completedQuest(Quests.VOID_STARES_BACK)) {
-				player.getSocialManager().sendGameMessage("You must have completed the void stares back in order to equip a korasi.");
+				player.message("You must have completed the void stares back in order to equip a korasi.");
 				return false;
 			}
 		} else if (item.getId() == 15433 || item.getId() == 15435 || item.getId() == 15432 || item.getId() == 15434) {
 			if (!player.getQuestManager().completedQuest(Quests.NOMADS_REQUIEM)) {
-				player.getSocialManager().sendGameMessage("You need to have completed Nomad's Requiem miniquest to use this cape.");
+				player.message("You need to have completed Nomad's Requiem miniquest to use this cape.");
 				return false;
 			}
 		}

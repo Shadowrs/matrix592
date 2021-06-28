@@ -101,7 +101,7 @@ public class PickPocketAction extends Action {
 			player.faceEntity(npc);
 			player.setNextAnimation(getAnimation());
 			player.setNextGraphics(getGraphics());
-			player.getSocialManager().sendGameMessage("You attempt to pick the " + npc.getDefinitions().getName().toLowerCase() + "'s pocket...");
+			player.message("You attempt to pick the " + npc.getDefinitions().getName().toLowerCase() + "'s pocket...");
 			setActionDelay(player, 2);
 			return true;
 		}
@@ -116,12 +116,12 @@ public class PickPocketAction extends Action {
 	@Override
 	public int processWithDelay(Player player) {
 		if (!isSuccesfull(player)) {
-			player.getSocialManager().sendGameMessage("You fail to pick the " + npc.getDefinitions().getName().toLowerCase() + "'s pocket.");
+			player.message("You fail to pick the " + npc.getDefinitions().getName().toLowerCase() + "'s pocket.");
 			npc.setNextAnimation(STUN_ANIMATION);
 			npc.faceEntity(player);
 			player.setNextAnimation(new Animation(424));
 			player.setNextGraphics(new Graphics(80, 5, 60));
-			player.getSocialManager().sendGameMessage("You've been stunned.");
+			player.message("You've been stunned.");
 			player.applyHit(new Hit(player, npcData.getStunDamage(), HitLook.REGULAR_DAMAGE));
 			if (npcData.equals(PickPocketableNPC.MASTER_FARMER) || npcData.equals(PickPocketableNPC.FARMER))
 				npc.setNextForceTalk(new ForceTalk("Cor blimey mate, what are ye doing in me pockets?"));
@@ -130,7 +130,7 @@ public class PickPocketAction extends Action {
 			player.lock(npcData.getStunTime());
 			stop(player);
 		} else {
-			player.getSocialManager().sendGameMessage(getMessage(player));
+			player.message(getMessage(player));
 			double totalXp = npcData.getExperience();
 			if (hasTheivingSuit(player))
 				totalXp *= 1.025;
@@ -227,19 +227,19 @@ public class PickPocketAction extends Action {
 			return false;
 		}
 		if (player.getInventory().getFreeSlots() < 1) {
-			player.getSocialManager().sendGameMessage("You don't have enough space in your inventory.");
+			player.message("You don't have enough space in your inventory.");
 			return false;
 		}
 		if (player.getAttackedBy() != null && player.getAttackedByDelay() > Utils.currentTimeMillis()) {
-			player.getSocialManager().sendGameMessage("You can't do this while you're under combat.");
+			player.message("You can't do this while you're under combat.");
 			return false;
 		}
 		if (npc.getAttackedBy() != null && npc.getAttackedByDelay() > Utils.currentTimeMillis()) {
-			player.getSocialManager().sendGameMessage("The npc is under combat.");
+			player.message("The npc is under combat.");
 			return false;
 		}
 		if (npc.isDead()) {
-			player.getSocialManager().sendGameMessage("Too late, the npc is dead.");
+			player.message("Too late, the npc is dead.");
 			return false;
 		}
 		return true;

@@ -67,7 +67,7 @@ public final class Inventory implements Serializable {
 		Item[] itemsBefore = items.getItemsCopy();
 		if (!items.add(new Item(itemId, amount))) {
 			items.add(new Item(itemId, items.getFreeSlots()));
-			player.getSocialManager().sendGameMessage("Not enough space in your inventory.");
+			player.message("Not enough space in your inventory.");
 			refreshItems(itemsBefore);
 			return false;
 		}
@@ -81,7 +81,7 @@ public final class Inventory implements Serializable {
 		Item[] itemsBefore = items.getItemsCopy();
 		if (!items.add(item)) {
 			items.add(new Item(item.getId(), items.getFreeSlots()));
-			player.getSocialManager().sendGameMessage("Not enough space in your inventory.");
+			player.message("Not enough space in your inventory.");
 			refreshItems(itemsBefore);
 			return false;
 		}
@@ -224,7 +224,7 @@ public final class Inventory implements Serializable {
 		Item item = items.get(slotId);
 		if (item == null)
 			return;
-		player.getSocialManager().sendGameMessage(ItemExamines.getExamine(item));
+		player.message(ItemExamines.getExamine(item));
 	}
 
 	public void refresh() {

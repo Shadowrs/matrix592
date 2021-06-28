@@ -1032,7 +1032,7 @@ public final class World {
 		if (!region.getGroundItemsSafe().contains(floorItem))
 			return false;
 		if (player.getInventory().getFreeSlots() == 0 && (!floorItem.getDefinitions().isStackable() || !player.getInventory().containsItem(floorItem.getId(), 1))) {
-			player.getSocialManager().sendGameMessage("Not enough space in your inventory.");
+			player.message("Not enough space in your inventory.");
 			return false;
 		}
 		region.getGroundItemsSafe().remove(floorItem);
@@ -1239,7 +1239,7 @@ public final class World {
 		for (Player p : World.getPlayers()) {
 			if (p == null || !p.isRunning() || p.isYellOff() || (forStaff && p.getRights() == 0) || p.getInterfaceManager().containsReplacedChatBoxInter())
 				continue;
-			p.getSocialManager().sendGameMessage(message);
+			p.message(message);
 		}
 	}
 
@@ -1247,7 +1247,7 @@ public final class World {
 		for (Player p : World.getPlayers()) {
 			if (p == null || !p.isRunning() || p.isYellOff() || (forStaff && p.getRights() == 0) || p.getFriendsIgnores().containsIgnore(sender.getUsername()) || p.getInterfaceManager().containsReplacedChatBoxInter())
 				continue;
-			p.getSocialManager().sendGameMessage(message);
+			p.message(message);
 		}
 	}
 

@@ -167,7 +167,7 @@ public class Shop {
 		if (item == null)
 			return;
 		if (item.getAmount() == 0) {
-			player.getSocialManager().sendGameMessage("There is no stock of that item at the moment.");
+			player.message("There is no stock of that item at the moment.");
 			return;
 		}
 		int dq = slotId >= mainStock.length ? 0 : defaultQuantity[slotId];
@@ -178,20 +178,20 @@ public class Shop {
 
 		boolean enoughCoins = maxQuantity >= buyQ;
 		if (!enoughCoins) {
-			player.getSocialManager().sendGameMessage("You don't have enough " + ItemDefinitions.getItemDefinitions(money).getName().toLowerCase() + ".");
+			player.message("You don't have enough " + ItemDefinitions.getItemDefinitions(money).getName().toLowerCase() + ".");
 			buyQ = maxQuantity;
 		} else if (quantity > buyQ)
-			player.getSocialManager().sendGameMessage("The shop has run out of stock.");
+			player.message("The shop has run out of stock.");
 		if (item.getDefinitions().isStackable()) {
 			if (player.getInventory().getFreeSlots() < 1) {
-				player.getSocialManager().sendGameMessage("Not enough space in your inventory.");
+				player.message("Not enough space in your inventory.");
 				return;
 			}
 		} else {
 			int freeSlots = player.getInventory().getFreeSlots();
 			if (buyQ > freeSlots) {
 				buyQ = freeSlots;
-				player.getSocialManager().sendGameMessage("Not enough space in your inventory.");
+				player.message("Not enough space in your inventory.");
 			}
 		}
 		if (buyQ != 0) {
@@ -272,12 +272,12 @@ public class Shop {
 		if (item.getDefinitions().isNoted() && item.getDefinitions().getCertId() != -1)
 			item = new Item(item.getDefinitions().getCertId(), item.getAmount());
 		if (!ItemConstants.isTradeable(item) || item.getId() == money) {
-			player.getSocialManager().sendGameMessage("You can't sell this item.");
+			player.message("You can't sell this item.");
 			return;
 		}
 		int dq = getDefaultQuantity(item.getId());
 		if (dq == -1 && generalStock == null) {
-			player.getSocialManager().sendGameMessage("You can't sell this item to this shop.");
+			player.message("You can't sell this item to this shop.");
 			return;
 		}
 		int price = getSellPrice(item, dq);
@@ -285,7 +285,7 @@ public class Shop {
 		if (quantity > numberOff)
 			quantity = numberOff;
 		if (!addItem(item.getId(), quantity)) {
-			player.getSocialManager().sendGameMessage("Shop is currently full.");
+			player.message("Shop is currently full.");
 			return;
 		}
 		player.getInventory().deleteItem(originalId, quantity);
@@ -305,16 +305,16 @@ public class Shop {
 		if (item.getDefinitions().isNoted())
 			item = new Item(item.getDefinitions().getCertId(), item.getAmount());
 		if (!ItemConstants.isTradeable(item) || item.getId() == money) {
-			player.getSocialManager().sendGameMessage("You can't sell this item.");
+			player.message("You can't sell this item.");
 			return;
 		}
 		int dq = getDefaultQuantity(item.getId());
 		if (dq == -1 && generalStock == null) {
-			player.getSocialManager().sendGameMessage("You can't sell this item to this shop.");
+			player.message("You can't sell this item to this shop.");
 			return;
 		}
 		int price = getSellPrice(item, dq);
-		player.getSocialManager().sendGameMessage(item.getDefinitions().getName() + ": shop will buy for: " + price + " " + ItemDefinitions.getItemDefinitions(money).getName().toLowerCase() + ". Right-click the item to sell.");
+		player.message(item.getDefinitions().getName() + ": shop will buy for: " + price + " " + ItemDefinitions.getItemDefinitions(money).getName().toLowerCase() + ". Right-click the item to sell.");
 	}
 
 	public int getDefaultQuantity(int itemId) {
@@ -344,9 +344,9 @@ public class Shop {
 		int dq = slotId >= mainStock.length ? 0 : defaultQuantity[slotId];
 		int price = getBuyPrice(item, dq);
 		if (price < 1)
-			player.getSocialManager().sendGameMessage(item.getDefinitions().getName() + " is free of charge.");
+			player.message(item.getDefinitions().getName() + " is free of charge.");
 		else
-			player.getSocialManager().sendGameMessage(item.getDefinitions().getName() + ": Currently costs " + price + " " + (price == 1 ? "coin." : ItemDefinitions.getItemDefinitions(money).getName().toLowerCase() + "."));
+			player.message(item.getDefinitions().getName() + ": Currently costs " + price + " " + (price == 1 ? "coin." : ItemDefinitions.getItemDefinitions(money).getName().toLowerCase() + "."));
 
 		player.getInterfaceManager().sendInventoryInterface(449);
 		player.getPackets().sendGlobalConfig(741, item.getId());
@@ -462,7 +462,7 @@ public class Shop {
 		Item item = slotId >= mainStock.length ? generalStock[slotId - mainStock.length] : mainStock[slotId];
 		if (item == null)
 			return;
-		player.getSocialManager().sendGameMessage(ItemExamines.getExamine(item));
+		player.message(ItemExamines.getExamine(item));
 	}
 
 	public void refreshShop() {

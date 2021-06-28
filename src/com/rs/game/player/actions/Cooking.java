@@ -219,7 +219,7 @@ public class Cooking extends Action {
 		}
 		if (!process(player))
 			return false;
-		player.getSocialManager().sendGameMessage("You attempt to cook the " + cook.getProduct().getDefinitions().getName().toLowerCase() + ".");
+		player.message("You attempt to cook the " + cook.getProduct().getDefinitions().getName().toLowerCase() + ".");
 		player.faceObject(object);
 		return true;
 	}
@@ -250,7 +250,7 @@ public class Cooking extends Action {
 		if (!player.getInventory().containsItem(cook.getRawItem().getId(), cook.getRawItem().getAmount()))
 			return false;
 		if (player.getSkills().getLevel(cook.getRawItem().getId() == Cookables.HARDENED_STRAIT_ROOT.getRawItem().getId() ? Skills.FIREMAKING : Skills.COOKING) < cook.getLvl()) {
-			player.getSocialManager().sendGameMessage("You need a level of " + cook.getLvl() + " to cook this.");
+			player.message("You need a level of " + cook.getLvl() + " to cook this.");
 			return false;
 		}
 		return true;
@@ -263,19 +263,19 @@ public class Cooking extends Action {
 		if ((player.getSkills().getLevel(Skills.COOKING) >= cook.getBurningLvl()) ? false : isBurned(cook, player)) {
 			player.getInventory().deleteItem(item.getId(), 1);
 			player.getInventory().addItem(cook.getBurntId().getId(), cook.getBurntId().getAmount());
-			player.getSocialManager().sendGameMessage("Oops! You accidently burnt the " + cook.getProduct().getDefinitions().getName().toLowerCase() + ".", true);
+			player.message("Oops! You accidently burnt the " + cook.getProduct().getDefinitions().getName().toLowerCase() + ".", true);
 		} else {
 			player.getInventory().deleteItem(item.getId(), 1);
 			player.getInventory().addItem(cook.getProduct().getId(), cook.getProduct().getAmount());
 			player.getSkills().addXp(cook.getRawItem().getId() == Cookables.HARDENED_STRAIT_ROOT.getRawItem().getId() ? Skills.FIREMAKING : Skills.COOKING, cook.getXp());
-			player.getSocialManager().sendGameMessage("You successfully cook the " + cook.getProduct().getDefinitions().getName().toLowerCase() + ".", true);
+			player.message("You successfully cook the " + cook.getProduct().getDefinitions().getName().toLowerCase() + ".", true);
 		}
 		if (cook.getBurntId() == Cookables.CAKE.getBurntId())
 			player.getInventory().addItemDrop(1887, 1);
 		else if (cook.getRawItem().getId() == Cookables.HARDENED_STRAIT_ROOT.getRawItem().getId())
 			player.setFavorPoints(2 + player.getFavorPoints());
 		if (amount > 0) {
-			player.getSocialManager().sendGameMessage("You attempt to cook the " + cook.getProduct().getDefinitions().getName().toLowerCase() + ".");
+			player.message("You attempt to cook the " + cook.getProduct().getDefinitions().getName().toLowerCase() + ".");
 			return 3;
 		}
 		return -1;

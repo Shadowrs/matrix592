@@ -178,15 +178,15 @@ public class SiphionActionNodes extends Action {
 			return false;
 		}
 		if (!started && (!player.withinDistance(node, 6) || !player.clipedProjectile(node, true))) {
-			// player.getSocialManager().sendGameMessage("You can't reach that!");
+			// player.message("You can't reach that!");
 			player.calcFollow(node, true);
 			return true;
 		}
 		if (!player.getInventory().containsItem(24227, 1)) {
 			if (!player.getInventory().hasFreeSlots())
-				player.getSocialManager().sendGameMessage("Not enough space in your inventory.");
+				player.message("Not enough space in your inventory.");
 			else
-				player.getSocialManager().sendGameMessage("You don't have any rune essence to siphon from that node.", true);
+				player.message("You don't have any rune essence to siphon from that node.", true);
 			return false;
 		}
 		if (!started) {
@@ -202,12 +202,12 @@ public class SiphionActionNodes extends Action {
 	}
 
 	private void processNodeDestroy(final Player player) {
-		player.getSocialManager().sendGameMessage("The node you were siphoning from has been depleted of energy.", true);
+		player.message("The node you were siphoning from has been depleted of energy.", true);
 		WorldTasksManager.schedule(new WorldTask() {
 
 			@Override
 			public void run() {
-				player.getSocialManager().sendGameMessage("You pick up the essence left by the node.", true);
+				player.message("You pick up the essence left by the node.", true);
 				player.setNextAnimation(new Animation(16599));
 				player.getInventory().addItem(24227, 50);
 				World.removeObject(node);

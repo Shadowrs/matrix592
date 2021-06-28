@@ -19,7 +19,7 @@ public class Kalaboss extends Controller {
 			return true;
 		}
 		player.setNextFaceWorldTile(target);
-		player.getSocialManager().sendGameMessage("You can't do that right now.");
+		player.message("You can't do that right now.");
 		return false;
 	}
 

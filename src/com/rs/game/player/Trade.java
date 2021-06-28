@@ -100,7 +100,7 @@ public class Trade {
 				if (item == null)
 					return;
 				if (!ItemConstants.isTradeable(item)) {
-					player.getSocialManager().sendGameMessage("That item isn't tradeable.");
+					player.message("That item isn't tradeable.");
 					return;
 				}
 				Item[] itemsBefore = items.getItemsCopy();
@@ -195,11 +195,11 @@ public class Trade {
 		if (item == null)
 			return;
 		if (!ItemConstants.isTradeable(item)) {
-			player.getSocialManager().sendGameMessage("That item isn't tradeable.");
+			player.message("That item isn't tradeable.");
 			return;
 		}
 		int price = GrandExchange.getPrice(item.getId());
-		player.getSocialManager().sendGameMessage(item.getDefinitions().getName() + ": market price is " + price + " coins.");
+		player.message(item.getDefinitions().getName() + ": market price is " + price + " coins.");
 	}
 
 	public void sendValue(int slot) {
@@ -207,11 +207,11 @@ public class Trade {
 		if (item == null)
 			return;
 		if (!ItemConstants.isTradeable(item)) {
-			player.getSocialManager().sendGameMessage("That item isn't tradeable.");
+			player.message("That item isn't tradeable.");
 			return;
 		}
 		int price = GrandExchange.getPrice(item.getId());
-		player.getSocialManager().sendGameMessage(item.getDefinitions().getName() + ": market price is " + price + " coins.");
+		player.message(item.getDefinitions().getName() + ": market price is " + price + " coins.");
 	}
 
 	public void sendExamine(int slot, boolean traders) {
@@ -220,7 +220,7 @@ public class Trade {
 		Item item = traders ? target.getTrade().items.get(slot) : items.get(slot);
 		if (item == null)
 			return;
-		player.getSocialManager().sendGameMessage(ItemExamines.getExamine(item));
+		player.message(ItemExamines.getExamine(item));
 	}
 
 	public boolean nextStage() {
@@ -318,15 +318,15 @@ public class Trade {
 						items.clear();
 						player.getInventory().init();
 						oldTarget.getInventory().init();
-						player.getSocialManager().sendGameMessage("Accepted trade.");
-						oldTarget.getSocialManager().sendGameMessage("Accepted trade.");
+						player.message("Accepted trade.");
+						oldTarget.message("Accepted trade.");
 					}
 					Logger.globalLog(player.getUsername(), player.getIP(), new String(" trade between " + player.getUsername() + " and " + oldTarget.getUsername() + " has been finished."));
 					if (CloseTradeStage.CANCEL == stage)
-						oldTarget.getSocialManager().sendGameMessage("<col=ff0000>Other player declined trade!");
+						oldTarget.message("<col=ff0000>Other player declined trade!");
 					else if (CloseTradeStage.NO_SPACE == stage) {
-						player.getSocialManager().sendGameMessage("You don't have enough space in your inventory for this trade.");
-						oldTarget.getSocialManager().sendGameMessage("Other player doesn't have enough space in their inventory for this trade.");
+						player.message("You don't have enough space in your inventory for this trade.");
+						oldTarget.message("Other player doesn't have enough space in their inventory for this trade.");
 					}
 				}
 			}

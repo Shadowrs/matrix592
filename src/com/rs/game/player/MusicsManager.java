@@ -242,7 +242,7 @@ public final class MusicsManager implements Serializable {
 	public void sendHint(int musicIndex) {
 		int musicId = ClientScriptMap.getMap(1351).getIntValue(musicIndex);
 		if (musicId != -1) {
-			player.getSocialManager().sendGameMessage("This track " + (unlockedMusics.contains(musicId) ? "was unlocked" : "unlocks") + " " + MusicHints.getHint(musicId));
+			player.message("This track " + (unlockedMusics.contains(musicId) ? "was unlocked" : "unlocks") + " " + MusicHints.getHint(musicId));
 		}
 	}
 
@@ -295,7 +295,7 @@ public final class MusicsManager implements Serializable {
 			if (!unlockedMusics.contains(musicId)) {
 				addMusic(musicId);
 				if (musicName != null)
-					player.getSocialManager().sendGameMessage("<col=ff0000>You have unlocked a new music track: " + musicName + ".");
+					player.message("<col=ff0000>You have unlocked a new music track: " + musicName + ".");
 			}
 		} else {
 			String musicName = null;

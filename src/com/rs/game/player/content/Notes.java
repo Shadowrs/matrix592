@@ -58,11 +58,11 @@ public final class Notes implements Serializable {
 
 	public boolean add(String text) {
 		if (notes.size() >= 30) {
-			player.getSocialManager().sendGameMessage("You may only have 30 notes!");
+			player.message("You may only have 30 notes!");
 			return false;
 		}
 		if (text.length() > 50) {
-			player.getSocialManager().sendGameMessage("You can only enter notes up to 50 characters!");
+			player.message("You can only enter notes up to 50 characters!");
 			return false;
 		}
 		player.getPackets().sendGlobalString(149 + notes.size(), text);
@@ -72,7 +72,7 @@ public final class Notes implements Serializable {
 
 	public boolean edit(String text) {
 		if (text.length() > 50) {
-			player.getSocialManager().sendGameMessage("You can only enter notes up to 50 characters!");
+			player.message("You can only enter notes up to 50 characters!");
 			return false;
 		}
 		int id = getCurrentNote();

@@ -25,11 +25,11 @@ public class FightPitsViewingOrb extends Action {
 	@Override
 	public boolean process(Player player) {
 		if (player.getPoison().isPoisoned()) {
-			player.getSocialManager().sendGameMessage("You can't use orb while you're poisoned.");
+			player.message("You can't use orb while you're poisoned.");
 			return false;
 		}
 		if (player.getFamiliar() != null) {
-			player.getSocialManager().sendGameMessage("You can't use orb with a familiar.");
+			player.message("You can't use orb with a familiar.");
 			return false;
 		}
 		return true;

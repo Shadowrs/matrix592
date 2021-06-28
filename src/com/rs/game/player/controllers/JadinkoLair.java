@@ -57,10 +57,10 @@ public class JadinkoLair extends Controller { // 10, 13, 50
 	public boolean processObjectClick1(final WorldObject object) {
 		if (object.getId() == 12284) {
 			if (!player.getInventory().containsOneItem(590) || !player.getInventory().containsItem(21350, 1)) {
-				player.getSocialManager().sendGameMessage("You do not have the required items to light this.");
+				player.message("You do not have the required items to light this.");
 				return false;
 			} else if (player.getSkills().getLevel(Skills.FIREMAKING) < 83) {
-				player.getSocialManager().sendGameMessage("You do not have the required level to light this.");
+				player.message("You do not have the required level to light this.");
 				return false;
 			}
 			player.lock(5);

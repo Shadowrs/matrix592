@@ -214,7 +214,7 @@ public abstract class Entity extends WorldTile {
 				} else if (player.getEquipment().getAmuletId() != 11090 && player.getEquipment().getRingId() == 11090 && player.getHitpoints() <= player.getMaxHitpoints() * 0.1) {
 					Magic.sendNormalTeleportSpell(player, 1, 0, Settings.RESPAWN_PLAYER_LOCATION);
 					player.getEquipment().deleteItem(11090, 1);
-					player.getSocialManager().sendGameMessage("Your ring of life saves you, but is destroyed in the process.");
+					player.message("Your ring of life saves you, but is destroyed in the process.");
 				}
 			}
 			if (player.getEquipment().getAmuletId() == 11090 && player.getHitpoints() <= player.getMaxHitpoints() * 0.2) {// priority
@@ -224,7 +224,7 @@ public abstract class Entity extends WorldTile {
 				// life
 				player.heal((int) (player.getMaxHitpoints() * 0.3));
 				player.getEquipment().deleteItem(11090, 1);
-				player.getSocialManager().sendGameMessage("Your pheonix necklace heals you, but is destroyed in the process.");
+				player.message("Your pheonix necklace heals you, but is destroyed in the process.");
 			}
 		}
 	}
@@ -1028,7 +1028,7 @@ public abstract class Entity extends WorldTile {
 			if (this instanceof Player) {
 				Player p = (Player) this;
 				if (!entangleMessage)
-					p.getSocialManager().sendGameMessage("You have been frozen.");
+					p.message("You have been frozen.");
 				if (p.getControlerManager().getControler() != null)
 					time /= 2;
 			}
@@ -1266,6 +1266,20 @@ public abstract class Entity extends WorldTile {
 			if (player.debugOn) {
 				System.out.println(s);
 			}
+		}
+	}
+	
+	public void message(String s) {
+		if (this instanceof Player) {
+			Player player = (Player) this;
+			player.getSocialManager().sendGameMessage(s);
+		}
+	}
+	
+	public void message(String s, boolean filter) {
+		if (this instanceof Player) {
+			Player player = (Player) this;
+			player.getSocialManager().sendGameMessage(s, filter);
 		}
 	}
 }

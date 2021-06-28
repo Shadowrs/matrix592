@@ -87,11 +87,11 @@ public class Burying {
 			player.lock(2);
 			player.getPackets().sendSound(2738, 0, 1);
 			player.setNextAnimation(BURY_ANIMATION);
-			player.getSocialManager().sendGameMessage("You dig a hole in the ground...");
+			player.message("You dig a hole in the ground...");
 			WorldTasksManager.schedule(new WorldTask() {
 				@Override
 				public void run() {
-					player.getSocialManager().sendGameMessage("You bury the " + itemDef.getName().toLowerCase());
+					player.message("You bury the " + itemDef.getName().toLowerCase());
 					player.getInventory().deleteItem(item.getId(), 1);
 					double xp = bone.getExperience();
 					player.getSkills().addXp(Skills.PRAYER, xp);

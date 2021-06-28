@@ -71,7 +71,7 @@ public final class Barrows extends Controller {
 	@Override
 	public boolean canAttack(Entity target) {
 		if (target instanceof BarrowsBrother && target != this.target) {
-			player.getSocialManager().sendGameMessage("This isn't your target.");
+			player.message("This isn't your target.");
 			return false;
 		}
 		return true;
@@ -85,7 +85,7 @@ public final class Barrows extends Controller {
 	private void leave(boolean logout) {
 		if (target != null) {
 			target.finish(); // target also calls removing hint icon at remove
-			player.getSocialManager().sendGameMessage("We'll finish this later.......");
+			player.message("We'll finish this later.......");
 		}
 		if (!logout) {
 			for (int varBit : TUNNEL_CONFIG[getTunnelIndex()])
@@ -172,13 +172,13 @@ public final class Barrows extends Controller {
 			return false;
 		} else if (object.getId() == 10284) {
 			if (player.getHiddenBrother() == -1) {// reached chest
-				player.getSocialManager().sendGameMessage("You found nothing.");
+				player.message("You found nothing.");
 				return false;
 			}
 			if (!player.getKilledBarrowBrothers()[player.getHiddenBrother()])
 				sendTarget(player.getHiddenBrother() == 6 ? 14297 : 2025 + player.getHiddenBrother(), player);
 			if (target != null) {
-				player.getSocialManager().sendGameMessage("You found nothing.");
+				player.message("You found nothing.");
 				return false;
 			}
 			sendReward();
@@ -225,7 +225,7 @@ public final class Barrows extends Controller {
 				if (sarcoId == player.getHiddenBrother())
 					player.getDialogueManager().startDialogue("BarrowsD");
 				else if (target != null || player.getKilledBarrowBrothers()[sarcoId])
-					player.getSocialManager().sendGameMessage("You found nothing.");
+					player.message("You found nothing.");
 				else
 					sendTarget(sarcoId == 6 ? 14297 : 2025 + sarcoId, player);
 				return false;

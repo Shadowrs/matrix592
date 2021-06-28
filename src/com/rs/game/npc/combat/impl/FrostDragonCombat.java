@@ -33,10 +33,10 @@ public class FrostDragonCombat extends CombatScript {
 				damage = Utils.getRandom(650);
 				if (Combat.hasAntiDragProtection(target) || (player != null && (player.getPrayer().usingPrayer(0, 17) || player.getPrayer().usingPrayer(1, 7)))) {
 					damage = 0;
-					player.getSocialManager().sendGameMessage("Your " + (Combat.hasAntiDragProtection(target) ? "shield" : "prayer") + " absorbs most of the dragon's breath!", true);
+					player.message("Your " + (Combat.hasAntiDragProtection(target) ? "shield" : "prayer") + " absorbs most of the dragon's breath!", true);
 				} else if ((!Combat.hasAntiDragProtection(target) || !player.getPrayer().usingPrayer(0, 17) || !player.getPrayer().usingPrayer(1, 7)) && player.getFireImmune() > Utils.currentTimeMillis()) {
 					damage = Utils.getRandom(164);
-					player.getSocialManager().sendGameMessage("Your potion absorbs most of the dragon's breath!", true);
+					player.message("Your potion absorbs most of the dragon's breath!", true);
 				}
 				npc.setNextAnimation(new Animation(13155));
 				World.sendProjectile(npc, target, 393, 28, 16, 35, 35, 16, 0);
@@ -48,10 +48,10 @@ public class FrostDragonCombat extends CombatScript {
 				damage = Utils.getRandom(650);
 				if (Combat.hasAntiDragProtection(target) || (player != null && (player.getPrayer().usingPrayer(0, 17) || player.getPrayer().usingPrayer(1, 7)))) {
 					damage = 0;
-					player.getSocialManager().sendGameMessage("Your " + (Combat.hasAntiDragProtection(target) ? "shield" : "prayer") + " absorbs most of the dragon's breath!", true);
+					player.message("Your " + (Combat.hasAntiDragProtection(target) ? "shield" : "prayer") + " absorbs most of the dragon's breath!", true);
 				} else if ((!Combat.hasAntiDragProtection(target) || !player.getPrayer().usingPrayer(0, 17) || !player.getPrayer().usingPrayer(1, 7)) && player.getFireImmune() > Utils.currentTimeMillis()) {
 					damage = Utils.getRandom(164);
-					player.getSocialManager().sendGameMessage("Your potion fully protects you from the heat of the dragon's breath!", true);
+					player.message("Your potion fully protects you from the heat of the dragon's breath!", true);
 				}
 				npc.setNextAnimation(new Animation(13152));
 				npc.setNextGraphics(new Graphics(2465));
@@ -60,10 +60,10 @@ public class FrostDragonCombat extends CombatScript {
 				damage = Utils.getRandom(650);
 				if (Combat.hasAntiDragProtection(target) || (player != null && (player.getPrayer().usingPrayer(0, 17) || player.getPrayer().usingPrayer(1, 7)))) {
 					damage = 0;
-					player.getSocialManager().sendGameMessage("Your " + (Combat.hasAntiDragProtection(target) ? "shield" : "prayer") + " absorbs most of the dragon's breath!", true);
+					player.message("Your " + (Combat.hasAntiDragProtection(target) ? "shield" : "prayer") + " absorbs most of the dragon's breath!", true);
 				} else if ((!Combat.hasAntiDragProtection(target) || !player.getPrayer().usingPrayer(0, 17) || !player.getPrayer().usingPrayer(1, 7)) && player.getFireImmune() > Utils.currentTimeMillis()) {
 					damage = Utils.getRandom(164);
-					player.getSocialManager().sendGameMessage("Your potion fully protects you from the heat of the dragon's breath!", true);
+					player.message("Your potion fully protects you from the heat of the dragon's breath!", true);
 				}
 				npc.setNextAnimation(new Animation(13155));
 				World.sendProjectile(npc, target, 393, 28, 16, 35, 35, 16, 0);

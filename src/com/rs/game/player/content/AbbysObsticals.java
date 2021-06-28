@@ -24,7 +24,7 @@ public class AbbysObsticals {
 	public static void clearRocks(final Player player, final WorldObject object) {
 		final PickAxeDefinitions defintions = MiningBase.getPickAxeDefinitions(player);
 		if (defintions == null) {
-			player.getSocialManager().sendGameMessage("You need a usable pickaxe in order to clear this obstical.");
+			player.message("You need a usable pickaxe in order to clear this obstical.");
 			return;
 		}
 		player.lock();
@@ -61,7 +61,7 @@ public class AbbysObsticals {
 	public static void clearTendrills(final Player player, final WorldObject object, final WorldTile tile) {
 		final HatchetDefinitions defintions = Woodcutting.getHatchet(player);
 		if (defintions == null) {
-			player.getSocialManager().sendGameMessage("You need a usable hatchet in order to clear this obstical.");
+			player.message("You need a usable hatchet in order to clear this obstical.");
 			return;
 		}
 		player.lock();
@@ -141,7 +141,7 @@ public class AbbysObsticals {
 					player.setNextAnimation(new Animation(844));
 					if (!quick) {
 						if (!isSuccessFul(player, Skills.AGILITY)) {
-							player.getSocialManager().sendGameMessage("You cannot seem to slip through the gap.");
+							player.message("You cannot seem to slip through the gap.");
 							player.unlock();
 							player.setNextAnimation(new Animation(-1));
 							stop();
@@ -161,7 +161,7 @@ public class AbbysObsticals {
 
 	public static void burnGout(final Player player, final WorldObject object, final WorldTile tile) {
 		if (!player.getInventory().containsItem(590, 1) && player.getInventory().containsOneItem(590)) {
-			player.getSocialManager().sendGameMessage("You need a tinderbox in order to burn the boil.");
+			player.message("You need a tinderbox in order to burn the boil.");
 			return;
 		}
 		player.lock();

@@ -44,7 +44,7 @@ public class CommendationExchange {// 1875 TODO
 	private static boolean exchangeCommendation(Player player, int price) {
 		int currentPoints = player.getPestPoints();
 		if (currentPoints - price < 0) {
-			player.getSocialManager().sendGameMessage("You don't have enough Commendations remaining to complete this exchange.");
+			player.message("You don't have enough Commendations remaining to complete this exchange.");
 			return false;
 		}
 		player.setPestPoints(currentPoints - price);
@@ -71,32 +71,32 @@ public class CommendationExchange {// 1875 TODO
 			player.getPackets().sendHideIComponent(INTERFACE, 69, true);
 		} else if (componentId == 291) {
 			if (player.getSkills().getLevelForXp(Skills.HERBLORE) < 25) {
-				player.getSocialManager().sendGameMessage("You need a herblore level of 25 in order to purchase a herblore pack.");
+				player.message("You need a herblore level of 25 in order to purchase a herblore pack.");
 				return;
 			} else if (!exchangeCommendation(player, 30))
 				return;
 			player.getInventory().addItemDrop(Herbs.values()[Utils.random(5)].getHerbId() + 1, Utils.random(4));
 			player.getInventory().addItemDrop(Herbs.values()[Herbs.values().length - 1].getHerbId() + 1, Utils.random(2));
-			player.getSocialManager().sendGameMessage("You exchange 30 commendation points for a herblore pack.");
+			player.message("You exchange 30 commendation points for a herblore pack.");
 		} else if (componentId == 302) {
 			if (player.getSkills().getLevelForXp(Skills.MINING) < 25) {
-				player.getSocialManager().sendGameMessage("You need a mining level of 25 in order to purchase a herblore pack.");
+				player.message("You need a mining level of 25 in order to purchase a herblore pack.");
 				return;
 			} else if (!exchangeCommendation(player, 15))
 				return;
 			player.getInventory().addItemDrop(441, Utils.random(20));
 			player.getInventory().addItemDrop(454, Utils.random(30));
-			player.getSocialManager().sendGameMessage("You exchange 15 commendation points for a mineral pack.");
+			player.message("You exchange 15 commendation points for a mineral pack.");
 		} else if (componentId == 313) {
 			if (player.getSkills().getLevelForXp(Skills.FARMING) < 25) {
-				player.getSocialManager().sendGameMessage("You need a farming level of 25 in order to purchase a herblore pack.");
+				player.message("You need a farming level of 25 in order to purchase a herblore pack.");
 				return;
 			} else if (!exchangeCommendation(player, 15))
 				return;
 			player.getInventory().addItemDrop(Nest.SEEDS[0][Utils.random(Nest.SEEDS[0].length)], Utils.random(5));
 			player.getInventory().addItemDrop(Nest.SEEDS[0][Utils.random(Nest.SEEDS[0].length)], Utils.random(3));
 			player.getInventory().addItemDrop(Nest.SEEDS[1][Utils.random(Nest.SEEDS[1].length)], Utils.random(2));
-			player.getSocialManager().sendGameMessage("You exchange 15 commendation points for a seed pack.");
+			player.message("You exchange 15 commendation points for a seed pack.");
 		} else {
 			for (int index = 0; index < SKILL_BASE_COMPONENTS.length; index++) {
 				int skillComponent = SKILL_BASE_COMPONENTS[index];
@@ -131,7 +131,7 @@ public class CommendationExchange {// 1875 TODO
 			}
 		}
 		player.getInventory().addItemDrop(itemId, rate);
-		player.getSocialManager().sendGameMessage("You exchange " + rate * 2 + " Commendations for a charm.");
+		player.message("You exchange " + rate * 2 + " Commendations for a charm.");
 	}
 
 	private static int getRateForIndex(int index) {
@@ -146,7 +146,7 @@ public class CommendationExchange {// 1875 TODO
 
 	private static void addXPForSkill(Player player, int skill, int rate) {
 		if (player.getSkills().getLevelForXp(skill) < 25) {
-			player.getSocialManager().sendGameMessage("You need a " + Skills.SKILL_NAME[skill] + " of at least 25 in order to gain experience.");
+			player.message("You need a " + Skills.SKILL_NAME[skill] + " of at least 25 in order to gain experience.");
 			return;
 		}
 		for (int i = 0; i < rate; i++) {
@@ -162,7 +162,7 @@ public class CommendationExchange {// 1875 TODO
 
 	private static void addVoidItem(Player player, int index) {
 		if (!player.getSkills().hasRequiriments(Skills.ATTACK, 42, Skills.STRENGTH, 42, Skills.DEFENCE, 42, Skills.HITPOINTS, 42, Skills.RANGE, 42, Skills.MAGIC, 42, Skills.PRAYER, 22)) {
-			player.getSocialManager().sendGameMessage("You need an attack, strength, defence, constitution, range, and magic level of 42, and a prayer level of 22 in order to purchase void equipment.");
+			player.message("You need an attack, strength, defence, constitution, range, and magic level of 42, and a prayer level of 22 in order to purchase void equipment.");
 			return;
 		}
 		int cost = VOID_POINTS_COST[index];

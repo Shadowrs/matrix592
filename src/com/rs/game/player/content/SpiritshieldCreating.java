@@ -21,12 +21,12 @@ public class SpiritshieldCreating {
 
 	public static void attachShield(Player player, Item sigil, boolean smith) {
 		if (!player.getInventory().containsItem(BLESSED_SPIRIT_SHIELD, 1)) {
-			player.getSocialManager().sendGameMessage("You need a spirit shield to attach sigil to it.");
+			player.message("You need a spirit shield to attach sigil to it.");
 			return;
 		}
 		if (!smith) {
 			if (player.getInventory().getCoinsAmount() < 1500000) {
-				player.getSocialManager().sendGameMessage("Brother Bordiss wants 1.5m to attach sigil to the blessed spirit shield.");
+				player.message("Brother Bordiss wants 1.5m to attach sigil to the blessed spirit shield.");
 				return;
 			}
 			player.getInventory().deleteItem(new Item(995, 1500000));
@@ -40,7 +40,7 @@ public class SpiritshieldCreating {
 				return;
 			}
 			if (player.getSkills().getLevel(Skills.PRAYER) < 90) {
-				player.getSocialManager().sendGameMessage("You need 90 prayer to to attach sigil to the blessed spirit shield.");
+				player.message("You need 90 prayer to to attach sigil to the blessed spirit shield.");
 				return;
 			}
 			player.setNextAnimation(new Animation(898));
@@ -56,18 +56,18 @@ public class SpiritshieldCreating {
 
 	public static void blessShield(Player player, boolean altar) {
 		if (!player.getInventory().containsItem(HOLY_ELIXIR, 1) || !player.getInventory().containsItem(SPIRIT_SHIELD, 1)) {
-			player.getSocialManager().sendGameMessage("You need a spirit shield and a holy elixir to bless it.");
+			player.message("You need a spirit shield and a holy elixir to bless it.");
 			return;
 		}
 		if (!altar) {
 			if (player.getInventory().getCoinsAmount() < 1000000) {
-				player.getSocialManager().sendGameMessage("Brother Jered wants 1m to bless the spirit shield.");
+				player.message("Brother Jered wants 1m to bless the spirit shield.");
 				return;
 			}
 			player.getInventory().deleteItem(new Item(995, 1000000));
 		} else {
 			if (player.getSkills().getLevel(Skills.PRAYER) < 85) {
-				player.getSocialManager().sendGameMessage("You need 85 prayer to bless the spirit shield.");
+				player.message("You need 85 prayer to bless the spirit shield.");
 				return;
 			}
 		}

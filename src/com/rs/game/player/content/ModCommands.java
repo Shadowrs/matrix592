@@ -12,7 +12,7 @@ public class ModCommands {
             switch (cmd[0].toLowerCase()) {
             case "teleto":
                 if ((player.isLocked() || player.getControlerManager().getControler() != null) && player.getRights() != 2) {
-                    player.getSocialManager().sendGameMessage("You cannot tele anywhere from here.");
+                    player.message("You cannot tele anywhere from here.");
                     return true;
                 }
                 String name = "";
@@ -20,7 +20,7 @@ public class ModCommands {
                     name += cmd[i] + ((i == cmd.length - 1) ? "" : " ");
                 Player target = World.getPlayerByDisplayName(name);
                 if (target == null)
-                    player.getSocialManager().sendGameMessage("Couldn't find player " + name + ".");
+                    player.message("Couldn't find player " + name + ".");
                 else {
                     player.setNextWorldTile(target);
                 }
@@ -31,14 +31,14 @@ public class ModCommands {
                     name += cmd[i] + ((i == cmd.length - 1) ? "" : " ");
                 target = World.getPlayerByDisplayName(name);
                 if (target == null)
-                    player.getSocialManager().sendGameMessage("Couldn't find player " + name + ".");
+                    player.message("Couldn't find player " + name + ".");
                 else {
                     if (target.isLocked() || target.getControlerManager().getControler() != null) {
-                        player.getSocialManager().sendGameMessage("You cannot teleport this player.");
+                        player.message("You cannot teleport this player.");
                         return true;
                     }
                     if (target.getRights() > 1) {
-                        player.getSocialManager().sendGameMessage("Unable to teleport a developer to you.");
+                        player.message("Unable to teleport a developer to you.");
                         return true;
                     }
                     target.setNextWorldTile(player);
@@ -50,7 +50,7 @@ public class ModCommands {
                     name += cmd[i] + ((i == cmd.length - 1) ? "" : " ");
                 target = World.getPlayerByDisplayName(name);
                 if (target == null)
-                    player.getSocialManager().sendGameMessage("Couldn't find player " + name + ".");
+                    player.message("Couldn't find player " + name + ".");
                 else {
                     target.unlock();
                     target.getControlerManager().forceStop();
@@ -58,7 +58,7 @@ public class ModCommands {
                         // wont tele the
                         // player
                         target.setNextWorldTile(Settings.START_PLAYER_LOCATION);
-                    player.getSocialManager().sendGameMessage("You have unnulled: " + target.getDisplayName() + ".");
+                    player.message("You have unnulled: " + target.getDisplayName() + ".");
                     return true;
                 }
                 return true;

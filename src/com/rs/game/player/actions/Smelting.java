@@ -89,20 +89,20 @@ public class Smelting extends Action {
 			return false;
 		}
 		if (!player.getInventory().containsItem(bar.getItemsRequired()[0].getId(), bar.getItemsRequired()[0].getAmount())) {
-			player.getSocialManager().sendGameMessage("You need " + bar.getItemsRequired()[0].getDefinitions().getName() + " to create a " + bar.getProducedBar().getDefinitions().getName() + ".");
+			player.message("You need " + bar.getItemsRequired()[0].getDefinitions().getName() + " to create a " + bar.getProducedBar().getDefinitions().getName() + ".");
 			return false;
 		}
 		if (bar.getItemsRequired().length > 1) {
 			if (!player.getInventory().containsItem(bar.getItemsRequired()[1].getId(), bar.getItemsRequired()[1].getAmount())) {
-				player.getSocialManager().sendGameMessage("You need " + bar.getItemsRequired()[1].getDefinitions().getName() + " to create a " + bar.getProducedBar().getDefinitions().getName() + ".");
+				player.message("You need " + bar.getItemsRequired()[1].getDefinitions().getName() + " to create a " + bar.getProducedBar().getDefinitions().getName() + ".");
 				return false;
 			}
 		}
 		if (player.getSkills().getLevel(Skills.SMITHING) < bar.getLevelRequired()) {
-			player.getSocialManager().sendGameMessage("You need a Smithing level of at least " + bar.getLevelRequired() + " to smelt " + bar.getProducedBar().getDefinitions().getName());
+			player.message("You need a Smithing level of at least " + bar.getLevelRequired() + " to smelt " + bar.getProducedBar().getDefinitions().getName());
 			return false;
 		}
-		player.getSocialManager().sendGameMessage("You place the required ores and attempt to create a bar of " + bar.getProducedBar().getDefinitions().getName().toLowerCase().replace(" bar", "") + ".", true);
+		player.message("You place the required ores and attempt to create a bar of " + bar.getProducedBar().getDefinitions().getName().toLowerCase().replace(" bar", "") + ".", true);
 		return true;
 	}
 
@@ -112,17 +112,17 @@ public class Smelting extends Action {
 			return false;
 		}
 		if (!player.getInventory().containsItem(bar.getItemsRequired()[0].getId(), bar.getItemsRequired()[0].getAmount())) {
-			player.getSocialManager().sendGameMessage("You need " + bar.getItemsRequired()[0].getDefinitions().getName() + " to create a " + bar.getProducedBar().getDefinitions().getName() + ".");
+			player.message("You need " + bar.getItemsRequired()[0].getDefinitions().getName() + " to create a " + bar.getProducedBar().getDefinitions().getName() + ".");
 			return false;
 		}
 		if (bar.getItemsRequired().length > 1) {
 			if (!player.getInventory().containsItem(bar.getItemsRequired()[1].getId(), bar.getItemsRequired()[1].getAmount())) {
-				player.getSocialManager().sendGameMessage("You need " + bar.getItemsRequired()[1].getDefinitions().getName() + " to create a " + bar.getProducedBar().getDefinitions().getName() + ".");
+				player.message("You need " + bar.getItemsRequired()[1].getDefinitions().getName() + " to create a " + bar.getProducedBar().getDefinitions().getName() + ".");
 				return false;
 			}
 		}
 		if (player.getSkills().getLevel(Skills.SMITHING) < bar.getLevelRequired()) {
-			player.getSocialManager().sendGameMessage("You need a Smithing level of at least " + bar.getLevelRequired() + " to smelt " + bar.getProducedBar().getDefinitions().getName());
+			player.message("You need a Smithing level of at least " + bar.getLevelRequired() + " to smelt " + bar.getProducedBar().getDefinitions().getName());
 			return false;
 		}
 		player.faceObject(object);
@@ -158,9 +158,9 @@ public class Smelting extends Action {
 			if (bar.getProducedBar().getDefinitions().isStackable())
 				amount *= Settings.CRAFT_RATE;
 			player.getInventory().addItem(bar.getProducedBar().getId(), amount);
-			player.getSocialManager().sendGameMessage("You retrieve a bar of " + bar.getProducedBar().getDefinitions().getName().toLowerCase().replace(" bar", "") + ".", true);
+			player.message("You retrieve a bar of " + bar.getProducedBar().getDefinitions().getName().toLowerCase().replace(" bar", "") + ".", true);
 		} else {
-			player.getSocialManager().sendGameMessage("The ore is too impure and you fail to refine it.", true);
+			player.message("The ore is too impure and you fail to refine it.", true);
 		}
 		if (ticks > 0) {
 			return 1;

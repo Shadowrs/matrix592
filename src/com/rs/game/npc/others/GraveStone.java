@@ -69,8 +69,8 @@ public class GraveStone extends NPC {// 652 - gravestone selection interface
 		player.getPackets().sendGlobalConfig(623, deathTile.getTileHash());
 		player.getPackets().sendGlobalConfig(624, 0);
 		player.getPackets().sendGlobalString(53, "Your gravestone marker");
-		player.getSocialManager().sendGameMessage("Your items have been dropped at your gravestone, where they'll remain until it crumbles. Look at the world map to help find your gravestone.");
-		player.getSocialManager().sendGameMessage("It looks like it'll survive another " + (ticks / 100) + " minutes.");
+		player.message("Your items have been dropped at your gravestone, where they'll remain until it crumbles. Look at the world map to help find your gravestone.");
+		player.message("It looks like it'll survive another " + (ticks / 100) + " minutes.");
 	}
 
 	@Override
@@ -125,7 +125,7 @@ public class GraveStone extends NPC {// 652 - gravestone selection interface
 	public void decrementGrave(int stage, String message) {
 		Player player = getPlayer();
 		if (player != null) {
-			player.getSocialManager().sendGameMessage("<col=7E2217>" + message);
+			player.message("<col=7E2217>" + message);
 			player.getPackets().sendRunScript(2434, ticks);
 		}
 		if (stage == -1) {
@@ -148,36 +148,36 @@ public class GraveStone extends NPC {// 652 - gravestone selection interface
 
 	public void repair(Player blesser, boolean bless) {
 		if (blesser.getSkills().getLevel(Skills.PRAYER) < (bless ? 70 : 2)) {
-			blesser.getSocialManager().sendGameMessage("You need " + (bless ? 70 : 2) + " prayer to " + (bless ? "bless" : "repair") + " a gravestone.");
+			blesser.message("You need " + (bless ? 70 : 2) + " prayer to " + (bless ? "bless" : "repair") + " a gravestone.");
 			return;
 		}
 		if (blesser.getUsername().equals(username)) {
-			blesser.getSocialManager().sendGameMessage("The gods don't seem to approve of people attempting to " + (bless ? "bless" : "repair") + " their own gravestones.");
+			blesser.message("The gods don't seem to approve of people attempting to " + (bless ? "bless" : "repair") + " their own gravestones.");
 			return;
 		}
 		if (bless && blessed) {
-			blesser.getSocialManager().sendGameMessage("This gravestone has already been blessed.");
+			blesser.message("This gravestone has already been blessed.");
 			return;
 		} else if (!bless && ticks > 100) {
-			blesser.getSocialManager().sendGameMessage("This gravestone doesn't seem to need repair.");
+			blesser.message("This gravestone doesn't seem to need repair.");
 			return;
 		}
 		ticks += bless ? 6000 : 500; // 5minutes, 1hour
 		blessed = true;
 		decrementGrave(0, blesser.getDisplayName() + "has " + (bless ? "blessed" : "repaired") + " your gravestone. It should survive another " + (ticks / 100) + " minutes.");
-		blesser.getSocialManager().sendGameMessage("You " + (bless ? "bless" : "repair") + " the grave.");
+		blesser.message("You " + (bless ? "bless" : "repair") + " the grave.");
 		blesser.lock(2);
 		blesser.setNextAnimation(new Animation(645));
 	}
 
 	public void demolish(Player demolisher) {
 		if (!demolisher.getUsername().equals(username)) {
-			demolisher.getSocialManager().sendGameMessage("It would be impolite to demolish someone else's gravestone.");
+			demolisher.message("It would be impolite to demolish someone else's gravestone.");
 			return;
 		}
 		addLeftTime(true);
 		finish();
-		demolisher.getSocialManager().sendGameMessage("It looks like it'll survive another " + (ticks / 100) + " minutes. You demolish it anyway.");
+		demolisher.message("It looks like it'll survive another " + (ticks / 100) + " minutes. You demolish it anyway.");
 	}
 
 	public static int getMaximumTicks(int graveStone) {

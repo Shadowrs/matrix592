@@ -59,13 +59,13 @@ public class AmuletAttaching extends Dialogue {
 
 			public boolean checkAll(Player player) {
 				if (player.getSkills().getLevel(Skills.CRAFTING) < LEVELS[index]) {
-					player.getSocialManager().sendGameMessage("You need a Crafting level of " + LEVELS[index] + ".");
+					player.message("You need a Crafting level of " + LEVELS[index] + ".");
 					return false;
 				} else if (!player.getInventory().containsItem(STRING, 1)) {
-					player.getSocialManager().sendGameMessage("You have run out of balls of whool.");
+					player.message("You have run out of balls of whool.");
 					return false;
 				} else if (!player.getInventory().containsItem(BASE[index], 1)) {
-					player.getSocialManager().sendGameMessage("You have run out amulets.");
+					player.message("You have run out amulets.");
 					return false;
 				}
 				return true;
@@ -83,7 +83,7 @@ public class AmuletAttaching extends Dialogue {
 				player.getInventory().deleteItem(STRING, 1);
 				player.getInventory().deleteItem(BASE[index], 1);
 				player.getInventory().addItem(PRODUCTS[index], 1);
-				player.getSocialManager().sendGameMessage("You put some string on your amulet.");
+				player.message("You put some string on your amulet.");
 				return 2;
 			}
 

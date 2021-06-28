@@ -75,15 +75,15 @@ public class GodWars extends Controller {
 			return false;
 		} else if (object.getId() == 26287 || object.getId() == 26286 || object.getId() == 26288 || object.getId() == 26289) {
 			if (lastPrayerRecharge >= Utils.currentTimeMillis()) {
-				player.getSocialManager().sendGameMessage("You must wait a total of 10 minutes before being able to recharge your prayer points.");
+				player.message("You must wait a total of 10 minutes before being able to recharge your prayer points.");
 				return false;
 			} else if (player.getAttackedByDelay() >= Utils.currentTimeMillis()) {
-				player.getSocialManager().sendGameMessage("You cannot recharge your prayer while engaged in combat.");
+				player.message("You cannot recharge your prayer while engaged in combat.");
 				return false;
 			}
 			player.getPrayer().restorePrayer(player.getSkills().getLevelForXp(Skills.PRAYER) * 10);
 			player.setNextAnimation(new Animation(645));
-			player.getSocialManager().sendGameMessage("Your prayer points feel rejuvinated.");
+			player.message("Your prayer points feel rejuvinated.");
 			lastPrayerRecharge = 600000 + Utils.currentTimeMillis();
 		} else if (object.getId() == 57264) {
 			player.getDialogueManager().startDialogue("SimpleMessage", "KUS UMAK (PM Cjay0091 if you know what this means).");
@@ -93,7 +93,7 @@ public class GodWars extends Controller {
 			boolean hasCerimonial = hasFullCerimonial(player);
 			if (killCount[4] >= 40 || withinBankArea || hasCerimonial) {
 				if (hasCerimonial && !withinBankArea)
-					player.getSocialManager().sendGameMessage("The door recognises your familiarity with the area and allows you to pass through.");
+					player.message("The door recognises your familiarity with the area and allows you to pass through.");
 				if (!withinBankArea) {
 					if (killCount[4] >= 40)
 						killCount[4] -= 40;
@@ -101,7 +101,7 @@ public class GodWars extends Controller {
 				}
 				player.addWalkSteps(withinBankArea ? 2899 : 2900, 5203, -1, false);
 			} else
-				player.getSocialManager().sendGameMessage("You don't have enough kills to enter the lair of Zaros.");
+				player.message("You don't have enough kills to enter the lair of Zaros.");
 			return false;
 		} else if (object.getId() == 57234) {
 			if (!Agility.hasLevel(player, 70))
@@ -125,7 +125,7 @@ public class GodWars extends Controller {
 				return false;
 			}
 			if (player.getInventory().containsItem(20120, 1)) {
-				player.getSocialManager().sendGameMessage("You flash the key in front of the door");
+				player.message("You flash the key in front of the door");
 				player.useStairs(1133, new WorldTile(2887, 5278, 0), 1, 2, "...and a strange force flings you in.");
 			} else
 				player.getDialogueManager().startDialogue("SimpleMessage", "You try to push the door open, but it wont budge.... It looks like there is some kind of key hole.");
@@ -142,11 +142,11 @@ public class GodWars extends Controller {
 			player.getControlerManager().forceStop();
 		} else if (object.getId() == 26384) { // bandos
 			if (!player.getInventory().containsOneItem(Smithing.HAMMER)) {
-				player.getSocialManager().sendGameMessage("You look at the door but find no knob, maybe it opens some other way.");
+				player.message("You look at the door but find no knob, maybe it opens some other way.");
 				return false;
 			}
 			if (player.getSkills().getLevel(Skills.STRENGTH) < 70) {
-				player.getSocialManager().sendGameMessage("You attempt to hit the door, but realize that you are not yet experienced enough.");
+				player.message("You attempt to hit the door, but realize that you are not yet experienced enough.");
 				return false;
 			}
 			final boolean withinBandos = inBandosPrepare(player);
@@ -219,7 +219,7 @@ public class GodWars extends Controller {
 					refresh();
 				}
 			} else
-				player.getSocialManager().sendGameMessage("You don't have enough kills to enter the lair of the gods.");
+				player.message("You don't have enough kills to enter the lair of the gods.");
 			return false;
 		}
 		return true;
@@ -229,7 +229,7 @@ public class GodWars extends Controller {
 	public boolean processObjectClick2(WorldObject object) {
 		if (object.getId() == 26287 || object.getId() == 26286 || object.getId() == 26288 || object.getId() == 26289) {
 			int index = object.getId() == 26289 ? 0 : object.getId() == 26286 ? 3 : object.getId() == 26287 ? 2 : 1;
-			player.getSocialManager().sendGameMessage("The god's pitty you and allow you to leave the encampment.");
+			player.message("The god's pitty you and allow you to leave the encampment.");
 			player.useStairs(-1, GODS[(index * 2) + 1], 1, 2);
 			return false;
 		}
@@ -309,7 +309,7 @@ public class GodWars extends Controller {
 
 	public static void passGiantBoulder(Player player, WorldObject object, boolean liftBoulder) {
 		if (player.getSkills().getLevel(liftBoulder ? Skills.STRENGTH : Skills.AGILITY) < 60) {
-			player.getSocialManager().sendGameMessage("You need a " + (liftBoulder ? "Agility" : "Strength") + " of 60 in order to " + (liftBoulder ? "lift" : "squeeze past") + "this boulder.");
+			player.message("You need a " + (liftBoulder ? "Agility" : "Strength") + " of 60 in order to " + (liftBoulder ? "lift" : "squeeze past") + "this boulder.");
 			return;
 		}
 		if (liftBoulder)

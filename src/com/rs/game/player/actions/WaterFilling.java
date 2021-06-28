@@ -64,7 +64,7 @@ public class WaterFilling extends Action {
 		if (checkAll(player)) {
 			setActionDelay(player, 1);
 			player.setNextAnimation(new Animation(832));
-			player.getSocialManager().sendGameMessage("You fill the " + ItemDefinitions.getItemDefinitions(fill.full).getName() + ".");
+			player.message("You fill the " + ItemDefinitions.getItemDefinitions(fill.full).getName() + ".");
 			return true;
 		}
 		return false;

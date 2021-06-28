@@ -62,7 +62,7 @@ public class Beaver extends Familiar {
 		 * "magic tree": if (objectDef.containsOption(0, "Chop down")) player.getActionManager().setAction(new Woodcutting(object,
 		 * TreeDefinitions.MAGIC, true)); break objectLoop; case "cursed magic tree": if (objectDef.containsOption(0, "Chop down"))
 		 * player.getActionManager().setAction(new Woodcutting(object, TreeDefinitions.CURSED_MAGIC, true)); break objectLoop; } }
-		 * return true; } System.out.println("FALSE"); player.getSocialManager().sendGameMessage
+		 * return true; } System.out.println("FALSE"); player.message(
 		 * ("Your beaver cannot seem to find any trees around your location."); return false;
 		 */
 		return false;

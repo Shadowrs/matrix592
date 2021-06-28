@@ -62,7 +62,7 @@ public class EssenceMining extends MiningBase {
 		axeDefinitions = getPickAxeDefinitions(player);
 		if (!checkAll(player))
 			return false;
-		player.getSocialManager().sendGameMessage("You swing your pickaxe at the rock.");
+		player.message("You swing your pickaxe at the rock.");
 		setActionDelay(player, getMiningDelay(player));
 		return true;
 	}
@@ -76,13 +76,13 @@ public class EssenceMining extends MiningBase {
 
 	private boolean checkAll(Player player) {
 		if (axeDefinitions == null) {
-			player.getSocialManager().sendGameMessage("You do not have a pickaxe or do not have the required level to use the pickaxe.");
+			player.message("You do not have a pickaxe or do not have the required level to use the pickaxe.");
 			return false;
 		}
 		if (!hasMiningLevel(player))
 			return false;
 		if (!player.getInventory().hasFreeSlots()) {
-			player.getSocialManager().sendGameMessage("Not enough space in your inventory.");
+			player.message("Not enough space in your inventory.");
 			return false;
 		}
 		return true;
@@ -90,7 +90,7 @@ public class EssenceMining extends MiningBase {
 
 	private boolean hasMiningLevel(Player player) {
 		if (definitions.getLevel() > player.getSkills().getLevel(Skills.MINING)) {
-			player.getSocialManager().sendGameMessage("You need a mining level of " + definitions.getLevel() + " to mine this rock.");
+			player.message("You need a mining level of " + definitions.getLevel() + " to mine this rock.");
 			return false;
 		}
 		return true;
@@ -107,7 +107,7 @@ public class EssenceMining extends MiningBase {
 		addOre(player);
 		if (!player.getInventory().hasFreeSlots()) {
 			player.setNextAnimation(new Animation(-1));
-			player.getSocialManager().sendGameMessage("Not enough space in your inventory.");
+			player.message("Not enough space in your inventory.");
 			return -1;
 		}
 		return getMiningDelay(player);
@@ -118,7 +118,7 @@ public class EssenceMining extends MiningBase {
 		player.getSkills().addXp(Skills.MINING, definitions.getXp() * xpBoost);
 		player.getInventory().addItem(definitions.getOreId(), 1);
 		String oreName = ItemDefinitions.getItemDefinitions(definitions.getOreId()).getName().toLowerCase();
-		player.getSocialManager().sendGameMessage("You mine some " + oreName + ".", true);
+		player.message("You mine some " + oreName + ".", true);
 	}
 
 	private boolean checkRock(Player player) {

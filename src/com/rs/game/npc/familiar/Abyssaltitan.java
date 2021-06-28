@@ -46,7 +46,7 @@ public class Abyssaltitan extends Familiar {
 	public boolean submitSpecial(Object object) {
 		if (getOwner().getBank().hasBankSpace()) {
 			if (getBob().getBeastItems().getUsedSlots() == 0) {
-				getOwner().getSocialManager().sendGameMessage("Your familiar has no essence to deposit.");
+				getOwner().message("Your familiar has no essence to deposit.");
 				return false;
 			}
 			getOwner().getBank().depositAllBob(false);

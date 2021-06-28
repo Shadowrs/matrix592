@@ -82,13 +82,13 @@ public final class Pet extends NPC {
 			owner.getVarsManager().sendVarBit(4286, (int) details.getHunger());
 		}
 		if (details.getHunger() >= 90.0 && details.getHunger() < 90.025) {
-			owner.getSocialManager().sendGameMessage("<col=ff0000>Your pet is starving, feed it before it runs off.</col>");
+			owner.message("<col=ff0000>Your pet is starving, feed it before it runs off.</col>");
 		} else if (details.getHunger() == 100.0) {
 			owner.getPetManager().setNpcId(-1);
 			owner.getPetManager().setItemId(-1);
 			owner.setPet(null);
 			owner.getPetManager().removeDetails(itemId);
-			owner.getSocialManager().sendGameMessage("Your pet has ran away to find some food!");
+			owner.message("Your pet has ran away to find some food!");
 			switchOrb(false);
 			owner.getInterfaceManager().removeWindowInterface(owner.getInterfaceManager().hasRezizableScreen() ? 50 : 55);
 			owner.getPackets().sendIComponentSettings(747, 17, 0, 0, 0);
@@ -134,7 +134,7 @@ public final class Pet extends NPC {
 		Pet newPet = new Pet(npcId, itemId, owner, owner, details);
 		newPet.growthRate = growthRate;
 		owner.setPet(newPet);
-		owner.getSocialManager().sendGameMessage("<col=ff0000>Your pet has grown larger.</col>");
+		owner.message("<col=ff0000>Your pet has grown larger.</col>");
 	}
 
 	/**

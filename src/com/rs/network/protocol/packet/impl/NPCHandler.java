@@ -58,7 +58,7 @@ public class NPCHandler {
 
 	public static void handleExamine(final Player player, InputStream stream) {
 		int npcId = stream.readUnsignedShort();
-		player.getSocialManager().sendGameMessage(NPCExamines.getExamine(npcId));
+		player.message(NPCExamines.getExamine(npcId));
 		if (Settings.DEBUG)
 			Logger.log("NPCHandler", "examined npc: " + npcId);
 	}
@@ -105,7 +105,7 @@ public class NPCHandler {
 				} else if (npc instanceof Familiar) {
 					Familiar familiar = (Familiar) npc;
 					if (player.getFamiliar() != familiar) {
-						player.getSocialManager().sendGameMessage("That isn't your familiar.");
+						player.message("That isn't your familiar.");
 						return;
 					} else if (familiar.getDefinitions().hasOption("interact")) {
 						Object[] paramaters = new Object[2];
@@ -185,7 +185,7 @@ public class NPCHandler {
 				} else if (npc.getId() == 1204 || npc.getId() == 1206 || npc.getId() == 4649) {
 					boolean onDuty = Utils.random(2) == 0;
 					player.getDialogueManager().startDialogue("SimpleNPCMessage", npc.getId(), onDuty ? "I'm on duty, this isn't the time to be talking to strangers" : "It isn't safe here, its best for you to leave now...");
-					player.getSocialManager().sendGameMessage("After all I've been through I think I can handle myself...");
+					player.message("After all I've been through I think I can handle myself...");
 				} else if (npc.getId() == 398 || npc.getId() == 399)
 					player.getDialogueManager().startDialogue("SimpleNPCMessage", npc.getId(), "Welcome. I hope you enjoy your time in the Legends' Guild.");
 				else if (npc.getId() >= 1 && npc.getId() <= 6 || npc.getId() >= 7875 && npc.getId() <= 7884)
@@ -315,7 +315,7 @@ public class NPCHandler {
 				} else if (npc instanceof Pet) {
 					Pet pet = (Pet) npc;
 					if (pet != player.getPet()) {
-						player.getSocialManager().sendGameMessage("This isn't your pet.");
+						player.message("This isn't your pet.");
 						return;
 					}
 					player.setNextAnimation(new Animation(827));
@@ -337,18 +337,18 @@ public class NPCHandler {
 							return;
 						}
 						if (player.getEmotesManager().isDoingEmote()) {
-							player.getSocialManager().sendGameMessage("You can't rest while perfoming an emote.");
+							player.message("You can't rest while perfoming an emote.");
 							return;
 						}
 						if (player.isLocked()) {
-							player.getSocialManager().sendGameMessage("You can't rest while perfoming an action.");
+							player.message("You can't rest while perfoming an action.");
 							return;
 						}
 						player.stopAll();
 						player.getActionManager().setAction(new Rest(true));
 						break;
 					default:
-						player.getSocialManager().sendGameMessage("Nothing interesting happens.");
+						player.message("Nothing interesting happens.");
 						if (Settings.DEBUG)
 							System.out.println("cliked 1 at npc[" + npc.getIndex() + "] id : " + npc.getId() + ", " + npc.getX() + ", " + npc.getY() + ", " + npc.getPlane());
 						break;
@@ -412,14 +412,14 @@ public class NPCHandler {
 				} else if (npc instanceof Familiar) {
 					Familiar familiar = (Familiar) npc;
 					if (player.getFamiliar() != familiar) {
-						player.getSocialManager().sendGameMessage("That isn't your familiar.");
+						player.message("That isn't your familiar.");
 						return;
 					}
 					if (familiar.getDefinitions().hasOption("store") || npc.getDefinitions().hasOption("withdraw")) {
 						player.getFamiliar().store();
 					} else if (familiar.getDefinitions().hasOption("cure")) {
 						if (!player.getPoison().isPoisoned()) {
-							player.getSocialManager().sendGameMessage("Your arent poisoned or diseased.");
+							player.message("Your arent poisoned or diseased.");
 							return;
 						} else {
 							player.getFamiliar().drainSpecial(2);
@@ -708,7 +708,7 @@ public class NPCHandler {
 					RuneEssenceController.teleport(player, npc);
 				else if (npc instanceof Pet) {
 					if (npc != player.getPet()) {
-						player.getSocialManager().sendGameMessage("This isn't your pet!");
+						player.message("This isn't your pet!");
 						return;
 					}
 					Pet pet = player.getPet();
@@ -720,17 +720,17 @@ public class NPCHandler {
 							return;
 						}
 						if (player.getEmotesManager().isDoingEmote()) {
-							player.getSocialManager().sendGameMessage("You can't rest while perfoming an emote.");
+							player.message("You can't rest while perfoming an emote.");
 							return;
 						}
 						if (player.isLocked()) {
-							player.getSocialManager().sendGameMessage("You can't rest while perfoming an action.");
+							player.message("You can't rest while perfoming an action.");
 							return;
 						}
 						player.stopAll();
 						player.getActionManager().setAction(new Rest(true));
 					} else {
-						player.getSocialManager().sendGameMessage("Nothing interesting happens.");
+						player.message("Nothing interesting happens.");
 					}
 					if (Settings.DEBUG)
 						System.out.println("cliked 2 at npc id : " + npc.getId() + ", " + npc.getX() + ", " + npc.getY() + ", " + npc.getPlane());
@@ -818,7 +818,7 @@ public class NPCHandler {
 				else if (npc.getId() == 5913) // Aubury
 					ShopsHandler.openShop(player, 11);
 				else
-					player.getSocialManager().sendGameMessage("Nothing interesting happens.");
+					player.message("Nothing interesting happens.");
 			}
 		}));
 		if (Settings.DEBUG)
@@ -876,7 +876,7 @@ public class NPCHandler {
 				else if (SlayerMaster.startInteractionForId(player, npc.getId(), 4))
 					player.getSlayerManager().sendSlayerInterface(SlayerManager.BUY_INTERFACE);
 				else
-					player.getSocialManager().sendGameMessage("Nothing interesting happens.");
+					player.message("Nothing interesting happens.");
 			}
 		}));
 		if (Settings.DEBUG)
@@ -928,7 +928,7 @@ public class NPCHandler {
 				else if ((npc.getId() == 519 || npc.getId() == 3797) && ItemConstants.repairItem(player, player.getInventory().getItems().getThisItemSlot(item)))
 					return;
 				else
-					player.getSocialManager().sendGameMessage("Nothing interesting happens.");
+					player.message("Nothing interesting happens.");
 			}
 		}));
 	}

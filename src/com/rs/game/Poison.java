@@ -30,7 +30,7 @@ public final class Poison implements Serializable {
 			if (player.getPoisonImmune() > Utils.currentTimeMillis())
 				return;
 			if (poisonDamage == 0)
-				player.getSocialManager().sendGameMessage("<col=00ff00>You are poisoned.");
+				player.message("<col=00ff00>You are poisoned.");
 		}
 		poisonDamage = startDamage;
 		refresh();

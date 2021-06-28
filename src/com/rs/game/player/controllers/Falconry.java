@@ -99,7 +99,7 @@ public class Falconry extends Controller {
 								public void run() {
 									npc.setNextNPCTransformation(npc.getId() - 4);
 									player.getTemporaryAttributtes().put("ownedFalcon", npc);
-									player.getSocialManager().sendGameMessage("The falcon successfully swoops down and captures the kebbit.");
+									player.message("The falcon successfully swoops down and captures the kebbit.");
 									player.getHintIconsManager().addHintIcon(npc, 1, -1, false);
 								}
 							});
@@ -125,7 +125,7 @@ public class Falconry extends Controller {
 											player.getEquipment().refresh(3);
 											player.getAppearence().generateAppearenceData();
 											player.getTemporaryAttributtes().remove("falconReleased");
-											player.getSocialManager().sendGameMessage("The falcon swoops down on the kebbit, but just barely misses catching it.");
+											player.message("The falcon swoops down on the kebbit, but just barely misses catching it.");
 										}
 									});
 								}
@@ -147,7 +147,7 @@ public class Falconry extends Controller {
 			player.getInventory().addItem(new Item(furRewards[(npc.getId() - 5094)], 1));
 			player.getInventory().addItem(new Item(526, 1));
 			player.getSkills().addXp(Skills.HUNTER, xp[(npc.getId() - 5094)]);
-			player.getSocialManager().sendGameMessage("You retreive the falcon as well as the fur of the dead kebbit.");
+			player.message("You retreive the falcon as well as the fur of the dead kebbit.");
 			player.getHintIconsManager().removeUnsavedHintIcon();
 			player.getEquipment().getItems().set(3, new Item(10024, 1));
 			player.getEquipment().refresh(3);

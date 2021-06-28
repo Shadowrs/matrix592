@@ -40,7 +40,7 @@ public class TicketSystem {
 		removeTicket(player);
 		filterTickets();
 		if (tickets.isEmpty()) {
-			player.getSocialManager().sendGameMessage("There are no tickets open, congratulations! KEEP IT UP OR APACHE AH64 WILL KILL YOU.");
+			player.message("There are no tickets open, congratulations! KEEP IT UP OR APACHE AH64 WILL KILL YOU.");
 			return;
 		} else if (player.getTemporaryAttributtes().get("ticketTarget") != null) {
 			removeTicket(player);
@@ -67,11 +67,11 @@ public class TicketSystem {
 
 	public static void requestTicket(Player player) {
 		if (player.getInterfaceManager().containsChatBoxInter() || player.getInterfaceManager().containsInventoryInter() || player.getInterfaceManager().containsScreenInter()) {
-			player.getSocialManager().sendGameMessage("Please finish what you're doing before requesting a ticket.");
+			player.message("Please finish what you're doing before requesting a ticket.");
 			return;
 		}
 		if (!canSubmitTicket() || player.getTemporaryAttributtes().get("ticketRequest") != null || player.getControlerManager().getControler() != null) {
-			player.getSocialManager().sendGameMessage("You cannot send a ticket yet!");
+			player.message("You cannot send a ticket yet!");
 			return;
 		}
 		player.getTemporaryAttributtes().put("ticketRequest", true);
@@ -79,8 +79,8 @@ public class TicketSystem {
 		for (Player mod : World.getPlayers()) {
 			if (mod == null || mod.hasFinished() || !mod.hasStarted() || (mod.getRights() < 1 && !mod.isSupporter()))
 				continue;
-			mod.getSocialManager().sendGameMessage("A ticket has been submitted by " + player.getDisplayName() + "! ::ticket to solve it!");
-			mod.getSocialManager().sendGameMessage("There is currently " + tickets.size() + " tickets active.");
+			mod.message("A ticket has been submitted by " + player.getDisplayName() + "! ::ticket to solve it!");
+			mod.message("There is currently " + tickets.size() + " tickets active.");
 		}
 	}
 

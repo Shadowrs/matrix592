@@ -60,7 +60,7 @@ public class DarkEnergyCore extends NPC {
 		delay = getPoison().isPoisoned() ? 10 : 3;
 		if (target instanceof Player) {
 			Player player = (Player) target;
-			player.getSocialManager().sendGameMessage("The dark core creature steals some life from you for its master.");
+			player.message("The dark core creature steals some life from you for its master.");
 		}
 	}
 

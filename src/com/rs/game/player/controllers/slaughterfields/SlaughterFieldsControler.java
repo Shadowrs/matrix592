@@ -210,14 +210,14 @@ public final class SlaughterFieldsControler extends Controller {
 
 	@Override
 	public boolean canSummonFamiliar() {
-		player.getSocialManager().sendGameMessage("You cannot summon familiars in the slaughter fields");
+		player.message("You cannot summon familiars in the slaughter fields");
 		return false;
 	}
 
 	@Override
 	public boolean processMagicTeleport(WorldTile toTile) {
 		if (isDangerousZone(player)) {
-			player.getSocialManager().sendGameMessage("You can't teleport in the dangerous zone.");
+			player.message("You can't teleport in the dangerous zone.");
 			return false;
 		}
 		return true;
@@ -226,7 +226,7 @@ public final class SlaughterFieldsControler extends Controller {
 	@Override
 	public boolean processItemTeleport(WorldTile toTile) {
 		if (isDangerousZone(player)) {
-			player.getSocialManager().sendGameMessage("You can't teleport in the dangerous zone.");
+			player.message("You can't teleport in the dangerous zone.");
 			return false;
 		}
 		return true;
@@ -250,20 +250,20 @@ public final class SlaughterFieldsControler extends Controller {
 		}
 		boolean isRanging = PlayerCombat.isRanging(player) != 0;
 		if (player.getCombatDefinitions().getSpellId() > 0 && isNonMagicZone(player)) {
-			player.getSocialManager().sendGameMessage("Magic combat has been disabled in this area!", true);
+			player.message("Magic combat has been disabled in this area!", true);
 			return false;
 		} else if (isRanging && isNonRangeZone(player)) {
-			player.getSocialManager().sendGameMessage("Ranged combat has been disabled in this area!", true);
+			player.message("Ranged combat has been disabled in this area!", true);
 			return false;
 		} else if (!isRanging && isNonMeleeZone(player) && player.getCombatDefinitions().getSpellId() <= 0) {
-			player.getSocialManager().sendGameMessage("Melee combat has been disabled in this area!", true);
+			player.message("Melee combat has been disabled in this area!", true);
 			return false;
 		}
 		if (isSafe(target)) {
-			player.getSocialManager().sendGameMessage("This player is in the safe zone.");
+			player.message("This player is in the safe zone.");
 			return false;
 		} else if (isSafe(player)) {
-			player.getSocialManager().sendGameMessage("You can't attack players in the safe zone.");
+			player.message("You can't attack players in the safe zone.");
 			return false;
 		}
 		if (target.getAttackedBy() != player && player.getAttackedBy() != target) {
@@ -277,7 +277,7 @@ public final class SlaughterFieldsControler extends Controller {
 		if (target instanceof Player) {
 			Player p = (Player) target;
 			if (player.isCanPvp() && !p.isCanPvp()) {
-				player.getSocialManager().sendGameMessage("That player is not in the dangerous part of the fields.");
+				player.message("That player is not in the dangerous part of the fields.");
 				return false;
 			}
 			return true;
@@ -384,7 +384,7 @@ public final class SlaughterFieldsControler extends Controller {
 			break;
 		case 2:
 			if (p.getSkills().getLevelForXp(Skills.DEFENCE) != 1) {
-				p.getSocialManager().sendGameMessage("You can only enter this area with 1 defence.");
+				p.message("You can only enter this area with 1 defence.");
 				return;
 			}
 			destination = regionBase.transform(81, 52, 0);
@@ -393,7 +393,7 @@ public final class SlaughterFieldsControler extends Controller {
 			return;
 		}
 		if (PlayerCombat.isRanging(p) != 0) {
-			p.getSocialManager().sendGameMessage("You can't use a range weapon to hit this dummy.");
+			p.message("You can't use a range weapon to hit this dummy.");
 			return;
 		}
 		final WorldTile dest = destination;
@@ -406,7 +406,7 @@ public final class SlaughterFieldsControler extends Controller {
 					@Override
 					public void run() {
 						p.unlock();
-						p.getSocialManager().sendGameMessage("You hit the dummy and hear a clicking sound.");
+						p.message("You hit the dummy and hear a clicking sound.");
 						Magic.sendObjectTeleportSpell(p, false, dest);
 						register(p, o.getRotation());
 					}
@@ -436,7 +436,7 @@ public final class SlaughterFieldsControler extends Controller {
 			break;
 		case 2:
 			if (p.getSkills().getLevelForXp(Skills.DEFENCE) != 1) {
-				p.getSocialManager().sendGameMessage("You can only enter this area with 1 defence.");
+				p.message("You can only enter this area with 1 defence.");
 				return;
 			}
 			destination = regionBase.transform(81, 52, 0);
@@ -465,7 +465,7 @@ public final class SlaughterFieldsControler extends Controller {
 						p.unlock();
 						p.getPackets().sendObjectAnimation(o, new Animation(3585));
 						p.getPackets().sendGraphics(new Graphics(2741, 0, 165 << 2), o);
-						p.getSocialManager().sendGameMessage("The elemental balance starts to glow as you heat it, and draws you to the other side.");
+						p.message("The elemental balance starts to glow as you heat it, and draws you to the other side.");
 						Magic.sendObjectTeleportSpell(p, false, dest);
 						register(p, o.getRotation());
 					}
@@ -489,7 +489,7 @@ public final class SlaughterFieldsControler extends Controller {
 			break;
 		case 2:
 			if (p.getSkills().getLevelForXp(Skills.DEFENCE) != 1) {
-				p.getSocialManager().sendGameMessage("You can only enter this area with 1 defence.");
+				p.message("You can only enter this area with 1 defence.");
 				return;
 			}
 			destination = regionBase.transform(81, 52, 0);
@@ -503,11 +503,11 @@ public final class SlaughterFieldsControler extends Controller {
 			return;
 		}
 		if (!o.transform(x, y, 0).matches(p)) {
-			p.getSocialManager().sendGameMessage("You can't fire the target from here.");
+			p.message("You can't fire the target from here.");
 			return;
 		}
 		if (PlayerCombat.isRanging(p) == 0) {
-			p.getSocialManager().sendGameMessage("You need a range weapon to shoot the target.");
+			p.message("You need a range weapon to shoot the target.");
 			return;
 		}
 		final WorldTile dest = destination;
@@ -520,7 +520,7 @@ public final class SlaughterFieldsControler extends Controller {
 					return;
 				}
 				if (weapon.getDefinitions().getName().contains("handcannon")) {
-					p.getSocialManager().sendGameMessage("Shooting the target with a handcannon would destroy the target.");
+					p.message("Shooting the target with a handcannon would destroy the target.");
 					return;
 				}
 				p.setNextAnimation(new Animation(PlayerCombat.getWeaponAttackEmote(weapon.getId(), 0)));
@@ -540,7 +540,7 @@ public final class SlaughterFieldsControler extends Controller {
 					@Override
 					public void run() {
 						p.unlock();
-						p.getSocialManager().sendGameMessage("Bulls-eye! A magical force teleports you to the other side...");
+						p.message("Bulls-eye! A magical force teleports you to the other side...");
 						Magic.sendObjectTeleportSpell(p, false, dest);
 						register(p, o.getRotation());
 					}
@@ -706,7 +706,7 @@ public final class SlaughterFieldsControler extends Controller {
 	 */
 	public static boolean hasOverpoweredGear(Player p) {
 		if (p.getFamiliar() != null || p.getPet() != null) {
-			p.getSocialManager().sendGameMessage("You cannot bring followers into the Slaughter Fields.");
+			p.message("You cannot bring followers into the Slaughter Fields.");
 			return true;
 		}
 		for (Item item : p.getInventory().getItems().getItems()) {
@@ -714,7 +714,7 @@ public final class SlaughterFieldsControler extends Controller {
 				continue;
 			}
 			if (isOverpowered(item)) {
-				p.getSocialManager().sendGameMessage("You can't bring " + item.getDefinitions().getName() + " to the Slaughter fields.");
+				p.message("You can't bring " + item.getDefinitions().getName() + " to the Slaughter fields.");
 				return true;
 			}
 		}
@@ -723,16 +723,16 @@ public final class SlaughterFieldsControler extends Controller {
 				continue;
 			}
 			if (isOverpowered(item)) {
-				p.getSocialManager().sendGameMessage("You can't bring " + item.getDefinitions().getName() + " to the Slaughter fields.");
+				p.message("You can't bring " + item.getDefinitions().getName() + " to the Slaughter fields.");
 				return true;
 			}
 		}
 		/*
 		 * if (p.getFamiliar() == null) { return false; } String familiarName = (p.getFamiliar().getName() + "").toLowerCase(); if
 		 * (familiarName.contains("war tort") || familiarName.contains("pack yak") || familiarName.contains("titan")) {
-		 * p.getSocialManager().sendGameMessage("You can't bring this familiar to the Slaughter fields."); return true; } if
+		 * p.message("You can't bring this familiar to the Slaughter fields."); return true; } if
 		 * (p.getFamiliar().getBob() != null) { for (Item item : p.getFamiliar().getBob().getBeastItems().getItems()) { if (item ==
-		 * null) { continue; } if (isOverpowered(item)) { p.getSocialManager().sendGameMessage("Your familiar is not allowed to bring " +
+		 * null) { continue; } if (isOverpowered(item)) { p.message("Your familiar is not allowed to bring " +
 		 * item.getDefinitions().getName() + " to the Slaughter fields."); return true; } } }
 		 */return false;
 	}

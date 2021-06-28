@@ -70,17 +70,17 @@ public class Bank implements Serializable {
 					builder.append("Your PIN has been set, the personal identification number is : ");
 					for (int pinNumber : requestedPin)
 						builder.append(pinNumber + " - ");
-					player.getSocialManager().sendGameMessage(builder.toString());
+					player.message(builder.toString());
 				} else {
-					player.getSocialManager().sendGameMessage("The PIN you have put is incorrect.");
+					player.message("The PIN you have put is incorrect.");
 				}
 				player.closeInterfaces();
 			} else if (requestedPin == actualPin) { // pin is correct.
-				player.getSocialManager().sendGameMessage("Successfully entered your PIN number.");
+				player.message("Successfully entered your PIN number.");
 				player.getBank().openBank();
 				activatedTime += (3600000 * 6); // six hours
 			} else {
-				player.getSocialManager().sendGameMessage("The PIN you have selected is in the same sequence your currently have. Please pick different numbers or sequences.");
+				player.message("The PIN you have selected is in the same sequence your currently have. Please pick different numbers or sequences.");
 			}
 		}
 	}
@@ -149,7 +149,7 @@ public class Bank implements Serializable {
 		if (item == null)
 			return;
 		if (item.getAmount() <= 1) {
-			player.getSocialManager().sendGameMessage("You only have one of this item in your bank");
+			player.message("You only have one of this item in your bank");
 			return;
 		}
 		withdrawItem(fakeSlot, item.getAmount() - 1);
@@ -161,7 +161,7 @@ public class Bank implements Serializable {
 
 	public void depositAllInventory(boolean banking) {
 		if (Bank.MAX_BANK_SIZE - getBankSize() < player.getInventory().getItems().getSize()) {
-			player.getSocialManager().sendGameMessage("Not enough space in your bank.");
+			player.message("Not enough space in your bank.");
 			return;
 		}
 		for (int i = 0; i < 28; i++)
@@ -181,7 +181,7 @@ public class Bank implements Serializable {
 			familiar.getBob().sendInterItems();
 		}
 		if (space < familiar.getBob().getBeastItems().getSize()) {
-			player.getSocialManager().sendGameMessage("Not enough space in your bank.");
+			player.message("Not enough space in your bank.");
 			return;
 		}
 	}
@@ -195,7 +195,7 @@ public class Bank implements Serializable {
 			player.getAppearence().generateAppearenceData();
 		}
 		if (space < player.getEquipment().getItems().getSize()) {
-			player.getSocialManager().sendGameMessage("Not enough space in your bank.");
+			player.message("Not enough space in your bank.");
 			return;
 		}
 	}
@@ -353,7 +353,7 @@ public class Bank implements Serializable {
 				item.setId(defs.getCertId());
 				noted = true;
 			} else
-				player.getSocialManager().sendGameMessage("You cannot withdraw this item as a note.");
+				player.message("You cannot withdraw this item as a note.");
 		}
 		if (noted || defs.isStackable()) {
 			if (player.getInventory().getItems().containsOne(item)) {
@@ -361,21 +361,21 @@ public class Bank implements Serializable {
 				Item invItem = player.getInventory().getItems().get(slot);
 				if (invItem.getAmount() + item.getAmount() <= 0) {
 					item.setAmount(Integer.MAX_VALUE - invItem.getAmount());
-					player.getSocialManager().sendGameMessage("Not enough space in your inventory.");
+					player.message("Not enough space in your inventory.");
 				}
 			} else if (!player.getInventory().hasFreeSlots()) {
-				player.getSocialManager().sendGameMessage("Not enough space in your inventory.");
+				player.message("Not enough space in your inventory.");
 				return;
 			}
 		} else {
 			int freeSlots = player.getInventory().getFreeSlots();
 			if (freeSlots == 0) {
-				player.getSocialManager().sendGameMessage("Not enough space in your inventory.");
+				player.message("Not enough space in your inventory.");
 				return;
 			}
 			if (freeSlots < item.getAmount()) {
 				item.setAmount(freeSlots);
-				player.getSocialManager().sendGameMessage("Not enough space in your inventory.");
+				player.message("Not enough space in your inventory.");
 			}
 		}
 		removeItem(bankSlot, item.getAmount(), true, false);
@@ -387,7 +387,7 @@ public class Bank implements Serializable {
 		if (slot == null)
 			return;
 		Item item = bankTabs[slot[0]][slot[1]];
-		player.getSocialManager().sendGameMessage(ItemExamines.getExamine(item));
+		player.message(ItemExamines.getExamine(item));
 	}
 
 	public void depositItem(int invSlot, int quantity, boolean refresh) {
@@ -409,13 +409,13 @@ public class Bank implements Serializable {
 		if (bankedItem != null) {
 			if (bankedItem.getAmount() + item.getAmount() <= 0) {
 				item.setAmount(Integer.MAX_VALUE - bankedItem.getAmount());
-				player.getSocialManager().sendGameMessage("Not enough space in your bank.");
+				player.message("Not enough space in your bank.");
 			} else if (bankedItem.getAmount() + item.getAmount() >= Integer.MAX_VALUE) {
-				player.getSocialManager().sendGameMessage("Could not bank your " + item.getName());
+				player.message("Could not bank your " + item.getName());
 				return;
 			}
 		} else if (!hasBankSpace()) {
-			player.getSocialManager().sendGameMessage("Not enough space in your bank.");
+			player.message("Not enough space in your bank.");
 			return;
 		}
 		player.getInventory().deleteItem(invSlot, new Item(originalId, item.getAmount()));

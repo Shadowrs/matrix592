@@ -25,7 +25,7 @@ public class CaveHorrerCombat extends CombatScript {
 			int randomSkill = Utils.random(0, 6);
 			int currentLevel = targetPlayer.getSkills().getLevel(randomSkill);
 			targetPlayer.getSkills().set(randomSkill, currentLevel < 5 ? 0 : currentLevel - 5);
-			targetPlayer.getSocialManager().sendGameMessage("The screams of the cave horrer make you feel slightly weaker.");
+			targetPlayer.message("The screams of the cave horrer make you feel slightly weaker.");
 			npc.setNextForceTalk(new ForceTalk("*OOOoooAHHHH*"));
 			delayHit(npc, 0, target, getMeleeHit(npc, targetPlayer.getMaxHitpoints() / 3));
 		} else

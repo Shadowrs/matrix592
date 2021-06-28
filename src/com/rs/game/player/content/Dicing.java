@@ -68,7 +68,7 @@ public class Dicing {
 	}
 
 	public static void privateRoll(final Player player, final int itemId, int graphic, final int lowest, final int highest) {
-		player.getSocialManager().sendGameMessage("Rolling...", true);
+		player.message("Rolling...", true);
 		player.getInventory().deleteItem(itemId, 1);
 		player.setNextAnimation(new Animation(11900));
 		player.setNextGraphics(new Graphics(graphic));
@@ -76,7 +76,7 @@ public class Dicing {
 			@Override
 			public void run() {
 				player.getInventory().addItem(itemId, 1);
-				player.getSocialManager().sendGameMessage("You rolled <col=db3535>" + getRandom(lowest, highest) + "</col> on " + diceText(itemId) + " die.", true);
+				player.message("You rolled <col=db3535>" + getRandom(lowest, highest) + "</col> on " + diceText(itemId) + " die.", true);
 			}
 		}, 1);
 	}
@@ -84,11 +84,11 @@ public class Dicing {
 	public static void friendsRoll(final Player player, final int itemId, int graphic, final int lowest, final int highest) {
 		final FriendChatsManager chat = player.getCurrentFriendChat();
 		if (chat == null) {
-			player.getSocialManager().sendGameMessage("You need to be in a friend chat to use this option.");
+			player.message("You need to be in a friend chat to use this option.");
 			return;
 		}
 		player.lock(2);
-		player.getSocialManager().sendGameMessage("Rolling...");
+		player.message("Rolling...");
 		player.getInventory().deleteItem(itemId, 1);
 		player.setNextAnimation(new Animation(11900));
 		player.setNextGraphics(new Graphics(graphic));

@@ -126,12 +126,12 @@ public final class BrimhavenAgility extends Controller {
 				player.getTemporaryAttributtes().put("BrimhavenAgility", 0); // clicked
 				player.getVarsManager().sendVarBit(4456, 1); // ready to get
 				// tickets
-				player.getSocialManager().sendGameMessage("You get tickets by tagging more than one pillar in a row. Tag the next pillar!");
+				player.message("You get tickets by tagging more than one pillar in a row. Tag the next pillar!");
 			} else if (stage == 0) {
-				player.getSocialManager().sendGameMessage("You have already tagged this pillar, wait until the arrow moves again.");
+				player.message("You have already tagged this pillar, wait until the arrow moves again.");
 			} else {
 				if (!player.getInventory().hasFreeSlots() && !player.getInventory().containsOneItem(2996)) {
-					player.getSocialManager().sendGameMessage("Not enough space in your inventory.");
+					player.message("Not enough space in your inventory.");
 					return false;
 				}
 				player.getTemporaryAttributtes().put("BrimhavenAgility", 0); // clicked

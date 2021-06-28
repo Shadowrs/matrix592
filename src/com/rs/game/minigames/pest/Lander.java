@@ -62,7 +62,7 @@ public class Lander {
 					playerList.remove(index);
 					continue;
 				}
-				player.getSocialManager().sendGameMessage("You have received priority over other players.");
+				player.message("You have received priority over other players.");
 				playerList.remove(index);
 				lobby.add(player);
 			}
@@ -173,7 +173,7 @@ public class Lander {
 			player.getDialogueManager().startDialogue("SimpleMessage", "You need a combat level of " + lander.getLanderRequierment().getRequirement() + " or more to enter in boat.");
 			return false;
 		} else if (player.getPet() != null || player.getFamiliar() != null) {
-			player.getSocialManager().sendGameMessage("You can't take a follower into the lander, there isn't enough room!");
+			player.message("You can't take a follower into the lander, there isn't enough room!");
 			return false;
 		}
 		lander.enterLander(player);

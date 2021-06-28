@@ -42,7 +42,7 @@ public class RouteEvent {
 
 	public boolean processEvent(final Player player) {
 		if (!simpleCheck(player)) {
-			player.getSocialManager().sendGameMessage("You can't reach that.");
+			player.message("You can't reach that.");
 			player.getPackets().sendResetMinimapFlag();
 			return true;
 		}
@@ -63,7 +63,7 @@ public class RouteEvent {
 				}
 			}
 
-			player.getSocialManager().sendGameMessage("You can't reach that.");
+			player.message("You can't reach that.");
 			player.getPackets().sendResetMinimapFlag();
 			return true;
 		} else {
@@ -96,7 +96,7 @@ public class RouteEvent {
 				return false;
 			}
 
-			player.getSocialManager().sendGameMessage("You can't reach that.");
+			player.message("You can't reach that.");
 			player.getPackets().sendResetMinimapFlag();
 			return true;
 		}

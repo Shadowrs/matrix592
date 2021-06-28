@@ -17,7 +17,7 @@ public class MrEx extends Dialogue {
 	@Override
 	public void start() {
 		if (Settings.ECONOMY || Settings.ECONOMY_TEST) {
-			player.getSocialManager().sendGameMessage("Mr.Ex is in no mood to talk to you.");
+			player.message("Mr.Ex is in no mood to talk to you.");
 			end();
 			return;
 		}
@@ -84,7 +84,7 @@ public class MrEx extends Dialogue {
 			else if (componentId == OPTION_3)
 				Magic.sendNormalTeleportSpell(player, 0, 0, new WorldTile(2966, 4383, 2));
 			else if (componentId == OPTION_4) {
-				player.getSocialManager().sendGameMessage("Disabled.");
+				player.message("Disabled.");
 				Magic.sendNormalTeleportSpell(player, 0, 0, new WorldTile(2570, 2916, 0));
 			} else if (componentId == OPTION_5) {
 				stage = 6;
@@ -109,12 +109,12 @@ public class MrEx extends Dialogue {
 			else if (componentId == OPTION_2)
 				Magic.sendNormalTeleportSpell(player, 0, 0, FightCaves.OUTSIDE);
 			else if (componentId == OPTION_3)
-				player.getSocialManager().sendGameMessage("Disabled.");
+				player.message("Disabled.");
 				//Magic.sendNormalTeleportSpell(player, 0, 0, FightKiln.OUTSIDE);
 			else if (componentId == OPTION_4) {
 				end();
 				if (player.getSkills().getLevelForXp(Skills.SUMMONING) < 60) {
-					player.getSocialManager().sendGameMessage("You need a summoning level of 60 to go through this portal.");
+					player.message("You need a summoning level of 60 to go through this portal.");
 					return;
 				}
 				player.getControlerManager().startControler("QueenBlackDragonControler");

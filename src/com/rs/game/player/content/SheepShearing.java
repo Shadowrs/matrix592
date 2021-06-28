@@ -15,7 +15,7 @@ public class SheepShearing {
 
 	public static void shearAttempt(final Player player, final NPC npc) {
 		if (!player.getInventory().containsOneItem(1735)) {
-			player.getSocialManager().sendGameMessage("You need a pair of shears in order to sheer the sheep.");
+			player.message("You need a pair of shears in order to sheer the sheep.");
 			return;
 		}
 		final boolean isBlack = npc.getId() == 8876;
@@ -30,11 +30,11 @@ public class SheepShearing {
 					npc.faceEntity(player);
 					player.getInventory().addItem(new Item(isBlack ? 15415 : 1737, 1));
 					npc.setNextNPCTransformation(isBlack ? 8877 : npc.getId() == 43 ? 42 : 5152);
-					player.getSocialManager().sendGameMessage("You get some wool.");
+					player.message("You get some wool.");
 				}
 			}, 2);
 		} else {
-			player.getSocialManager().sendGameMessage("The sheep manages to get away from you.");
+			player.message("The sheep manages to get away from you.");
 			npc.addWalkSteps(player.getX() - 5, player.getX() - 5);
 			if (Utils.random(2) == 0)
 				npc.setNextForceTalk(new ForceTalk("Baaa"));

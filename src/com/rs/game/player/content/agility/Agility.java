@@ -7,7 +7,7 @@ public class Agility {
 
 	public static boolean hasLevel(Player player, int level) {
 		if (player.getSkills().getLevel(Skills.AGILITY) < level) {
-			player.getSocialManager().sendGameMessage("You need an Agility level of " + level + " to use this obstacle.", true);
+			player.message("You need an Agility level of " + level + " to use this obstacle.", true);
 			return false;
 		}
 		return true;

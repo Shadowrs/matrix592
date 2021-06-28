@@ -26,7 +26,7 @@ public class AberrantSpectre extends CombatScript {
 				int randomSkill = Utils.random(0, 6);
 				int currentLevel = targetPlayer.getSkills().getLevel(randomSkill);
 				targetPlayer.getSkills().set(randomSkill, currentLevel < 5 ? 0 : currentLevel - 5);
-				targetPlayer.getSocialManager().sendGameMessage("The smell of the abberrant spectre make you feel slightly weaker.");
+				targetPlayer.message("The smell of the abberrant spectre make you feel slightly weaker.");
 			}
 			delayHit(npc, 1, target, getMagicHit(npc, targetPlayer.getMaxHitpoints() / 10));
 			// TODO player emote hands on ears

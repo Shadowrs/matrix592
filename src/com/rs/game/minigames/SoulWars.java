@@ -46,14 +46,14 @@ public class SoulWars {
 	public static void passBarrier(Player player, int team) {// sarah 0, zammy
 		// 1, guthix 2
 		if (player.getEquipment().getCapeId() != -1) {
-			player.getSocialManager().sendGameMessage("You cannot bring a cape into the arena.");
+			player.message("You cannot bring a cape into the arena.");
 			return;
 		}
 		for (Item item : player.getInventory().getItems().getItems()) {
 			if (item == null)
 				continue;
 			if (Food.forId(item.getId()) != null) {
-				player.getSocialManager().sendGameMessage("You cannot bring food into the arena.");
+				player.message("You cannot bring food into the arena.");
 				return;
 			}
 		}

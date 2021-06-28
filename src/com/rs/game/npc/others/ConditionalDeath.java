@@ -36,7 +36,7 @@ public class ConditionalDeath extends NPC {
 	public boolean useHammer(Player player) {
 		if (removeItem(player)) {
 			if (deathMessage != null)
-				player.getSocialManager().sendGameMessage(deathMessage);
+				player.message(deathMessage);
 			// missing emote
 			if (getId() == 14849)
 				player.setNextAnimation(new Animation(15845));
@@ -53,7 +53,7 @@ public class ConditionalDeath extends NPC {
 			Player player = (Player) source;
 			if ((player.getSlayerManager().hasLearnedQuickBlows() || player.getEquipment().getWeaponId() == requiredItem || player.getEquipment().getGlovesId() == requiredItem) && useHammer(player)) // and if has insta kill reward
 				return;
-			player.getSocialManager().sendGameMessage("The " + getName() + " is on its last legs! Finish it quickly!");
+			player.message("The " + getName() + " is on its last legs! Finish it quickly!");
 		}
 		setHitpoints(1);
 	}

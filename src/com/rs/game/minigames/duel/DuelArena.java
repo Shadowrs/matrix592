@@ -128,14 +128,14 @@ public class DuelArena extends Controller {
 							targetConfiguration.beginBattle(false);
 						}
 						if (stage == DuelStage.DONE)
-							player.getSocialManager().sendGameMessage("Your battle will begin shortly.");
+							player.message("Your battle will begin shortly.");
 						else if (stage == DuelStage.SECOND)
-							player.getSocialManager().sendGameMessage("<col=ff0000>Please check if these settings are correct.");
+							player.message("<col=ff0000>Please check if these settings are correct.");
 						else if (stage == DuelStage.DECLINED)
-							oldTarget.getSocialManager().sendGameMessage("<col=ff0000>Other player declined the duel!");
+							oldTarget.message("<col=ff0000>Other player declined the duel!");
 						else if (stage == DuelStage.DECLINED) {
-							oldTarget.getSocialManager().sendGameMessage("You do not have enough space to continue!");
-							oldTarget.getSocialManager().sendGameMessage("Other player does not have enough space to continue!");
+							oldTarget.message("You do not have enough space to continue!");
+							oldTarget.message("Other player does not have enough space to continue!");
 						}
 					}
 				}
@@ -160,7 +160,7 @@ public class DuelArena extends Controller {
 				if (item == null)
 					return;
 				if (!ItemConstants.isTradeable(item)) {
-					player.getSocialManager().sendGameMessage("That item cannot be staked!");
+					player.message("That item cannot be staked!");
 					return;
 				}
 				Item[] itemsBefore = player.getLastDuelRules().getStake().getItemsCopy();
@@ -317,8 +317,8 @@ public class DuelArena extends Controller {
 			victor.getLastDuelRules().getStake().clear();
 			loser.getLastDuelRules().getStake().clear();
 		}
-		loser.getSocialManager().sendGameMessage(isDraw ? "The battle has ended in a draw." : "Oh dear, it seems you have lost to " + victor.getDisplayName() + ".");
-		victor.getSocialManager().sendGameMessage(isDraw ? "The battle has ended in a draw." : "Congradulations! You easily defeated " + loser.getDisplayName() + ".");
+		loser.message(isDraw ? "The battle has ended in a draw." : "Oh dear, it seems you have lost to " + victor.getDisplayName() + ".");
+		victor.message(isDraw ? "The battle has ended in a draw." : "Congradulations! You easily defeated " + loser.getDisplayName() + ".");
 		loser.setCanPvp(false);
 		loser.getHintIconsManager().removeUnsavedHintIcon();
 		loser.reset();
@@ -400,7 +400,7 @@ public class DuelArena extends Controller {
 	@Override
 	public boolean canEat(Food food) {
 		if (player.getLastDuelRules().getRule(4) && isDueling) {
-			player.getSocialManager().sendGameMessage("You cannot eat during this duel.", true);
+			player.message("You cannot eat during this duel.", true);
 			return false;
 		}
 		return true;
@@ -409,7 +409,7 @@ public class DuelArena extends Controller {
 	@Override
 	public boolean canPot(Pot pot) {
 		if (player.getLastDuelRules().getRule(3) && isDueling) {
-			player.getSocialManager().sendGameMessage("You cannot drink during this duel.");
+			player.message("You cannot drink during this duel.");
 			return false;
 		}
 		return true;
@@ -418,7 +418,7 @@ public class DuelArena extends Controller {
 	@Override
 	public boolean canMove(int dir) {
 		if (isDueling && player.getLastDuelRules().getRule(25)) {
-			player.getSocialManager().sendGameMessage("You cannot move during this duel!");
+			player.message("You cannot move during this duel!");
 			return false;
 		}
 		return true;
@@ -428,7 +428,7 @@ public class DuelArena extends Controller {
 	public boolean canSummonFamiliar() {
 		if (player.getLastDuelRules().getRule(24) && isDueling)
 			return true;
-		player.getSocialManager().sendGameMessage("Summoning has been disabled during this duel!");
+		player.message("Summoning has been disabled during this duel!");
 		return false;
 	}
 
@@ -476,7 +476,7 @@ public class DuelArena extends Controller {
 				if (loop == 0) {
 					player.setNextAnimation(new Animation(2304));
 				} else if (loop == 1) {
-					player.getSocialManager().sendGameMessage("Oh dear, you have died.");
+					player.message("Oh dear, you have died.");
 				} else if (loop == 3) {
 					player.setNextAnimation(new Animation(-1));
 					end(DUEL_END_LOSE);
@@ -510,26 +510,26 @@ public class DuelArena extends Controller {
 		DuelRules rules = player.getLastDuelRules();
 		boolean isRanging = PlayerCombat.isRanging(player) != 0;
 		if (player.getTemporaryAttributtes().get("canFight") == Boolean.FALSE) {
-			player.getSocialManager().sendGameMessage("The duel hasn't started yet.");
+			player.message("The duel hasn't started yet.");
 			return false;
 		}
 		if (target != victim) {
-			player.getSocialManager().sendGameMessage("You may only attack your target, you can find your target by following the hint icon on your map.");
+			player.message("You may only attack your target, you can find your target by following the hint icon on your map.");
 			return false;
 		}
 		if ((player.getEquipment().getWeaponId() == 22496 || player.getCombatDefinitions().getSpellId() > 0) && rules.getRule(2) && isDueling) {
-			player.getSocialManager().sendGameMessage("You cannot use Magic in this duel!");
+			player.message("You cannot use Magic in this duel!");
 			return false;
 		} else if (isRanging && rules.getRule(0) && isDueling) {
-			player.getSocialManager().sendGameMessage("You cannot use Range in this duel!");
+			player.message("You cannot use Range in this duel!");
 			return false;
 		} else if (!isRanging && rules.getRule(1) && player.getCombatDefinitions().getSpellId() <= 0 && isDueling) {
-			player.getSocialManager().sendGameMessage("You cannot use Melee in this duel!");
+			player.message("You cannot use Melee in this duel!");
 			return false;
 		} else {
 			for (Item item : FUN_WEAPONS) {
 				if (rules.getRule(8) && !player.getInventory().containsItem(item.getId(), item.getAmount())) {
-					player.getSocialManager().sendGameMessage("You can only use fun weapons in this duel!");
+					player.message("You can only use fun weapons in this duel!");
 					return false;
 				}
 			}
@@ -542,11 +542,11 @@ public class DuelArena extends Controller {
 		DuelRules rules = player.getLastDuelRules();
 		if (isDueling) {
 			if (rules.getRule(10 + slotId)) {
-				player.getSocialManager().sendGameMessage("You can't equip " + ItemDefinitions.getItemDefinitions(itemId).getName().toLowerCase() + " during this duel.");
+				player.message("You can't equip " + ItemDefinitions.getItemDefinitions(itemId).getName().toLowerCase() + " during this duel.");
 				return false;
 			}
 			if (slotId == 3 && player.getEquipment().hasTwoHandedWeapon() && rules.getRule(15)) {
-				player.getSocialManager().sendGameMessage("You can't equip " + ItemDefinitions.getItemDefinitions(itemId).getName().toLowerCase() + " during this duel.");
+				player.message("You can't equip " + ItemDefinitions.getItemDefinitions(itemId).getName().toLowerCase() + " during this duel.");
 				return false;
 			}
 		}
@@ -605,7 +605,7 @@ public class DuelArena extends Controller {
 					if (rules.getRule(5)) {
 						if (interfaceId == 749 && componentId != 4)
 							return true;
-						player.getSocialManager().sendGameMessage("You can't use prayers in this duel.");
+						player.message("You can't use prayers in this duel.");
 						return false;
 					}
 					return true;
@@ -618,7 +618,7 @@ public class DuelArena extends Controller {
 				case 884:
 					if (componentId == 4) {
 						if (rules.getRule(9)) {
-							player.getSocialManager().sendGameMessage("You can't use special attacks in this duel.");
+							player.message("You can't use special attacks in this duel.");
 							return false;
 						}
 					}
@@ -653,14 +653,14 @@ public class DuelArena extends Controller {
 						setRules(rules, componentId, 25);
 						if (rules.getRule(6)) {
 							rules.setRule(6, false);
-							player.getSocialManager().sendGameMessage("You can't have movement without obstacles.");
+							player.message("You can't have movement without obstacles.");
 						}
 						return false;
 					case 65: // obstacles
 						setRules(rules, componentId, 6);
 						if (rules.getRule(25)) {
 							rules.setRule(25, false);
-							player.getSocialManager().sendGameMessage("You can't have obstacles without movement.");
+							player.message("You can't have obstacles without movement.");
 						}
 						return false;
 					case 66: // enable summoning
@@ -788,14 +788,14 @@ public class DuelArena extends Controller {
 						setRules(rules, componentId, 25);
 						if (rules.getRule(6)) {
 							rules.setRule(6, false);
-							player.getSocialManager().sendGameMessage("You can't have movement without obstacles.");
+							player.message("You can't have movement without obstacles.");
 						}
 						return false;
 					case 34: // obstacles
 						setRules(rules, componentId, 6);
 						if (rules.getRule(25)) {
 							rules.setRule(25, false);
-							player.getSocialManager().sendGameMessage("You can't have obstacles without movement.");
+							player.message("You can't have obstacles without movement.");
 						}
 						return false;
 					case 35: // enable summoning

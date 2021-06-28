@@ -40,10 +40,10 @@ public class Canoes {
 				}
 				if (hatchet == null) {
 					hatchet = HatchetDefinitions.BRONZE;
-					player.getSocialManager().sendGameMessage("A nearby overseer hands you a bronze hatchet to temporarily use.");
+					player.message("A nearby overseer hands you a bronze hatchet to temporarily use.");
 				}
 				if (player.getSkills().getLevel(Skills.WOODCUTTING) < 12) {
-					player.getSocialManager().sendGameMessage("You need a woodcutting level of at least 12 to make a canoe.");
+					player.message("You need a woodcutting level of at least 12 to make a canoe.");
 					return false;
 				}
 				setActionDelay(player, 4);
@@ -128,10 +128,10 @@ public class Canoes {
 		int canoeArea = (int) player.getTemporaryAttributtes().get("selected_area");
 		if (selectedArea != canoeArea) {
 			if (selectedArea > (canoeArea + selectedCanoe + 1) || selectedArea < (canoeArea - selectedCanoe - 1)) {
-				player.getSocialManager().sendGameMessage("This is too far to reach, please pick another plot point or make a better canoe.");
+				player.message("This is too far to reach, please pick another plot point or make a better canoe.");
 				return;
 			} else if (selectedArea == 4 && selectedCanoe != 3) {
-				player.getSocialManager().sendGameMessage("Only a waka cannoe can go to the depths of the wilderness.");
+				player.message("Only a waka cannoe can go to the depths of the wilderness.");
 				return;
 			} else {
 				player.closeInterfaces();
@@ -147,6 +147,6 @@ public class Canoes {
 				CarrierTravel.sendCarrier(player, Carrier.values()[24 + selectedArea], false);
 			}
 		} else
-			player.getSocialManager().sendGameMessage("You are already at this location!");
+			player.message("You are already at this location!");
 	}
 }

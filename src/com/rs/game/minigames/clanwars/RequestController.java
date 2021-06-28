@@ -200,11 +200,11 @@ public final class RequestController extends Controller {
 					return;
 				}
 				if (target == null || target.hasFinished() || !target.withinDistance(player, 14) || !(target.getControlerManager().getControler() instanceof RequestController)) {
-					player.getSocialManager().sendGameMessage("Unable to find " + (target == null ? "your target" : target.getDisplayName()));
+					player.message("Unable to find " + (target == null ? "your target" : target.getDisplayName()));
 					return;
 				}
 				if (target.getInterfaceManager().containsScreenInter()) {
-					player.getSocialManager().sendGameMessage("The other player is busy.");
+					player.message("The other player is busy.");
 					return;
 				}
 				player.getTemporaryAttributtes().put("clan_request_p", target);
@@ -219,7 +219,7 @@ public final class RequestController extends Controller {
 					}
 				}
 				target.getSocialManager().sendClanWarsRequestMessage(player);
-				player.getSocialManager().sendGameMessage("Sending challenge request...");
+				player.message("Sending challenge request...");
 			}
 		}));
 		return false;
@@ -309,7 +309,7 @@ public final class RequestController extends Controller {
 			text = "This player's clan is already in a war.";
 		}
 		if (message && text != null) {
-			player.getSocialManager().sendGameMessage(text);
+			player.message(text);
 		}
 		return text == null;
 	}

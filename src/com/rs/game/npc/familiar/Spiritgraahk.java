@@ -44,7 +44,7 @@ public class Spiritgraahk extends Familiar {
 	public boolean submitSpecial(Object object) {
 		Entity entity = (Entity) object;
 		if (getAttackedBy() != null) {
-			getOwner().getSocialManager().sendGameMessage("Your grahaak already has a target in its sights!");
+			getOwner().message("Your grahaak already has a target in its sights!");
 			return false;
 		}
 		getOwner().setNextAnimation(new Animation(7660));

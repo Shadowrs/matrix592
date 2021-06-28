@@ -102,7 +102,7 @@ public class ButtonHandler {
 			if ((interfaceId == 548 && componentId == 130) || (interfaceId == 746 && componentId == 174)) {
 				if (player.getInterfaceManager().containsScreenInter() || player.getInterfaceManager().containsInventoryInter()) {
 					// TODO cant open sound
-					player.getSocialManager().sendGameMessage("Please finish what you're doing before opening the world map.");
+					player.message("Please finish what you're doing before opening the world map.");
 					return;
 				}
 				// world map open
@@ -188,13 +188,13 @@ public class ButtonHandler {
 			CommendationExchange.handleButtonOptions(player, componentId);
 		} else if (interfaceId == 1309) {
 			if (componentId == 20)
-				player.getSocialManager().sendGameMessage("Use your enchanted stone ring onto the player that you would like to invite.", true);
+				player.message("Use your enchanted stone ring onto the player that you would like to invite.", true);
 			else if (componentId == 22) {
 				Player p2 = player.getSlayerManager().getSocialPlayer();
 				if (p2 == null)
-					player.getSocialManager().sendGameMessage("You have no slayer group, invite a player to start one.");
+					player.message("You have no slayer group, invite a player to start one.");
 				else
-					player.getSocialManager().sendGameMessage("Your current slayer group consists of you and " + p2.getDisplayName() + ".");
+					player.message("Your current slayer group consists of you and " + p2.getDisplayName() + ".");
 			} else if (componentId == 24)
 				player.getSlayerManager().resetSocialGroup(true);
 			player.closeInterfaces();
@@ -517,7 +517,7 @@ public class ButtonHandler {
 				else if (packetId == WorldPacketsDecoder.ACTION_BUTTON5_PACKET)
 					Summoning.handlePouchInfusion(player, slotId, 28);// x
 				else if (packetId == WorldPacketsDecoder.ACTION_BUTTON9_PACKET) {
-					// player.getSocialManager().sendGameMessage("You currently need "
+					// player.message("You currently need "
 					// +
 					// ItemDefinitions.getItemDefinitions(slotId2).getCreateItemRequirements());
 				}
@@ -616,7 +616,7 @@ public class ButtonHandler {
 				return;
 			if (componentId == 16) {
 				if (player.getInterfaceManager().containsScreenInter()) {
-					player.getSocialManager().sendGameMessage("Please close the interface you have open before setting your graphic options.");
+					player.message("Please close the interface you have open before setting your graphic options.");
 					return;
 				}
 				player.stopAll();
@@ -1018,7 +1018,7 @@ public class ButtonHandler {
 				openItemsKeptOnDeath(player);
 			} else if (componentId == 42) {
 				if (player.getInterfaceManager().containsScreenInter() || player.isLocked()) {
-					player.getSocialManager().sendGameMessage("Please finish what you're doing before opening the price checker.");
+					player.message("Please finish what you're doing before opening the price checker.");
 					return;
 				}
 				player.stopAll();
@@ -1081,7 +1081,7 @@ public class ButtonHandler {
 				player.getVarsManager().sendVar(283, 67108864);
 			} else if (componentId == 19 || componentId == 21) {
 				if (player.isStarter()) {
-					player.getSocialManager().sendGameMessage("You can't stake for the first half hour after creating account.");
+					player.message("You can't stake for the first half hour after creating account.");
 					return;
 				}
 				player.getTemporaryAttributtes().put("WillDuelFriendly", false);
@@ -1104,7 +1104,7 @@ public class ButtonHandler {
 				if (item == null)
 					return;
 				if (packetId == WorldPacketsDecoder.ACTION_BUTTON8_PACKET)
-					player.getSocialManager().sendGameMessage(ItemExamines.getExamine(item));
+					player.message(ItemExamines.getExamine(item));
 				else if (packetId == WorldPacketsDecoder.ACTION_BUTTON1_PACKET) {
 					sendRemove(player, slotId);
 					ButtonHandler.refreshEquipBonuses(player);
@@ -1452,19 +1452,19 @@ public class ButtonHandler {
 		if (item == null || item.getId() != itemId)
 			return false;
 		if (item.getDefinitions().isNoted() || !item.getDefinitions().isWearItem(player.getAppearence().isMale())) {
-			player.getSocialManager().sendGameMessage("You can't wear that.");
+			player.message("You can't wear that.");
 			return true;
 		}
 		int targetSlot = Equipment.getItemSlot(itemId);
 		if (targetSlot == -1) {
-			player.getSocialManager().sendGameMessage("You can't wear that.");
+			player.message("You can't wear that.");
 			return true;
 		}
 		if (!ItemConstants.canWear(item, player))
 			return true;
 		boolean isTwoHandedWeapon = targetSlot == 3 && Equipment.isTwoHandedWeapon(item);
 		if (isTwoHandedWeapon && !player.getInventory().hasFreeSlots() && player.getEquipment().hasShield()) {
-			player.getSocialManager().sendGameMessage("Not enough free space in your inventory.");
+			player.message("Not enough free space in your inventory.");
 			return true;
 		}
 		HashMap<Integer, Integer> requiriments = item.getDefinitions().getWearingSkillRequiriments();
@@ -1478,11 +1478,11 @@ public class ButtonHandler {
 					continue;
 				if (player.getSkills().getLevelForXp(skillId) < level) {
 					if (hasRequiriments) {
-						player.getSocialManager().sendGameMessage("You are not high enough level to use this item.");
+						player.message("You are not high enough level to use this item.");
 					}
 					hasRequiriments = false;
 					String name = Skills.SKILL_NAME[skillId].toLowerCase();
-					player.getSocialManager().sendGameMessage("You need to have a" + (name.startsWith("a") ? "n" : "") + " " + name + " level of " + level + ".");
+					player.message("You need to have a" + (name.startsWith("a") ? "n" : "") + " " + name + " level of " + level + ".");
 				}
 
 			}
@@ -1545,21 +1545,21 @@ public class ButtonHandler {
 		if (item == null || item.getId() != itemId)
 			return false;
 		if (item.getDefinitions().isNoted() || !item.getDefinitions().isWearItem(player.getAppearence().isMale()) && itemId != 4084) {
-			player.getSocialManager().sendGameMessage("You can't wear that.");
+			player.message("You can't wear that.");
 			return false;
 		}
 		int targetSlot = Equipment.getItemSlot(itemId);
 		if (itemId == 4084)
 			targetSlot = 3;
 		if (targetSlot == -1) {
-			player.getSocialManager().sendGameMessage("You can't wear that.");
+			player.message("You can't wear that.");
 			return false;
 		}
 		if (!ItemConstants.canWear(item, player))
 			return false;
 		boolean isTwoHandedWeapon = targetSlot == 3 && Equipment.isTwoHandedWeapon(item);
 		if (isTwoHandedWeapon && !player.getInventory().hasFreeSlots() && player.getEquipment().hasShield()) {
-			player.getSocialManager().sendGameMessage("Not enough free space in your inventory.");
+			player.message("Not enough free space in your inventory.");
 			return false;
 		}
 		HashMap<Integer, Integer> requiriments = item.getDefinitions().getWearingSkillRequiriments();
@@ -1573,10 +1573,10 @@ public class ButtonHandler {
 					continue;
 				if (player.getSkills().getLevelForXp(skillId) < level) {
 					if (hasRequiriments)
-						player.getSocialManager().sendGameMessage("You are not high enough level to use this item.");
+						player.message("You are not high enough level to use this item.");
 					hasRequiriments = false;
 					String name = Skills.SKILL_NAME[skillId].toLowerCase();
-					player.getSocialManager().sendGameMessage("You need to have a" + (name.startsWith("a") ? "n" : "") + " " + name + " level of " + level + ".");
+					player.message("You need to have a" + (name.startsWith("a") ? "n" : "") + " " + name + " level of " + level + ".");
 				}
 
 			}

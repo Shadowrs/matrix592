@@ -101,18 +101,18 @@ public class Thieving {
 
 	public static void handleStalls(final Player player, final WorldObject object) {
 		if (player.getAttackedBy() != null && player.getAttackedByDelay() > Utils.currentTimeMillis()) {
-			player.getSocialManager().sendGameMessage("You can't do this while you're under combat.");
+			player.message("You can't do this while you're under combat.");
 			return;
 		}
 		for (final Stalls stall : Stalls.values()) {
 			if (stall.getObjectId() == object.getId()) {
 				final WorldObject emptyStall = new WorldObject(stall.getReplaceObject(), 10, object.getRotation(), object.getX(), object.getY(), object.getPlane());
 				if (player.getSkills().getLevel(Skills.THIEVING) < stall.getLevel()) {
-					player.getSocialManager().sendGameMessage("You need a thieving level of " + stall.getLevel() + " to steal from this.", true);
+					player.message("You need a thieving level of " + stall.getLevel() + " to steal from this.", true);
 					return;
 				}
 				if (player.getInventory().getFreeSlots() <= 0) {
-					player.getSocialManager().sendGameMessage("Not enough space in your inventory.", true);
+					player.message("Not enough space in your inventory.", true);
 					return;
 				}
 
@@ -177,11 +177,11 @@ public class Thieving {
 		int level = Utils.getRandom(thievingLevel + (increasedChance - decreasedChance)) + 1;
 		double ratio = level / (Utils.getRandom(45 + 5) + 1);
 		if (Math.round(ratio * thievingLevel) < (player.getAttackedByDelay() > 0 ? 50 : 40)) {
-			player.getSocialManager().sendGameMessage("You fail to unlock the door and your hands begin to numb down.");
+			player.message("You fail to unlock the door and your hands begin to numb down.");
 			player.getTemporaryAttributtes().put("numbFingers", decreasedChance + 1);
 			return false;
 		}
-		player.getSocialManager().sendGameMessage("You successfully unlock the door.");
+		player.message("You successfully unlock the door.");
 		ObjectHandler.handleDoor(player, object, 1500 + Utils.getRandom(1000));
 		return true;
 	}

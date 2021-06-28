@@ -30,7 +30,7 @@ public class NeemDrupeSqueeze extends Dialogue {
 		if (player.getCharges().getCharges(22444) == 0) {
 			player.getInventory().deleteItem(22444, 1);
 			player.getInventory().addItem(1935, 1);
-			player.getSocialManager().sendGameMessage("There is no more oil in the jug.");
+			player.message("There is no more oil in the jug.");
 		}
 	}
 

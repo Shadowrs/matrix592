@@ -219,7 +219,7 @@ public class PestControl {
 
 	public void sendTeamMessage(String message) {
 		for (Player player : team)
-			player.getSocialManager().sendGameMessage(message, true);
+			player.message(message, true);
 	}
 
 	private boolean canFinish() {

@@ -26,7 +26,7 @@ public class BansheeCombat extends CombatScript {
 				int randomSkill = Utils.random(0, 6);
 				int currentLevel = targetPlayer.getSkills().getLevel(randomSkill);
 				targetPlayer.getSkills().set(randomSkill, currentLevel < 5 ? 0 : currentLevel - 5);
-				targetPlayer.getSocialManager().sendGameMessage("The screams of the banshee make you feel slightly weaker.");
+				targetPlayer.message("The screams of the banshee make you feel slightly weaker.");
 				npc.setNextForceTalk(new ForceTalk("*EEEEHHHAHHH*"));
 			}
 			delayHit(npc, 0, target, getMeleeHit(npc, targetPlayer.getMaxHitpoints() / 10));

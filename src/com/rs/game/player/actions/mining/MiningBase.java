@@ -57,12 +57,12 @@ public abstract class MiningBase extends Action {
 	}
 
 	public static void propect(final Player player, String startMessage, final String endMessage) {
-		player.getSocialManager().sendGameMessage(startMessage, true);
+		player.message(startMessage, true);
 		player.lock(5);
 		WorldTasksManager.schedule(new WorldTask() {
 			@Override
 			public void run() {
-				player.getSocialManager().sendGameMessage(endMessage);
+				player.message(endMessage);
 			}
 		}, 4);
 	}

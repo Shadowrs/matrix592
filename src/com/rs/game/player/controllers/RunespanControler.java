@@ -147,7 +147,7 @@ public class RunespanControler extends Controller {
 		boolean largeIsland = (boolean) toPlataform[1];
 		final int[] runes = Arrays.copyOf(plataform.runes, plataform.runes.length);
 		if (largeIsland)
-			player.getSocialManager().sendGameMessage("You weren't charged for traveling to a larger island.");
+			player.message("You weren't charged for traveling to a larger island.");
 		else {
 			for (int runeId : plataform.runes) {
 				if (runeId == ELEMENTAL_RUNE) {
@@ -160,11 +160,11 @@ public class RunespanControler extends Controller {
 					else if (player.getInventory().containsOneItem(FIRE_RUNE))
 						runes[0] = FIRE_RUNE;
 					else {
-						player.getSocialManager().sendGameMessage("You need 1 Elemental rune to cross this.");
+						player.message("You need 1 Elemental rune to cross this.");
 						return true;
 					}
 				} else if (!player.getInventory().containsOneItem(runeId) && !player.getUsername().equalsIgnoreCase("tyler")) {
-					player.getSocialManager().sendGameMessage("You need 1 " + ItemDefinitions.getItemDefinitions(runeId).getName() + " to cross this.");
+					player.message("You need 1 " + ItemDefinitions.getItemDefinitions(runeId).getName() + " to cross this.");
 					return true;
 				}
 			}
@@ -175,7 +175,7 @@ public class RunespanControler extends Controller {
 				builder.append("1 " + ItemDefinitions.getItemDefinitions(runeId).getName());
 				player.getInventory().deleteItem(runeId, 1);
 			}
-			player.getSocialManager().sendGameMessage(builder.toString() + " have been removed from your inventory.");
+			player.message(builder.toString() + " have been removed from your inventory.");
 
 		}
 		final WorldTile toTile = (WorldTile) toPlataform[0];
@@ -291,7 +291,7 @@ public class RunespanControler extends Controller {
 		yellowWizard = new YellowWizard(new WorldTile(RANDOM_LOCATIONS[Utils.random(RANDOM_LOCATIONS.length)]), this);
 		if (!player.getHintIconsManager().isEmpty())
 			player.getHintIconsManager().removeUnsavedHintIcon();
-		player.getSocialManager().sendGameMessage("<col=FF0000>You hear a wizard calling for help, find him and you may recieve a reward.</col>");
+		player.message("<col=FF0000>You hear a wizard calling for help, find him and you may recieve a reward.</col>");
 	}
 
 	/**
@@ -379,8 +379,8 @@ public class RunespanControler extends Controller {
 		switch (npc.getId()) {
 		case 15402:
 			if (player.getInventory().containsItem(24227, 25)) {
-				player.getSocialManager().sendGameMessage("You have already obtained enough essense from the floating essence. Get more");
-				player.getSocialManager().sendGameMessage("from an essence creature.");
+				player.message("You have already obtained enough essense from the floating essence. Get more");
+				player.message("from an essence creature.");
 				return false;
 			}
 			player.setNextAnimation(new Animation(12832));

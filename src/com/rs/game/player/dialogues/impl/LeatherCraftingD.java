@@ -70,26 +70,26 @@ public class LeatherCraftingD extends Dialogue {
 			public boolean checkAll(Player player) {
 				final int levelReq = LEVELS[index][componentIndex];
 				if (player.getSkills().getLevel(Skills.CRAFTING) < levelReq) {
-					player.getSocialManager().sendGameMessage("You need a Crafting level of " + levelReq + " to craft this hide.");
+					player.message("You need a Crafting level of " + levelReq + " to craft this hide.");
 					return false;
 				}
 				if (player.getInventory().getItems().getNumberOf(BASE_LEATHER[index]) < POTENTIAL_PRODUCTS[index][componentIndex].getAmount()) {
-					player.getSocialManager().sendGameMessage("You don't have enough hides in your inventory.");
+					player.message("You don't have enough hides in your inventory.");
 					return false;
 				}
 				if (!player.getInventory().containsOneItem(1734)) {
-					player.getSocialManager().sendGameMessage("You need a thread in order to bind the tanned hides together.");
+					player.message("You need a thread in order to bind the tanned hides together.");
 					return false;
 				}
 				if (!player.getInventory().containsOneItem(1733)) {
-					player.getSocialManager().sendGameMessage("You need a needle in order to bind the tanned hides together.");
+					player.message("You need a needle in order to bind the tanned hides together.");
 					return false;
 				}
 				Item[] extraItems = REQUIRED_BASE_ITEMS[index];
 				if (extraItems != null) {
 					Item item = extraItems[componentIndex];
 					if (!player.getInventory().containsItem(item.getId(), item.getAmount())) {
-						player.getSocialManager().sendGameMessage("You need a " + item.getName().toLowerCase() + ".");
+						player.message("You need a " + item.getName().toLowerCase() + ".");
 						return false;
 					}
 				}

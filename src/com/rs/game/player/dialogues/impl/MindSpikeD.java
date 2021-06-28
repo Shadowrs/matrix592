@@ -35,7 +35,7 @@ public class MindSpikeD extends Dialogue {
 	public void run(int interfaceId, int componentId) {
 		if (componentId != OPTION_4) {
 			player.getInventory().replaceItem(getTransformationForId(componentId == OPTION_1 ? 0 : componentId == OPTION_2 ? 1 : 2), 1, slot);
-			player.getSocialManager().sendGameMessage("You alter your staff's elemental alignment.");
+			player.message("You alter your staff's elemental alignment.");
 		}
 		end();
 	}

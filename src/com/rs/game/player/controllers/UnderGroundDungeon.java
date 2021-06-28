@@ -48,7 +48,7 @@ public class UnderGroundDungeon extends Controller {
 		if (hasStench) {
 			if (!Slayer.hasNosepeg(player) && !Slayer.hasMask(player)) {
 				if (initial)
-					player.getSocialManager().sendGameMessage("The stench of the monsters begins to reach your nose..");
+					player.message("The stench of the monsters begins to reach your nose..");
 				initial = false;
 			} else
 				initial = true;
@@ -56,7 +56,7 @@ public class UnderGroundDungeon extends Controller {
 		if (requiresLightSource) {
 			if (!LightSource.hasLightSource(player)) {
 				if (initial)
-					player.getSocialManager().sendGameMessage("You hear tiny insects skittering over the ground...");
+					player.message("You hear tiny insects skittering over the ground...");
 				initial = false;
 			} else
 				initial = true;
@@ -73,7 +73,7 @@ public class UnderGroundDungeon extends Controller {
 		ticks++;
 		if (hasStench) {
 			if (ticks % 12 == 0) {
-				player.getSocialManager().sendGameMessage("The strench of the monsters burns your innards.");
+				player.message("The strench of the monsters burns your innards.");
 				player.applyHit(new Hit(player, 200, HitLook.REGULAR_DAMAGE));
 			}
 		}
@@ -127,7 +127,7 @@ public class UnderGroundDungeon extends Controller {
 			player.useStairs(-1, object, 1, 2);
 			player.useStairs(10579, new WorldTile(3219, 9618, 0), 1, 2);
 			player.getControlerManager().forceStop();
-			player.getSocialManager().sendGameMessage("You squeeze through the hole.");
+			player.message("You squeeze through the hole.");
 			return false;
 		} else if (object.getId() == 6439) {
 			player.useStairs(828, new WorldTile(3310, 2961, 0), 1, 2);

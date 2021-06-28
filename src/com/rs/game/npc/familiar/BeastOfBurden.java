@@ -76,16 +76,16 @@ public class BeastOfBurden implements Serializable {
 		int freeSpace = player.getInventory().getFreeSlots();
 		if (!item.getDefinitions().isStackable()) {
 			if (freeSpace == 0) {
-				player.getSocialManager().sendGameMessage("Not enough space in your inventory.");
+				player.message("Not enough space in your inventory.");
 				return;
 			}
 			if (freeSpace < item.getAmount()) {
 				item.setAmount(freeSpace);
-				player.getSocialManager().sendGameMessage("Not enough space in your inventory.");
+				player.message("Not enough space in your inventory.");
 			}
 		} else {
 			if (freeSpace == 0 && !player.getInventory().containsItem(item.getId(), 1)) {
-				player.getSocialManager().sendGameMessage("Not enough space in your inventory.");
+				player.message("Not enough space in your inventory.");
 				return;
 			}
 		}
@@ -100,10 +100,10 @@ public class BeastOfBurden implements Serializable {
 		if (item == null)
 			return;
 		if (canDepositOnly) {
-			player.getSocialManager().sendGameMessage("You cannot store items in this familiar.");
+			player.message("You cannot store items in this familiar.");
 			return;
 		} else if (!ItemConstants.isTradeable(item) || item.getId() == 4049 || (familiar.canStoreEssOnly() && item.getId() != 1436 && item.getId() != 7936) || (item.getDefinitions().getValue() * item.getAmount()) > 50000) {
-			player.getSocialManager().sendGameMessage("You cannot store this item.");
+			player.message("You cannot store this item.");
 			return;
 		}
 		Item[] itemsBefore = beastItems.getItemsCopy();
@@ -115,17 +115,17 @@ public class BeastOfBurden implements Serializable {
 		int freeSpace = beastItems.getFreeSlots();
 		if (!item.getDefinitions().isStackable()) {
 			if (freeSpace == 0) {
-				player.getSocialManager().sendGameMessage("Not enough space in your familiar inventory.");
+				player.message("Not enough space in your familiar inventory.");
 				return;
 			}
 
 			if (freeSpace < item.getAmount()) {
 				item.setAmount(freeSpace);
-				player.getSocialManager().sendGameMessage("Not enough space in your familiar inventory.");
+				player.message("Not enough space in your familiar inventory.");
 			}
 		} else {
 			if (freeSpace == 0 && !beastItems.containsOne(item)) {
-				player.getSocialManager().sendGameMessage("Not enough space in your familiar inventory.");
+				player.message("Not enough space in your familiar inventory.");
 				return;
 			}
 		}

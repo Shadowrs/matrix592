@@ -115,7 +115,7 @@ public class Offer extends Item {
 	public void sendUpdateWarning() {
 		if (owner == null)
 			return;
-		owner.getSocialManager().sendGameMessage("One or more of your Grand Exchange offers have been updated.");
+		owner.message("One or more of your Grand Exchange offers have been updated.");
 		owner.getPackets().sendMusicEffect(284);
 		update();
 	}
@@ -181,7 +181,7 @@ public class Offer extends Item {
 			return false;
 		int freeSlots = owner.getInventory().getFreeSlots();
 		if (freeSlots == 0) {
-			owner.getSocialManager().sendGameMessage("Not enough space in your inventory.");
+			owner.message("Not enough space in your inventory.");
 			return false;
 		}
 		Item item = receivedItems.get(slot);

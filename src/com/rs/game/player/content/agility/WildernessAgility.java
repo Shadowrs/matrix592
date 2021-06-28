@@ -17,7 +17,7 @@ public class WildernessAgility {
 			return;
 		else if (player.getY() != 3953) {
 			player.addWalkSteps(player.getX(), 3953);
-			player.getSocialManager().sendGameMessage("You'll need to get closer to make this jump.");
+			player.message("You'll need to get closer to make this jump.");
 			return;
 		}
 		player.lock(4);
@@ -26,7 +26,7 @@ public class WildernessAgility {
 		final WorldTile toTile = new WorldTile(object.getX(), 3958, object.getPlane());
 		player.setNextForceMovement(new ForceMovement(player, 1, toTile, 3, ForceMovement.NORTH));
 		player.getSkills().addXp(Skills.AGILITY, 20);
-		player.getSocialManager().sendGameMessage("You skillfully swing across.", true);
+		player.message("You skillfully swing across.", true);
 		WorldTasksManager.schedule(new WorldTask() {
 
 			@Override
@@ -58,7 +58,7 @@ public class WildernessAgility {
 	}
 
 	private static void walkAcrossLogBalanceEnd(final Player player, WorldObject object) {
-		player.getSocialManager().sendGameMessage("You walk carefully across the slippery log...", true);
+		player.message("You walk carefully across the slippery log...", true);
 		player.lock(17);
 		player.setNextAnimation(new Animation(9908));
 		final WorldTile toTile = new WorldTile(2994, object.getY(), object.getPlane());
@@ -69,7 +69,7 @@ public class WildernessAgility {
 			public void run() {
 				player.setNextWorldTile(toTile);
 				player.getSkills().addXp(Skills.AGILITY, 20);
-				player.getSocialManager().sendGameMessage("... and make it safely to the other side.", true);
+				player.message("... and make it safely to the other side.", true);
 				if (getStage(player) != 3)
 					removeStage(player);
 				else
@@ -186,7 +186,7 @@ public class WildernessAgility {
 		player.setRunHidden(false);
 		player.lock(15);
 		player.addWalkSteps(objectX, 3949, -1, false);
-		player.getSocialManager().sendGameMessage("You pulled yourself through the pipes.", true);
+		player.message("You pulled yourself through the pipes.", true);
 		WorldTasksManager.schedule(new WorldTask() {
 			boolean secondloop;
 

@@ -78,7 +78,7 @@ public class PuroPuro extends Controller {
 			objectX = objectX + 1;
 			direction = ForceMovement.SOUTH | ForceMovement.EAST;
 		}
-		player.getSocialManager().sendGameMessage(Utils.getRandom(2) == 0 ? "You use your strength to push through the wheat in the most efficient fashion." : "You use your strength to push through the wheat.");
+		player.message(Utils.getRandom(2) == 0 ? "You use your strength to push through the wheat in the most efficient fashion." : "You use your strength to push through the wheat.");
 		player.setNextFaceWorldTile(object);
 		player.setNextAnimation(new Animation(6594));
 		player.lock();
@@ -139,13 +139,13 @@ public class PuroPuro extends Controller {
 			}
 		}
 		if (requriedItems == null || !player.getInventory().containsItems(requriedItems)) {
-			player.getSocialManager().sendGameMessage("You don't have the required items.");
+			player.message("You don't have the required items.");
 			return;
 		}
 		if (player.getInventory().addItemDrop(exchangedItem.getId(), exchangedItem.getAmount())) {
 			player.getInventory().removeItems(requriedItems);
 			player.closeInterfaces();
-			player.getSocialManager().sendGameMessage("You exchange the required items for: " + exchangedItem.getName().toLowerCase() + ".");
+			player.message("You exchange the required items for: " + exchangedItem.getName().toLowerCase() + ".");
 		}
 	}
 }

@@ -167,7 +167,7 @@ public class FriendsIgnores implements Serializable {
 					player.getCurrentFriendChat().leaveChat(player, false);
 			} else if (componentId == 12) {
 				if (player.getInterfaceManager().containsScreenInter()) {
-					player.getSocialManager().sendGameMessage("Please close the interface you have opened before using Friends Chat setup.");
+					player.message("Please close the interface you have opened before using Friends Chat setup.");
 					return;
 				}
 				player.stopAll();
@@ -384,21 +384,21 @@ public class FriendsIgnores implements Serializable {
 
 	public void addIgnore(String username, boolean tillLogout) {
 		if (ignores.size() + tillLogoutIgnores.size() >= 100) {
-			player.getSocialManager().sendGameMessage("Your ignores list is full.");
+			player.message("Your ignores list is full.");
 			return;
 		}
 		if (username.equals(player.getUsername())) {
-			player.getSocialManager().sendGameMessage("You can't add yourself.");
+			player.message("You can't add yourself.");
 			return;
 		}
 		Player p2 = World.getPlayerByDisplayName(username);
 		String formatedUsername = p2 != null ? p2.getUsername() : Utils.formatPlayerNameForProtocol(username);
 		if (friends.contains(formatedUsername)) {
-			player.getSocialManager().sendGameMessage("Please remove " + formatedUsername + " from your friends list first.");
+			player.message("Please remove " + formatedUsername + " from your friends list first.");
 			return;
 		}
 		if (ignores.contains(formatedUsername) || tillLogoutIgnores.contains(formatedUsername)) {
-			player.getSocialManager().sendGameMessage(formatedUsername + " is already on your ignores list.");
+			player.message(formatedUsername + " is already on your ignores list.");
 			return;
 		}
 		if (tillLogout)
@@ -426,7 +426,7 @@ public class FriendsIgnores implements Serializable {
 
 	public void addFriend(String username) {
 		if (friends.size() >= 200) {
-			player.getSocialManager().sendGameMessage("Your friends list is full.");
+			player.message("Your friends list is full.");
 			return;
 		}
 		username = Utils.formatPlayerNameForProtocol(username);
@@ -438,15 +438,15 @@ public class FriendsIgnores implements Serializable {
 		} else
 			displayName = Utils.formatPlayerNameForDisplay(username);
 		if (username.equals(player.getUsername())) {
-			player.getSocialManager().sendGameMessage("You can't add yourself.");
+			player.message("You can't add yourself.");
 			return;
 		}
 		if (ignores.contains(username) || tillLogoutIgnores.contains(username)) {
-			player.getSocialManager().sendGameMessage("Please remove " + username + " from your ignore list first.");
+			player.message("Please remove " + username + " from your ignore list first.");
 			return;
 		}
 		if (friends.contains(username)) {
-			player.getSocialManager().sendGameMessage((username) + " is already on your friends list.");
+			player.message((username) + " is already on your friends list.");
 			return;
 		}
 		friends.add(username);

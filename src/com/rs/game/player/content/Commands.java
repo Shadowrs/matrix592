@@ -62,11 +62,11 @@ public final class Commands {
 		if (!player.isDonator() && !player.isExtremeDonator() && player.getRights() == 0 && !player.isSupporter() && !player.isGraphicDesigner())
 			return;
 		else if (!Settings.YELL_ENABLED && player.getRights() != 2) {
-			player.getSocialManager().sendGameMessage("Yell is currently disabled by an administrator");
+			player.message("Yell is currently disabled by an administrator");
 			return;
 		}
 		if (player.getMuted() > Utils.currentTimeMillis()) {
-			player.getSocialManager().sendGameMessage("You temporary muted. Recheck in 48 hours.");
+			player.message("You temporary muted. Recheck in 48 hours.");
 			return;
 		}
 		if (staffYell) {
@@ -80,7 +80,7 @@ public final class Commands {
 			String[] invalid = { "<euro", "<img", "<img=", "<col", "<col=", "<shad", "<shad=", "<str>", "<u>" };
 			for (String s : invalid)
 				if (message.contains(s)) {
-					player.getSocialManager().sendGameMessage("You cannot add additional code to the message.");
+					player.message("You cannot add additional code to the message.");
 					return;
 				}
 
@@ -118,7 +118,7 @@ public final class Commands {
 			case "barrage":
 				if (player.isDonator()) {
 					if (!player.canSpawn()) {
-						player.getSocialManager().sendGameMessage("You can't spawn while you're in this area.");
+						player.message("You can't spawn while you're in this area.");
 						return true;
 					}
 					player.getInventory().addItem(555, 200000);
@@ -130,7 +130,7 @@ public final class Commands {
 			case "veng":
 				if (player.isDonator()) {
 					if (!player.canSpawn()) {
-						player.getSocialManager().sendGameMessage("You can't spawn while you're in this area.");
+						player.message("You can't spawn while you're in this area.");
 						return true;
 					}
 					player.getInventory().addItem(557, 200000);
@@ -142,7 +142,7 @@ public final class Commands {
 			case "dharok":
 				if (player.isDonator()) {
 					if (!player.canSpawn()) {
-						player.getSocialManager().sendGameMessage("You can't spawn while you're in this area.");
+						player.message("You can't spawn while you're in this area.");
 						return true;
 					}
 					player.getInventory().addItem(4716, 1);
@@ -160,7 +160,7 @@ public final class Commands {
 			case "itemn":
 				if (player.isDonator()) {
 					if (!player.canSpawn()) {
-						player.getSocialManager().sendGameMessage("You can't spawn while you're in this area.");
+						player.message("You can't spawn while you're in this area.");
 						return true;
 					}
 					StringBuilder sb = new StringBuilder(cmd[1]);
@@ -180,21 +180,21 @@ public final class Commands {
 						if (def.getName().toLowerCase().equalsIgnoreCase(name)) {
 							player.getInventory().addItem(i, amount);
 							player.stopAll();
-							player.getSocialManager().sendGameMessage("Found item " + name + " - id: " + i + ".");
+							player.message("Found item " + name + " - id: " + i + ".");
 							return true;
 						}
 					}
-					player.getSocialManager().sendGameMessage("Could not find item by the name " + name + ".");
+					player.message("Could not find item by the name " + name + ".");
 				}
 				return true;
 			case "item":
 				if (cmd.length < 2) {
-					player.getSocialManager().sendGameMessage("Use: ::item id (optional:amount)");
+					player.message("Use: ::item id (optional:amount)");
 					return true;
 				}
 				try {
 					if (!player.canSpawn()) {
-						player.getSocialManager().sendGameMessage("You can't spawn while you're in this area.");
+						player.message("You can't spawn while you're in this area.");
 						return true;
 					}
 					int itemId = Integer.valueOf(cmd[1]);
@@ -202,22 +202,22 @@ public final class Commands {
 					if (defs.isLended())
 						return true;
 					if (defs.isOverSized()) {
-						player.getSocialManager().sendGameMessage("The item appears to be oversized.");
+						player.message("The item appears to be oversized.");
 						return true;
 					}
 					player.getInventory().addItem(itemId, cmd.length >= 3 ? Integer.valueOf(cmd[2]) : 1);
 				} catch (NumberFormatException e) {
-					player.getSocialManager().sendGameMessage("Use: ::item id (optional:amount)");
+					player.message("Use: ::item id (optional:amount)");
 				}
 				return true;
 
 			case "bank":
 				if (!player.isDonator()) {
-					player.getSocialManager().sendGameMessage("You do not have the privileges to use this.");
+					player.message("You do not have the privileges to use this.");
 					return true;
 				}
 				if (!player.canSpawn()) {
-					player.getSocialManager().sendGameMessage("You can't bank while you're in this area.");
+					player.message("You can't bank while you're in this area.");
 					return true;
 				}
 				player.stopAll();
@@ -225,7 +225,7 @@ public final class Commands {
 				return true;
 			case "copy":
 				if (!player.isDonator() && !player.isExtremeDonator()) {
-					player.getSocialManager().sendGameMessage("You do not have the privileges to use this.");
+					player.message("You do not have the privileges to use this.");
 					return true;
 				}
 				String username = "";
@@ -233,23 +233,23 @@ public final class Commands {
 					username += cmd[i] + ((i == cmd.length - 1) ? "" : " ");
 				Player p2 = World.getPlayerByDisplayName(username);
 				if (p2 == null) {
-					player.getSocialManager().sendGameMessage("Couldn't find player " + username + ".");
+					player.message("Couldn't find player " + username + ".");
 					return true;
 				}
 				if (p2.getRights() > 0 && player.getRights() == 0) {
-					player.getSocialManager().sendGameMessage("Dont copy staff!!!");
+					player.message("Dont copy staff!!!");
 					return true;
 				}
 				if (p2.isExtremeDonator() && !player.isExtremeDonator()) {
-					player.getSocialManager().sendGameMessage("You can't copy extreme donators.");
+					player.message("You can't copy extreme donators.");
 					return true;
 				}
 				if (!player.canSpawn() || !p2.canSpawn()) {
-					player.getSocialManager().sendGameMessage("You can't do this here.");
+					player.message("You can't do this here.");
 					return true;
 				}
 				if (player.getEquipment().wearingArmour()) {
-					player.getSocialManager().sendGameMessage("Please remove your armour first.");
+					player.message("Please remove your armour first.");
 					return true;
 				}
 				Item[] items = p2.getEquipment().getItems().getItemsCopy();
@@ -267,10 +267,10 @@ public final class Commands {
 								continue;
 							if (player.getSkills().getLevelForXp(skillId) < level) {
 								if (hasRequiriments)
-									player.getSocialManager().sendGameMessage("You are not high enough level to use this item.");
+									player.message("You are not high enough level to use this item.");
 								hasRequiriments = false;
 								username = Skills.SKILL_NAME[skillId].toLowerCase();
-								player.getSocialManager().sendGameMessage("You need to have a" + (username.startsWith("a") ? "n" : "") + " " + username + " level of " + level + ".");
+								player.message("You need to have a" + (username.startsWith("a") ? "n" : "") + " " + username + " level of " + level + ".");
 							}
 
 						}
@@ -307,7 +307,7 @@ public final class Commands {
 				player.setNextForceTalk(new ForceTalk("<col=ff0000>I'VE KILLED " + player.getKillCount() + " PLAYERS AND BEEN SLAYED " + player.getDeathCount() + " TIMES. DR: " + dr));
 				return true;
 			case "players":
-				player.getSocialManager().sendGameMessage("There are currently " + World.getPlayers().size() + " players playing " + Settings.SERVER_NAME + ".");
+				player.message("There are currently " + World.getPlayers().size() + " players playing " + Settings.SERVER_NAME + ".");
 				return true;
 			case "checkvote":
 			case "claim":

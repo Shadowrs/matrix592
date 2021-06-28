@@ -31,7 +31,7 @@ public class CowMilkingAction extends Action {
 		player.setNextAnimation(new Animation(2305));
 		player.getInventory().deleteItem(new Item(EMPTY_BUCKET, 1));
 		player.getInventory().addItem(new Item(1927));
-		player.getSocialManager().sendGameMessage("You milk the cow.");
+		player.message("You milk the cow.");
 		return 5;
 	}
 

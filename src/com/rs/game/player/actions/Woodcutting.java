@@ -173,7 +173,7 @@ public final class Woodcutting extends Action {
 	public boolean start(Player player) {
 		if (!checkAll(player))
 			return false;
-		player.getSocialManager().sendGameMessage(usingBeaver ? "Your beaver uses its strong ivory teeth to chop down the tree..." : "You swing your hatchet at the " + (TreeDefinitions.IVY == definitions ? "ivy" : "tree") + "...", true);
+		player.message(usingBeaver ? "Your beaver uses its strong ivory teeth to chop down the tree..." : "You swing your hatchet at the " + (TreeDefinitions.IVY == definitions ? "ivy" : "tree") + "...", true);
 		setActionDelay(player, getWoodcuttingDelay(player));
 		return true;
 	}
@@ -189,13 +189,13 @@ public final class Woodcutting extends Action {
 	private boolean checkAll(Player player) {
 		hatchet = getHatchet(player);
 		if (hatchet == null) {
-			player.getSocialManager().sendGameMessage("You dont have the required level to use that axe or you don't have a hatchet.");
+			player.message("You dont have the required level to use that axe or you don't have a hatchet.");
 			return false;
 		}
 		if (!hasWoodcuttingLevel(player))
 			return false;
 		if (!player.getInventory().hasFreeSlots()) {
-			player.getSocialManager().sendGameMessage("Not enough space in your inventory.");
+			player.message("Not enough space in your inventory.");
 			return false;
 		}
 		return true;
@@ -217,7 +217,7 @@ public final class Woodcutting extends Action {
 
 	private boolean hasWoodcuttingLevel(Player player) {
 		if (definitions.getLevel() > player.getSkills().getLevel(8)) {
-			player.getSocialManager().sendGameMessage("You need a woodcutting level of " + definitions.getLevel() + " to chop down this tree.");
+			player.message("You need a woodcutting level of " + definitions.getLevel() + " to chop down this tree.");
 			return false;
 		}
 		return true;
@@ -260,7 +260,7 @@ public final class Woodcutting extends Action {
 		}
 		if (!player.getInventory().hasFreeSlots()) {
 			player.setNextAnimation(new Animation(-1));
-			player.getSocialManager().sendGameMessage("Not enough space in your inventory.");
+			player.message("Not enough space in your inventory.");
 			return -1;
 		}
 		return getWoodcuttingDelay(player);
@@ -292,15 +292,15 @@ public final class Woodcutting extends Action {
 					player.getInventory().addItemDrop(item, 1);
 				if (Utils.random(50) == 0) {
 					player.getInventory().addItemDrop(BIRD_NESTS[Utils.random(BIRD_NESTS.length)], 1);
-					player.getSocialManager().sendGameMessage("A bird's nest falls out of the tree!");
+					player.message("A bird's nest falls out of the tree!");
 				}
 			}
 			if (definitions == TreeDefinitions.IVY) {
-				player.getSocialManager().sendGameMessage("You succesfully cut an ivy vine.", true);
+				player.message("You succesfully cut an ivy vine.", true);
 				// todo gfx
 			} else {
 				String logName = ItemDefinitions.getItemDefinitions(definitions.getLogsId()[0]).getName().toLowerCase();
-				player.getSocialManager().sendGameMessage("You get some " + logName + ".", true);
+				player.message("You get some " + logName + ".", true);
 				// todo infernal adze
 			}
 		}

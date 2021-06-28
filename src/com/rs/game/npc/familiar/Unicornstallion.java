@@ -51,7 +51,7 @@ public class Unicornstallion extends Familiar {
 	public boolean submitSpecial(Object object) {
 		Player player = (Player) object;
 		if (player.getHitpoints() == player.getMaxHitpoints()) {
-			player.getSocialManager().sendGameMessage("You need to have at least some damage before being able to heal yourself.");
+			player.message("You need to have at least some damage before being able to heal yourself.");
 			return false;
 		} else {
 			player.setNextAnimation(new Animation(7660));

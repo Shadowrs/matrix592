@@ -37,19 +37,19 @@ public class FightPitsArena extends Controller {
 
 	@Override
 	public boolean processMagicTeleport(WorldTile toTile) {
-		player.getSocialManager().sendGameMessage("You can't teleport out of the arena!");
+		player.message("You can't teleport out of the arena!");
 		return false;
 	}
 
 	@Override
 	public boolean processItemTeleport(WorldTile toTile) {
-		player.getSocialManager().sendGameMessage("You can't teleport out of the arena!");
+		player.message("You can't teleport out of the arena!");
 		return false;
 	}
 
 	@Override
 	public boolean processObjectTeleport(WorldTile toTile) {
-		player.getSocialManager().sendGameMessage("You can't teleport out of the arena!");
+		player.message("You can't teleport out of the arena!");
 		return false;
 	}
 
@@ -75,7 +75,7 @@ public class FightPitsArena extends Controller {
 		if (target instanceof Player) {
 			if (canHit(target))
 				return true;
-			player.getSocialManager().sendGameMessage("You're not allowed to attack yet!");
+			player.message("You're not allowed to attack yet!");
 			return false;
 		}
 		return true;
@@ -98,7 +98,7 @@ public class FightPitsArena extends Controller {
 				if (loop == 0) {
 					player.setNextAnimation(new Animation(2304));
 				} else if (loop == 1) {
-					player.getSocialManager().sendGameMessage("You have been defeated!");
+					player.message("You have been defeated!");
 				} else if (loop == 3) {
 					FightPits.leaveArena(player, 2);
 					player.setNextAnimation(new Animation(-1));

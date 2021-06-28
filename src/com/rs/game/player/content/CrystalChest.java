@@ -19,13 +19,13 @@ public class CrystalChest {
 		final int reward = random <= 39.69 ? 0 : random <= 56.41 ? 1 : random <= 64.41 ? 2 : random <= 67.65 ? 3 : random <= 74.2 ? 4 : random <= 76.95 ? 5 : random <= 81.18 ? 6 : random <= 91.75 ? 7 : random <= 95.01 ? 8 : random <= 98.68 ? 9 : random <= 99.74 ? 10 : 11;
 		player.setNextAnimation(new Animation(536));
 		player.lock(2);
-		player.getSocialManager().sendGameMessage("You unlock the chest with your key.");
+		player.message("You unlock the chest with your key.");
 		WorldTasksManager.schedule(new WorldTask() {
 			@Override
 			public void run() {
 				WorldObject openedChest = new WorldObject(object.getId() + 1, object.getType(), object.getRotation(), object.getX(), object.getY(), object.getPlane());
 				World.spawnObjectTemporary(openedChest, 600);
-				player.getSocialManager().sendGameMessage("You find some treasure in the chest!");
+				player.message("You find some treasure in the chest!");
 				for (Item item : REWARDS[reward])
 					player.getInventory().addItemDrop(item.getId(), item.getAmount());
 			}

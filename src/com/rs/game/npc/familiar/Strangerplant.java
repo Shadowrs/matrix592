@@ -25,7 +25,7 @@ public class Strangerplant extends Familiar {
 		super(player, pouch, tile, mapAreaNameHash, canBeAttackFromOutOfArea);
 		int currentLevel = player.getSkills().getLevelForXp(Skills.FARMING);
 		player.getSkills().set(Skills.FARMING, (int) ((1 + (currentLevel * .04)) + currentLevel));
-		player.getSocialManager().sendGameMessage("You feel a sudden urge to plant flowers.");
+		player.message("You feel a sudden urge to plant flowers.");
 	}
 
 	@Override

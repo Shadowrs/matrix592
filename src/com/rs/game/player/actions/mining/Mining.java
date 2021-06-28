@@ -83,7 +83,7 @@ public final class Mining extends MiningBase {
 		axeDefinitions = getPickAxeDefinitions(player);
 		if (!checkAll(player))
 			return false;
-		player.getSocialManager().sendGameMessage("You swing your pickaxe at the rock.", true);
+		player.message("You swing your pickaxe at the rock.", true);
 		setActionDelay(player, getMiningDelay(player));
 		return true;
 	}
@@ -104,13 +104,13 @@ public final class Mining extends MiningBase {
 
 	private boolean checkAll(Player player) {
 		if (axeDefinitions == null) {
-			player.getSocialManager().sendGameMessage("You do not have a pickaxe or do not have the required level to use the pickaxe.");
+			player.message("You do not have a pickaxe or do not have the required level to use the pickaxe.");
 			return false;
 		}
 		if (!hasMiningLevel(player))
 			return false;
 		if (!player.getInventory().hasFreeSlots()) {
-			player.getSocialManager().sendGameMessage("Not enough space in your inventory.");
+			player.message("Not enough space in your inventory.");
 			return false;
 		}
 		return true;
@@ -118,7 +118,7 @@ public final class Mining extends MiningBase {
 
 	private boolean hasMiningLevel(Player player) {
 		if (definitions.getLevel() > player.getSkills().getLevel(Skills.MINING)) {
-			player.getSocialManager().sendGameMessage("You need a mining level of " + definitions.getLevel() + " to mine this rock.");
+			player.message("You need a mining level of " + definitions.getLevel() + " to mine this rock.");
 			return false;
 		}
 		return true;
@@ -142,7 +142,7 @@ public final class Mining extends MiningBase {
 		}
 		if (!player.getInventory().hasFreeSlots() && definitions.getOreId() != -1) {
 			player.setNextAnimation(new Animation(-1));
-			player.getSocialManager().sendGameMessage("Not enough space in your inventory.");
+			player.message("Not enough space in your inventory.");
 			return -1;
 		}
 		return getMiningDelay(player);
@@ -168,7 +168,7 @@ public final class Mining extends MiningBase {
 		if (definitions.getOreId() != -1) {
 			player.getInventory().addItem(definitions.getOreId() + idSome, 1);
 			String oreName = ItemDefinitions.getItemDefinitions(definitions.getOreId() + idSome).getName().toLowerCase();
-			player.getSocialManager().sendGameMessage("You mine some " + oreName + ".", true);
+			player.message("You mine some " + oreName + ".", true);
 			if (Utils.random(150) == 0)
 				player.getInventory().addItemDrop(UNCUT_GEMS[Utils.random(UNCUT_GEMS.length - 2)], 1);
 			else if (Utils.random(5000) == 0)

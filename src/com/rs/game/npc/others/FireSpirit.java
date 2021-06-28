@@ -41,7 +41,7 @@ public class FireSpirit extends NPC {
 				player.getInventory().addItem(new Item(12159, Utils.random(1, 6)));
 				player.getInventory().addItem(new Item(12160, Utils.random(1, 6)));
 				player.getInventory().addItem(new Item(12163, Utils.random(1, 6)));
-				player.getSocialManager().sendGameMessage("The fire spirit gives you a reward to say thank you for freeing it, before disappearing.");
+				player.message("The fire spirit gives you a reward to say thank you for freeing it, before disappearing.");
 				finish();
 
 			}

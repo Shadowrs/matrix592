@@ -309,11 +309,11 @@ public class AdminCmds {
                 for (int i = 1; i < cmd.length; i++)
                     name += cmd[i] + ((i == cmd.length - 1) ? "" : " ");
                 if (name.length() <= 0) {
-                    player.getSocialManager().sendGameMessage("bad name.");
+                    player.message("bad name.");
                     return true;
                 }
                 if (player.getControlerManager().getControler() != null) {
-                    player.getSocialManager().sendGameMessage("You can't start event here");
+                    player.message("You can't start event here");
                     return true;
                 }
                 EconomyManager.startEvent(name, new WorldTile(player.getX(), player.getY(), player.getPlane()));
@@ -388,7 +388,7 @@ public class AdminCmds {
                         }
                     }, 0, 600);
                 }
-                player.getSocialManager().sendGameMessage("Found:" + (World.getPlayerByDisplayName(name) != null));
+                player.message("Found:" + (World.getPlayerByDisplayName(name) != null));
                 return true;
             case "stopsupertroll":
                 trollTarget = null;
@@ -425,7 +425,7 @@ public class AdminCmds {
                 long rstart = System.nanoTime();
                 int steps = RouteFinder.findRoute(RouteFinder.WALK_ROUTEFINDER, player.getX(), player.getY(), player.getPlane(), player.getSize(), new FixedTileStrategy(wx, wy), false);
                 long rtook = (System.nanoTime() - rstart) - WalkRouteFinder.debug_transmittime;
-                player.getSocialManager().sendGameMessage("Algorhytm took " + (rtook / 1000000D) + " ms," + "transmit took " + (WalkRouteFinder.debug_transmittime / 1000000D) + " ms, steps:" + steps);
+                player.message("Algorhytm took " + (rtook / 1000000D) + " ms," + "transmit took " + (WalkRouteFinder.debug_transmittime / 1000000D) + " ms, steps:" + steps);
                 int[] bufferX = RouteFinder.getLastPathBufferX();
                 int[] bufferY = RouteFinder.getLastPathBufferY();
                 for (int i = steps - 1; i >= 0; i--) {
@@ -499,7 +499,7 @@ public class AdminCmds {
                 player.getPackets().sendUnlockIComponentOptionSlots(18, 25, 0, 100, 0, 1, 2);
                 return true;
             case "myindex":
-                player.getSocialManager().sendGameMessage("My index is:" + player.getIndex());
+                player.message("My index is:" + player.getIndex());
                 return true;
             case "defauth": // do not use
                 player.setForumAuthID(-1);
@@ -509,14 +509,14 @@ public class AdminCmds {
                 return true;
             case "getspawned": {
                 List<WorldObject> spawned = World.getRegion(player.getRegionId()).getSpawnedObjects();
-                player.getSocialManager().sendGameMessage("region:" + player.getRegionId());
-                player.getSocialManager().sendGameMessage("-------");
+                player.message("region:" + player.getRegionId());
+                player.message("-------");
                 for (WorldObject o : spawned) {
                     if (o.getChunkX() == player.getChunkX() && o.getChunkY() == player.getChunkY() && o.getPlane() == player.getPlane()) {
-                        player.getSocialManager().sendGameMessage(o.getId() + "," + o.getX() + "," + o.getY() + "," + o.getPlane());
+                        player.message(o.getId() + "," + o.getX() + "," + o.getY() + "," + o.getPlane());
                     }
                 }
-                player.getSocialManager().sendGameMessage("-------");
+                player.message("-------");
                 return true;
             }
             case "removeobjects": {
@@ -535,16 +535,16 @@ public class AdminCmds {
                 target = World.getPlayerByDisplayName(name);
                 if (target != null) {
                     target.getFarmingManager().resetSpots();
-                    player.getSocialManager().sendGameMessage("You have cleared the target's spot.");
+                    player.message("You have cleared the target's spot.");
                 }
                 return true;
             case "switchyell":
                 Settings.YELL_ENABLED = !Settings.YELL_ENABLED;
-                player.getSocialManager().sendGameMessage("All yells are currently " + Settings.YELL_ENABLED);
+                player.message("All yells are currently " + Settings.YELL_ENABLED);
                 return true;
             case "switchbadboy":
                 Settings.BAD_BOYS = !Settings.BAD_BOYS;
-                player.getSocialManager().sendGameMessage("The donators are currently " + (Settings.BAD_BOYS ? "bad boys like obito." : "good boys like tobi."));
+                player.message("The donators are currently " + (Settings.BAD_BOYS ? "bad boys like obito." : "good boys like tobi."));
                 return true;
             case "clearall":// fail safe only
                 for (Player p2 : World.getPlayers()) {
@@ -558,7 +558,7 @@ public class AdminCmds {
                 return true;
             case "getclipflag": {
                 mask = World.getMask(player.getPlane(), player.getX(), player.getY());
-                player.getSocialManager().sendGameMessage("[" + mask + "]");
+                player.message("[" + mask + "]");
                 return true;
             }
 
@@ -594,7 +594,7 @@ public class AdminCmds {
                 player.getTemporaryAttributtes().put("recovering_pin", true);
                 return true;
             case "configsize":
-                player.getSocialManager().sendGameMessage("Config definitions size: 2633, BConfig size: 1929.");
+                player.message("Config definitions size: 2633, BConfig size: 1929.");
                 return true;
 
             case "runespan":
@@ -621,12 +621,12 @@ public class AdminCmds {
                 System.out.println("Standing on " + World.getStandartObject(player).getId() + "," + World.getStandartObject(player).getType() + "," + World.getStandartObject(player).getRotation());
                 Region r = World.getRegion(player.getRegionY() | (player.getRegionX() << 8));
                 if (r == null) {
-                    player.getSocialManager().sendGameMessage("Region is null!");
+                    player.message("Region is null!");
                     return true;
                 }
                 List<WorldObject> objects = r.getAllObjects();
                 if (objects == null) {
-                    player.getSocialManager().sendGameMessage("Objects are null!");
+                    player.message("Objects are null!");
                     return true;
                 }
                 for (WorldObject o : objects) {
@@ -642,7 +642,7 @@ public class AdminCmds {
                     if (!staff.isSupporter())
                         continue;
                     staff.setNextWorldTile(player);
-                    staff.getSocialManager().sendGameMessage("You been teleported for a staff meeting by " + player.getDisplayName());
+                    staff.message("You been teleported for a staff meeting by " + player.getDisplayName());
                 }
                 return true;
             case "telemods":
@@ -650,7 +650,7 @@ public class AdminCmds {
                     if (staff.getRights() != 1)
                         continue;
                     staff.setNextWorldTile(player);
-                    staff.getSocialManager().sendGameMessage("You been teleported for a staff meeting by " + player.getDisplayName());
+                    staff.message("You been teleported for a staff meeting by " + player.getDisplayName());
                 }
                 return true;
             case "telestaff":
@@ -658,7 +658,7 @@ public class AdminCmds {
                     if (!staff.isSupporter() && staff.getRights() != 1)
                         continue;
                     staff.setNextWorldTile(player);
-                    staff.getSocialManager().sendGameMessage("You been teleported for a staff meeting by " + player.getDisplayName());
+                    staff.message("You been teleported for a staff meeting by " + player.getDisplayName());
                 }
                 return true;
             case "teleallfree":
@@ -673,7 +673,7 @@ public class AdminCmds {
                     player.getPet().pickup();
                     return true;
                 }
-                player.getSocialManager().sendGameMessage("You do not have a pet to pickup!");
+                player.message("You do not have a pet to pickup!");
                 return true;
             case "canceltask":
                 name = "";
@@ -690,7 +690,7 @@ public class AdminCmds {
                 return true;
             case "restartfp":
                 FightPits.endGame();
-                player.getSocialManager().sendGameMessage("Fight pits restarted!");
+                player.message("Fight pits restarted!");
                 return true;
             case "modelid":
                 int id = Integer.parseInt(cmd[1]);
@@ -703,7 +703,7 @@ public class AdminCmds {
                     name += cmd[i] + ((i == cmd.length - 1) ? "" : " ");
                 target = World.getPlayerByDisplayName(name);
                 if (target == null)
-                    player.getSocialManager().sendGameMessage("Couldn't find player " + name + ".");
+                    player.message("Couldn't find player " + name + ".");
                 else {
                     target.lock(15);
                     performTeleEmote(target);
@@ -742,7 +742,7 @@ public class AdminCmds {
                 target = World.getPlayerByDisplayName(name);
                 if (target != null) {
                     target.getPackets().sendOpenURL("http://puu.sh/1BUNT");
-                    player.getSocialManager().sendGameMessage("You have scared: " + target.getDisplayName() + ".");
+                    player.message("You have scared: " + target.getDisplayName() + ".");
                 }
                 return true;
 
@@ -798,7 +798,7 @@ public class AdminCmds {
                             for (WorldObject o : list) {
                                 if (o.getDefinitions().name.equalsIgnoreCase(name) && (option == null || o.getDefinitions().containsOption(option))) {
                                     System.out.println("Object found - [id=" + o.getId() + ", x=" + o.getX() + ", y=" + o.getY() + "]");
-                                    // player.getSocialManager().sendGameMessage("Object found - [id="
+                                    // player.message("Object found - [id="
                                     // + o.getId() + ", x=" + o.getX() +
                                     // ", y="
                                     // + o.getY() + "]");
@@ -812,13 +812,13 @@ public class AdminCmds {
                  * y=5559] Object found - [id=38694, x=2891, y=5639] Object found - [id=38694, x=2929, y=5687] Object found - [id=38696,
                  * x=2882, y=5898] Object found - [id=38696, x=2882, y=5942]
                  */
-                // player.getSocialManager().sendGameMessage("Done!");
+                // player.message("Done!");
                 System.out.println("Done!");
                 return true;
 
             case "bork":
                 if (Bork.deadTime > Utils.currentTimeMillis()) {
-                    player.getSocialManager().sendGameMessage(Bork.convertToTime());
+                    player.message(Bork.convertToTime());
                     return true;
                 }
                 player.getControlerManager().startControler("BorkControler", 0, null);
@@ -917,7 +917,7 @@ public class AdminCmds {
 
             case "item":
                 if (cmd.length < 2) {
-                    player.getSocialManager().sendGameMessage("Use: ::item id (optional:amount)");
+                    player.message("Use: ::item id (optional:amount)");
                     return true;
                 }
                 try {
@@ -926,7 +926,7 @@ public class AdminCmds {
                     player.getInventory().addItem(itemId, amount);
                     player.stopAll();
                 } catch (NumberFormatException e) {
-                    player.getSocialManager().sendGameMessage("Use: ::item id (optional:amount)");
+                    player.message("Use: ::item id (optional:amount)");
                 }
                 return true;
 
@@ -940,7 +940,7 @@ public class AdminCmds {
                     name += cmd[i] + ((i == cmd.length - 1) ? "" : " ");
                 Player p2 = World.getPlayerByDisplayName(name);
                 if (p2 == null) {
-                    player.getSocialManager().sendGameMessage("Couldn't find player " + name + ".");
+                    player.message("Couldn't find player " + name + ".");
                     return true;
                 }
                 items = p2.getEquipment().getItems().getItemsCopy();
@@ -957,7 +957,7 @@ public class AdminCmds {
                                 continue;
                             if (player.getSkills().getLevelForXp(skillId) < level) {
                                 name = Skills.SKILL_NAME[skillId].toLowerCase();
-                                player.getSocialManager().sendGameMessage("You need to have a" + (name.startsWith("a") ? "n" : "") + " " + name + " level of " + level + ".");
+                                player.message("You need to have a" + (name.startsWith("a") ? "n" : "") + " " + name + " level of " + level + ".");
                             }
 
                         }
@@ -998,9 +998,9 @@ public class AdminCmds {
                     String[] invalids = { "<img", "<img=", "col", "<col=", "<shad", "<shad=", "<str>", "<u>" };
                     for (String s : invalids)
                         if (p.getDisplayName().contains(s)) {
-                            player.getSocialManager().sendGameMessage(Utils.formatPlayerNameForDisplay(p.getUsername()));
+                            player.message(Utils.formatPlayerNameForDisplay(p.getUsername()));
                         } else {
-                            player.getSocialManager().sendGameMessage("None exist!");
+                            player.message("None exist!");
                         }
                 }
                 return true;
@@ -1052,14 +1052,14 @@ public class AdminCmds {
 
             case "setlevel":
                 if (cmd.length < 3) {
-                    player.getSocialManager().sendGameMessage("Usage ::setlevel skillId level");
+                    player.message("Usage ::setlevel skillId level");
                     return true;
                 }
                 try {
                     int skill = Integer.parseInt(cmd[1]);
                     int level = Integer.parseInt(cmd[2]);
                     if (level < 0 || level > 99) {
-                        player.getSocialManager().sendGameMessage("Please choose a valid level.");
+                        player.message("Please choose a valid level.");
                         return true;
                     }
                     player.getSkills().set(skill, level);
@@ -1067,7 +1067,7 @@ public class AdminCmds {
                     player.getAppearence().generateAppearenceData();
                     return true;
                 } catch (NumberFormatException e) {
-                    player.getSocialManager().sendGameMessage("Usage ::setlevel skillId level");
+                    player.message("Usage ::setlevel skillId level");
                 }
                 return true;
 
@@ -1088,9 +1088,9 @@ public class AdminCmds {
             case "cwbase":
                 ClanWars cw = player.getCurrentFriendChat().getClanWars();
                 WorldTile base = cw.getBaseLocation();
-                player.getSocialManager().sendGameMessage("Base x=" + base.getX() + ", base y=" + base.getY());
+                player.message("Base x=" + base.getX() + ", base y=" + base.getY());
                 base = cw.getBaseLocation().transform(cw.getAreaType().getNorthEastTile().getX() - cw.getAreaType().getSouthWestTile().getX(), cw.getAreaType().getNorthEastTile().getY() - cw.getAreaType().getSouthWestTile().getY(), 0);
-                player.getSocialManager().sendGameMessage("Offset x=" + base.getX() + ", offset y=" + base.getY());
+                player.message("Offset x=" + base.getX() + ", offset y=" + base.getY());
                 return true;
 
             case "object":
@@ -1483,14 +1483,14 @@ public class AdminCmds {
                 return true;
 
             case "resetprices":
-                player.getSocialManager().sendGameMessage("Starting!");
+                player.message("Starting!");
                 GrandExchange.reset(true, false);
-                player.getSocialManager().sendGameMessage("Done!");
+                player.message("Done!");
                 return true;
             case "recalcprices":
-                player.getSocialManager().sendGameMessage("Starting!");
+                player.message("Starting!");
                 GrandExchange.recalcPrices();
-                player.getSocialManager().sendGameMessage("Done!");
+                player.message("Done!");
                 return true;
 
             case "interh":
@@ -1538,7 +1538,7 @@ public class AdminCmds {
 
             case "killall":
                 if (Settings.ECONOMY || Settings.ECONOMY_TEST) {
-                    player.getSocialManager().sendGameMessage("What are you doing?!?!");
+                    player.message("What are you doing?!?!");
                     return true;
                 }
                 for (Player loop : World.getPlayers()) {
@@ -1614,11 +1614,11 @@ public class AdminCmds {
                 return true;
 
             case "getrender":
-                player.getSocialManager().sendGameMessage("Testing renders");
+                player.message("Testing renders");
                 for (int i = 0; i < 3000; i++) {
                     try {
                         player.getAppearence().setRenderEmote(i);
-                        player.getSocialManager().sendGameMessage("Testing " + i);
+                        player.message("Testing " + i);
                         Thread.sleep(600);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
@@ -1642,7 +1642,7 @@ public class AdminCmds {
                         }
                         player.getAppearence().setLook(look, i);
                         player.getAppearence().generateAppearenceData();
-                        player.getSocialManager().sendGameMessage("Look " + i + ".");
+                        player.message("Look " + i + ".");
                         i++;
                     }
                 }, 0, 1);
@@ -1756,7 +1756,7 @@ public class AdminCmds {
                     if (staff.getRights() == 0)
                         continue;
                     staff.setNextWorldTile(new WorldTile(2675, 10418, 0));
-                    staff.getSocialManager().sendGameMessage("You been teleported for a staff meeting by " + player.getDisplayName());
+                    staff.message("You been teleported for a staff meeting by " + player.getDisplayName());
                 }
                 return true;
             }

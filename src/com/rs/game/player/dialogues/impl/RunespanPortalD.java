@@ -15,7 +15,7 @@ public class RunespanPortalD extends Dialogue {
 	public void run(int interfaceId, int componentId) {
 		if (stage == 1) {
 			if (componentId == OPTION_1) {
-				player.getSocialManager().sendGameMessage("That option isn't yet working.", true);
+				player.message("That option isn't yet working.", true);
 				end();
 			} else {
 				RunespanControler.enterRunespan(player, componentId == OPTION_3);

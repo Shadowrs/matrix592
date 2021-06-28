@@ -32,7 +32,7 @@ public class NexMinion extends NPC {
 		if (!hasNoBarrier) {
 			setNextGraphics(new Graphics(1549));
 			if (hit.getSource() instanceof Player)
-				((Player) hit.getSource()).getSocialManager().sendGameMessage("The avatar is not weak enough to damage this minion.");
+				((Player) hit.getSource()).message("The avatar is not weak enough to damage this minion.");
 			hit.setDamage(0);
 		} else
 			super.handleIngoingHit(hit);

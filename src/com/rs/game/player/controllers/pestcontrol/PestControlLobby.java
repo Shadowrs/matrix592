@@ -56,7 +56,7 @@ public final class PestControlLobby extends Controller {
 
 	@Override
 	public boolean canSummonFamiliar() {
-		player.getSocialManager().sendGameMessage("You feel it's best to keep your Familiar away during this game.");
+		player.message("You feel it's best to keep your Familiar away during this game.");
 		return false;
 	}
 

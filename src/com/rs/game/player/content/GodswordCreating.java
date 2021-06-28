@@ -11,7 +11,7 @@ public class GodswordCreating {
 
 	public static void joinPieces(Player player, boolean anvil) {
 		if (!anvil) {
-			player.getSocialManager().sendGameMessage("Those pieces of the godsword can't be joined together like that - try forging them.");
+			player.message("Those pieces of the godsword can't be joined together like that - try forging them.");
 			return;
 		} else {
 			if (!player.getInventory().containsOneItem(Smithing.HAMMER)) {
@@ -57,13 +57,13 @@ public class GodswordCreating {
 
 	public static void attachKeys(Player player) {
 		if (!player.getInventory().containsItems(KEYS, new int[] { 1, 1, 1, 1 })) {
-			player.getSocialManager().sendGameMessage("You need all key peices in order to form a frozen key.");
+			player.message("You need all key peices in order to form a frozen key.");
 			return;
 		}
 		for (int key : KEYS)
 			player.getInventory().deleteItem(key, 1);
 		player.getInventory().addItem(new Item(20120, 1));
-		player.getSocialManager().sendGameMessage("You attach the key peices together to form a frozen key.");
+		player.message("You attach the key peices together to form a frozen key.");
 	}
 
 	public static void attachHilt(Player player, int gs) {
@@ -71,19 +71,19 @@ public class GodswordCreating {
 		player.getInventory().deleteItem(new Item(11702 + gs * 2, 1));
 		int gsId = 11694 + gs * 2;
 		player.getInventory().addItem(gsId, 1);
-		player.getSocialManager().sendGameMessage("You attach the hilt to the blade and make a " + ItemDefinitions.getItemDefinitions(gsId).name + ".");
+		player.message("You attach the hilt to the blade and make a " + ItemDefinitions.getItemDefinitions(gsId).name + ".");
 	}
 
 	public static void dismantleGS(Player player, Item item, int slot) {
 		int gs = (item.getId() - 11694) / 2;
 		if (!player.getInventory().hasFreeSlots()) {
-			player.getSocialManager().sendGameMessage("Not enough space in your inventory.");
+			player.message("Not enough space in your inventory.");
 			return;
 		}
 		item.setId(11690);
 		player.getInventory().addItem(11702 + gs * 2, 1);
 		player.getInventory().refresh(slot);
-		player.getSocialManager().sendGameMessage("You dismantle the godsword");
+		player.message("You dismantle the godsword");
 
 	}
 

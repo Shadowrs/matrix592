@@ -325,7 +325,7 @@ public class GrandExchangeManager implements Serializable {
 		if (getType() == -1)
 			return;
 		if (getItemId() == -1) {
-			player.getSocialManager().sendGameMessage("You must choose an item first.");
+			player.message("You must choose an item first.");
 			return;
 		}
 		player.getTemporaryAttributtes().put("GEPRICESET", Boolean.TRUE);
@@ -336,7 +336,7 @@ public class GrandExchangeManager implements Serializable {
 		if (getType() == -1)
 			return;
 		if (getItemId() == -1) {
-			player.getSocialManager().sendGameMessage("You must choose an item first.");
+			player.message("You must choose an item first.");
 			return;
 		}
 		if (value < 1)
@@ -363,7 +363,7 @@ public class GrandExchangeManager implements Serializable {
 		if (isSlotFree(slot))
 			return;
 		GrandExchange.abortOffer(player, slot);
-		player.getSocialManager().sendGameMessage("Abort request acknowledged. Please be aware that your offer may have already been completed.");
+		player.message("Abort request acknowledged. Please be aware that your offer may have already been completed.");
 	}
 
 	public void collectItems(int slot, int invSlot, int option) {
@@ -475,7 +475,7 @@ public class GrandExchangeManager implements Serializable {
 
 	public void setItem(Item item, boolean sell) {
 		if (item.getId() == Shop.COINS || !ItemConstants.isTradeable(item)) {
-			player.getSocialManager().sendGameMessage("This item cannot be sold on the Grand Exchange.");
+			player.message("This item cannot be sold on the Grand Exchange.");
 			return;
 		}
 		if (item.getDefinitions().isNoted() && item.getDefinitions().getCertId() != -1)
@@ -498,32 +498,32 @@ public class GrandExchangeManager implements Serializable {
 		boolean buy = type == 0;
 		int itemId = getItemId();
 		if (itemId == -1) {
-			player.getSocialManager().sendGameMessage("You must choose an item to " + (buy ? "buy" : "sell") + "!");
+			player.message("You must choose an item to " + (buy ? "buy" : "sell") + "!");
 			return;
 		}
 		int amount = getAmount();
 		if (amount == 0) {
-			player.getSocialManager().sendGameMessage("You must choose the quantity you wish to " + (buy ? "buy" : "sell") + "!");
+			player.message("You must choose the quantity you wish to " + (buy ? "buy" : "sell") + "!");
 			return;
 		}
 		int pricePerItem = getPricePerItem();
 		if (pricePerItem != 0) {
 			if (amount > 2147483647 / pricePerItem) { // TOO HIGH
-				player.getSocialManager().sendGameMessage("You do not have enough coins to cover the offer.");
+				player.message("You do not have enough coins to cover the offer.");
 				return;
 			}
 		}
 		if (buy) {
 			int price = pricePerItem * amount;
 			if (player.getInventory().getCoinsAmount() < price) {
-				player.getSocialManager().sendGameMessage("You do not have enough coins to cover the offer.");
+				player.message("You do not have enough coins to cover the offer.");
 				return;
 			}
 			player.getInventory().deleteItem(new Item(995, price));
 		} else {
 			int inventoryAmount = getItemAmount(new Item(itemId));
 			if (amount > inventoryAmount) {
-				player.getSocialManager().sendGameMessage("You do not have enough of this item in your inventory to cover the offer.");
+				player.message("You do not have enough of this item in your inventory to cover the offer.");
 				return;
 			}
 			int notedId = ItemDefinitions.getItemDefinitions(itemId).certId; // -1
@@ -547,7 +547,7 @@ public class GrandExchangeManager implements Serializable {
 			return;
 		}
 		if (slot > 2 && !player.isDonator()) {
-			player.getSocialManager().sendGameMessage("You must be donator to use over 3 slots!");
+			player.message("You must be donator to use over 3 slots!");
 			return;
 		}
 		setType(sell ? 1 : 0);

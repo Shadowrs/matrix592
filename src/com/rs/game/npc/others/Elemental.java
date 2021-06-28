@@ -64,7 +64,7 @@ public class Elemental extends NPC {
 					player.setNextGraphics(new Graphics(110, 0, 100));
 					player.stopAll();
 					player.lock();
-					player.getSocialManager().sendGameMessage("You've been spotted by an elemental and teleported out of its garden.");
+					player.message("You've been spotted by an elemental and teleported out of its garden.");
 					FadingScreen.fade(player, new Runnable() {
 						@Override
 						public void run() {

@@ -211,8 +211,8 @@ public class FarmingManager implements Serializable {
 							spot.setActive(ProductInfo.Compost_Bin);
 							spot.setHarvestAmount(15);
 							spot.refresh();
-							player.getSocialManager().sendGameMessage("You close the compost bin.");
-							player.getSocialManager().sendGameMessage("The vegetation begins to decompose.");
+							player.message("You close the compost bin.");
+							player.message("The vegetation begins to decompose.");
 						}
 					} else
 						startRakeAction(spot); // creates usable spot
@@ -276,7 +276,7 @@ public class FarmingManager implements Serializable {
 						if (spot.reachedMaxStage() && !spot.hasChecked()) {
 							spot.setChecked(true);
 							spot.refresh();
-							player.getSocialManager().sendGameMessage("You open the compost bin.");
+							player.message("You open the compost bin.");
 						} else if (!spot.reachedMaxStage())
 							player.getDialogueManager().startDialogue("SimpleMessage", "The vegetation hasn't finished rotting yet.");
 						else
@@ -296,7 +296,7 @@ public class FarmingManager implements Serializable {
 							if (spot.isEmpty()) // stump
 								startHarvestingAction(spot);
 							else {
-								player.getSocialManager().sendGameMessage("You need to chop the tree down before removing it.");
+								player.message("You need to chop the tree down before removing it.");
 								return;
 							}
 						} else
@@ -319,7 +319,7 @@ public class FarmingManager implements Serializable {
 			@Override
 			public boolean start(Player player) {
 				if (!player.getInventory().containsOneItem(RAKE)) {
-					player.getSocialManager().sendGameMessage("You'll need a rake to get rid of the weeds.");
+					player.message("You'll need a rake to get rid of the weeds.");
 					return false;
 				}
 				return true;
@@ -357,19 +357,19 @@ public class FarmingManager implements Serializable {
 			@Override
 			public boolean start(Player player) {
 				if (!player.getInventory().containsOneItem(952)) {
-					player.getSocialManager().sendGameMessage("You need a spade to harvest your crops.");
+					player.message("You need a spade to harvest your crops.");
 					return false;
 				}
 				if (spot.hasEmptyHarvestAmount() && !spot.hasGivenAmount()) {
 					spot.setHarvestAmount(getRandomHarvestAmount(spot.productInfo.type));
 					spot.setHasGivenAmount(true);
 				} else if (spot.harvestAmount <= 0) {
-					player.getSocialManager().sendGameMessage("You have successfully harvested this patch for new crops.");
+					player.message("You have successfully harvested this patch for new crops.");
 					player.setNextAnimation(new Animation(-1));
 					spot.setIdle();
 					return false;
 				}
-				player.getSocialManager().sendGameMessage("You begin to harvest the " + patchName + " patch.");
+				player.message("You begin to harvest the " + patchName + " patch.");
 				setActionDelay(player, 1);
 				return true;
 			}
@@ -379,7 +379,7 @@ public class FarmingManager implements Serializable {
 				if (spot.harvestAmount > 0)
 					return true;
 				else {
-					player.getSocialManager().sendGameMessage("You have successfully harvested this patch for new crops.");
+					player.message("You have successfully harvested this patch for new crops.");
 					player.setNextAnimation(new Animation(-1));
 					spot.setIdle();
 					return false;
@@ -415,7 +415,7 @@ public class FarmingManager implements Serializable {
 				if (spot.harvestAmount > 0)
 					return true;
 				else {
-					player.getSocialManager().sendGameMessage("You pick all of the " + (spot.productInfo.type == FRUIT_TREES ? "fruits" : "berries") + " from the " + getPatchName(spot.productInfo.type) + " patch.");
+					player.message("You pick all of the " + (spot.productInfo.type == FRUIT_TREES ? "fruits" : "berries") + " from the " + getPatchName(spot.productInfo.type) + " patch.");
 					player.setNextAnimation(new Animation(-1));
 					return false;
 				}
@@ -423,7 +423,7 @@ public class FarmingManager implements Serializable {
 
 			@Override
 			public int processWithDelay(Player player) {
-				player.getSocialManager().sendGameMessage("You pick a " + ItemDefinitions.getItemDefinitions(spot.productInfo.productId).getName().toLowerCase() + ".");
+				player.message("You pick a " + ItemDefinitions.getItemDefinitions(spot.productInfo.productId).getName().toLowerCase() + ".");
 				player.setNextAnimation(getHarvestAnimation(spot.productInfo.type));
 				player.getSkills().addXp(Skills.FARMING, spot.productInfo.experience);
 				player.getInventory().addItemDrop(spot.productInfo.productId, 1);
@@ -449,7 +449,7 @@ public class FarmingManager implements Serializable {
 				if (spot == null)
 					return false;
 				else if (!player.getInventory().containsItem(EMPTY_BUCKET, 1)) {
-					player.getSocialManager().sendGameMessage("You'll need an empty bucket.");
+					player.message("You'll need an empty bucket.");
 					return false;
 				}
 				return true;
@@ -458,7 +458,7 @@ public class FarmingManager implements Serializable {
 			@Override
 			public boolean process(Player player) {
 				if (!player.getInventory().containsItem(EMPTY_BUCKET, 1)) {
-					player.getSocialManager().sendGameMessage("You'll need an empty bucket.");
+					player.message("You'll need an empty bucket.");
 					return false;
 				} else if (spot.harvestAmount > 0)
 					return true;
@@ -499,10 +499,10 @@ public class FarmingManager implements Serializable {
 			@Override
 			public boolean start(Player player) {
 				if (!player.getInventory().containsOneItem(952)) {
-					player.getSocialManager().sendGameMessage("You need a spade to clear this farming patch.");
+					player.message("You need a spade to clear this farming patch.");
 					return false;
 				}
-				player.getSocialManager().sendGameMessage("You start digging the " + patchName + " patch...");
+				player.message("You start digging the " + patchName + " patch...");
 				return true;
 			}
 
@@ -511,7 +511,7 @@ public class FarmingManager implements Serializable {
 				if (stage != 2)
 					return true;
 				else {
-					player.getSocialManager().sendGameMessage("You have successfully cleared this patch for new crops.");
+					player.message("You have successfully cleared this patch for new crops.");
 					player.setNextAnimation(new Animation(-1));
 					spot.setIdle();
 					return false;
@@ -544,16 +544,16 @@ public class FarmingManager implements Serializable {
 		boolean isTree = productInfo.type == TREES || productInfo.type == FRUIT_TREES;
 		int level = productInfo.level;
 		if (!player.getInventory().containsOneItem(isTree ? 952 : 5343)) {
-			player.getSocialManager().sendGameMessage(isTree ? "You need a spade to plant the sappling into the dirt." : "You need a seed dipper to plant the seed in the dirt.");
+			player.message(isTree ? "You need a spade to plant the sappling into the dirt." : "You need a seed dipper to plant the seed in the dirt.");
 			return true;
 		} else if (!player.getInventory().containsItem(item.getId(), requiredAmount)) {
-			player.getSocialManager().sendGameMessage("You don't have enough " + item.getDefinitions().getName().toLowerCase() + " to plant " + (patchName.startsWith("(?i)[^aeiou]") ? "an" : "a") + " " + patchName + " patch.");
+			player.message("You don't have enough " + item.getDefinitions().getName().toLowerCase() + " to plant " + (patchName.startsWith("(?i)[^aeiou]") ? "an" : "a") + " " + patchName + " patch.");
 			return true;
 		} else if (player.getSkills().getLevel(Skills.FARMING) < level) {
-			player.getSocialManager().sendGameMessage("You need a farming level of " + level + " to plant this " + (isTree ? "sapling" : "seed") + ".");
+			player.message("You need a farming level of " + level + " to plant this " + (isTree ? "sapling" : "seed") + ".");
 			return true;
 		}
-		player.getSocialManager().sendGameMessage("You plant the " + itemName + " in the " + patchName + " patch.");
+		player.message("You plant the " + itemName + " in the " + patchName + " patch.");
 		player.setNextAnimation(isTree ? SPADE_ANIMATION : SEED_DIPPING_ANIMATION);
 		player.getSkills().addXp(Skills.FARMING, isTree ? productInfo.experience : productInfo.plantingExperience);
 		player.getInventory().deleteItem(new Item(item.getId(), requiredAmount));
@@ -565,29 +565,29 @@ public class FarmingManager implements Serializable {
 		if (spot == null || spot.productInfo == null)
 			return false;
 		if (item.getName().toLowerCase().startsWith("watering can(")) {
-			player.getSocialManager().sendGameMessage("Your watering can is empty and cannot water the plants.");
+			player.message("Your watering can is empty and cannot water the plants.");
 			return true;
 		} else if (spot.isWatered()) {
-			player.getSocialManager().sendGameMessage("This patch is already watered.");
+			player.message("This patch is already watered.");
 			return true;
 		} else if (spot.reachedMaxStage() || spot.productInfo.type == HERBS || spot.productInfo.type == COMPOST || spot.productInfo.type == TREES || spot.productInfo.type == FRUIT_TREES || spot.productInfo == ProductInfo.White_lily || spot.productInfo.type == BUSHES) {
-			player.getSocialManager().sendGameMessage("This patch doesn't need watering.");
+			player.message("This patch doesn't need watering.");
 			return true;
 		} else if (spot.isDiseased()) {
-			player.getSocialManager().sendGameMessage("This crop is diseased and needs cure, not water!");
+			player.message("This crop is diseased and needs cure, not water!");
 			return true;
 		} else if (spot.isDead()) {
-			player.getSocialManager().sendGameMessage("This crop is dead and needs to be removed, not watered!");
+			player.message("This crop is dead and needs to be removed, not watered!");
 			return true;
 		}
-		player.getSocialManager().sendGameMessage("You begin to tip the can over...");
+		player.message("You begin to tip the can over...");
 		player.setNextAnimation(WATERING_ANIMATION);
 		spot.setWatered(true);
 		WorldTasksManager.schedule(new WorldTask() {
 
 			@Override
 			public void run() {
-				player.getSocialManager().sendGameMessage("... and the patch becomes moist with water.");
+				player.message("... and the patch becomes moist with water.");
 				spot.refresh();
 			}
 		}, 2);
@@ -600,14 +600,14 @@ public class FarmingManager implements Serializable {
 		final boolean isTree = spot.productInfo.type == TREES || spot.productInfo.type == FRUIT_TREES;
 		final boolean isBush = spot.productInfo.type == BUSHES;
 		if (!spot.isDiseased()) {
-			player.getSocialManager().sendGameMessage("This patch doesn't need to be cured.");
+			player.message("This patch doesn't need to be cured.");
 			return true;
 		} else if (isTree || isBush) {
 			if (!(player.getInventory().containsOneItem(5329) || player.getInventory().containsOneItem(7409))) {
-				player.getSocialManager().sendGameMessage("You need a pair of secatures to prune the tree.");
+				player.message("You need a pair of secatures to prune the tree.");
 			}
 		}
-		player.getSocialManager().sendGameMessage(isTree ? "You prune the " + spot.productInfo.name().toLowerCase() + " tree's diseased branches." : isBush ? "You prune the " + spot.productInfo.name().toLowerCase() + " bush's diseased leaves." : "You treat the " + getPatchName(spot.spotInfo.type) + " patch with the plant cure.");
+		player.message(isTree ? "You prune the " + spot.productInfo.name().toLowerCase() + " tree's diseased branches." : isBush ? "You prune the " + spot.productInfo.name().toLowerCase() + " bush's diseased leaves." : "You treat the " + getPatchName(spot.spotInfo.type) + " patch with the plant cure.");
 		player.setNextAnimation((isTree || isBush) ? PRUNING_ANIMATION : CURE_PLANT_ANIMATION);
 		spot.setDiseased(false);
 		WorldTasksManager.schedule(new WorldTask() {
@@ -619,7 +619,7 @@ public class FarmingManager implements Serializable {
 					player.getInventory().addItem(new Item(229, 1));
 				} else
 					player.setNextAnimation(new Animation(-1));
-				player.getSocialManager().sendGameMessage("It is restored to health.");
+				player.message("It is restored to health.");
 				spot.refresh();
 			}
 		}, 2);
@@ -630,13 +630,13 @@ public class FarmingManager implements Serializable {
 		if (spot == null || spot.spotInfo.type == COMPOST)
 			return false;
 		if (spot.hasCompost()) {
-			player.getSocialManager().sendGameMessage("This patch is already saturated with a compost.");
+			player.message("This patch is already saturated with a compost.");
 			return true;
 		} else if (!spot.isCleared()) {
-			player.getSocialManager().sendGameMessage("The patch needs to be cleared in order to saturate it with compost.");
+			player.message("The patch needs to be cleared in order to saturate it with compost.");
 			return true;
 		}
-		player.getSocialManager().sendGameMessage("You dump a bucket of " + (superCompost ? "supercompost" : "compost") + "...");
+		player.message("You dump a bucket of " + (superCompost ? "supercompost" : "compost") + "...");
 		player.setNextAnimation(COMPOST_ANIMATION);
 		if (superCompost)
 			spot.setSuperCompost(true);
@@ -649,7 +649,7 @@ public class FarmingManager implements Serializable {
 				player.getInventory().deleteItem(item);
 				player.getInventory().addItem(EMPTY_BUCKET, 1);
 				player.getSkills().addXp(Skills.FARMING, 8);
-				player.getSocialManager().sendGameMessage("... and the patch becomes saturated with nutrients.");
+				player.message("... and the patch becomes saturated with nutrients.");
 				spot.refresh();
 			}
 		}, 2);
@@ -665,7 +665,7 @@ public class FarmingManager implements Serializable {
 			public boolean start(Player player) {
 				if (!checkAll(player))
 					return false;
-				player.getSocialManager().sendGameMessage("You swing your hatchet at the tree...", true);
+				player.message("You swing your hatchet at the tree...", true);
 				setActionDelay(player, getWoodcuttingDelay(player));
 				return true;
 			}
@@ -689,13 +689,13 @@ public class FarmingManager implements Serializable {
 					}
 				}
 				if (hatchet == null) {
-					player.getSocialManager().sendGameMessage("You dont have the required level to use that axe or you don't have a hatchet.");
+					player.message("You dont have the required level to use that axe or you don't have a hatchet.");
 					return false;
 				}
 				if (!hasWoodcuttingLevel(player))
 					return false;
 				if (!player.getInventory().hasFreeSlots()) {
-					player.getSocialManager().sendGameMessage("Not enough space in your inventory.");
+					player.message("Not enough space in your inventory.");
 					return false;
 				}
 				return true;
@@ -703,7 +703,7 @@ public class FarmingManager implements Serializable {
 
 			private boolean hasWoodcuttingLevel(Player player) {
 				if (definitions.getLevel() > player.getSkills().getLevel(8)) {
-					player.getSocialManager().sendGameMessage("You need a woodcutting level of " + definitions.getLevel() + " to chop down this tree.");
+					player.message("You need a woodcutting level of " + definitions.getLevel() + " to chop down this tree.");
 					return false;
 				}
 				return true;
@@ -728,7 +728,7 @@ public class FarmingManager implements Serializable {
 				}
 				if (!player.getInventory().hasFreeSlots()) {
 					player.setNextAnimation(new Animation(-1));
-					player.getSocialManager().sendGameMessage("Not enough space in your inventory.");
+					player.message("Not enough space in your inventory.");
 					return -1;
 				}
 				return getWoodcuttingDelay(player);
@@ -754,7 +754,7 @@ public class FarmingManager implements Serializable {
 				if (item == null || !player.getInventory().containsItem(item.getId(), 1) || spot.isCleared())
 					return false;
 				else if (!attributes[0]) {
-					player.getSocialManager().sendGameMessage("You cannot use this item to make compost.");
+					player.message("You cannot use this item to make compost.");
 					return false;
 				}
 				return true;
@@ -782,7 +782,7 @@ public class FarmingManager implements Serializable {
 	}
 
 	private void checkHealth(final FarmingSpot spot) {
-		player.getSocialManager().sendGameMessage("You examine the " + ((spot.productInfo.type == TREES || spot.productInfo.type == FRUIT_TREES) ? "tree" : "bush") + " for signs of disease and find that it is in perfect health.");
+		player.message("You examine the " + ((spot.productInfo.type == TREES || spot.productInfo.type == FRUIT_TREES) ? "tree" : "bush") + " for signs of disease and find that it is in perfect health.");
 		player.getSkills().addXp(Skills.FARMING, spot.productInfo.plantingExperience);
 		player.setNextAnimation(CHECK_TREE_ANIMATION);
 		spot.setChecked(true);
@@ -819,7 +819,7 @@ public class FarmingManager implements Serializable {
 	}
 
 	private void sendNeedsWeeding(boolean cleared) {
-		player.getSocialManager().sendGameMessage(cleared ? "The patch is ready for planting." : "The patch needs weeding.");
+		player.message(cleared ? "The patch is ready for planting." : "The patch needs weeding.");
 	}
 
 	private void openGuide() {

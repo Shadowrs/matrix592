@@ -89,7 +89,7 @@ public final class AreaEffect extends TimerTask {
 				World.sendGraphics(p, new Graphics(659), tile);
 				for (Player p : dangerous ? SlaughterFieldsControler.dangerousPlayers : SlaughterFieldsControler.rangeDisabledPlayers) {
 					if (tile.withinDistance(p, 1)) {
-						p.getSocialManager().sendGameMessage("You've been hit by a meteor crash.");
+						p.message("You've been hit by a meteor crash.");
 						p.applyHit(new Hit(null, 100 + RANDOM.nextInt(201), HitLook.REGULAR_DAMAGE));
 					}
 				}
@@ -107,7 +107,7 @@ public final class AreaEffect extends TimerTask {
 			return;
 		}
 		p.setNextGraphics(new Graphics(1340));
-		p.getSocialManager().sendGameMessage("You get suffocated in a sandstorm.");
+		p.message("You get suffocated in a sandstorm.");
 		p.applyHit(new Hit(null, 20 + RANDOM.nextInt(120), HitLook.REGULAR_DAMAGE, 50));
 	}
 
@@ -127,7 +127,7 @@ public final class AreaEffect extends TimerTask {
 			public void run() {
 				for (Player p : dangerous ? SlaughterFieldsControler.dangerousPlayers : SlaughterFieldsControler.ffaPlayers) {
 					if (tile.withinDistance(p, 1)) {
-						p.getSocialManager().sendGameMessage("You've been struck by lightning.");
+						p.message("You've been struck by lightning.");
 						p.applyHit(new Hit(null, 90 + RANDOM.nextInt(70), HitLook.REGULAR_DAMAGE));
 					}
 				}
@@ -152,7 +152,7 @@ public final class AreaEffect extends TimerTask {
 				for (final Player p : dangerous ? SlaughterFieldsControler.dangerousPlayers : SlaughterFieldsControler.magicDisabledPlayers) {
 					if (tile.withinDistance(p, 1)) {
 						p.getPackets().sendCameraShake(3, 25, 50, 25, 50, 0);
-						p.getSocialManager().sendGameMessage("You get hit by an earthquake.");
+						p.message("You get hit by an earthquake.");
 						p.applyHit(new Hit(null, 90 + RANDOM.nextInt(70), HitLook.REGULAR_DAMAGE));
 						WorldTasksManager.schedule(new WorldTask() {
 							@Override
@@ -175,7 +175,7 @@ public final class AreaEffect extends TimerTask {
 		if (p == null) {
 			return;
 		}
-		p.getSocialManager().sendGameMessage("You've been bitten by a scorpion.");
+		p.message("You've been bitten by a scorpion.");
 		p.setNextForceTalk(new ForceTalk("Ow!"));
 		p.applyHit(new Hit(null, 40 + RANDOM.nextInt(50), HitLook.REGULAR_DAMAGE));
 		p.getPoison().makePoisoned(108);

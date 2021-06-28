@@ -253,7 +253,7 @@ public final class PlayerLook {
 			// .getKeyForValue(player.getAppearence().getTopStyle()) >= 32) {
 			player.getTemporaryAttributtes().put("ThessaliasMakeOver", 1);
 			// } else
-			// player.getSocialManager().sendGameMessage(
+			// player.message(
 			// "You can't select different arms to go with that top.");
 		} else if (buttonId == 93)
 			player.getTemporaryAttributtes().put("ThessaliasMakeOver", 3);

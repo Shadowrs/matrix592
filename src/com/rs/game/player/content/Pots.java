@@ -281,14 +281,14 @@ public final class Pots {
 			@Override
 			public void extra(Player player) {
 				player.addPoisonImmune(86000);
-				player.getSocialManager().sendGameMessage("You are now immune to poison.");
+				player.message("You are now immune to poison.");
 			}
 		},
 		SUPER_ANTIPOISON() {
 			@Override
 			public void extra(Player player) {
 				player.addPoisonImmune(346000);
-				player.getSocialManager().sendGameMessage("You are now immune to poison.");
+				player.message("You are now immune to poison.");
 			}
 		},
 		ENERGY_POTION() {
@@ -310,7 +310,7 @@ public final class Pots {
 			public void extra(final Player player) {
 				player.addFireImmune(360000);
 				final long current = player.getFireImmune();
-				player.getSocialManager().sendGameMessage("You are now immune to dragonfire.");
+				player.message("You are now immune to dragonfire.");
 				WorldTasksManager.schedule(new WorldTask() {
 					boolean stop = false;
 
@@ -321,11 +321,11 @@ public final class Pots {
 							return;
 						}
 						if (!stop) {
-							player.getSocialManager().sendGameMessage("<col=480000>Your antifire potion is about to run out...</col>");
+							player.message("<col=480000>Your antifire potion is about to run out...</col>");
 							stop = true;
 						} else {
 							stop();
-							player.getSocialManager().sendGameMessage("<col=480000>Your antifire potion has ran out...</col>");
+							player.message("<col=480000>Your antifire potion has ran out...</col>");
 						}
 					}
 				}, 500, 100);
@@ -392,7 +392,7 @@ public final class Pots {
 			@Override
 			public boolean canDrink(Player player) {
 				if (player.getControlerManager().getControler() instanceof Wilderness || FfaZone.isOverloadChanged(player)) {
-					player.getSocialManager().sendGameMessage("You cannot drink this potion here.");
+					player.message("You cannot drink this potion here.");
 					return false;
 				}
 				return true;
@@ -409,7 +409,7 @@ public final class Pots {
 			@Override
 			public boolean canDrink(Player player) {
 				if (player.getControlerManager().getControler() instanceof Wilderness || FfaZone.isOverloadChanged(player)) {
-					player.getSocialManager().sendGameMessage("You cannot drink this potion here.");
+					player.message("You cannot drink this potion here.");
 					return false;
 				}
 				return true;
@@ -426,7 +426,7 @@ public final class Pots {
 			@Override
 			public boolean canDrink(Player player) {
 				if (player.getControlerManager().getControler() instanceof Wilderness || FfaZone.isOverloadChanged(player)) {
-					player.getSocialManager().sendGameMessage("You cannot drink this potion here.");
+					player.message("You cannot drink this potion here.");
 					return false;
 				}
 				return true;
@@ -443,7 +443,7 @@ public final class Pots {
 			@Override
 			public boolean canDrink(Player player) {
 				if (player.getControlerManager().getControler() instanceof Wilderness || FfaZone.isOverloadChanged(player)) {
-					player.getSocialManager().sendGameMessage("You cannot drink this potion here.");
+					player.message("You cannot drink this potion here.");
 					return false;
 				}
 				return true;
@@ -460,7 +460,7 @@ public final class Pots {
 			@Override
 			public boolean canDrink(Player player) {
 				if (player.getControlerManager().getControler() instanceof Wilderness || FfaZone.isOverloadChanged(player)) {
-					player.getSocialManager().sendGameMessage("You cannot drink this potion here.");
+					player.message("You cannot drink this potion here.");
 					return false;
 				}
 				return true;
@@ -477,12 +477,12 @@ public final class Pots {
 			@Override
 			public boolean canDrink(Player player) {
 				if (player.getControlerManager().getControler() instanceof Wilderness || FfaZone.isOverloadChanged(player)) {
-					player.getSocialManager().sendGameMessage("You cannot drink this potion here.");
+					player.message("You cannot drink this potion here.");
 					return false;
 				}
 				Long time = (Long) player.getTemporaryAttributtes().get("Recover_Special_Pot");
 				if (time != null && Utils.currentTimeMillis() - time < 30000) {
-					player.getSocialManager().sendGameMessage("You may only use this pot every 30 seconds.");
+					player.message("You may only use this pot every 30 seconds.");
 					return false;
 				}
 				return true;
@@ -524,15 +524,15 @@ public final class Pots {
 			@Override
 			public boolean canDrink(Player player) {
 				if (player.getControlerManager().getControler() instanceof Wilderness || FfaZone.isOverloadChanged(player)) {
-					player.getSocialManager().sendGameMessage("You cannot drink this potion here.");
+					player.message("You cannot drink this potion here.");
 					return false;
 				}
 				/*
-				 * if (player.getOverloadDelay() > 0) { player.getSocialManager().sendGameMessage(
+				 * if (player.getOverloadDelay() > 0) { player.message(
 				 * "You may only use this potion every five minutes."); return false; }
 				 */
 				if (player.getHitpoints() <= 500 || player.getOverloadDelay() > 480) {
-					player.getSocialManager().sendGameMessage("You need more than 500 life points to survive the power of overload.");
+					player.message("You need more than 500 life points to survive the power of overload.");
 					return false;
 				}
 				return true;
@@ -610,8 +610,8 @@ public final class Pots {
 
 			@Override
 			public void extra(Player player) {
-				player.getSocialManager().sendGameMessage("You drink the beer. You feel slightly reinvigorated...");
-				player.getSocialManager().sendGameMessage("...and slightly dizzy too.");
+				player.message("You drink the beer. You feel slightly reinvigorated...");
+				player.message("...and slightly dizzy too.");
 			}
 		},
 		WINE(Skills.ATTACK) {
@@ -621,8 +621,8 @@ public final class Pots {
 
 			@Override
 			public void extra(Player player) {
-				player.getSocialManager().sendGameMessage("You drink the wine. You feel slightly reinvigorated...");
-				player.getSocialManager().sendGameMessage("...and slightly dizzy too.");
+				player.message("You drink the wine. You feel slightly reinvigorated...");
+				player.message("...and slightly dizzy too.");
 				player.heal(70);
 			}
 		};
@@ -678,7 +678,7 @@ public final class Pots {
 			int doses = getDoses(pot, fromItem.getId() == VIAL ? toItem : fromItem);
 			if (doses == 1) {
 				player.getInventory().switchItem(fromSlot, toSlot);
-				player.getSocialManager().sendGameMessage("You pour from one container into the other.", true);
+				player.message("You pour from one container into the other.", true);
 				return true;
 			}
 			int vialDoses = doses / 2;
@@ -687,7 +687,7 @@ public final class Pots {
 			player.getInventory().getItems().set(fromItem.getId() == VIAL ? fromSlot : toSlot, new Item(pot.getIdForDoses(vialDoses), 1));
 			player.getInventory().refresh(fromSlot);
 			player.getInventory().refresh(toSlot);
-			player.getSocialManager().sendGameMessage("You split the potion between the two vials.", true);
+			player.message("You split the potion between the two vials.", true);
 			return true;
 		}
 		Pot pot = getPot(fromItem.getId());
@@ -709,7 +709,7 @@ public final class Pots {
 		}
 		player.getInventory().getItems().set(toSlot, new Item(pot.getIdForDoses(doses2), 1));
 		player.getInventory().refresh(toSlot);
-		player.getSocialManager().sendGameMessage("You pour from one container into the other" + (pot.isFlask() && doses1 == 0 ? " and the glass shatters to pieces." : "."));
+		player.message("You pour from one container into the other" + (pot.isFlask() && doses1 == 0 ? " and the glass shatters to pieces." : "."));
 		return true;
 	}
 
@@ -719,7 +719,7 @@ public final class Pots {
 			return false;
 		item.setId(VIAL);
 		player.getInventory().refresh(slot);
-		player.getSocialManager().sendGameMessage("You empty the vial.", true);
+		player.message("You empty the vial.", true);
 		return true;
 	}
 
@@ -748,8 +748,8 @@ public final class Pots {
 		player.getPackets().sendSound(4580, 0, 1);
 		if (pot.isFlask() || pot.isPotion()) {
 			System.out.println(pot.effect + " " + pot.effect.drinkMessage);
-			player.getSocialManager().sendGameMessage(pot.effect.drinkMessage != null ? pot.effect.drinkMessage : "You drink some of your " + item.getDefinitions().getName().toLowerCase().replace(" (1)", "").replace(" (2)", "").replace(" (3)", "").replace(" (4)", "").replace(" (5)", "").replace(" (6)", "") + ".", true);
-			player.getSocialManager().sendGameMessage(dosesLeft == 0 ? "You have finished your " + (pot.isFlask() ? "flask and the glass shatters to pieces." : pot.isPotion() ? "potion." : item.getName().toLowerCase() + ".") : "You have " + dosesLeft + " dose of potion left.", true);
+			player.message(pot.effect.drinkMessage != null ? pot.effect.drinkMessage : "You drink some of your " + item.getDefinitions().getName().toLowerCase().replace(" (1)", "").replace(" (2)", "").replace(" (3)", "").replace(" (4)", "").replace(" (5)", "").replace(" (6)", "") + ".", true);
+			player.message(dosesLeft == 0 ? "You have finished your " + (pot.isFlask() ? "flask and the glass shatters to pieces." : pot.isPotion() ? "potion." : item.getName().toLowerCase() + ".") : "You have " + dosesLeft + " dose of potion left.", true);
 		}
 		return true;
 	}
@@ -790,7 +790,7 @@ public final class Pots {
 			player.heal(500);
 		}
 		player.setOverloadDelay(0);
-		player.getSocialManager().sendGameMessage("<col=480000>The effects of overload have worn off and you feel normal again.");
+		player.message("<col=480000>The effects of overload have worn off and you feel normal again.");
 	}
 
 	public static void applyOverLoadEffect(Player player) {

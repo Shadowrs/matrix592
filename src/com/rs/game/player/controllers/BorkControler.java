@@ -34,7 +34,7 @@ public class BorkControler extends Controller {
 			if (stage == 18) {
 				player.getInterfaceManager().removeWindowInterface(player.getInterfaceManager().hasRezizableScreen() ? 1 : 11);
 				player.getDialogueManager().startDialogue("DagonHai", 7137, player, -1);
-				player.getSocialManager().sendGameMessage("The choas teleporter transports you to an unknown portal.");
+				player.message("The choas teleporter transports you to an unknown portal.");
 				removeControler();
 			}
 		} else if (borkStage == 1) {

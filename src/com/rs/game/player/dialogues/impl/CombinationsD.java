@@ -52,7 +52,7 @@ public class CombinationsD extends Dialogue {
 			@Override
 			public boolean process(Player player) {
 				if (player.getSkills().getLevel(Skills.COOKING) < combination.getRequiredLevel()) {
-					player.getSocialManager().sendGameMessage("You need a cooking level of " + combination.getRequiredLevel() + " in order to be able to create this.");
+					player.message("You need a cooking level of " + combination.getRequiredLevel() + " in order to be able to create this.");
 					return false;
 				}
 				for (Item item : combination.getRequirements()) {
@@ -79,9 +79,9 @@ public class CombinationsD extends Dialogue {
 				player.getInventory().addItem(new Item(combination.getProducedNodes()[componentIndex]));
 				player.getSkills().addXp(Skills.COOKING, combination.getExperience()[componentIndex]);
 				if (combination.getType() == COMBINE)
-					player.getSocialManager().sendGameMessage("You combine the ingredients to make a topping.");
+					player.message("You combine the ingredients to make a topping.");
 				else if (combination.getType() == MIX)
-					player.getSocialManager().sendGameMessage("You add the " + combination.getInitialNode().getName().toLowerCase() + " to the " + combination.getSecondaryNode().getName().toLowerCase() + ".");
+					player.message("You add the " + combination.getInitialNode().getName().toLowerCase() + " to the " + combination.getSecondaryNode().getName().toLowerCase() + ".");
 				else if (combination.getType() == PUT) {
 					if (combination.toString().contains("_BOWL"))
 						player.getInventory().addItem(new Item(BOWL, 1));
@@ -91,9 +91,9 @@ public class CombinationsD extends Dialogue {
 						player.getInventory().addItem(new Item(BUCKET, 1));
 					if (combination.toString().contains("_JUG"))
 						player.getInventory().addItem(new Item(JUG, 1));
-					player.getSocialManager().sendGameMessage("You place the topping onto the " + combination.getInitialNode().getName().toLowerCase() + ".");
+					player.message("You place the topping onto the " + combination.getInitialNode().getName().toLowerCase() + ".");
 				} else if (combination.getType() == CUTT)
-					player.getSocialManager().sendGameMessage("You chop the " + combination.getInitialNode().getName().toLowerCase() + " into little pieces.");
+					player.message("You chop the " + combination.getInitialNode().getName().toLowerCase() + " into little pieces.");
 				return 3;
 			}
 

@@ -98,7 +98,7 @@ public class SorceressGarden extends Controller {
 
 	public static void teleportToSocreressGarden(final Player player, boolean broomstick) {
 		if (player.getControlerManager().getControler() instanceof SorceressGarden) {
-			player.getSocialManager().sendGameMessage("You can't teleport to the Sorceress's Garden whilst you're in the Sorceress's Garden!");
+			player.message("You can't teleport to the Sorceress's Garden whilst you're in the Sorceress's Garden!");
 			return;
 		}
 		boolean teleport;
@@ -195,7 +195,7 @@ public class SorceressGarden extends Controller {
 
 	public void teleMiddle() {
 		player.lock();
-		player.getSocialManager().sendGameMessage("An elemental force enamating from the garden teleports you away.");
+		player.message("An elemental force enamating from the garden teleports you away.");
 		FadingScreen.fade(player, new Runnable() {
 			@Override
 			public void run() {

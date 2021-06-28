@@ -43,16 +43,16 @@ public class KingBlackDragonCombat extends CombatScript {
 					boolean hasPot = player.getFireImmune() >= Utils.currentTimeMillis();
 					if (hasPot) {
 						damage = Utils.random(100);
-						player.getSocialManager().sendGameMessage("Your potion absorbs most of the dragon's breath!", true);
+						player.message("Your potion absorbs most of the dragon's breath!", true);
 					}
 					if (hasPrayer || hasShield) {
 						if (damage >= 100) {
 							damage = Utils.random(100);
-							player.getSocialManager().sendGameMessage("Your " + (hasShield ? "shield" : "prayer") + " absorbs most of the dragon's breath!", true);
+							player.message("Your " + (hasShield ? "shield" : "prayer") + " absorbs most of the dragon's breath!", true);
 						} else
 							damage = 0;
 					} else if (!hasPot)
-						player.getSocialManager().sendGameMessage("You are hit by the dragon's fiery breath!", true);
+						player.message("You are hit by the dragon's fiery breath!", true);
 				}
 				npc.setNextGraphics(new Graphics(3441));
 				delayHit(npc, 2, target, getRegularHit(npc, damage));
@@ -154,7 +154,7 @@ public class KingBlackDragonCombat extends CombatScript {
 			message = "Your " + (prayer ? "prayer " : "shield ") + " absorbs most of the dragon's " + ADVERBS[type] + " breath!";
 		else
 			message = "You are hit by the dragon's " + ADVERBS[type] + " breath!";
-		player.getSocialManager().sendGameMessage(message, true);
+		player.message(message, true);
 	}
 
 	private boolean hasProtectionPrayer(Player player) {

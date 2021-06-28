@@ -15,7 +15,7 @@ public class Nest {
 	}
 
 	public static void searchNest(final Player player, final int slot) {
-		player.getSocialManager().sendGameMessage("You search the nest...and find something in it!");
+		player.message("You search the nest...and find something in it!");
 		player.lock(1);
 		WorldTasksManager.schedule(new WorldTask() {
 

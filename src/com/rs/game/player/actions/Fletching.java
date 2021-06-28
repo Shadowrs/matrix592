@@ -264,7 +264,7 @@ public class Fletching extends Action {
 			return false;
 		if (!process(player))
 			return false;
-		player.getSocialManager().sendGameMessage("You attempt to create a " + new Item(fletch.getProduct()[option]).getDefinitions().getName().replace("(u)", "") + "...", true);
+		player.message("You attempt to create a " + new Item(fletch.getProduct()[option]).getDefinitions().getName().replace("(u)", "") + "...", true);
 		return true;
 	}
 
@@ -292,7 +292,7 @@ public class Fletching extends Action {
 		if (!player.getInventory().containsItem(fletch.getSelected(), amount) || !player.getInventory().containsItem(fletch.getId(), amount2))
 			return false;
 		if (player.getSkills().getLevel(Skills.FLETCHING) < fletch.getLevel()[option]) {
-			player.getSocialManager().sendGameMessage("You need a level of " + fletch.getLevel()[option] + " to fletch this.");
+			player.message("You need a level of " + fletch.getLevel()[option] + " to fletch this.");
 			return false;
 		}
 		return true;
@@ -331,9 +331,9 @@ public class Fletching extends Action {
 		if (amount3 > 1)
 			amount3 *= Settings.CRAFT_RATE;
 		player.getInventory().addItem(fletch.getProduct()[option], amount3);
-		player.getSocialManager().sendGameMessage("You successfully create a " + new Item(fletch.getProduct()[option]).getDefinitions().getName().replace("(u)", "") + ".", true);
+		player.message("You successfully create a " + new Item(fletch.getProduct()[option]).getDefinitions().getName().replace("(u)", "") + ".", true);
 		player.getSkills().addXp(Skills.FLETCHING, fletch.getXp()[option]);
-		player.getSocialManager().sendGameMessage("You attempt to create a " + new Item(fletch.getProduct()[option]).getDefinitions().getName().replace("(u)", ""), true);
+		player.message("You attempt to create a " + new Item(fletch.getProduct()[option]).getDefinitions().getName().replace("(u)", ""), true);
 		return 4;
 	}
 

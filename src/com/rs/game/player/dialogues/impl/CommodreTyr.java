@@ -12,7 +12,7 @@ public class CommodreTyr extends Dialogue {
 	public void start() {
 		npcId = (Integer) parameters[0];
 		if (!player.getQuestManager().completedQuest(Quests.VOID_STARES_BACK)) {
-			player.getSocialManager().sendGameMessage("The knight ignores you, perhaps you can get his attention some other way.");
+			player.message("The knight ignores you, perhaps you can get his attention some other way.");
 			end();
 			return;
 		}

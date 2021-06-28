@@ -52,7 +52,7 @@ public class Packyak extends Familiar {
 		int slotId = (Integer) object;
 		if (getOwner().getBank().hasBankSpace()) {
 			getOwner().getBank().depositItem(slotId, 1, true);
-			getOwner().getSocialManager().sendGameMessage("Your Pack Yak has sent an item to your bank.");
+			getOwner().message("Your Pack Yak has sent an item to your bank.");
 			getOwner().setNextGraphics(new Graphics(1316));
 			getOwner().setNextAnimation(new Animation(7660));
 			return true;

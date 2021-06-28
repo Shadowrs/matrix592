@@ -28,7 +28,7 @@ public class DismissD extends Dialogue {
 			player.getPackets().sendIComponentSettings(747, 17, 0, 0, 0);
 			player.getPet().finish();
 			player.setPet(null);
-			player.getSocialManager().sendGameMessage("Your pet runs off until it's out of sight.");
+			player.message("Your pet runs off until it's out of sight.");
 		}
 		end();
 	}

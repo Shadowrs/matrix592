@@ -291,10 +291,10 @@ public final class EmotesManager implements Serializable {
 
 	public void useBookEmote(int id) {
 		if (player.getAttackedByDelay() + 10000 > Utils.currentTimeMillis()) {
-			player.getSocialManager().sendGameMessage("You can't perform while you're under combat.");
+			player.message("You can't perform while you're under combat.");
 			return;
 		} else if (isDoingEmote()) {
-			player.getSocialManager().sendGameMessage("You're already doing an emote!");
+			player.message("You're already doing an emote!");
 			return;
 		}
 		player.stopAll();
@@ -570,10 +570,10 @@ public final class EmotesManager implements Serializable {
 			 */
 			case 24709: // Veteran cape 10years
 				if (!World.isTileFree(player.getPlane(), player.getX(), player.getY(), 3)) {
-					player.getSocialManager().sendGameMessage("You need clear space outside in order to perform this emote.");
+					player.message("You need clear space outside in order to perform this emote.");
 					return;
 				} else if (player.getControlerManager().getControler() != null) {
-					player.getSocialManager().sendGameMessage("You can't do this here.");
+					player.message("You can't do this here.");
 					return;
 				}
 				player.setNextAnimation(new Animation(17118));
@@ -581,10 +581,10 @@ public final class EmotesManager implements Serializable {
 				break;
 			case 20763: // Veteran cape
 				if (!World.isTileFree(player.getPlane(), player.getX(), player.getY(), 3)) {
-					player.getSocialManager().sendGameMessage("You need clear space outside in order to perform this emote.");
+					player.message("You need clear space outside in order to perform this emote.");
 					return;
 				} else if (player.getControlerManager().getControler() != null) {
-					player.getSocialManager().sendGameMessage("You can't do this here.");
+					player.message("You can't do this here.");
 					return;
 				}
 				player.setNextAnimation(new Animation(352));
@@ -592,7 +592,7 @@ public final class EmotesManager implements Serializable {
 				break;
 			case 20765: // Classic cape
 				if (player.getControlerManager().getControler() != null) {
-					player.getSocialManager().sendGameMessage("You cannot do this here!");
+					player.message("You cannot do this here!");
 					return;
 				}
 				int random = Utils.getRandom(2);
@@ -601,7 +601,7 @@ public final class EmotesManager implements Serializable {
 				break;
 			case 20767: // Max cape
 				if (player.getControlerManager().getControler() != null) {
-					player.getSocialManager().sendGameMessage("You can't do this here.");
+					player.message("You can't do this here.");
 					return;
 				}
 				int size = NPCDefinitions.getNPCDefinitions(1224).size;
@@ -618,7 +618,7 @@ public final class EmotesManager implements Serializable {
 					}
 				}
 				if (spawnTile == null) {
-					player.getSocialManager().sendGameMessage("You need clear space outside in order to perform this emote.");
+					player.message("You need clear space outside in order to perform this emote.");
 					return;
 				}
 				nextEmoteEnd = Utils.currentTimeMillis() + (25 * 600);
@@ -671,10 +671,10 @@ public final class EmotesManager implements Serializable {
 			case 20769:
 			case 20771: // Completionist cape
 				if (!World.isTileFree(player.getPlane(), player.getX(), player.getY(), 3)) {
-					player.getSocialManager().sendGameMessage("You need clear space outside in order to perform this emote.");
+					player.message("You need clear space outside in order to perform this emote.");
 					return;
 				} else if (player.getControlerManager().getControler() != null) {
-					player.getSocialManager().sendGameMessage("You can't do this here.");
+					player.message("You can't do this here.");
 					return;
 				}
 				nextEmoteEnd = Utils.currentTimeMillis() + (20 * 600);
@@ -705,7 +705,7 @@ public final class EmotesManager implements Serializable {
 				}, 0, 1);
 				break;
 			default:
-				player.getSocialManager().sendGameMessage("You need to be wearing a skillcape in order to perform this emote.");
+				player.message("You need to be wearing a skillcape in order to perform this emote.");
 				break;
 			}
 			return;
@@ -886,10 +886,10 @@ public final class EmotesManager implements Serializable {
 
 		} else if (id == 95) {// Living on borrowed time
 			if (!World.isTileFree(player.getPlane(), player.getX(), player.getY(), 3)) {
-				player.getSocialManager().sendGameMessage("You need clear space in order to perform this emote.");
+				player.message("You need clear space in order to perform this emote.");
 				return;
 			} else if (player.getControlerManager().getControler() != null) {
-				player.getSocialManager().sendGameMessage("You can't do this here.");
+				player.message("You can't do this here.");
 				return;
 			}
 			final NPC n = new NPC(14388, new WorldTile(player.getX(), player.getY() + 2, player.getPlane()), 0, false);
@@ -972,14 +972,14 @@ public final class EmotesManager implements Serializable {
 			player.setNextGraphics(new Graphics(3222));
 		} else if (id == 113) {// TODO
 			if (!World.isTileFree(player.getPlane(), player.getX(), player.getY(), 1)) {
-				player.getSocialManager().sendGameMessage("There is not enough space around you to do this emote.");
+				player.message("There is not enough space around you to do this emote.");
 				return;
 			}
 			player.setNextAnimation(new Animation(17076));
 			player.setNextGraphics(new Graphics(3226));
 		} else if (id == 114) {// TODO
 			if (!World.isTileFree(player.getPlane(), player.getX(), player.getY(), 3)) {
-				player.getSocialManager().sendGameMessage("There is not enough space around you to do this emote.");
+				player.message("There is not enough space around you to do this emote.");
 				return;
 			}
 			player.setNextAnimation(new Animation(17101));

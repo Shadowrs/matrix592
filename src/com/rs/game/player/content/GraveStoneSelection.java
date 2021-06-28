@@ -33,14 +33,14 @@ public class GraveStoneSelection {
 		int selectedPrice = (int) player.getTemporaryAttributtes().get("grave_selected_price");
 		if (selectedSlot != -1) {
 			if (!player.isDonator() && selectedSlot == 12) {
-				player.getSocialManager().sendGameMessage("You need to be a donator to be able to purchase this gravestone.");
+				player.message("You need to be a donator to be able to purchase this gravestone.");
 				return;
 			} else if (!player.isExtremeDonator() && selectedSlot == 13) {
-				player.getSocialManager().sendGameMessage("You need to be an exteme donator to be able to purchase this gravestone.");
+				player.message("You need to be an exteme donator to be able to purchase this gravestone.");
 				return;
 			} else if (selectedPrice != -1) {
 				if (player.getInventory().getCoinsAmount() < selectedPrice) {
-					player.getSocialManager().sendGameMessage("You don't have enough coins to purchase this gravestone.");
+					player.message("You don't have enough coins to purchase this gravestone.");
 					return;
 				}
 				player.getInventory().deleteItem(new Item(995, selectedPrice));

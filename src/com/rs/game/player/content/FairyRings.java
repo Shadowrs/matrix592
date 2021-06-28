@@ -29,7 +29,7 @@ public class FairyRings {
 	public static boolean checkAll(Player player) {
 		if (player.getEquipment().getWeaponId() == 772 || player.getEquipment().getWeaponId() == 9084)
 			return true;
-		player.getSocialManager().sendGameMessage("The fairy ring only works for those who wield fairy magic.");
+		player.message("The fairy ring only works for those who wield fairy magic.");
 		return false;
 	}
 

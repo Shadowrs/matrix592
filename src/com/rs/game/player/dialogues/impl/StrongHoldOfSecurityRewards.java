@@ -66,7 +66,7 @@ public class StrongHoldOfSecurityRewards extends Dialogue {
 			} else if (reward == 2) {
 				player.getInventory().addItem(new Item(995, 5000));
 				player.getEmotesManager().unlockEmote(30);
-				player.getSocialManager().sendGameMessage("You feel refreshed.");
+				player.message("You feel refreshed.");
 				player.reset();
 			}
 			end();

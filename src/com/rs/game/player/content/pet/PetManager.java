@@ -72,7 +72,7 @@ public final class PetManager implements Serializable {
 			return false;
 		}
 		if (player.getPet() != null || player.getFamiliar() != null) {
-			player.getSocialManager().sendGameMessage("You already have a follower.");
+			player.message("You already have a follower.");
 			return true;
 		}
 		if (!hasRequirements(pets)) {
@@ -86,7 +86,7 @@ public final class PetManager implements Serializable {
 		}
 		int id = pets.getItemId(details.getStage());
 		if (itemId != id) {
-			player.getSocialManager().sendGameMessage("This is not the right pet, grow the pet correctly.");
+			player.message("This is not the right pet, grow the pet correctly.");
 			return true;
 		}
 		int npcId = pets.getNpcId(details.getStage());
@@ -115,11 +115,11 @@ public final class PetManager implements Serializable {
 		switch (pet) {
 		case TZREK_JAD:
 			if (!player.isCompletedFightCaves()) {
-				player.getSocialManager().sendGameMessage("You need to complete at least one fight cave minigame to use this pet.");
+				player.message("You need to complete at least one fight cave minigame to use this pet.");
 				return false;
 			}
 			if (!player.isWonFightPits()) {
-				player.getSocialManager().sendGameMessage("You need to win at least one fight pits minigame to use this pet.");
+				player.message("You need to win at least one fight pits minigame to use this pet.");
 				return false;
 			}
 			return true;
@@ -181,19 +181,19 @@ public final class PetManager implements Serializable {
 			}
 			player.getInventory().deleteItem(foodId, 1);
 			npc.getDetails().updateHunger(-15.0);
-			player.getSocialManager().sendGameMessage("Your pet happily eats the " + ItemDefinitions.getItemDefinitions(foodId).getName() + ".");
+			player.message("Your pet happily eats the " + ItemDefinitions.getItemDefinitions(foodId).getName() + ".");
 			return;
 		}
 		for (int food : pets.getFood()) {
 			if (food == foodId) {
 				player.getInventory().deleteItem(food, 1);
-				player.getSocialManager().sendGameMessage("Your pet happily eats the " + ItemDefinitions.getItemDefinitions(food).getName() + ".");
+				player.message("Your pet happily eats the " + ItemDefinitions.getItemDefinitions(food).getName() + ".");
 				player.setNextAnimation(new Animation(827));
 				npc.getDetails().updateHunger(-15.0);
 				return;
 			}
 		}
-		player.getSocialManager().sendGameMessage("Nothing interesting happens.");
+		player.message("Nothing interesting happens.");
 	}
 
 	/**

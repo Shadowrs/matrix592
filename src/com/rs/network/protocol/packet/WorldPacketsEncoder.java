@@ -1240,12 +1240,12 @@ public class WorldPacketsEncoder {
 	}
 
 	public void sendInventoryMessage(int border, int slotId, String message) {
-		player.getSocialManager().sendGameMessage(message);
+		player.message(message);
 		sendRunScript(948, border, slotId, message);
 	}
 
 	public void sendNPCMessage(int border, int color, NPC npc, String message) {
-		player.getSocialManager().sendGameMessage(message);
+		player.message(message);
 		sendGlobalString(306, message);
 		sendGlobalConfig(1699, color);
 		sendGlobalConfig(1700, border);
@@ -1254,7 +1254,7 @@ public class WorldPacketsEncoder {
 	}
 
 	public void sendObjectMessage(int border, int color, WorldObject object, String message) {
-		player.getSocialManager().sendGameMessage(message);
+		player.message(message);
 		sendGlobalString(306, message);
 		sendGlobalConfig(1699, color);
 		sendGlobalConfig(1700, border);

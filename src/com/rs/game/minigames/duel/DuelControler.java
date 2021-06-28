@@ -58,7 +58,7 @@ public class DuelControler extends Controller {
 	public boolean canPlayerOption1(final Player target) {
 		player.stopAll();
 		if (target.getInterfaceManager().containsScreenInter() || target.isLocked()) {
-			player.getSocialManager().sendGameMessage("The other player is busy.");
+			player.message("The other player is busy.");
 			return false;
 		}
 		if (target.getTemporaryAttributtes().get("DuelChallenged") == player) {
@@ -85,12 +85,12 @@ public class DuelControler extends Controller {
 			return;
 		Player target = (Player) player.getTemporaryAttributtes().remove("DuelTarget");
 		if (target == null || target.hasFinished() || !target.withinDistance(player, 14) || !(target.getControlerManager().getControler() instanceof DuelControler)) {
-			player.getSocialManager().sendGameMessage("Unable to find " + (target == null ? "your target" : target.getDisplayName()));
+			player.message("Unable to find " + (target == null ? "your target" : target.getDisplayName()));
 			return;
 		}
 		player.getTemporaryAttributtes().put("DuelChallenged", target);
 		player.getTemporaryAttributtes().put("DuelFriendly", friendly);
-		player.getSocialManager().sendGameMessage("Sending " + target.getDisplayName() + " a request...");
+		player.message("Sending " + target.getDisplayName() + " a request...");
 		target.getSocialManager().sendDuelChallengeRequestMessage(player, friendly);
 	}
 

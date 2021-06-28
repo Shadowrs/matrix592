@@ -66,7 +66,7 @@ public class Firemaking extends Action {
 	public boolean start(Player player) {
 		if (!checkAll(player, fire, false))
 			return false;
-		player.getSocialManager().sendGameMessage("You attempt to light the logs.", true);
+		player.message("You attempt to light the logs.", true);
 		player.getInventory().deleteItem(fire.getLogId(), 1);
 		World.addGroundItem(new Item(fire.getLogId(), 1), new WorldTile(player), player, true, 180);
 		Long time = (Long) player.getTemporaryAttributtes().remove("Fire");
@@ -97,12 +97,12 @@ public class Firemaking extends Action {
 	public static boolean checkAll(Player player, Fire fire, boolean usingPyre) {
 		if (!usingPyre) {
 			if (!player.getInventory().containsOneItem(590)) {
-				player.getSocialManager().sendGameMessage("You do not have the required items to light this.");
+				player.message("You do not have the required items to light this.");
 				return false;
 			}
 		}
 		if (player.getSkills().getLevel(Skills.FIREMAKING) < fire.getLevel()) {
-			player.getSocialManager().sendGameMessage("You do not have the required level to light this.");
+			player.message("You do not have the required level to light this.");
 			return false;
 		}
 		if (!World.isTileFree(player.getPlane(), player.getX(), player.getY(), 1) // cliped
@@ -112,7 +112,7 @@ public class Firemaking extends Action {
 				// api
 				|| player.getControlerManager().getControler() instanceof DuelArena || player.getControlerManager().getControler() instanceof DuelControler) { // contains
 			// object
-			player.getSocialManager().sendGameMessage("You can't light a fire here.");
+			player.message("You can't light a fire here.");
 			return false;
 		}
 		return true;
@@ -138,7 +138,7 @@ public class Firemaking extends Action {
 			if (!player.addWalkSteps(player.getX() + 1, player.getY(), 1))
 				if (!player.addWalkSteps(player.getX(), player.getY() + 1, 1))
 					player.addWalkSteps(player.getX(), player.getY() - 1, 1);
-		player.getSocialManager().sendGameMessage("The fire catches and the logs begin to burn.", true);
+		player.message("The fire catches and the logs begin to burn.", true);
 		WorldTasksManager.schedule(new WorldTask() {
 			@Override
 			public void run() {

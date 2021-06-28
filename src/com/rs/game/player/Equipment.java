@@ -68,7 +68,7 @@ public final class Equipment implements Serializable {
 		Item item = items.get(slotId);
 		if (item == null)
 			return;
-		player.getSocialManager().sendGameMessage(ItemExamines.getExamine(item));
+		player.message(ItemExamines.getExamine(item));
 	}
 
 	public void refreshConfigs(boolean init) {

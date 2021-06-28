@@ -41,13 +41,13 @@ public class HoleInTheWall extends NPC {
 							setNextNPCTransformation(7823);
 							setNextAnimation(new Animation(1805));
 							setCantInteract(false);
-							player.getSocialManager().sendGameMessage("The spines on your helmet repell the beast's hand.");
+							player.message("The spines on your helmet repell the beast's hand.");
 							return;
 						}
 						setNextAnimation(new Animation(1802));
 						player.lock(4);
 						player.setNextAnimation(new Animation(425));
-						player.getSocialManager().sendGameMessage("A giant hand appears and grabs your head.");
+						player.message("A giant hand appears and grabs your head.");
 						WorldTasksManager.schedule(new WorldTask() {
 
 							@Override

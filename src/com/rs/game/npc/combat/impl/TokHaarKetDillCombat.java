@@ -24,7 +24,7 @@ public class TokHaarKetDillCombat extends CombatScript {
 			target.setNextGraphics(new Graphics(2999));
 			if (target instanceof Player) {
 				Player playerTarget = (Player) target;
-				playerTarget.getSocialManager().sendGameMessage("The TokHaar-Ket-Dill slams it's tail to the ground.");
+				playerTarget.message("The TokHaar-Ket-Dill slams it's tail to the ground.");
 			}
 		} else {
 			delayHit(npc, 0, target, getMeleeHit(npc, getRandomMaxHit(npc, defs.getMaxHit(), defs.getAttackStyle(), target)));

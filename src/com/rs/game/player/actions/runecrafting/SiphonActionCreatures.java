@@ -128,11 +128,11 @@ public class SiphonActionCreatures extends Action {
 			return false;
 		}
 		if (!player.getInventory().hasFreeSlots() && !player.getInventory().containsItem(creatures.getRuneId(), 1)) {
-			player.getSocialManager().sendGameMessage("Not enough space in your inventory.");
+			player.message("Not enough space in your inventory.");
 			return false;
 		}
 		if (!player.getInventory().containsItem(24227, 1)) {
-			player.getSocialManager().sendGameMessage("You don't have any rune essence to siphon from that creature.", true);
+			player.message("You don't have any rune essence to siphon from that creature.", true);
 			return false;
 		}
 		if (!started) {
@@ -183,8 +183,8 @@ public class SiphonActionCreatures extends Action {
 		WorldTasksManager.schedule(new WorldTask() {
 			@Override
 			public void run() {
-				player.getSocialManager().sendGameMessage("The creature has been broken down.");
-				player.getSocialManager().sendGameMessage("You pick up the essence left by the creature.", true);
+				player.message("The creature has been broken down.");
+				player.message("You pick up the essence left by the creature.", true);
 				player.setNextAnimation(new Animation(16599));
 				creature.setRespawnTask();
 				player.getInventory().addItem(24227, 50);
@@ -205,10 +205,10 @@ public class SiphonActionCreatures extends Action {
 		if (creature == null)
 			return false;
 		if (!player.getInventory().containsItem(creature.getRuneId(), 10)) {
-			player.getSocialManager().sendGameMessage("You dont have enough " + ItemDefinitions.getItemDefinitions(creature.getRuneId()).getName() + "s to chip away at that creature.");
+			player.message("You dont have enough " + ItemDefinitions.getItemDefinitions(creature.getRuneId()).getName() + "s to chip away at that creature.");
 			return false;
 		} else {
-			player.getSocialManager().sendGameMessage("You use some runes to fire a blast of runic energy at the creature, chipping of some rune essense from its body.");
+			player.message("You use some runes to fire a blast of runic energy at the creature, chipping of some rune essense from its body.");
 			player.getInventory().deleteItem(creature.getRuneId(), 10);
 			player.getInventory().addItem(24227, 10);
 			World.sendProjectile(player, npc, player, 3060, 31, 35, 35, 0, 2, 0);

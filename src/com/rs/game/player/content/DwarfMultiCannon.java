@@ -28,29 +28,29 @@ public class DwarfMultiCannon {
 		if (player.getCannonBalls() < 30) {
 			int ammount = player.getInventory().getAmountOf(2);
 			if (ammount == 0)
-				player.getSocialManager().sendGameMessage("You need to load your cannon with cannon balls before firing it!");
+				player.message("You need to load your cannon with cannon balls before firing it!");
 			else {
 				int add = 30 - player.getCannonBalls();
 				if (ammount > add)
 					ammount = add;
 				player.addCannonBalls(ammount);
 				player.getInventory().deleteItem(2, ammount);
-				player.getSocialManager().sendGameMessage("You load the cannon with " + ammount + " cannon balls.");
+				player.message("You load the cannon with " + ammount + " cannon balls.");
 			}
 		} else
-			player.getSocialManager().sendGameMessage("Your cannon is full.");
+			player.message("Your cannon is full.");
 	}
 
 	public static void pickupCannon(Player player, int stage, WorldObject object) {
 		if (!OwnedObjectManager.isPlayerObject(player, object))
-			player.getSocialManager().sendGameMessage("This is not your cannon.");
+			player.message("This is not your cannon.");
 		else {
 			int space = player.getCannonBalls() > 0 ? stage + 1 : stage;
 			if (player.getInventory().getFreeSlots() < space) {
-				player.getSocialManager().sendGameMessage("You need atleast " + space + " inventory spots to pickup your cannon.");
+				player.message("You need atleast " + space + " inventory spots to pickup your cannon.");
 				return;
 			}
-			player.getSocialManager().sendGameMessage("You pick up the cannon. It's really heavy.");
+			player.message("You pick up the cannon. It's really heavy.");
 			for (int i = 0; i < stage; i++)
 				player.getInventory().addItem(CANNON_PIECES[i], 1);
 			if (player.getCannonBalls() > 0) {
@@ -63,12 +63,12 @@ public class DwarfMultiCannon {
 
 	public static void setUp(Player player) {
 		if (OwnedObjectManager.containsObjectValue(player, CANNON_OBJECTS)) {
-			player.getSocialManager().sendGameMessage("You can only have one cannon setted at same time.");
+			player.message("You can only have one cannon setted at same time.");
 			return;
 		}
 		Controller controler = player.getControlerManager().getControler();
 		if (controler != null && !(controler instanceof Wilderness)) {
-			player.getSocialManager().sendGameMessage("You can't place your cannon here.");
+			player.message("You can't place your cannon here.");
 			return;
 		}
 		int count = 0;
@@ -82,7 +82,7 @@ public class DwarfMultiCannon {
 			// !=
 			// null)
 			// {
-			player.getSocialManager().sendGameMessage("There isn't enough space to setup here.");
+			player.message("There isn't enough space to setup here.");
 			return;
 		}
 		WorldObject[] objects = new WorldObject[count];
@@ -103,13 +103,13 @@ public class DwarfMultiCannon {
 			public void spawnObject(Player player, WorldObject object) {
 				player.setNextAnimation(new Animation(827));
 				if (step == 0)
-					player.getSocialManager().sendGameMessage("You place the cannon base on the ground.");
+					player.message("You place the cannon base on the ground.");
 				else if (step == 1)
-					player.getSocialManager().sendGameMessage("You add the stand.");
+					player.message("You add the stand.");
 				else if (step == 2)
-					player.getSocialManager().sendGameMessage("You add the barrels.");
+					player.message("You add the barrels.");
 				else if (step == 3) {
-					player.getSocialManager().sendGameMessage("You add the furnance.");
+					player.message("You add the furnance.");
 				}
 				player.getInventory().deleteItem(CANNON_PIECES[step], 1);
 				if (step++ == cycles.length - 1)

@@ -95,7 +95,7 @@ public class GrandExchange {
 			offer.update();
 			if (!itemsWaiting && offer.hasItemsWaiting()) {
 				itemsWaiting = true;
-				player.getSocialManager().sendGameMessage("You have items from the Grand Exchange waiting in your collection box.");
+				player.message("You have items from the Grand Exchange waiting in your collection box.");
 			}
 		}
 	}

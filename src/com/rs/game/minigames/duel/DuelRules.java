@@ -19,12 +19,12 @@ public class DuelRules {
 
 	public boolean canAccept(ItemsContainer<Item> stake) {
 		if (getRule(0) && getRule(1) && getRule(2)) {
-			player.getSocialManager().sendGameMessage("You have to be able to use atleast one combat style in a duel.", true);
+			player.message("You have to be able to use atleast one combat style in a duel.", true);
 			return false;
 		}
 		if (!getRule(24) && (player.getFamiliar() != null || getTarget().getFamiliar() != null)) {
-			player.getSocialManager().sendGameMessage("Summoning has been disabled during this duel!");
-			getTarget().getSocialManager().sendGameMessage("Summoning has been disabled during this duel!");
+			player.message("Summoning has been disabled during this duel!");
+			getTarget().message("Summoning has been disabled during this duel!");
 			return false;
 		}
 		int count = 0;
@@ -42,8 +42,8 @@ public class DuelRules {
 		}
 		int freeSlots = player.getInventory().getItems().freeSlots() - count;
 		if (freeSlots < 0) {
-			player.getSocialManager().sendGameMessage("You do not have enough inventory space to remove all the equipment.");
-			getTarget().getSocialManager().sendGameMessage("Your opponent does not have enough space to remove all the equipment.");
+			player.message("You do not have enough inventory space to remove all the equipment.");
+			getTarget().message("Your opponent does not have enough space to remove all the equipment.");
 			return false;
 		}
 		for (int i = 0; i < stake.getSize(); i++) {
@@ -52,8 +52,8 @@ public class DuelRules {
 			}
 		}
 		if (freeSlots < 0) {
-			player.getSocialManager().sendGameMessage("You do not have enough room in your inventory for this stake.");
-			getTarget().getSocialManager().sendGameMessage("Your opponent does not have enough room in his inventory for this stake.");
+			player.message("You do not have enough room in your inventory for this stake.");
+			getTarget().message("Your opponent does not have enough room in his inventory for this stake.");
 			return false;
 		}
 		return true;

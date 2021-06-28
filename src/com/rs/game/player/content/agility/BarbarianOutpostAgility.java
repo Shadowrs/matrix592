@@ -179,7 +179,7 @@ public class BarbarianOutpostAgility {
 		if (!Agility.hasLevel(player, 35))
 			return;
 		if (player.getY() != 3556) {
-			player.getSocialManager().sendGameMessage("You'll need to get closer to make this jump.");
+			player.message("You'll need to get closer to make this jump.");
 			return;
 		}
 		player.lock(4);
@@ -188,7 +188,7 @@ public class BarbarianOutpostAgility {
 		final WorldTile toTile = new WorldTile(object.getX(), 3549, object.getPlane());
 		player.setNextForceMovement(new ForceMovement(player, 0, toTile, 3, ForceMovement.SOUTH));
 		player.getSkills().addXp(Skills.AGILITY, 22);
-		player.getSocialManager().sendGameMessage("You skilfully swing across.", true);
+		player.message("You skilfully swing across.", true);
 		WorldTasksManager.schedule(new WorldTask() {
 
 			@Override
@@ -218,7 +218,7 @@ public class BarbarianOutpostAgility {
 	}
 
 	private static void walkAcrossLogBalanceEnd(final Player player, WorldObject object) {
-		player.getSocialManager().sendGameMessage("You walk carefully across the slippery log...", true);
+		player.message("You walk carefully across the slippery log...", true);
 		player.lock(17);
 		player.setNextAnimation(new Animation(9908));
 		final WorldTile toTile = new WorldTile(2541, object.getY(), object.getPlane());
@@ -229,7 +229,7 @@ public class BarbarianOutpostAgility {
 			public void run() {
 				player.setNextWorldTile(toTile);
 				player.getSkills().addXp(Skills.AGILITY, 13);
-				player.getSocialManager().sendGameMessage("... and make it safely to the other side.", true);
+				player.message("... and make it safely to the other side.", true);
 				if (getStage(player) == 0)
 					setStage(player, 1);
 			}
@@ -240,7 +240,7 @@ public class BarbarianOutpostAgility {
 	public static void walkAcrossBalancingLedge(final Player player, final WorldObject object) {
 		if (!Agility.hasLevel(player, 35))
 			return;
-		player.getSocialManager().sendGameMessage("You put your food on the ledge and try to edge across...", true);
+		player.message("You put your food on the ledge and try to edge across...", true);
 		player.lock(5);
 		player.setNextAnimation(new Animation(753));
 		player.getAppearence().setRenderEmote(157);
@@ -253,7 +253,7 @@ public class BarbarianOutpostAgility {
 				player.setNextAnimation(new Animation(759));
 				player.getAppearence().setRenderEmote(-1);
 				player.getSkills().addXp(Skills.AGILITY, 22);
-				player.getSocialManager().sendGameMessage("You skilfully edge across the gap.", true);
+				player.message("You skilfully edge across the gap.", true);
 				if (getStage(player) == 2)
 					setStage(player, 3);
 			}
@@ -263,7 +263,7 @@ public class BarbarianOutpostAgility {
 	public static void climbObstacleNet(final Player player, WorldObject object) {
 		if (!Agility.hasLevel(player, 35) || player.getY() < 3545 || player.getY() > 3547)
 			return;
-		player.getSocialManager().sendGameMessage("You climb the netting...", true);
+		player.message("You climb the netting...", true);
 		player.getSkills().addXp(Skills.AGILITY, 8.2);
 		player.useStairs(828, new WorldTile(object.getX() - 1, player.getY(), 1), 1, 2);
 		if (getStage(player) == 1)
@@ -274,10 +274,10 @@ public class BarbarianOutpostAgility {
 		if (!Agility.hasLevel(player, 35))
 			return;
 		if (player.getX() >= object.getX()) {
-			player.getSocialManager().sendGameMessage("You cannot climb that from this side.");
+			player.message("You cannot climb that from this side.");
 			return;
 		}
-		player.getSocialManager().sendGameMessage("You climb the low wall...", true);
+		player.message("You climb the low wall...", true);
 		player.lock(3);
 		player.setNextAnimation(new Animation(4853));
 		final WorldTile toTile = new WorldTile(object.getX() + 1, object.getY(), object.getPlane());

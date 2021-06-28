@@ -293,7 +293,7 @@ public class Herblore extends Action {
 			if (slot == -1)
 				this.slot = ingredients.getSlot(node.getId());
 			if (player.getSkills().getLevel(Skills.HERBLORE) < ingredients.getLevels()[slot]) {
-				player.getSocialManager().sendGameMessage("You need a herblore level of " + ingredients.getLevels()[slot] + " to combine these ingredients.");
+				player.message("You need a herblore level of " + ingredients.getLevels()[slot] + " to combine these ingredients.");
 				return false;
 			}
 			return true;
@@ -322,20 +322,20 @@ public class Herblore extends Action {
 		}
 		ticks--;
 		if (otherItem.getId() == VIAL || otherItem.getId() == COCONUT_MILK || node.getId() == VIAL || node.getId() == COCONUT_MILK) {
-			player.getSocialManager().sendGameMessage("You add the " + node.getDefinitions().getName().toLowerCase().replace("clean", "") + " into the vial of " + (otherItem.getId() == VIAL ? "water." : "milk."));
+			player.message("You add the " + node.getDefinitions().getName().toLowerCase().replace("clean", "") + " into the vial of " + (otherItem.getId() == VIAL ? "water." : "milk."));
 		} else if (otherItem.getId() == SWAMP_TAR || node.getId() == SWAMP_TAR) {
-			player.getSocialManager().sendGameMessage("You add the " + node.getDefinitions().getName().toLowerCase().replace("clean ", "") + " on the swamp tar.", true);
+			player.message("You add the " + node.getDefinitions().getName().toLowerCase().replace("clean ", "") + " on the swamp tar.", true);
 		} else if (otherItem.getId() == PESTLE_AND_MORTAR || node.getId() == PESTLE_AND_MORTAR) {
-			player.getSocialManager().sendGameMessage("You crush the " + node.getDefinitions().getName().toLowerCase() + " with your pestle and mortar.", true);
+			player.message("You crush the " + node.getDefinitions().getName().toLowerCase() + " with your pestle and mortar.", true);
 		} else if (ingredients == Ingredients.TORSTOL && otherItem.getId() != VIAL) {
-			player.getSocialManager().sendGameMessage("You combine the torstol with the potions and get an overload.");
+			player.message("You combine the torstol with the potions and get an overload.");
 			for (int id = 15309; id < 15325; id += 4) {
 				if (id == node.getId() || id == otherItem.getId())
 					continue;
 				player.getInventory().deleteItem(new Item(id, 1));
 			}
 		} else {
-			player.getSocialManager().sendGameMessage("You mix the " + node.getDefinitions().getName().toLowerCase() + " into your potion.", true);
+			player.message("You mix the " + node.getDefinitions().getName().toLowerCase() + " into your potion.", true);
 		}
 		player.getInventory().removeItems(new Item(node.getId(), 1), rawIngredient == null ? new Item(otherItem.getId(), 1) : null);
 		player.getInventory().addItem(rawIngredient != null ? rawIngredient.getCrushedItem() : new Item(ingredients.getRewards()[slot], 1));

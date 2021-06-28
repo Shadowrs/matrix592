@@ -46,7 +46,7 @@ public class DreadNipCombat extends CombatScript {
 			break;
 		}
 		if (attackStyle != 0)
-			dreadNip.getOwner().getSocialManager().sendGameMessage(DREADNIP_ATTACK_MESSAGE[attackStyle - 1]);
+			dreadNip.getOwner().message(DREADNIP_ATTACK_MESSAGE[attackStyle - 1]);
 		delayHit(npc, 0, target, new Hit(npc, getRandomMaxHit(npc, 550, NPCCombatDefinitions.MELEE, target), HitLook.REGULAR_DAMAGE));
 		return 5;
 	}

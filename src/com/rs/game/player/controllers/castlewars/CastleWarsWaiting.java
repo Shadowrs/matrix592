@@ -32,7 +32,7 @@ public class CastleWarsWaiting extends Controller {
 	public boolean processButtonClick(int interfaceId, int componentId, int slotId, int slotId2, int packetId) {
 		if (interfaceId == 387) {
 			if (componentId == 9 || componentId == 6) {
-				player.getSocialManager().sendGameMessage("You can't remove your team's colours.");
+				player.message("You can't remove your team's colours.");
 				return false;
 			}
 		}
@@ -42,7 +42,7 @@ public class CastleWarsWaiting extends Controller {
 	@Override
 	public boolean canEquip(int slotId, int itemId) {
 		if (slotId == Equipment.SLOT_CAPE || slotId == Equipment.SLOT_HAT) {
-			player.getSocialManager().sendGameMessage("You can't remove your team's colours.");
+			player.message("You can't remove your team's colours.");
 			return false;
 		}
 		return true;

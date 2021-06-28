@@ -41,7 +41,7 @@ public class LucienCombat extends CombatScript {
 						p.getMusicsManager().playMusic(584);
 						p.getMusicsManager().playMusic(579);
 						p.getMusicsManager().playMusic(1008);
-						p.getSocialManager().sendGameMessage("You've received a reward while fighting Lucius!");
+						p.message("You've received a reward while fighting Lucius!");
 					}
 				}
 				String key = t.getX() + "_" + t.getY();

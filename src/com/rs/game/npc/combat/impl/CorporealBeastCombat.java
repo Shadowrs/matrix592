@@ -76,7 +76,7 @@ public class CorporealBeastCombat extends CombatScript {
 							lvl -= 1 + Utils.getRandom(4);
 							player.getSkills().set(skill, lvl < 0 ? 0 : lvl);
 						}
-						player.getSocialManager().sendGameMessage("Your " + Skills.SKILL_NAME[skill] + " has been slighly drained!");
+						player.message("Your " + Skills.SKILL_NAME[skill] + " has been slighly drained!");
 					}
 
 				}, 1);

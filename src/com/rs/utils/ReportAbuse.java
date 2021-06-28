@@ -24,7 +24,7 @@ public class ReportAbuse {
 
 	public static void report(Player player, String name) {
 		if (player.getInterfaceManager().containsScreenInter()) {
-			player.getSocialManager().sendGameMessage("Please close the interface that you opened before activating the 'Report' system.");
+			player.message("Please close the interface that you opened before activating the 'Report' system.");
 			return;
 		}
 		if (name != null)
@@ -43,9 +43,9 @@ public class ReportAbuse {
 			return;
 		if (mute) {
 			reported.setMuted(Utils.currentTimeMillis() + (48 * 60 * 60 * 1000));
-			reported.getSocialManager().sendGameMessage("You've been muted for 48 hours by " + player.getDisplayName() + ".");
+			reported.message("You've been muted for 48 hours by " + player.getDisplayName() + ".");
 		}
-		player.getSocialManager().sendGameMessage("Thank-you, your abuse report has been received.");
+		player.message("Thank-you, your abuse report has been received.");
 		try {
 			reports.write(Utils.getFormatedDate() + " Report by " + player.getUsername() + " - Offender: " + reported.getUsername() + " Offense: " + getType(type));
 			reports.newLine();
