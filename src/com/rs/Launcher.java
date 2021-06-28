@@ -1,6 +1,7 @@
 package com.rs;
 
 import java.util.Calendar;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import com.alex.store.Index;
@@ -23,28 +24,7 @@ import com.rs.game.player.controllers.ControllerHandler;
 import com.rs.game.player.cutscenes.CutscenesHandler;
 import com.rs.game.player.dialogues.DialogueHandler;
 import com.rs.network.Network;
-import com.rs.utils.Censor;
-import com.rs.utils.DisplayNames;
-import com.rs.utils.IPBanL;
-import com.rs.utils.IPMuteL;
-import com.rs.utils.ItemBonuses;
-import com.rs.utils.ItemDestroys;
-import com.rs.utils.ItemExamines;
-import com.rs.utils.ItemSpawns;
-import com.rs.utils.Logger;
-import com.rs.utils.MapArchiveKeys;
-import com.rs.utils.MapAreas;
-import com.rs.utils.MusicHints;
-import com.rs.utils.NPCBonuses;
-import com.rs.utils.NPCCombatDefinitionsL;
-import com.rs.utils.NPCDrops;
-import com.rs.utils.NPCExamines;
-import com.rs.utils.NPCSpawns;
-import com.rs.utils.ObjectSpawns;
-import com.rs.utils.PkRank;
-import com.rs.utils.SerializableFilesManager;
-import com.rs.utils.ShopsHandler;
-import com.rs.utils.Utils;
+import com.rs.utils.*;
 import com.rs.utils.huffman.Huffman;
 import com.webrs.responder.Responder;
 
@@ -55,6 +35,9 @@ public class Launcher {
 			System.out.println("USE: guimode(boolean) debug(boolean) hosted(boolean)");
 			return;
 		}
+		ConfigLoader.load();
+		Settings.PORT_ID = ConfigLoader.intProp("port");
+		Settings.HOST = ConfigLoader.prop("host");
 		Settings.HOSTED = Boolean.parseBoolean(args[2]);
 		Settings.DEBUG = true;// Boolean.parseBoolean(args[1]);
 		long currentTime = Utils.currentTimeMillis();
@@ -123,7 +106,7 @@ public class Launcher {
 		// System.exit(1);
 		// return;
 		// }
-		Logger.log("Launcher", "Server took " + (Utils.currentTimeMillis() - currentTime) + " milli seconds to launch.");
+		Logger.log("Launcher", "Server took " + (Utils.currentTimeMillis() - currentTime) + " milli seconds to launch on port "+Settings.PORT_ID+".");
 		addFilesSavingTask();
 		addCleanMemoryTask();
 		addrecalcPricesTask();

@@ -1259,4 +1259,13 @@ public abstract class Entity extends WorldTile {
 	public void setNextColorChange(ColorChange color) {
 		this.nextColorChange = color;
 	}
+
+	public void debug(String s) {
+		if (this instanceof Player) {
+			Player player = (Player) this;
+			if (player.debugOn) {
+				System.out.println(s);
+			}
+		}
+	}
 }

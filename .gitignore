@@ -9,3 +9,8 @@ Server592.iml
 data/characters/
 data/logs/
 data/positions.txt
+bin/
+data.zip
+run.bat
+src/configuration.cfg
+data/pkRanks.ser

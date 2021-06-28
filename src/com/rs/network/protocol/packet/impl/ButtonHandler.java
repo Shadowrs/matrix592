@@ -66,16 +66,16 @@ public class ButtonHandler {
 		if (Utils.getInterfaceDefinitionsSize() <= interfaceId) {
 			// hack, or server error or client error
 			// player.getSession().getChannel().close();
-			if (Settings.DEBUG) {
-				System.out.println("BLOCK 1 " + packetId + "," + interfaceId + "," + (interfaceHash & 0xFFFF));
+			if (Settings.DEBUG || player.debugOn) {
+				player.debug("BLOCK 1 " + packetId + "," + interfaceId + "," + (interfaceHash & 0xFFFF));
 			}
 			return;
 		}
 		// cant use inter while locked, temporarly
 		if (player.isDead() || player.isLocked() || !player.getInterfaceManager().containsInterface(interfaceId)) {
-			if (Settings.DEBUG) {
+			if (Settings.DEBUG || player.debugOn) {
 
-				System.out.println("BLOCK 2 " + packetId + "," + interfaceId + "," + (interfaceHash & 0xFFFF));
+				player.debug("BLOCK 2 " + packetId + "," + interfaceId + "," + (interfaceHash & 0xFFFF));
 			}
 			return;
 		}
@@ -83,15 +83,15 @@ public class ButtonHandler {
 		if (componentId != 65535 && Utils.getInterfaceDefinitionsComponentsSize(interfaceId) <= componentId) {
 			// hack, or server error or client error
 			// player.getSession().getChannel().close();
-			if (Settings.DEBUG) {
-				System.out.println("BLOCK 3 " + packetId + "," + interfaceId + "," + componentId);
+			if (Settings.DEBUG || player.debugOn) {
+				player.debug("BLOCK 3 " + packetId + "," + interfaceId + "," + componentId);
 			}
 			return;
 		}
 		final int slotId = stream.readUnsignedShortLE();
 		final int slotId2 = stream.readUnsignedShortLE();
-		if (Settings.DEBUG) {
-			System.out.println(packetId + "," + interfaceId + "," + componentId + "," + slotId + "," + slotId2);
+		if (Settings.DEBUG || player.debugOn) {
+			player.debug(packetId + "," + interfaceId + "," + componentId + "," + slotId + "," + slotId2);
 		}
 
 		if (!player.getControlerManager().processButtonClick(interfaceId, componentId, slotId, slotId2, packetId))
@@ -1537,7 +1537,7 @@ public class ButtonHandler {
 	}
 
 	public static boolean sendWear2(Player player, int slotId, int itemId) {
-		System.out.println(slotId + ", " + itemId);
+		player.debug(slotId + ", " + itemId);
 		if (player.hasFinished() || player.isDead())
 			return false;
 		player.stopAll(false, false);
@@ -1647,7 +1647,7 @@ public class ButtonHandler {
 
 	public static void sendWear(Player player, int[] slotIds) {
 		if (player.hasFinished() || player.isDead()) {
-			System.out.println("THIS");
+			player.debug("THIS");
 			return;
 		}
 		boolean worn = false;

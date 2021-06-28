@@ -15,6 +15,9 @@ import com.rs.game.player.controllers.Controller;
 import com.rs.game.player.controllers.ControllerHandler;
 import com.rs.utils.Logger;
 
+/**
+ * only one controller can be active at a time. its bound to areas ingame i suppose.
+ */
 public final class ControlerManager implements Serializable {
 
 	private static final long serialVersionUID = 2084691334731830796L;

@@ -277,6 +277,8 @@ public class Player extends Entity {
 
 	private int economyVersion = 0;
 
+	public boolean debugOn;
+
 	/**
 	 * If it's master password login, it will not save
 	 */
