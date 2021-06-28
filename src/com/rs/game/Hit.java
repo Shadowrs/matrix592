@@ -48,6 +48,13 @@ public final class Hit {
 		return look.getMark();
 	}
 
+	public int getGpiMark() {
+		if (damage / 10 <= 0) {
+			return HitLook.MISSED.getMark();
+		}
+		return look.getMark();
+	}
+
 	public HitLook getLook() {
 		return look;
 	}

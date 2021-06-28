@@ -469,10 +469,10 @@ public final class LocalPlayerUpdate {
 	private void applyHitsMask(Player p, OutputStream data, boolean secondary) {
 		if (secondary) {
 			data.writeSmart(p.getNextHit2().getDamage()/10);
-			data.write128Byte(p.getNextHit2().getMark());
+			data.write128Byte(p.getNextHit2().getGpiMark());
 		} else {
 			data.writeSmart(p.getNextHit1().getDamage()/10);
-			data.writeByte128(p.getNextHit1().getMark());
+			data.writeByte128(p.getNextHit1().getGpiMark());
 			int amtHP = p.getHitpoints();
 			int maxHP = p.getMaxHitpoints();
 			if (amtHP > maxHP)
