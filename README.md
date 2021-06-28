@@ -2,7 +2,7 @@
 
 Changes to base:
 - gradle added
-- replaced some but not all usages of 'fastExecutor' with engine-correct calls (ask for info)- specifically Item Switching and Prayers
+- replaced some but not all usages of 'fastExecutor' with engine-correct calls (see: design flaws section below)- specifically Item Switching and Prayers
 
 
 
@@ -28,6 +28,6 @@ Notable Dementhium server design flaws from its creation in ~2011-2012
 <br>
 
 - CoreManager.fastExecutor calls gamelogic sequentially after the main game cycle, will cause all sorts of side effects: visually, actions happen 1 tick too late<br>
-- game logic executed in netty network code
-- Controller / ActivityController system: only one can be active at a time: duplicated code in area-in-area scenarios. its a bad way of linking an area ingame to code handlers
+- game logic executed in netty network code (so netty-specific threads)
+- Controller / ActivityController system: only one controller can be active at once: forces duplicated code to support area-in-area scenarios. its a bad way of linking an area ingame to code handlers
 
