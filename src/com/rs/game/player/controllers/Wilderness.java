@@ -160,7 +160,7 @@ public class Wilderness extends Controller {
 			WorldTasksManager.schedule(new WorldTask() {
 				@Override
 				public void run() {
-					player.setNextWorldTile(toTile);
+					player.teleport(toTile);
 					player.faceObject(object);
 					removeIcon();
 					removeControler();
@@ -213,7 +213,7 @@ public class Wilderness extends Controller {
 					}
 					player.sendItemsOnDeath(killer);
 					player.reset();
-					player.setNextWorldTile(Settings.RESPAWN_PLAYER_LOCATION); // edgevile
+					player.teleport(Settings.RESPAWN_PLAYER_LOCATION); // edgevile
 					player.setNextAnimation(new Animation(-1));
 				} else if (loop == 4) {
 					removeIcon();

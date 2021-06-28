@@ -17,7 +17,7 @@ public class FightPitsViewingOrb extends Action {
 		player.lock();
 		player.getAppearence().switchHidden();
 		player.getPackets().sendBlackOut(5);
-		player.setNextWorldTile(ORB_TELEPORTS[0]);
+		player.teleport(ORB_TELEPORTS[0]);
 		player.getInterfaceManager().sendInventoryInterface(374);
 		return true;
 	}
@@ -46,6 +46,6 @@ public class FightPitsViewingOrb extends Action {
 		player.getInterfaceManager().removeInventoryInterface();
 		player.getAppearence().switchHidden();
 		player.getPackets().sendBlackOut(0);
-		player.setNextWorldTile(tile);
+		player.teleport(tile);
 	}
 }

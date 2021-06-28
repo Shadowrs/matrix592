@@ -25,8 +25,10 @@ public final class Logger {
 
 	public static void globalLog(String ip, String name, Object o) {
 		try {
+			final String s = "[" + Utils.currentTime("hh:mm:ss z") + "]" + "" + name + " - " + ip + " [ " + o + " ]";
+			System.out.println(s);
 			if (!Settings.DEBUG) {
-				globallogs.write("[" + Utils.currentTime("hh:mm:ss z") + "]" + "" + name + " - " + ip + " [ " + o + " ]");
+				globallogs.write(s);
 				globallogs.newLine();
 				globallogs.flush();
 			}

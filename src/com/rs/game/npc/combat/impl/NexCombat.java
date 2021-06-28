@@ -512,7 +512,7 @@ public class NexCombat extends CombatScript {
 					nex.setNextAnimation(new Animation(17411));
 					nex.setNextGraphics(new Graphics(1216));
 				} else if (count == 1) {
-					nex.setNextWorldTile(dir);
+					nex.teleport(dir);
 					nex.setNextForceTalk(new ForceTalk("NO ESCAPE!"));
 					nex.playSound(3292, 2);
 					nex.setNextForceMovement(new ForceMovement(dir, 1, center, 3, index == 3 ? 1 : index == 2 ? 0 : index == 1 ? 3 : 2));
@@ -531,13 +531,13 @@ public class NexCombat extends CombatScript {
 
 								@Override
 								public void run() {
-									player.setNextWorldTile(center);
+									player.teleport(center);
 								}
 							}, 2);
 						}
 					}
 				} else if (count == 3) {
-					nex.setNextWorldTile(center);
+					nex.teleport(center);
 				} else if (count == 4) {
 					nex.setTarget(target);
 					nex.setCantInteract(false);
@@ -635,7 +635,7 @@ public class NexCombat extends CombatScript {
 					WorldTasksManager.schedule(new WorldTask() {
 						@Override
 						public void run() {
-							player.setNextWorldTile(nex);
+							player.teleport(nex);
 							player.message("You've been injured and you cannot use " + (player.getPrayer().isAncientCurses() ? "protective curses" : "protective prayers") + "!");
 							player.setPrayerDelay(Utils.getRandom(20000) + 5);
 							player.resetWalkSteps();

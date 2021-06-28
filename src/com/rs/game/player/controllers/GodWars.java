@@ -114,7 +114,7 @@ public class GodWars extends Controller {
 
 				@Override
 				public void run() {
-					player.setNextWorldTile(tile);
+					player.teleport(tile);
 				}
 			}, 1);
 			return false;
@@ -167,7 +167,7 @@ public class GodWars extends Controller {
 			final boolean withinZamorak = inZamorakPrepare(player);
 			final WorldTile tile = new WorldTile(2887, withinZamorak ? 5336 : 5346, 0);
 			player.lock();
-			player.setNextWorldTile(object);
+			player.teleport(object);
 			WorldTasksManager.schedule(new WorldTask() {
 
 				@Override
@@ -188,7 +188,7 @@ public class GodWars extends Controller {
 				public void run() {
 					player.unlock();
 					player.setNextAnimation(new Animation(-1));
-					player.setNextWorldTile(tile);
+					player.teleport(tile);
 				}
 			}, 5);
 			return false;

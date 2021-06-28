@@ -147,7 +147,7 @@ public class InventoryOptionsHandler {
 					return;
 				if (player.getX() == 3005 && player.getY() == 3376 || player.getX() == 2999 && player.getY() == 3375 || player.getX() == 2996 && player.getY() == 3377 || player.getX() == 2989 && player.getY() == 3378 || player.getX() == 2987 && player.getY() == 3387 || player.getX() == 2984 && player.getY() == 3387) {
 					// mole
-					player.setNextWorldTile(new WorldTile(1752, 5137, 0));
+					player.teleport(new WorldTile(1752, 5137, 0));
 					player.message("You seem to have dropped down into a network of mole tunnels.");
 					return;
 				} else if (player.withinDistance(new WorldTile(2748, 3734, 0), 2)) {
@@ -158,7 +158,7 @@ public class InventoryOptionsHandler {
 						@Override
 						public void run() {
 							player.unlock();
-							player.setNextWorldTile(new WorldTile(2696, 10121, 0));
+							player.teleport(new WorldTile(2696, 10121, 0));
 						}
 					});
 					player.message("You fall through the ground into a network of tunnels.");

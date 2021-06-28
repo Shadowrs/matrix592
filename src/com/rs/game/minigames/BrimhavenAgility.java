@@ -161,7 +161,7 @@ public final class BrimhavenAgility extends Controller {
 					WorldTasksManager.schedule(new WorldTask() {
 						@Override
 						public void run() {
-							player.setNextWorldTile(new WorldTile(tile));
+							player.teleport(new WorldTile(tile));
 							this.stop();
 							return;
 						}

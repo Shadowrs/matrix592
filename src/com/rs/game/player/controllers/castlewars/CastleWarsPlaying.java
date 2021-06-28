@@ -194,7 +194,7 @@ public class CastleWarsPlaying extends Controller {
 					}
 
 					player.reset();
-					player.setNextWorldTile(new WorldTile(team == CastleWars.ZAMORAK ? CastleWars.ZAMO_BASE : CastleWars.SARA_BASE, 1));
+					player.teleport(new WorldTile(team == CastleWars.ZAMORAK ? CastleWars.ZAMO_BASE : CastleWars.SARA_BASE, 1));
 					player.setNextAnimation(new Animation(-1));
 				} else if (loop == 4) {
 					player.getPackets().sendMusicEffect(90);

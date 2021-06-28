@@ -154,7 +154,7 @@ public class HouseControler extends Controller {
 	// shouldnt happen but lets imagine somehow in a server restart
 	@Override
 	public boolean login() {
-		player.setNextWorldTile(Settings.START_PLAYER_LOCATION);
+		player.teleport(Settings.START_PLAYER_LOCATION);
 		removeControler();
 		return false; // remove controller manualy since i dont want to call forceclose
 	}

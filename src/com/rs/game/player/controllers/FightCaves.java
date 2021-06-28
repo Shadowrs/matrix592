@@ -116,7 +116,7 @@ public class FightCaves extends Controller {
 				MapBuilder.copyAllPlanesMap(296, 632, boundChuncks[0], boundChuncks[1], 8);
 				// selects a music
 				selectedMusic = MUSICS[Utils.random(MUSICS.length)];
-				player.setNextWorldTile(!login ? getWorldTile(46, 61) : getWorldTile(32, 32));
+				player.teleport(!login ? getWorldTile(46, 61) : getWorldTile(32, 32));
 				// 1delay because player cant walk while teleing :p, + possible
 				// issues avoid
 				WorldTasksManager.schedule(new WorldTask() {

@@ -90,7 +90,7 @@ public class PuroPuro extends Controller {
 			@Override
 			public void run() {
 				player.unlock();
-				player.setNextWorldTile(tile);
+				player.teleport(tile);
 			}
 		}, 6);
 	}

@@ -816,7 +816,7 @@ public class Magic {
 							teleTile = tile;
 						}
 					}
-					player.setNextWorldTile(teleTile);
+					player.teleport(teleTile);
 					player.getControlerManager().magicTeleported(teleType);
 					if (player.getControlerManager().getControler() == null)
 						teleControlersCheck(player, teleTile);
@@ -874,7 +874,7 @@ public class Magic {
 							break;
 						teleTile = tile;
 					}
-					player.setNextWorldTile(teleTile);
+					player.teleport(teleTile);
 					player.getControlerManager().magicTeleported(ITEM_TELEPORT);
 					if (player.getControlerManager().getControler() == null)
 						teleControlersCheck(player, teleTile);

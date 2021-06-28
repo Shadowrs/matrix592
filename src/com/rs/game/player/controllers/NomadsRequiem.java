@@ -102,7 +102,7 @@ public class NomadsRequiem extends Controller {
 	 */
 
 	public void enterDoor(int doorIndex) {
-		player.setNextWorldTile(new WorldTile(getBaseX() + currentPart.doorPositions[doorIndex * 2], getBaseY() + +currentPart.doorPositions[doorIndex * 2 + 1], 0));
+		player.teleport(new WorldTile(getBaseX() + currentPart.doorPositions[doorIndex * 2], getBaseY() + +currentPart.doorPositions[doorIndex * 2 + 1], 0));
 		player.getMusicsManager().playMusic(currentPart == DungeonPart.THRONE ? 727 : 728);
 		if (currentPart == DungeonPart.THRONE) {
 			player.lock();

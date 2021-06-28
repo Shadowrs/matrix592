@@ -135,7 +135,7 @@ public class MrEx extends Dialogue {
 	}
 
 	private void teleportPlayer(int x, int y, int z) {
-		player.setNextWorldTile(new WorldTile(x, y, z));
+		player.teleport(new WorldTile(x, y, z));
 		player.stopAll();
 		player.getControlerManager().startControler("GodWars");
 	}

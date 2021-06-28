@@ -412,7 +412,7 @@ public class Hunter {
 										break;
 									teleTile = npc;
 								}
-								npc.setNextWorldTile(teleTile);
+								npc.teleport(teleTile);
 							}
 						}, 2);
 					}

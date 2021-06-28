@@ -135,7 +135,7 @@ public class LucienCombat extends CombatScript {
 						if (World.isTileFree(tile.getPlane(), tile.getX(), tile.getY(), size)) { // if
 							// found
 							// done
-							npc.setNextWorldTile(tile);
+							npc.teleport(tile);
 						}
 					}
 				}

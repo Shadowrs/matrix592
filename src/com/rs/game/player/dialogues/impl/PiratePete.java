@@ -64,7 +64,7 @@ public class PiratePete extends Dialogue {
 						public void run() {
 							player.unlock();
 							sendNPCDialogue(npc.getId(), NORMAL, "Wake up... we have arrived!");
-							player.setNextWorldTile(tile);
+							player.teleport(tile);
 						}
 					});
 				}

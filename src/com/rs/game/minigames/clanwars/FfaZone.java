@@ -67,7 +67,7 @@ public final class FfaZone extends Controller {
 								player.sendItemsOnDeath(killer, true);
 						}
 					}
-					player.setNextWorldTile(new WorldTile(2993, 9679, 0));
+					player.teleport(new WorldTile(2993, 9679, 0));
 					player.getControlerManager().startControler("clan_wars_request");
 					player.reset();
 					player.setNextAnimation(new Animation(-1));
@@ -90,7 +90,7 @@ public final class FfaZone extends Controller {
 	public boolean processObjectClick1(WorldObject object) {
 		switch (object.getId()) {
 		case 38700:
-			player.setNextWorldTile(new WorldTile(2993, 9679, 0));
+			player.teleport(new WorldTile(2993, 9679, 0));
 			player.getControlerManager().forceStop();
 			player.getControlerManager().startControler("clan_wars_request");
 			return false;

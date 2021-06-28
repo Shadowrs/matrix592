@@ -37,7 +37,7 @@ public class FishingSpotsHandler {
 		}
 		if (spot == null)
 			return false;
-		npc.setNextWorldTile(new WorldTile(spot));
+		npc.teleport(new WorldTile(spot));
 		return true;
 	}
 

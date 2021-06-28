@@ -78,7 +78,7 @@ public final class Barrows extends Controller {
 	}
 
 	private void exit(WorldTile outside) {
-		player.setNextWorldTile(outside);
+		player.teleport(outside);
 		leave(false);
 	}
 

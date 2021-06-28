@@ -228,7 +228,7 @@ public class NPC extends Entity implements Serializable {
 						}
 					}
 					if (!hasWalkSteps()) { // failing finding route
-						setNextWorldTile(new WorldTile(forceWalk)); // force
+						teleport(new WorldTile(forceWalk)); // force
 						// tele
 						// to
 						// the

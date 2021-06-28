@@ -103,7 +103,7 @@ public class PestControlGame extends Controller {
 					player.message("Oh dear, you have died.");
 				} else if (loop == 3) {
 					player.reset();
-					player.setNextWorldTile(control.getWorldTile(35 - Utils.random(4), 54 - (Utils.random(3))));
+					player.teleport(control.getWorldTile(35 - Utils.random(4), 54 - (Utils.random(3))));
 					player.setNextAnimation(new Animation(-1));
 				} else if (loop == 4) {
 					player.getPackets().sendMusicEffect(90);

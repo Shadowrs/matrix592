@@ -36,7 +36,7 @@ public class Kreearra extends CombatScript {
 				for (int c = 0; c < 10; c++) {
 					int dir = Utils.random(Utils.DIRECTION_DELTA_X.length);
 					if (World.checkWalkStep(target.getPlane(), target.getX(), target.getY(), dir, 1)) {
-						t.setNextWorldTile(new WorldTile(target.getX() + Utils.DIRECTION_DELTA_X[dir], target.getY() + Utils.DIRECTION_DELTA_Y[dir], target.getPlane()));
+						t.teleport(new WorldTile(target.getX() + Utils.DIRECTION_DELTA_X[dir], target.getY() + Utils.DIRECTION_DELTA_Y[dir], target.getPlane()));
 						t.setNextGraphics(new Graphics(3351));
 						break;
 					}

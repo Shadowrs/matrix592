@@ -247,11 +247,11 @@ public final class RequestController extends Controller {
 			ClanWars.enter(player);
 			return false;
 		case 38698: // Safe FFA portal.
-			player.setNextWorldTile(new WorldTile(2815, 5511, 0));
+			player.teleport(new WorldTile(2815, 5511, 0));
 			player.getControlerManager().startControler("clan_wars_ffa", false);
 			return false;
 		case 38699: // Risk FFA portal.
-			player.setNextWorldTile(new WorldTile(3007, 5511, 0));
+			player.teleport(new WorldTile(3007, 5511, 0));
 			player.getControlerManager().startControler("clan_wars_ffa", true);
 			return false;
 		}

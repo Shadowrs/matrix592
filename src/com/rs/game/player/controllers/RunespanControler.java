@@ -273,7 +273,7 @@ public class RunespanControler extends Controller {
 	 */
 	public void exitRunespan(boolean teleport) {
 		if (teleport)
-			player.setNextWorldTile(WIZARD_TOWER);
+			player.teleport(WIZARD_TOWER);
 		removeRunes(player);
 		player.addRunespanPoints((int) getRunespanTotalInventoryPoints());
 		player.getInterfaceManager().removeOverlay(false);
@@ -422,7 +422,7 @@ public class RunespanControler extends Controller {
 							player.setNextGraphics(new Graphics(3091));
 						} else if (stage == 35) {
 							player.unlock();
-							player.setNextWorldTile(dest);
+							player.teleport(dest);
 							stop();
 						}
 						stage++;
@@ -447,7 +447,7 @@ public class RunespanControler extends Controller {
 							player.setNextGraphics(new Graphics(3091));
 						} else if (stage == 35) {
 							player.unlock();
-							player.setNextWorldTile(dest);
+							player.teleport(dest);
 							stop();
 						}
 						stage++;

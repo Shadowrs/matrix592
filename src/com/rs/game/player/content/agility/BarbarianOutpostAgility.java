@@ -23,7 +23,7 @@ public class BarbarianOutpostAgility {
 
 			@Override
 			public void run() {
-				player.setNextWorldTile(toTile);
+				player.teleport(toTile);
 				player.getSkills().addXp(Skills.AGILITY, 1 / 20);
 			}
 
@@ -48,7 +48,7 @@ public class BarbarianOutpostAgility {
 					secondLoop = true;
 				} else {
 					player.setNextAnimation(new Animation(10493));
-					player.setNextWorldTile(toTile);
+					player.teleport(toTile);
 					player.getSkills().addXp(Skills.AGILITY, 15);
 					stop();
 				}
@@ -92,7 +92,7 @@ public class BarbarianOutpostAgility {
 
 					secondLoop = true;
 				} else {
-					player.setNextWorldTile(toTile);
+					player.teleport(toTile);
 					player.getSkills().addXp(Skills.AGILITY, 15);
 					stop();
 				}
@@ -112,7 +112,7 @@ public class BarbarianOutpostAgility {
 		WorldTasksManager.schedule(new WorldTask() {
 			@Override
 			public void run() {
-				player.setNextWorldTile(toTile);
+				player.teleport(toTile);
 				player.getSkills().addXp(Skills.AGILITY, 15);
 				player.setNextAnimation(new Animation(-1));
 				stop();
@@ -130,7 +130,7 @@ public class BarbarianOutpostAgility {
 		WorldTasksManager.schedule(new WorldTask() {
 			@Override
 			public void run() {
-				player.setNextWorldTile(new WorldTile(2538, 3553, 2));
+				player.teleport(new WorldTile(2538, 3553, 2));
 				player.setNextAnimation(new Animation(2588));
 				player.getSkills().addXp(Skills.AGILITY, 15);
 				stop();
@@ -152,7 +152,7 @@ public class BarbarianOutpostAgility {
 			@Override
 			public void run() {
 				if (stage == 0) {
-					player.setNextWorldTile(new WorldTile(2541, player.getY(), 1));
+					player.teleport(new WorldTile(2541, player.getY(), 1));
 					player.setNextAnimation(new Animation(11790));
 					stage = 1;
 				} else if (stage == 1) {
@@ -161,7 +161,7 @@ public class BarbarianOutpostAgility {
 					player.setNextAnimation(new Animation(11791));
 					stage = 3;
 				} else if (stage == 3) {
-					player.setNextWorldTile(toTile);
+					player.teleport(toTile);
 					player.setNextAnimation(new Animation(2588));
 					player.getSkills().addXp(Skills.AGILITY, 15);
 					if (getStage(player) == 1) {
@@ -193,7 +193,7 @@ public class BarbarianOutpostAgility {
 
 			@Override
 			public void run() {
-				player.setNextWorldTile(toTile);
+				player.teleport(toTile);
 				setStage(player, 0);
 			}
 
@@ -227,7 +227,7 @@ public class BarbarianOutpostAgility {
 
 			@Override
 			public void run() {
-				player.setNextWorldTile(toTile);
+				player.teleport(toTile);
 				player.getSkills().addXp(Skills.AGILITY, 13);
 				player.message("... and make it safely to the other side.", true);
 				if (getStage(player) == 0)
@@ -286,7 +286,7 @@ public class BarbarianOutpostAgility {
 
 			@Override
 			public void run() {
-				player.setNextWorldTile(toTile);
+				player.teleport(toTile);
 				player.getSkills().addXp(Skills.AGILITY, 13.7);
 				int stage = getStage(player);
 				if (stage == 3)

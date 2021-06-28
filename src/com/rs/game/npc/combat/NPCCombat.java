@@ -212,7 +212,7 @@ public final class NPCCombat {
 								// done
 								npc.setNextForceMovement(new ForceMovement(new WorldTile(npc), 0, tile, 1, Utils.getMoveDirection(tile.getX() - npc.getX(), tile.getY() - npc.getY())));
 								npc.setNextAnimation(new Animation(17408));
-								npc.setNextWorldTile(tile);
+								npc.teleport(tile);
 								nex.setFlying(false);
 								return true;
 							}

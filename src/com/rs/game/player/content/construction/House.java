@@ -572,7 +572,7 @@ public class House implements Serializable {
 	}
 
 	public void teleportPlayer(Player player) {
-		player.setNextWorldTile(getPortal());
+		player.teleport(getPortal());
 	}
 
 	public WorldTile getPortal() {

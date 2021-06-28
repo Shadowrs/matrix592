@@ -165,7 +165,7 @@ public final class SlaughterFieldsControler extends Controller {
 		Wilderness.checkBoosts(player);
 		sendInterfaces();
 		player.setCanPvp(true);
-		player.setNextWorldTile(regionBase.transform(66, 74, 0));
+		player.teleport(regionBase.transform(66, 74, 0));
 		areaCount++;
 		if (areaCount == 1)
 			initArea();

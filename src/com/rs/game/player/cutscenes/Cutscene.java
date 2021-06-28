@@ -34,7 +34,7 @@ public abstract class Cutscene {
 
 	public void stopCutscene(Player player) {
 		if (player.getX() != endTile.getX() || player.getY() != endTile.getY() || player.getPlane() != endTile.getPlane())
-			player.setNextWorldTile(endTile);
+			player.teleport(endTile);
 		if (hiddenMinimap())
 			player.getPackets().sendBlackOut(0); // unblack
 		player.getInterfaceManager().closeReplacedRealChatBoxInterface();
@@ -77,7 +77,7 @@ public abstract class Cutscene {
 					int[] mapBaseChunks = MapBuilder.findEmptyChunkBound(widthChunks, heightChunks);
 					MapBuilder.copyAllPlanesMap(baseChunkX, baseChunkY, mapBaseChunks[0], mapBaseChunks[1], widthChunks, heightChunks);
 					currentMapData = new int[] { mapBaseChunks[0], mapBaseChunks[1], widthChunks, heightChunks };
-					player.setNextWorldTile(new WorldTile(getBaseX() + widthChunks * 4, +getBaseY() + heightChunks * 4, 0));
+					player.teleport(new WorldTile(getBaseX() + widthChunks * 4, +getBaseY() + heightChunks * 4, 0));
 					constructingRegion = false;
 					if (Settings.DEBUG)
 						Logger.log(this, "Bases: " + getBaseX() + ", " + getBaseY());

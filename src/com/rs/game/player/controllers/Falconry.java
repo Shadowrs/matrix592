@@ -36,7 +36,7 @@ public class Falconry extends Controller {
 		WorldTasksManager.schedule(new WorldTask() {
 			@Override
 			public void run() {
-				player.setNextWorldTile(new WorldTile(2371, 3619, 0));
+				player.teleport(new WorldTile(2371, 3619, 0));
 			}
 		});
 		player.getEquipment().getItems().set(3, new Item(10024, 1));

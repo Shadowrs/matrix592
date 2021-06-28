@@ -199,7 +199,7 @@ public class SorceressGarden extends Controller {
 		FadingScreen.fade(player, new Runnable() {
 			@Override
 			public void run() {
-				player.setNextWorldTile(new WorldTile(2913, 5467, 0));
+				player.teleport(new WorldTile(2913, 5467, 0));
 				player.lock(3);
 			}
 

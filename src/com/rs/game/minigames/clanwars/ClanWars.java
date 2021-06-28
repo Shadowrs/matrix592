@@ -415,12 +415,12 @@ public final class ClanWars implements Serializable {
 				p.getPrayer().closeAllPrayers();
 			}
 			if (c.firstTeam == p.getCurrentFriendChat()) {
-				p.setNextWorldTile(c.baseLocation.transform(c.areaType.getFirstSpawnOffsetX(), c.areaType.getFirstSpawnOffsetY(), 0));
+				p.teleport(c.baseLocation.transform(c.areaType.getFirstSpawnOffsetX(), c.areaType.getFirstSpawnOffsetY(), 0));
 				c.firstPlayers.add(p);
 				c.timer.refresh(p, true);
 			} else {
 				WorldTile northEast = c.baseLocation.transform(c.areaType.getNorthEastTile().getX() - c.areaType.getSouthWestTile().getX(), c.areaType.getNorthEastTile().getY() - c.areaType.getSouthWestTile().getY(), 0);
-				p.setNextWorldTile(northEast.transform(c.areaType.getSecondSpawnOffsetX(), c.areaType.getSecondSpawnOffsetY(), 0));
+				p.teleport(northEast.transform(c.areaType.getSecondSpawnOffsetX(), c.areaType.getSecondSpawnOffsetY(), 0));
 				c.secondPlayers.add(p);
 				c.timer.refresh(p, false);
 			}
@@ -449,7 +449,7 @@ public final class ClanWars implements Serializable {
 			return;
 		p.setCanPvp(false);
 		p.sendDefaultPlayersOptions();
-		p.setNextWorldTile(new WorldTile(2992, 9676, 0));
+		p.teleport(new WorldTile(2992, 9676, 0));
 		p.getInterfaceManager().removeOverlay(false);
 		p.setForceMultiArea(false);
 		updateWar();

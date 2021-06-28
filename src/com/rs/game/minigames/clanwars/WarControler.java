@@ -68,14 +68,14 @@ public final class WarControler extends Controller {
 					player.reset();
 					if (player.getCurrentFriendChat().getClanWars() != null) {
 						if (clanWars.getFirstTeam() == player.getCurrentFriendChat()) {
-							player.setNextWorldTile(clanWars.getBaseLocation().transform(clanWars.getAreaType().getFirstDeathOffsetX(), clanWars.getAreaType().getFirstDeathOffsetY(), 0));
+							player.teleport(clanWars.getBaseLocation().transform(clanWars.getAreaType().getFirstDeathOffsetX(), clanWars.getAreaType().getFirstDeathOffsetY(), 0));
 							clanWars.getFirstPlayers().remove(player);
 							int firstKills = clanWars.getKills() & 0xFFFF;
 							int secondKills = (clanWars.getKills() >> 24 & 0xFFFF) + 1;
 							clanWars.setKills(firstKills | (secondKills << 24));
 						} else {
 							WorldTile northEast = clanWars.getBaseLocation().transform(clanWars.getAreaType().getNorthEastTile().getX() - clanWars.getAreaType().getSouthWestTile().getX(), clanWars.getAreaType().getNorthEastTile().getY() - clanWars.getAreaType().getSouthWestTile().getY(), 0);
-							player.setNextWorldTile(northEast.transform(clanWars.getAreaType().getSecondDeathOffsetX(), clanWars.getAreaType().getSecondDeathOffsetY(), 0));
+							player.teleport(northEast.transform(clanWars.getAreaType().getSecondDeathOffsetX(), clanWars.getAreaType().getSecondDeathOffsetY(), 0));
 							clanWars.getSecondPlayers().remove(player);
 							int firstKills = (clanWars.getKills() & 0xFFFF) + 1;
 							int secondKills = clanWars.getKills() >> 24 & 0xFFFF;
@@ -223,7 +223,7 @@ public final class WarControler extends Controller {
 		if (clanWars != null) {
 			clanWars.leave(player, true);
 		} else
-			player.setNextWorldTile(new WorldTile(2992, 9676, 0));
+			player.teleport(new WorldTile(2992, 9676, 0));
 	}
 
 	@Override

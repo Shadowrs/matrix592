@@ -29,7 +29,7 @@ public class WildernessDitch extends Dialogue {
 			WorldTasksManager.schedule(new WorldTask() {
 				@Override
 				public void run() {
-					player.setNextWorldTile(toTile);
+					player.teleport(toTile);
 					player.faceObject(ditch);
 					player.getControlerManager().startControler("Wilderness");
 					player.resetReceivedDamage();

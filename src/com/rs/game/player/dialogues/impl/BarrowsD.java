@@ -17,7 +17,7 @@ public class BarrowsD extends Dialogue {
 			sendOptionsDialogue(DEFAULT_OPTIONS_TITLE, "Yes, I'm fearless.", "No way, that looks scary!");
 		} else if (stage == 0) {
 			if (componentId == OPTION_1) {
-				player.setNextWorldTile(new WorldTile(3534, 9677, 0));
+				player.teleport(new WorldTile(3534, 9677, 0));
 				player.getVarsManager().sendVar(1270, 0);
 			}
 			end();

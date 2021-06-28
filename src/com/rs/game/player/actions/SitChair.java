@@ -46,7 +46,7 @@ public class SitChair extends Action {
 	@Override
 	public int processWithDelay(Player player) {
 		if (!tped) {
-			player.setNextWorldTile(chairTile);
+			player.teleport(chairTile);
 			tped = true;
 		}
 		player.setNextAnimation(new Animation(HouseConstants.CHAIR_EMOTES[chair]));
@@ -56,7 +56,7 @@ public class SitChair extends Action {
 	@Override
 	public void stop(final Player player) {
 		player.lock(1);
-		player.setNextWorldTile(originalTile);
+		player.teleport(originalTile);
 		player.setNextAnimation(new Animation(-1));
 	}
 }

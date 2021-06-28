@@ -278,7 +278,7 @@ public class EconomyManager {
 						Magic.sendNormalTeleportSpell(player, 0, 0, Settings.START_PLAYER_LOCATION);
 					} else if (optionId == 2) { // safe pvp
 						end();
-						player.setNextWorldTile(new WorldTile(2815, 5511, 0));
+						player.teleport(new WorldTile(2815, 5511, 0));
 						player.getControlerManager().startControler("clan_wars_ffa", false);
 					} else if (optionId == 3) { // recommended for beginners
 						setPage(12, "This section contains various teleports to locations recommended for beginners.", NEWBIE_LOC_NAMES);
@@ -358,7 +358,7 @@ public class EconomyManager {
 						setTeleportsTitlePage();
 					} else {
 						if (DUNGEON_NAMES[optionId].contains("(GWD)")) {
-							player.setNextWorldTile(DUNGEON_LOCATIONS[optionId]);
+							player.teleport(DUNGEON_LOCATIONS[optionId]);
 							player.stopAll();
 							player.getControlerManager().startControler("GodWars");
 						} else {

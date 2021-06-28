@@ -24,7 +24,7 @@ public class MovePlayerAction extends CutsceneAction {
 	public void process(Player player, Object[] cache) {
 		Cutscene scene = (Cutscene) cache[0];
 		if (movementType == Player.TELE_MOVE_TYPE) {
-			player.setNextWorldTile(new WorldTile(scene.getBaseX() + x, scene.getBaseY() + y, plane));
+			player.teleport(new WorldTile(scene.getBaseX() + x, scene.getBaseY() + y, plane));
 			return;
 		}
 		player.setRun(movementType == Player.RUN_MOVE_TYPE);

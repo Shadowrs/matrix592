@@ -31,7 +31,7 @@ public class TicketSystem {
 			return;
 		TicketEntry ticket = (TicketEntry) att;
 		Player target = ticket.getPlayer();
-		target.setNextWorldTile(ticket.getTile());
+		target.teleport(ticket.getTile());
 		target.getTemporaryAttributtes().remove("ticketRequest");
 		player.getTemporaryAttributtes().remove("ticketTarget");
 	}
@@ -56,7 +56,7 @@ public class TicketSystem {
 			}
 			player.getTemporaryAttributtes().put("ticketTarget", ticket);
 			tickets.get(0).setTile(target);
-			target.setNextWorldTile(player);
+			target.teleport(player);
 			target.getControlerManager().magicTeleported(50000);// to make sure they teled
 			target.getControlerManager().forceStop();
 			tickets.remove(ticket);

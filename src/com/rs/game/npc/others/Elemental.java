@@ -68,7 +68,7 @@ public class Elemental extends NPC {
 					FadingScreen.fade(player, new Runnable() {
 						@Override
 						public void run() {
-							player.setNextWorldTile(SorceressGarden.inAutumnGarden(player) ? new WorldTile(2913, 5467, 0) : (SorceressGarden.inSpringGarden(player) ? new WorldTile(2916, 5473, 0) : (SorceressGarden.inSummerGarden(player) ? new WorldTile(2910, 5476, 0) : new WorldTile(2906, 5470, 0))));
+							player.teleport(SorceressGarden.inAutumnGarden(player) ? new WorldTile(2913, 5467, 0) : (SorceressGarden.inSpringGarden(player) ? new WorldTile(2916, 5473, 0) : (SorceressGarden.inSummerGarden(player) ? new WorldTile(2910, 5476, 0) : new WorldTile(2906, 5470, 0))));
 							player.lock(1);
 							beingTeleported = false;
 						}

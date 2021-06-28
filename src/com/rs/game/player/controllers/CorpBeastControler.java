@@ -19,7 +19,7 @@ public class CorpBeastControler extends Controller {
 		if (object.getId() == 37929 || object.getId() == 38811) {
 			removeControler();
 			player.stopAll();
-			player.setNextWorldTile(new WorldTile(2970, 4384, player.getPlane()));
+			player.teleport(new WorldTile(2970, 4384, player.getPlane()));
 			return false;
 		}
 		return true;
@@ -46,7 +46,7 @@ public class CorpBeastControler extends Controller {
 				} else if (loop == 3) {
 					player.sendItemsOnDeath(null);
 					player.reset();
-					player.setNextWorldTile(new WorldTile(Settings.RESPAWN_PLAYER_LOCATION));
+					player.teleport(new WorldTile(Settings.RESPAWN_PLAYER_LOCATION));
 					player.setNextAnimation(new Animation(-1));
 				} else if (loop == 4) {
 					removeControler();

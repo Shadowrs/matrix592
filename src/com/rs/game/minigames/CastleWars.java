@@ -145,7 +145,7 @@ public final class CastleWars {
 		setCape(player, new Item(team == ZAMORAK ? 4042 : 4041));
 		setHood(player, new Item(team == ZAMORAK ? 4515 : 4513));
 		player.getControlerManager().startControler("CastleWarsWaiting", team);
-		player.setNextWorldTile(new WorldTile(team == ZAMORAK ? ZAMO_WAITING : SARA_WAITING, 1));
+		player.teleport(new WorldTile(team == ZAMORAK ? ZAMO_WAITING : SARA_WAITING, 1));
 		player.getMusicsManager().playMusic(318); // temp testing else 5
 		if (playingGame == null && waiting[team].size() >= 3) // at least
 			// 9players to
@@ -231,7 +231,7 @@ public final class CastleWars {
 		waiting[team].remove(player);
 		setCape(player, null);
 		setHood(player, null);
-		player.setNextWorldTile(new WorldTile(LOBBY, 2));
+		player.teleport(new WorldTile(LOBBY, 2));
 		if (playingGame != null && waiting[team].size() == 0 && playing[team].size() == 0)
 			destroyPlayingGame(); // cancels if 0 players playing/waiting on any
 		// of the tea
@@ -287,7 +287,7 @@ public final class CastleWars {
 		playing[team].add(player);
 		player.setCanPvp(true);
 		player.getControlerManager().startControler("CastleWarsPlaying", team);
-		player.setNextWorldTile(new WorldTile(team == ZAMORAK ? ZAMO_BASE : SARA_BASE, 1));
+		player.teleport(new WorldTile(team == ZAMORAK ? ZAMO_BASE : SARA_BASE, 1));
 	}
 
 	public static void endGame(int winner) {

@@ -48,7 +48,7 @@ public class AbbysObsticals {
 				} else if (ticks >= 5 && ticks <= 7) {
 					demolishObstical(7158 + (ticks - 5), object);
 				} else if (ticks == 9) {
-					player.setNextWorldTile(new WorldTile(object.getX(), object.getY() + 13, 0));
+					player.teleport(new WorldTile(object.getX(), object.getY() + 13, 0));
 					player.unlock();
 					stop();
 					return;
@@ -85,7 +85,7 @@ public class AbbysObsticals {
 				} else if (ticks >= 4 && ticks <= 6) {
 					demolishObstical(7161 + (ticks - 4), object);
 				} else if (ticks == 7) {
-					player.setNextWorldTile(tile);
+					player.teleport(tile);
 					player.unlock();
 					stop();
 					return;
@@ -117,7 +117,7 @@ public class AbbysObsticals {
 				} else if (ticks >= 4 && ticks <= 6) {
 					demolishObstical(7168 + (ticks - 4), object);
 				} else if (ticks == 7) {
-					player.setNextWorldTile(tile);
+					player.teleport(tile);
 					player.unlock();
 					stop();
 					return;
@@ -149,7 +149,7 @@ public class AbbysObsticals {
 						}
 					}
 				} else if (ticks == 4) {
-					player.setNextWorldTile(tile);
+					player.teleport(tile);
 					player.unlock();
 					stop();
 					return;
@@ -185,7 +185,7 @@ public class AbbysObsticals {
 				} else if (ticks >= 4 && ticks <= 6) {
 					demolishObstical(7165 + (ticks - 4), object);
 				} else if (ticks == 7) {
-					player.setNextWorldTile(tile);
+					player.teleport(tile);
 					player.unlock();
 					stop();
 					return;

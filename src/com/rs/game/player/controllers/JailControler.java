@@ -21,7 +21,7 @@ public class JailControler extends Controller {
 		if (player.getJailed() <= Utils.currentTimeMillis()) {
 			player.getControlerManager().getControler().removeControler();
 			player.message("Your account has been unjailed.", true);
-			player.setNextWorldTile(new WorldTile(2677, 10379, 0));
+			player.teleport(new WorldTile(2677, 10379, 0));
 		}
 	}
 

@@ -710,7 +710,7 @@ public class Player extends Entity {
 			bank.setPlayer(this);
 			controlerManager.removeControlerWithoutCheck();
 			controlerManager.setLastController(Settings.START_CONTROLER);
-			setNextWorldTile(Settings.START_PLAYER_LOCATION);
+			teleport(Settings.START_PLAYER_LOCATION);
 			setEconomyVersion(Settings.ECONOMY_VERSION);
 			getSocialManager().sendGameMessage("Account reset sucessfull, current eco version:" + Settings.ECONOMY_VERSION);
 		}
@@ -1686,7 +1686,7 @@ public class Player extends Entity {
 				} else if (loop == 3) {
 					sendItemsOnDeath(null);
 					reset();
-					setNextWorldTile(new WorldTile(Settings.RESPAWN_PLAYER_LOCATION));
+					teleport(new WorldTile(Settings.RESPAWN_PLAYER_LOCATION));
 					setNextAnimation(new Animation(-1));
 				} else if (loop == 4) {
 					getPackets().sendMusicEffect(90);
@@ -1762,25 +1762,25 @@ public class Player extends Entity {
 		p.resetWalkSteps();
 		switch (Utils.getRandom(6)) {
 		case 0:
-			p.setNextWorldTile(new WorldTile(2669, 10387, 0));
+			p.teleport(new WorldTile(2669, 10387, 0));
 			break;
 		case 1:
-			p.setNextWorldTile(new WorldTile(2669, 10383, 0));
+			p.teleport(new WorldTile(2669, 10383, 0));
 			break;
 		case 2:
-			p.setNextWorldTile(new WorldTile(2669, 10379, 0));
+			p.teleport(new WorldTile(2669, 10379, 0));
 			break;
 		case 3:
-			p.setNextWorldTile(new WorldTile(2673, 10379, 0));
+			p.teleport(new WorldTile(2673, 10379, 0));
 			break;
 		case 4:
-			p.setNextWorldTile(new WorldTile(2673, 10385, 0));
+			p.teleport(new WorldTile(2673, 10385, 0));
 			break;
 		case 5:
-			p.setNextWorldTile(new WorldTile(2677, 10387, 0));
+			p.teleport(new WorldTile(2677, 10387, 0));
 			break;
 		case 6:
-			p.setNextWorldTile(new WorldTile(2677, 10383, 0));
+			p.teleport(new WorldTile(2677, 10383, 0));
 			break;
 		}
 	}
@@ -1838,7 +1838,7 @@ public class Player extends Entity {
 		if (emoteId != -1)
 			setNextAnimation(new Animation(emoteId));
 		if (useDelay == 0)
-			setNextWorldTile(dest);
+			teleport(dest);
 		else {
 			WorldTasksManager.schedule(new WorldTask() {
 				@Override
@@ -1847,7 +1847,7 @@ public class Player extends Entity {
 						return;
 					if (resetAnimation)
 						setNextAnimation(new Animation(-1));
-					setNextWorldTile(dest);
+					teleport(dest);
 					if (message != null)
 						getSocialManager().sendGameMessage(message);
 				}
@@ -2905,7 +2905,7 @@ public class Player extends Entity {
 				return;
 			WarriorsGuild guild = (WarriorsGuild) controler;
 			guild.inCyclopse = false;
-			setNextWorldTile(WarriorsGuild.CYCLOPS_LOBBY);
+			teleport(WarriorsGuild.CYCLOPS_LOBBY);
 			warriorPoints[index] = 0;
 		} else if (warriorPoints[index] > 65535)
 			warriorPoints[index] = 65535;

@@ -135,7 +135,7 @@ public final class FightPits {
 	public static void enterArena(Player player) {
 		player.lock(5);
 		player.getControlerManager().startControler("FightPitsArena");
-		player.setNextWorldTile(new WorldTile(GAME_TELEPORTS[Utils.random(GAME_TELEPORTS.length)], 3));
+		player.teleport(new WorldTile(GAME_TELEPORTS[Utils.random(GAME_TELEPORTS.length)], 3));
 		player.getDialogueManager().startDialogue("SimpleNPCMessage", THHAAR_MEJ_KAH, "Please wait for the signal before fight.");
 		player.setCanPvp(true);
 		player.setCantTrade(true);

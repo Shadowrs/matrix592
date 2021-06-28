@@ -175,7 +175,7 @@ public class CarrierTravel {
 
 			@Override
 			public void run() {// 9
-				player.setNextWorldTile(tile);
+				player.teleport(tile);
 				player.lock(1);
 				player.closeInterfaces();
 				if (isFare)

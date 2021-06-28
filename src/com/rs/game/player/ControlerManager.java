@@ -13,6 +13,7 @@ import com.rs.game.player.content.Foods.Food;
 import com.rs.game.player.content.Pots.Pot;
 import com.rs.game.player.controllers.Controller;
 import com.rs.game.player.controllers.ControllerHandler;
+import com.rs.game.player.controllers.Wilderness;
 import com.rs.utils.Logger;
 
 /**
@@ -24,6 +25,9 @@ public final class ControlerManager implements Serializable {
 
 	private transient Player player;
 	private transient Controller controler;
+	/**
+	 * login completed/a controller started for the first time
+	 */
 	private transient boolean inited;
 	private Object[] lastControlerArguments;
 
@@ -170,9 +174,13 @@ public final class ControlerManager implements Serializable {
 	}
 
 	public void moved() {
-		if (controler == null || !inited)
+		final String last = this.lastControler;
+		if (Wilderness.isAtWild(player.getLastWorldTile())) // do everytime
+			startControler(player, "Wilderness");
+		startControler(player, last); // restore
+		if (this.controler == null || !inited)
 			return;
-		controler.moved();
+		this.controler.moved();
 	}
 
 	public void magicTeleported(int type) {
@@ -304,6 +312,7 @@ public final class ControlerManager implements Serializable {
 	}
 
 	public void forceStop() {
+		Logger.globalLog(player.getUsername(), player.getIP(), new String(name()+" current controller has been stopped."));
 		if (controler != null) {
 			controler.forceClose();
 			controler = null;
@@ -311,15 +320,14 @@ public final class ControlerManager implements Serializable {
 		lastControlerArguments = null;
 		lastControler = null;
 		inited = false;
-		Logger.globalLog(player.getUsername(), player.getIP(), new String(" current controller has been stopped."));
 	}
 
 	public void removeControlerWithoutCheck() {
+		Logger.globalLog(player.getUsername(), player.getIP(), new String(name()+" current controller has been stopped."));
 		controler = null;
 		lastControlerArguments = null;
 		lastControler = null;
 		inited = false;
-		Logger.globalLog(player.getUsername(), player.getIP(), new String(" current controller has been stopped."));
 	}
 
 	public void setLastController(String controller, Object... args) {
@@ -363,5 +371,11 @@ public final class ControlerManager implements Serializable {
 		if (controler == null || !inited)
 			return;
 		controler.processNPCDeath(id);
+	}
+
+	public String name() {
+		if (controler == null || !inited)
+			return "unknown";
+		return controler.getClass().getName();
 	}
 }

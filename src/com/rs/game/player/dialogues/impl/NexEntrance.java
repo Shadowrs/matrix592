@@ -18,7 +18,7 @@ public final class NexEntrance extends Dialogue {
 			sendOptionsDialogue("There are currently " + ZarosGodwars.getPlayers().size() + " people fighting.<br>Do you wish to join them?", "Climb down.", "Stay here.");
 		} else if (stage == 0) {
 			if (componentId == OPTION_1) {
-				player.setNextWorldTile(new WorldTile(2911, 5204, 0));
+				player.teleport(new WorldTile(2911, 5204, 0));
 				player.getControlerManager().startControler("ZGDControler");
 			}
 			end();

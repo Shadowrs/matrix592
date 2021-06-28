@@ -36,7 +36,13 @@ public abstract class Entity extends WorldTile {
 	// so
 	// concurent
 	private transient int direction;
+	/**
+	 * position set before {@link #processMovement()}
+	 */
 	private transient WorldTile lastWorldTile;
+	/**
+	 * probably teleport target tile
+	 */
 	private transient WorldTile nextWorldTile;
 	private transient int nextWalkDirection;
 	private transient int nextRunDirection;
@@ -908,7 +914,7 @@ public abstract class Entity extends WorldTile {
 		return finished;
 	}
 
-	public void setNextWorldTile(WorldTile nextWorldTile) {
+	public void teleport(WorldTile nextWorldTile) {
 		this.nextWorldTile = nextWorldTile;
 	}
 
@@ -1264,6 +1270,7 @@ public abstract class Entity extends WorldTile {
 		if (this instanceof Player) {
 			Player player = (Player) this;
 			if (player.debugOn) {
+				player.message(s);
 				System.out.println(s);
 			}
 		}

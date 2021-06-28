@@ -31,7 +31,7 @@ public class WildernessAgility {
 
 			@Override
 			public void run() {
-				player.setNextWorldTile(toTile);
+				player.teleport(toTile);
 				if (getStage(player) != 1)
 					removeStage(player);
 				else
@@ -67,7 +67,7 @@ public class WildernessAgility {
 
 			@Override
 			public void run() {
-				player.setNextWorldTile(toTile);
+				player.teleport(toTile);
 				player.getSkills().addXp(Skills.AGILITY, 20);
 				player.message("... and make it safely to the other side.", true);
 				if (getStage(player) != 3)
@@ -99,7 +99,7 @@ public class WildernessAgility {
 
 					@Override
 					public void run() {
-						player.setNextWorldTile(toTile);
+						player.teleport(toTile);
 					}
 				}, 0);
 			}
@@ -134,7 +134,7 @@ public class WildernessAgility {
 			return;
 		WorldObject firstGate = new WorldObject(65365, 10, 1, 2998, 3916, 0);
 		final WorldObject secondGate = new WorldObject(65367, 10, 1, 2998, 3930, 0);
-		player.setNextWorldTile(new WorldTile(firstGate.getX(), firstGate.getY() + 1, 0));
+		player.teleport(new WorldTile(firstGate.getX(), firstGate.getY() + 1, 0));
 		player.setNextForceMovement(new ForceMovement(secondGate, 8, ForceMovement.NORTH));
 		player.setNextAnimation(new Animation(9908));
 		player.lock(8);
@@ -142,13 +142,13 @@ public class WildernessAgility {
 
 			@Override
 			public void run() {
-				player.setNextWorldTile(secondGate);
+				player.teleport(secondGate);
 				player.setNextAnimation(new Animation(-1));
 				WorldTasksManager.schedule(new WorldTask() {
 
 					@Override
 					public void run() {
-						player.setNextWorldTile(new WorldTile(secondGate.getX(), secondGate.getY() + 1, 0));
+						player.teleport(new WorldTile(secondGate.getX(), secondGate.getY() + 1, 0));
 					}
 				});
 			}
@@ -160,7 +160,7 @@ public class WildernessAgility {
 			return;
 		final WorldObject firstGate = new WorldObject(65365, 10, 1, 2998, 3916, 0);
 		final WorldObject secondGate = new WorldObject(65367, 10, 1, 2998, 3930, 0);
-		player.setNextWorldTile(new WorldTile(secondGate.getX(), secondGate.getY(), 0));
+		player.teleport(new WorldTile(secondGate.getX(), secondGate.getY(), 0));
 		player.setNextForceMovement(new ForceMovement(new WorldTile(firstGate.getX(), firstGate.getY() + 1, 0), 8, ForceMovement.SOUTH));
 		player.setNextAnimation(new Animation(9908));
 		player.lock(10);
@@ -168,13 +168,13 @@ public class WildernessAgility {
 
 			@Override
 			public void run() {
-				player.setNextWorldTile(new WorldTile(firstGate.getX(), firstGate.getY() + 1, 0));
+				player.teleport(new WorldTile(firstGate.getX(), firstGate.getY() + 1, 0));
 				player.setNextAnimation(new Animation(-1));
 				WorldTasksManager.schedule(new WorldTask() {
 
 					@Override
 					public void run() {
-						player.setNextWorldTile(new WorldTile(firstGate.getX(), firstGate.getY() - 1, 0));
+						player.teleport(new WorldTile(firstGate.getX(), firstGate.getY() - 1, 0));
 					}
 				});
 			}

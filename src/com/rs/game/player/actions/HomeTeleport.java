@@ -32,7 +32,7 @@ public class HomeTeleport extends Action {
 			player.setNextAnimation(new Animation(HOME_ANIMATION));
 			player.setNextGraphics(new Graphics(HOME_GRAPHIC));
 		} else if (currentTime == 18) {
-			player.setNextWorldTile(tile.transform(0, 1, 0));
+			player.teleport(tile.transform(0, 1, 0));
 			player.getControlerManager().magicTeleported(Magic.MAGIC_TELEPORT);
 			if (player.getControlerManager().getControler() == null)
 				Magic.teleControlersCheck(player, tile);
@@ -49,7 +49,7 @@ public class HomeTeleport extends Action {
 			player.setNextAnimation(new Animation(16393));
 		else if (currentTime == 27) {
 			player.setNextAnimation(new Animation(-1));
-			player.setNextWorldTile(tile);
+			player.teleport(tile);
 		} else if (currentTime == 28) {
 			return -1;
 		}

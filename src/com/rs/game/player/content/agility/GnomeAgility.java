@@ -40,7 +40,7 @@ public class GnomeAgility {
 					secondLoop = true;
 				} else {
 					player.setNextAnimation(new Animation(2924));
-					player.setNextWorldTile(toTile);
+					player.teleport(toTile);
 					player.getSkills().addXp(Skills.AGILITY, 630);
 					stop();
 				}
@@ -63,7 +63,7 @@ public class GnomeAgility {
 			@Override
 			public void run() {
 				if (stage == 1) {
-					player.setNextWorldTile(toTile);
+					player.teleport(toTile);
 					player.setNextAnimation(new Animation(11785));
 					swing(player, object);
 					stop();
@@ -85,7 +85,7 @@ public class GnomeAgility {
 			public void run() {
 				if (stage == 0) {
 					player.setNextAnimation(new Animation(11789));
-					player.setNextWorldTile(toTile);
+					player.teleport(toTile);
 				} else if (stage == 1) {
 					swing1(player, object);
 					stop();
@@ -106,7 +106,7 @@ public class GnomeAgility {
 			@Override
 			public void run() {
 				if (stage == 3) {
-					player.setNextWorldTile(NextTile);
+					player.teleport(NextTile);
 					swing2(player, object);
 					stop();
 				}
@@ -127,7 +127,7 @@ public class GnomeAgility {
 			public void run() {
 				if (stage == 2) {
 					player.getSkills().addXp(Skills.AGILITY, 25);
-					player.setNextWorldTile(LastTile);
+					player.teleport(LastTile);
 					stop();
 				}
 				stage++;
@@ -147,7 +147,7 @@ public class GnomeAgility {
 
 			@Override
 			public void run() {
-				player.setNextWorldTile(toTile);
+				player.teleport(toTile);
 				player.getSkills().addXp(Skills.AGILITY, 25);
 			}
 

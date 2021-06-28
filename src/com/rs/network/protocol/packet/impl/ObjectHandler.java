@@ -206,7 +206,7 @@ public final class ObjectHandler {
 						} else if (ticks == 9) {
 							player.getAppearence().setHidden(false);
 							player.setNextAnimation(new Animation(16672));
-							player.setNextWorldTile(tile);
+							player.teleport(tile);
 							player.unlock();
 							stop();
 							return;
@@ -904,7 +904,7 @@ public final class ObjectHandler {
 								tile = new WorldTile(player.getX(), object.getY() == player.getY() ? object.getY() - 1 : object.getY(), 0);
 								break;
 							}
-							player.setNextWorldTile(tile);
+							player.teleport(tile);
 							player.setNextAnimation(new Animation(4283));
 							player.faceObject(object);
 						}
@@ -1115,7 +1115,7 @@ public final class ObjectHandler {
 							if (ticks > 1)
 								player.setNextAnimation(new Animation(744));
 							if (ticks == 5) {
-								player.setNextWorldTile(tile);
+								player.teleport(tile);
 								stop();
 								return;
 							}
@@ -1139,7 +1139,7 @@ public final class ObjectHandler {
 								player.setNextAnimation(new Animation(10738));
 								player.setNextForceMovement(new NewForceMovement(player, 0, tile, 5, Utils.getFaceDirection(object.getX() - player.getX(), object.getY() - player.getY())));
 							} else if (ticks == 3)
-								player.setNextWorldTile(tile);
+								player.teleport(tile);
 							else if (ticks == 4) {
 								player.message("Your feet skid as you land floor.");
 								stop();
@@ -1164,7 +1164,7 @@ public final class ObjectHandler {
 							else if (ticks == 1)
 								player.setNextAnimation(new Animation(17811));
 							else if (ticks == 9)
-								player.setNextWorldTile(tile);
+								player.teleport(tile);
 							else if (ticks == 10) {
 								stop();
 								return;
@@ -1188,13 +1188,13 @@ public final class ObjectHandler {
 								player.setNextAnimation(new Animation(2589));
 								player.setNextForceMovement(new ForceMovement(object, 1, withinGE ? ForceMovement.WEST : ForceMovement.EAST));
 							} else if (ticks == 3) {
-								player.setNextWorldTile(new WorldTile(3141, 3515, 0));
+								player.teleport(new WorldTile(3141, 3515, 0));
 								player.setNextAnimation(new Animation(2590));
 							} else if (ticks == 5) {
 								player.setNextAnimation(new Animation(2591));
-								player.setNextWorldTile(tile);
+								player.teleport(tile);
 							} else if (ticks == 6) {
-								player.setNextWorldTile(new WorldTile(tile.getX() + (withinGE ? -1 : 1), tile.getY(), tile.getPlane()));
+								player.teleport(new WorldTile(tile.getX() + (withinGE ? -1 : 1), tile.getY(), tile.getPlane()));
 								player.unlock();
 								stop();
 							}
@@ -1215,7 +1215,7 @@ public final class ObjectHandler {
 								@Override
 								public void run() {
 									player.setNextAnimation(new Animation(-1));
-									player.setNextWorldTile(isLeaving ? new WorldTile(2542, 4718, 0) : new WorldTile(2509, 4689, 0));
+									player.teleport(isLeaving ? new WorldTile(2542, 4718, 0) : new WorldTile(2509, 4689, 0));
 								}
 							}, 2);
 						}
@@ -1290,7 +1290,7 @@ public final class ObjectHandler {
 
 						@Override
 						public void run() {
-							player.setNextWorldTile(object);
+							player.teleport(object);
 						}
 					});
 				} else if (id == 73681) {
@@ -1331,7 +1331,7 @@ public final class ObjectHandler {
 							} else if (ticks == 4)
 								player.setNextAnimation(new Animation(1603));
 							else if (ticks == 7) {
-								player.setNextWorldTile(tile);
+								player.teleport(tile);
 								player.setRun(isRunning);
 								stop();
 								return;
@@ -1348,7 +1348,7 @@ public final class ObjectHandler {
 
 						@Override
 						public void run() {
-							player.setNextWorldTile(object);
+							player.teleport(object);
 						}
 					});
 				} else if (id == 70794) {
@@ -1441,7 +1441,7 @@ public final class ObjectHandler {
 
 						@Override
 						public void run() {
-							player.setNextWorldTile(toTile);
+							player.teleport(toTile);
 						}
 					}, 1);
 				} else if (id == 2481)
@@ -1676,21 +1676,21 @@ public final class ObjectHandler {
 								player.setNextForceMovement(new ForceMovement(tile, 4, Utils.getMoveDirection(tile.getX() - player.getX(), tile.getY() - player.getY())));
 							} else if (count == 2) {
 								WorldTile tile = new WorldTile(object.getX() + (object.getRotation() == 2 ? -2 : +2), object.getY(), 0);
-								player.setNextWorldTile(tile);
+								player.teleport(tile);
 							} else if (count == 5) {
 								player.setNextAnimation(new Animation(2590));
 								WorldTile tile = new WorldTile(object.getX() + (object.getRotation() == 2 ? -5 : +5), object.getY(), 0);
 								player.setNextForceMovement(new ForceMovement(tile, 4, Utils.getMoveDirection(tile.getX() - player.getX(), tile.getY() - player.getY())));
 							} else if (count == 7) {
 								WorldTile tile = new WorldTile(object.getX() + (object.getRotation() == 2 ? -5 : +5), object.getY(), 0);
-								player.setNextWorldTile(tile);
+								player.teleport(tile);
 							} else if (count == 10) {
 								player.setNextAnimation(new Animation(2595));
 								WorldTile tile = new WorldTile(object.getX() + (object.getRotation() == 2 ? -6 : +6), object.getY(), 0);
 								player.setNextForceMovement(new ForceMovement(tile, 4, Utils.getMoveDirection(tile.getX() - player.getX(), tile.getY() - player.getY())));
 							} else if (count == 12) {
 								WorldTile tile = new WorldTile(object.getX() + (object.getRotation() == 2 ? -6 : +6), object.getY(), 0);
-								player.setNextWorldTile(tile);
+								player.teleport(tile);
 							} else if (count == 14) {
 								stop();
 								player.unlock();
@@ -1755,7 +1755,7 @@ public final class ObjectHandler {
 								player.setNextAnimation(new Animation(12216));
 								player.unlock();
 							} else if (count == 2) {
-								player.setNextWorldTile(new WorldTile(3651, 5122, 0));
+								player.teleport(new WorldTile(3651, 5122, 0));
 								player.setNextFaceWorldTile(new WorldTile(3651, 5121, 0));
 								player.setNextAnimation(new Animation(12217));
 							} else if (count == 3) {
@@ -1907,7 +1907,7 @@ public final class ObjectHandler {
 						InventoryOptionsHandler.dig(player);
 				} else if (id == 12230 && object.getX() == 1752 && object.getY() == 5136)// mole
 					// exit
-					player.setNextWorldTile(new WorldTile(2986, 3316, 0));
+					player.teleport(new WorldTile(2986, 3316, 0));
 				else if (id == 66115 || id == 66116)
 					InventoryOptionsHandler.dig(player);
 				else if (id == 15522) {// portal sign
@@ -1934,11 +1934,11 @@ public final class ObjectHandler {
 						player.getInterfaceManager().sendInterface(650);
 					else if (object.getX() == 2918 && object.getY() == 4382) {
 						player.stopAll();
-						player.setNextWorldTile(new WorldTile(player.getX() == 2921 ? 2917 : 2921, player.getY(), player.getPlane()));
+						player.teleport(new WorldTile(player.getX() == 2921 ? 2917 : 2921, player.getY(), player.getPlane()));
 					}
 				} else if (id == 37928 && object.getX() == 2883 && object.getY() == 4370) {
 					player.stopAll();
-					player.setNextWorldTile(new WorldTile(3214, 3782, 0));
+					player.teleport(new WorldTile(3214, 3782, 0));
 					player.getControlerManager().startControler("Wilderness");
 				} else if (id == 38815 && object.getX() == 3209 && object.getY() == 3780 && object.getPlane() == 0) {
 					if (player.getSkills().getLevelForXp(Skills.WOODCUTTING) < 37 || player.getSkills().getLevelForXp(Skills.MINING) < 45 || player.getSkills().getLevelForXp(Skills.SUMMONING) < 23 || player.getSkills().getLevelForXp(Skills.FIREMAKING) < 47 || player.getSkills().getLevelForXp(Skills.PRAYER) < 55) {
@@ -1946,14 +1946,14 @@ public final class ObjectHandler {
 						return;
 					}
 					player.stopAll();
-					player.setNextWorldTile(new WorldTile(2885, 4372, 2));
+					player.teleport(new WorldTile(2885, 4372, 2));
 					player.getControlerManager().forceStop();
 					// TODO all reqs, skills not added
 				} else if (id == 48803 && player.isKalphiteLairSetted()) {
-					player.setNextWorldTile(new WorldTile(3508, 9494, 0));
+					player.teleport(new WorldTile(3508, 9494, 0));
 				} else if (id == 48802) {
 					if (player.isKalphiteLairEntranceSetted())
-						player.setNextWorldTile(new WorldTile(3420, 9510, 0));
+						player.teleport(new WorldTile(3420, 9510, 0));
 					else if (player.getInventory().containsItem(954, 1)) {
 						player.getInventory().deleteItem(954, 1);
 						player.setKalphiteLairEntrance();
@@ -1987,7 +1987,7 @@ public final class ObjectHandler {
 					// out
 					// stairs
 					player.stopAll();
-					player.setNextWorldTile(new WorldTile(3069, 10255, 0));
+					player.teleport(new WorldTile(3069, 10255, 0));
 					player.getControlerManager().forceStop();
 				} else if (id == 14315) {
 					if (Lander.canEnter(player, 0))

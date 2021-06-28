@@ -167,7 +167,7 @@ public final class Pet extends NPC {
 		if (teleTile == null) {
 			return;
 		}
-		setNextWorldTile(teleTile);
+		teleport(teleTile);
 	}
 
 	private void sendFollow() {

@@ -50,7 +50,7 @@ public class GiantMoleCombat extends CombatScript {
 					World.sendGraphics(npc, new Graphics(571), new WorldTile(middle.getX() + 1, middle.getY() + 1, middle.getPlane()));
 					World.sendGraphics(npc, new Graphics(571), new WorldTile(middle.getX() - 1, middle.getY(), middle.getPlane()));
 					World.sendGraphics(npc, new Graphics(571), new WorldTile(middle.getX() + 1, middle.getY(), middle.getPlane()));
-					npc.setNextWorldTile(new WorldTile(COORDS[Utils.random(COORDS.length)]));
+					npc.teleport(new WorldTile(COORDS[Utils.random(COORDS.length)]));
 					npc.setNextAnimation(new Animation(3315));
 
 				}

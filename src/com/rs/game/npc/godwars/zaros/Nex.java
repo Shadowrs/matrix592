@@ -110,7 +110,7 @@ public class Nex extends NPC {
 			return;
 		lastAttack++;
 		if (lastAttack == 14)
-			setNextWorldTile(new WorldTile(2925, 5203, 0));
+			teleport(new WorldTile(2925, 5203, 0));
 		if (!getCombat().process())
 			checkAgressivity();
 		if (Utils.getRandom(350) == 0 && getId() == 13447)

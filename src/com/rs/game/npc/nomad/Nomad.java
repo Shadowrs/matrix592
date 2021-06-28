@@ -139,7 +139,7 @@ public class Nomad extends NPC {
 		WorldTasksManager.schedule(new WorldTask() {
 			@Override
 			public void run() {
-				setNextWorldTile(tile);
+				teleport(tile);
 				setNextAnimation(new Animation(12730));
 				setNextGraphics(new Graphics(1577));
 				setDirection(6);
@@ -180,7 +180,7 @@ public class Nomad extends NPC {
 					NPC n;
 					if (thisIndex == i) {
 						n = thisNpc;
-						setNextWorldTile(getCopySpot(i));
+						teleport(getCopySpot(i));
 					} else {
 						n = new FakeNomad(getCopySpot(i), thisNpc);
 						copies.add(n);
