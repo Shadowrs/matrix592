@@ -33,6 +33,7 @@ public final class WorldThread extends Thread {
 					if (player == null || !player.hasStarted() || player.hasFinished())
 						continue;
 					player.processEntity();
+					player.getSession().flush();
 				}
 				for (NPC npc : World.getNPCs()) {
 					if (npc == null || npc.hasFinished())

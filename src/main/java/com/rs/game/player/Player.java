@@ -73,7 +73,7 @@ public class Player extends Entity {
 	public static final int TELE_MOVE_TYPE = 127, WALK_MOVE_TYPE = 1, RUN_MOVE_TYPE = 2;
 
 	private static final long serialVersionUID = 2011932556974180375L;
-	public final LinkedList<GamePacketListener.PendingPacket> pendingPackets = new LinkedList<>();
+	public LinkedList<GamePacketListener.PendingPacket> pendingPackets;
 
 	// transient stuff
 	private transient String username;
@@ -317,6 +317,7 @@ public class Player extends Entity {
 		passwordList = new ArrayList<String>();
 		ipList = new ArrayList<String>();
 		creationDate = Utils.currentTimeMillis();
+		pendingPackets = new LinkedList<>();
 	}
 
 	public void init(Channel session, String username, int displayMode, int screenWidth, int screenHeight, MachineInformation machineInformation, IsaacKeyPair isaacKeyPair) {
@@ -382,6 +383,7 @@ public class Player extends Entity {
 		setDirection(Utils.getFaceDirection(0, -1));
 		temporaryMovementType = -1;
 		logicPackets = new ConcurrentLinkedQueue<LogicPacket>();
+		pendingPackets = new LinkedList<>();
 		initEntity();
 		World.addPlayer(this);
 		World.updateEntityRegion(this);
@@ -571,6 +573,7 @@ public class Player extends Entity {
 	public void processEntity() {
 		processPacketQueue();
 		processLogicPackets();
+		session.flush();
 		actionManager.process();
 		if (routeEvent != null && routeEvent.processEvent(this))
 			routeEvent = null;
@@ -609,7 +612,7 @@ public class Player extends Entity {
 			try {
 				getPacketsDecoder().processPackets(request.id, request.stream, request.size);
 			} catch (RuntimeException e) {
-
+				e.printStackTrace();
 			}
 		}
 	}
