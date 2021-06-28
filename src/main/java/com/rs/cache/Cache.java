@@ -19,7 +19,7 @@ public final class Cache {
 		STORE = new Store(Settings.CACHE_PATH);
 	}
 
-	public static final byte[] generateUkeysFile() {
+	public static byte[] generateUkeysFile() {
 		return STORE.generateIndex255Archive255Outdated();
 	}
 	

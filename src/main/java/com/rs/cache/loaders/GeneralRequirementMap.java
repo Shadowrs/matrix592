@@ -12,7 +12,7 @@ public final class GeneralRequirementMap {
 
 	private static final ConcurrentHashMap<Integer, GeneralRequirementMap> maps = new ConcurrentHashMap<Integer, GeneralRequirementMap>();
 
-	public static final GeneralRequirementMap getMap(int scriptId) {
+	public static GeneralRequirementMap getMap(int scriptId) {
 		GeneralRequirementMap script = maps.get(scriptId);
 		if (script != null)
 			return script;

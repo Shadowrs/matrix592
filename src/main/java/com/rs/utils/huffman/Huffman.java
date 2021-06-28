@@ -11,7 +11,7 @@ public final class Huffman {
 	private static byte[] huffmanAlgorithm2;
 	private static int[] huffmanAlgorithm3;
 
-	public static final void init() {
+	public static void init() {
 		byte[] huffmanFile = Cache.STORE.getIndexes()[10].getFile(Cache.STORE.getIndexes()[10].getArchiveId("huffman"));
 		int fileLength = huffmanFile.length;
 		huffmanAlgorithm2 = huffmanFile;
@@ -71,7 +71,7 @@ public final class Huffman {
 		}
 	}
 
-	public static final int decryptMessage(byte[] messageData, int messagedDataLength, byte[] streamBuffer, int streamOffset, int messageDataOffset) {
+	public static int decryptMessage(byte[] messageData, int messagedDataLength, byte[] streamBuffer, int streamOffset, int messageDataOffset) {
 		if ((messagedDataLength ^ 0xffffffff) == -1)
 			return 0;
 		int i = 0;
@@ -165,7 +165,7 @@ public final class Huffman {
 		return -streamOffset + i_1_ - -1;
 	}
 
-	public static final int encryptMessage(int streamOffset, int messageDataLength, byte[] streamBuffer, int messageDataOffset, byte[] messageData) {
+	public static int encryptMessage(int streamOffset, int messageDataLength, byte[] streamBuffer, int messageDataOffset, byte[] messageData) {
 		int i = 0;
 		messageDataLength += messageDataOffset;
 		int i_19_ = streamOffset << 309760323;
@@ -220,11 +220,11 @@ public final class Huffman {
 	}
 
 	// decrypt message
-	public static final String readEncryptedMessage(InputStream stream) {
+	public static String readEncryptedMessage(InputStream stream) {
 		return readEncryptedMessage(32767, stream);
 	}
 
-	public static final String readEncryptedMessage(int maxLength, InputStream stream) {
+	public static String readEncryptedMessage(int maxLength, InputStream stream) {
 		try {
 			int messageDataLength = stream.readUnsignedSmart();
 			if (messageDataLength > maxLength)

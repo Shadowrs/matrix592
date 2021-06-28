@@ -13,7 +13,7 @@ public final class ItemsContainerDefinitions {
 
 	private static final ConcurrentHashMap<Integer, ItemsContainerDefinitions> maps = new ConcurrentHashMap<Integer, ItemsContainerDefinitions>();
 
-	public static final ItemsContainerDefinitions getContainer(int id) {
+	public static ItemsContainerDefinitions getContainer(int id) {
 		ItemsContainerDefinitions def = maps.get(id);
 		if (def != null)
 			return def;

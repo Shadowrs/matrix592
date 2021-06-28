@@ -117,7 +117,7 @@ public final class MapBuilder {
 		toRegion.setReloadObjects(plane, offsetX, offsetY);
 	}
 
-	public static final void destroyMap(int chunkX, int chunkY, int widthRegions, int heightRegions) {
+	public static void destroyMap(int chunkX, int chunkY, int widthRegions, int heightRegions) {
 		synchronized (ALGORITHM_LOCK) {
 			int fromRegionX = chunkX / 8;
 			int fromRegionY = chunkY / 8;
@@ -140,7 +140,7 @@ public final class MapBuilder {
 		}
 	}
 
-	public static final void repeatMap(int toChunkX, int toChunkY, int widthChunks, int heightChunks, int rx, int ry, int plane, int rotation, int... toPlanes) {
+	public static void repeatMap(int toChunkX, int toChunkY, int widthChunks, int heightChunks, int rx, int ry, int plane, int rotation, int... toPlanes) {
 		for (int xOffset = 0; xOffset < widthChunks; xOffset++) {
 			for (int yOffset = 0; yOffset < heightChunks; yOffset++) {
 				int nextChunkX = toChunkX + xOffset;
@@ -160,7 +160,7 @@ public final class MapBuilder {
 		}
 	}
 
-	public static final void cutMap(int toChunkX, int toChunkY, int widthChunks, int heightChunks, int... toPlanes) {
+	public static void cutMap(int toChunkX, int toChunkY, int widthChunks, int heightChunks, int... toPlanes) {
 		for (int xOffset = 0; xOffset < widthChunks; xOffset++) {
 			for (int yOffset = 0; yOffset < heightChunks; yOffset++) {
 				int nextChunkX = toChunkX + xOffset;
@@ -197,7 +197,7 @@ public final class MapBuilder {
 	/*
 	 * copy a exactly square of map from a place to another
 	 */
-	public static final void copyAllPlanesMap(int fromRegionX, int fromRegionY, int toRegionX, int toRegionY, int ratio) {
+	public static void copyAllPlanesMap(int fromRegionX, int fromRegionY, int toRegionX, int toRegionY, int ratio) {
 		int[] planes = new int[4];
 		for (int plane = 1; plane < 4; plane++)
 			planes[plane] = plane;
@@ -207,7 +207,7 @@ public final class MapBuilder {
 	/*
 	 * copy a exactly square of map from a place to another
 	 */
-	public static final void copyAllPlanesMap(int fromRegionX, int fromRegionY, int toRegionX, int toRegionY, int widthRegions, int heightRegions) {
+	public static void copyAllPlanesMap(int fromRegionX, int fromRegionY, int toRegionX, int toRegionY, int widthRegions, int heightRegions) {
 		int[] planes = new int[4];
 		for (int plane = 1; plane < 4; plane++)
 			planes[plane] = plane;
@@ -217,14 +217,14 @@ public final class MapBuilder {
 	/*
 	 * copy a square of map from a place to another
 	 */
-	public static final void copyMap(int fromRegionX, int fromRegionY, int toRegionX, int toRegionY, int ratio, int[] fromPlanes, int[] toPlanes) {
+	public static void copyMap(int fromRegionX, int fromRegionY, int toRegionX, int toRegionY, int ratio, int[] fromPlanes, int[] toPlanes) {
 		copyMap(fromRegionX, fromRegionY, toRegionX, toRegionY, ratio, ratio, fromPlanes, toPlanes);
 	}
 
 	/*
 	 * copy a rectangle of map from a place to another
 	 */
-	public static final void copyMap(int fromRegionX, int fromRegionY, int toRegionX, int toRegionY, int widthRegions, int heightRegions, int[] fromPlanes, int[] toPlanes) {
+	public static void copyMap(int fromRegionX, int fromRegionY, int toRegionX, int toRegionY, int widthRegions, int heightRegions, int[] fromPlanes, int[] toPlanes) {
 		if (fromPlanes.length != toPlanes.length)
 			throw new RuntimeException("PLANES LENGTH ISNT SAME OF THE NEW PLANES ORDER!");
 		for (int xOffset = 0; xOffset < widthRegions; xOffset++) {
@@ -253,7 +253,7 @@ public final class MapBuilder {
 	 * 
 	 * //rotation 0 // a b // c d //rotation 1 // c a // d b //rotation2 // d c // b a //rotation3 // b d // a c
 	 */
-	public static final void copy2RatioSquare(int fromRegionX, int fromRegionY, int toRegionX, int toRegionY, int rotation) {
+	public static void copy2RatioSquare(int fromRegionX, int fromRegionY, int toRegionX, int toRegionY, int rotation) {
 		if (rotation == 0) {
 			copyChunk(fromRegionX, fromRegionY, 0, toRegionX, toRegionY, 0, rotation);
 			copyChunk(fromRegionX + 1, fromRegionY, 0, toRegionX + 1, toRegionY, 0, rotation);

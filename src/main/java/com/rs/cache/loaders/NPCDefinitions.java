@@ -86,7 +86,7 @@ public final class NPCDefinitions {
 
 	}
 
-	public static final NPCDefinitions getNPCDefinitions(int id) {
+	public static NPCDefinitions getNPCDefinitions(int id) {
 		NPCDefinitions def = npcDefinitions.get(id);
 		if (def == null) {
 			def = new NPCDefinitions(id);
@@ -393,7 +393,7 @@ public final class NPCDefinitions {
 		}
 	}
 
-	public static final void clearNPCDefinitions() {
+	public static void clearNPCDefinitions() {
 		npcDefinitions.clear();
 	}
 

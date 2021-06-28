@@ -105,14 +105,14 @@ public final class ItemDefinitions {
 	public int[] unknownArray4;
 	public byte[] unknownArray6;
 
-	public static final ItemDefinitions getItemDefinitions(int itemId) {
+	public static ItemDefinitions getItemDefinitions(int itemId) {
 		ItemDefinitions def = itemsDefinitions.get(itemId);
 		if (def == null)
 			itemsDefinitions.put(itemId, def = new ItemDefinitions(itemId));
 		return def;
 	}
 
-	public static final void clearItemsDefinitions() {
+	public static void clearItemsDefinitions() {
 		itemsDefinitions.clear();
 	}
 
@@ -127,7 +127,7 @@ public final class ItemDefinitions {
 		return loaded;
 	}
 
-	public final void loadItemDefinitions() {
+	public void loadItemDefinitions() {
 		byte[] data = Cache.STORE.getIndexes()[Constants.ITEM_DEFINITIONS_INDEX].getFile(getArchiveId(), getFileId());
 		if (data == null) {
 			// System.out.println("Failed loading Item " + id+".");
@@ -527,7 +527,7 @@ public final class ItemDefinitions {
 		equipType = -1;
 	}
 
-	private final void readValues(InputStream stream, int opcode) {
+	private void readValues(InputStream stream, int opcode) {
 		if (EquipData.canEquip(id) && equipSlot == -1) {
 			equipSlot = EquipData.getEquipSlot(id);
 			equipType = EquipData.getEquipType(id);
@@ -683,7 +683,7 @@ public final class ItemDefinitions {
 	public int unknownValue1;
 	public int unknownValue2;
 
-	public final void readOpcodeValues(InputStream stream) {
+	public void readOpcodeValues(InputStream stream) {
 		while (true) {
 			int opcode = stream.readUnsignedByte();
 			if (opcode == 0)

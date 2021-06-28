@@ -63,7 +63,7 @@ public final class Utils {
 		return new BigInteger(data).modPow(exponent, modulus).toByteArray();
 	}
 
-	public static final byte[] encryptUsingMD5(byte[] buffer) {
+	public static byte[] encryptUsingMD5(byte[] buffer) {
 		// prevents concurrency problems with the algorithm
 		synchronized (ALGORITHM_LOCK) {
 			try {
@@ -123,17 +123,17 @@ public final class Utils {
 		return classes;
 	}
 
-	public static final int getDistance(WorldTile t1, WorldTile t2) {
+	public static int getDistance(WorldTile t1, WorldTile t2) {
 		return getDistance(t1.getX(), t1.getY(), t2.getX(), t2.getY());
 	}
 
-	public static final int getDistance(int coordX1, int coordY1, int coordX2, int coordY2) {
+	public static int getDistance(int coordX1, int coordY1, int coordX2, int coordY2) {
 		int deltaX = coordX2 - coordX1;
 		int deltaY = coordY2 - coordY1;
 		return ((int) Math.sqrt(Math.pow(deltaX, 2) + Math.pow(deltaY, 2)));
 	}
 
-	public static final int getMoveDirection(int xOffset, int yOffset) {
+	public static int getMoveDirection(int xOffset, int yOffset) {
 		if (xOffset < 0) {
 			if (yOffset < 0)
 				return 5;
@@ -187,7 +187,7 @@ public final class Utils {
 		return -1;
 	}
 
-	public static final int[][] getCoordOffsetsNear(int size) {
+	public static int[][] getCoordOffsetsNear(int size) {
 		int[] xs = new int[4 + (4 * size)];
 		int[] xy = new int[xs.length];
 		xs[0] = -size;
@@ -211,38 +211,38 @@ public final class Utils {
 		return new int[][] { xs, xy };
 	}
 
-	public static final int getFaceDirection(int xOffset, int yOffset) {
+	public static int getFaceDirection(int xOffset, int yOffset) {
 		return ((int) (Math.atan2(-xOffset, -yOffset) * 2607.5945876176133)) & 0x3fff;
 	}
 
-	public static final int getGraphicDefinitionsSize() {
+	public static int getGraphicDefinitionsSize() {
 		int lastArchiveId = Cache.STORE.getIndexes()[21].getLastArchiveId();
 		return lastArchiveId * 256 + Cache.STORE.getIndexes()[21].getValidFilesCount(lastArchiveId);
 	}
 
-	public static final int getAnimationDefinitionsSize() {
+	public static int getAnimationDefinitionsSize() {
 		int lastArchiveId = Cache.STORE.getIndexes()[20].getLastArchiveId();
 		return lastArchiveId * 128 + Cache.STORE.getIndexes()[20].getValidFilesCount(lastArchiveId);
 	}
 
-	public static final int getConfigDefinitionsSize() {
+	public static int getConfigDefinitionsSize() {
 		int lastArchiveId = Cache.STORE.getIndexes()[22].getLastArchiveId();
 		return lastArchiveId * 256 + Cache.STORE.getIndexes()[22].getValidFilesCount(lastArchiveId);
 	}
 
-	public static final int getObjectDefinitionsSize() {
+	public static int getObjectDefinitionsSize() {
 		int lastArchiveId = Cache.STORE.getIndexes()[16].getLastArchiveId();
 		return lastArchiveId * 256 + Cache.STORE.getIndexes()[16].getValidFilesCount(lastArchiveId);
 	}
 
-	public static final int getNPCDefinitionsSize() {
+	public static int getNPCDefinitionsSize() {
 		int lastArchiveId = Cache.STORE.getIndexes()[18].getLastArchiveId();
 		return lastArchiveId * 128 + Cache.STORE.getIndexes()[18].getValidFilesCount(lastArchiveId);
 	}
 
 	// 22314
 
-	public static final int getItemDefinitionsSize() {
+	public static int getItemDefinitionsSize() {
 		int lastArchiveId = Cache.STORE.getIndexes()[19].getLastArchiveId();
 		return (lastArchiveId * 256 + Cache.STORE.getIndexes()[19].getValidFilesCount(lastArchiveId));
 	}
@@ -253,15 +253,15 @@ public final class Utils {
 		return Cache.STORE.getIndexes()[19].fileExists(id >>> 8, 0xff & id);
 	}
 
-	public static final int getInterfaceDefinitionsSize() {
+	public static int getInterfaceDefinitionsSize() {
 		return Cache.STORE.getIndexes()[3].getLastArchiveId() + 1;
 	}
 
-	public static final int getInterfaceDefinitionsComponentsSize(int interfaceId) {
+	public static int getInterfaceDefinitionsComponentsSize(int interfaceId) {
 		return Cache.STORE.getIndexes()[3].getLastFileId(interfaceId) + 1;
 	}
 
-	public static final boolean isQCValid(int id) {
+	public static boolean isQCValid(int id) {
 		return Cache.STORE.getIndexes()[24].fileExists(1, id);
 	}
 
@@ -294,40 +294,40 @@ public final class Utils {
 		return newName.toString();
 	}
 
-	public static final int getRandom(int maxValue) {
+	public static int getRandom(int maxValue) {
 		return (int) (Math.random() * (maxValue + 1));
 	}
 
-	public static final int random(int min, int max) {
+	public static int random(int min, int max) {
 		final int n = Math.abs(max - min);
 		return Math.min(min, max) + (n == 0 ? 0 : random(n));
 	}
 
-	public static final double random(double min, double max) {
+	public static double random(double min, double max) {
 		final double n = Math.abs(max - min);
 		return Math.min(min, max) + (n == 0 ? 0 : random((int) n));
 	}
 
-	public static final int next(int max, int min) {
+	public static int next(int max, int min) {
 		return min + (int) (Math.random() * ((max - min) + 1));
 	}
 
-	public static final double getRandomDouble(double maxValue) {
+	public static double getRandomDouble(double maxValue) {
 		return (Math.random() * (maxValue + 1));
 
 	}
 
-	public static final int random(int maxValue) {
+	public static int random(int maxValue) {
 		if (maxValue <= 0)
 			return 0;
 		return RANDOM.nextInt(maxValue);
 	}
 
-	public static final double randomDouble() {
+	public static double randomDouble() {
 		return RANDOM.nextDouble();
 	}
 
-	public static final String longToString(long l) {
+	public static String longToString(long l) {
 		if (l <= 0L || l >= 0x5b5b57f8a98a5dd1L)
 			return null;
 		if (l % 37L == 0L)
@@ -368,7 +368,7 @@ public final class Utils {
 		return false;
 	}
 
-	public static final long stringToLong(String s) {
+	public static long stringToLong(String s) {
 		long l = 0L;
 		for (int i = 0; i < s.length() && i < 12; i++) {
 			char c = s.charAt(i);
@@ -386,7 +386,7 @@ public final class Utils {
 		return l;
 	}
 
-	public static final int packGJString2(int position, byte[] buffer, String String) {
+	public static int packGJString2(int position, byte[] buffer, String String) {
 		int length = String.length();
 		int offset = position;
 		for (int index = 0; length > index; index++) {
@@ -406,7 +406,7 @@ public final class Utils {
 		return offset - position;
 	}
 
-	public static final int calculateGJString2Length(String String) {
+	public static int calculateGJString2Length(String String) {
 		int length = String.length();
 		int gjStringLength = 0;
 		for (int index = 0; length > index; index++) {
@@ -422,7 +422,7 @@ public final class Utils {
 		return gjStringLength;
 	}
 
-	public static final int getNameHash(String name) {
+	public static int getNameHash(String name) {
 		name = name.toLowerCase();
 		int hash = 0;
 		for (int index = 0; index < name.length(); index++)
@@ -430,7 +430,7 @@ public final class Utils {
 		return hash;
 	}
 
-	public static final byte method1258(char c) {
+	public static byte method1258(char c) {
 		byte charByte;
 		if (c > 0 && c < '\200' || c >= '\240' && c <= '\377') {
 			charByte = (byte) c;
@@ -518,7 +518,7 @@ public final class Utils {
 
 	public static char[] aCharArray6385 = { '\u20ac', '\0', '\u201a', '\u0192', '\u201e', '\u2026', '\u2020', '\u2021', '\u02c6', '\u2030', '\u0160', '\u2039', '\u0152', '\0', '\u017d', '\0', '\0', '\u2018', '\u2019', '\u201c', '\u201d', '\u2022', '\u2013', '\u2014', '\u02dc', '\u2122', '\u0161', '\u203a', '\u0153', '\0', '\u017e', '\u0178' };
 
-	public static final String getUnformatedMessage(int messageDataLength, int messageDataOffset, byte[] messageData) {
+	public static String getUnformatedMessage(int messageDataLength, int messageDataOffset, byte[] messageData) {
 		char[] cs = new char[messageDataLength];
 		int i = 0;
 		for (int i_6_ = 0; i_6_ < messageDataLength; i_6_++) {
@@ -536,7 +536,7 @@ public final class Utils {
 		return new String(cs, 0, i);
 	}
 
-	public static final byte[] getFormatedMessage(String message) {
+	public static byte[] getFormatedMessage(String message) {
 		int i_0_ = message.length();
 		byte[] is = new byte[i_0_];
 		for (int i_1_ = 0; (i_1_ ^ 0xffffffff) > (i_0_ ^ 0xffffffff); i_1_++) {

@@ -14,7 +14,7 @@ public final class IPBanL {
 		ipList = SerializableFilesManager.loadIPBans();
 	}
 
-	public static final void save() {
+	public static void save() {
 		if (!edited)
 			return;
 		SerializableFilesManager.saveIPBans(ipList);

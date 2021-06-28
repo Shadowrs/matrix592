@@ -18,12 +18,12 @@ import com.rs.game.WorldTile;
 
 public final class ObjectSpawns {
 
-	public static final void init() {
+	public static void init() {
 		if (!new File("data/map/packedSpawns").exists())
 			packObjectSpawns();
 	}
 
-	private static final void packObjectSpawns() {
+	private static void packObjectSpawns() {
 		Logger.log("ObjectSpawns", "Packing object spawns...");
 		if (!new File("data/map/packedSpawns").mkdir())
 			throw new RuntimeException("Couldn't create packedSpawns directory.");
@@ -59,7 +59,7 @@ public final class ObjectSpawns {
 		}
 	}
 
-	public static final void loadObjectSpawns(int regionId) {
+	public static void loadObjectSpawns(int regionId) {
 		File file = new File("data/map/packedSpawns/" + regionId + ".os");
 		if (!file.exists())
 			return;
@@ -85,7 +85,7 @@ public final class ObjectSpawns {
 		}
 	}
 
-	private static final void addObjectSpawn(int objectId, int type, int rotation, int regionId, WorldTile tile) {
+	private static void addObjectSpawn(int objectId, int type, int rotation, int regionId, WorldTile tile) {
 		try {
 			DataOutputStream out = new DataOutputStream(new FileOutputStream("data/map/packedSpawns/" + regionId + ".os", true));
 			out.writeShort(objectId);

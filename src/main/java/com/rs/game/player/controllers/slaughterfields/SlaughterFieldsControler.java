@@ -627,7 +627,7 @@ public final class SlaughterFieldsControler extends Controller {
 	 * @param w The world tile.
 	 * @return {@code True} if so.
 	 */
-	public static final boolean isPureZone(WorldTile w) {
+	public static boolean isPureZone(WorldTile w) {
 		return w.getX() > (regionBase.getX() + 60) && w.getX() < regionBase.getX() + 120 && w.getY() < (regionBase.getY() + 60) && w.getY() >= regionBase.getY();
 	}
 
@@ -636,7 +636,7 @@ public final class SlaughterFieldsControler extends Controller {
 	 * @param w The world tile.
 	 * @return {@code True} if so.
 	 */
-	public static final boolean isFfaZone(WorldTile w) {
+	public static boolean isFfaZone(WorldTile w) {
 		return w.getX() > (regionBase.getX() + 60) && w.getX() < regionBase.getX() + 120 && w.getY() < (regionBase.getY() + 120) && w.getY() >= regionBase.getY() + 60;
 	}
 
@@ -645,7 +645,7 @@ public final class SlaughterFieldsControler extends Controller {
 	 * @param w The world tile.
 	 * @return {@code True} if so.
 	 */
-	public static final boolean isDangerousZone(WorldTile w) {
+	public static boolean isDangerousZone(WorldTile w) {
 		return w.getX() > (regionBase.getX() + 54) && w.getX() < regionBase.getX() + 129 && w.getY() < (regionBase.getY() + 296) && w.getY() >= regionBase.getY() + 239;
 	}
 
@@ -654,7 +654,7 @@ public final class SlaughterFieldsControler extends Controller {
 	 * @param w The world tile.
 	 * @return {@code True} if so.
 	 */
-	public static final boolean isNonRangeZone(WorldTile w) {
+	public static boolean isNonRangeZone(WorldTile w) {
 		return w.getX() > (regionBase.getX() + 50) && w.getX() < regionBase.getX() + 120 && w.getY() < (regionBase.getY() + 200) && w.getY() >= regionBase.getY() + 120;
 	}
 
@@ -663,7 +663,7 @@ public final class SlaughterFieldsControler extends Controller {
 	 * @param w The world tile.
 	 * @return {@code True} if so.
 	 */
-	public static final boolean isNonMeleeZone(WorldTile w) {
+	public static boolean isNonMeleeZone(WorldTile w) {
 		return w.getX() > regionBase.getX() && w.getX() < regionBase.getX() + 60 && w.getY() < (regionBase.getY() + 120) && w.getY() >= regionBase.getY() + 64;
 	}
 
@@ -672,7 +672,7 @@ public final class SlaughterFieldsControler extends Controller {
 	 * @param w The world tile.
 	 * @return {@code True} if so.
 	 */
-	public static final boolean isNonMagicZone(WorldTile w) {
+	public static boolean isNonMagicZone(WorldTile w) {
 		return w.getX() >= (regionBase.getX() + 120) && w.getX() < regionBase.getX() + 180 && w.getY() < (regionBase.getY() + 130) && w.getY() >= regionBase.getY() + 60;
 	}
 
@@ -681,7 +681,7 @@ public final class SlaughterFieldsControler extends Controller {
 	 * @param w The world tile.
 	 * @return {@code True} if so.
 	 */
-	public static final boolean isSafe(WorldTile w) {
+	public static boolean isSafe(WorldTile w) {
 		return w.getX() > regionBase.getX() + 63 && w.getX() < regionBase.getX() + 68 && w.getY() > regionBase.getY() + 70 && w.getY() < regionBase.getY() + 77;
 	}
 

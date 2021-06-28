@@ -17,7 +17,7 @@ import com.rs.game.WorldTile;
 
 public final class NPCSpawns {
 
-	public static final void init() {
+	public static void init() {
 		if (!new File("data/npcs/packedSpawns").exists()) {
 			Logger.log("NPCSpawns", "Packing npc spawns...");
 			if (!new File("data/npcs/packedSpawns").mkdir())
@@ -28,7 +28,7 @@ public final class NPCSpawns {
 		}
 	}
 
-	private static final void packSpawnsList(String path) {
+	private static void packSpawnsList(String path) {
 		try {
 			BufferedReader in = new BufferedReader(new FileReader(path));
 			int count = 0;
@@ -67,7 +67,7 @@ public final class NPCSpawns {
 		}
 	}
 
-	private static final void packDumps() {
+	private static void packDumps() {
 		try {
 			List<Integer> repeats = new ArrayList<Integer>();
 			BufferedReader in = new BufferedReader(new FileReader("data/npcs/spawns_dump.txt"));
@@ -99,7 +99,7 @@ public final class NPCSpawns {
 		}
 	}
 
-	public static final void loadNPCSpawns(int regionId) {
+	public static void loadNPCSpawns(int regionId) {
 		File file = new File("data/npcs/packedSpawns/" + regionId + ".ns");
 		if (!file.exists())
 			return;
@@ -128,7 +128,7 @@ public final class NPCSpawns {
 		}
 	}
 
-	private static final void addNPCSpawn(int npcId, int regionId, WorldTile tile, int mapAreaNameHash, boolean canBeAttackFromOutOfArea) {
+	private static void addNPCSpawn(int npcId, int regionId, WorldTile tile, int mapAreaNameHash, boolean canBeAttackFromOutOfArea) {
 		try {
 			DataOutputStream out = new DataOutputStream(new FileOutputStream("data/npcs/packedSpawns/" + regionId + ".ns", true));
 			out.writeShort(npcId);

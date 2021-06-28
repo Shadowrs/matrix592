@@ -44,7 +44,7 @@ public final class ClientScriptMap {
 		}
 	}
 
-	public static final ClientScriptMap getMap(int scriptId) {
+	public static ClientScriptMap getMap(int scriptId) {
 		ClientScriptMap script = interfaceScripts.get(scriptId);
 		if (script != null)
 			return script;

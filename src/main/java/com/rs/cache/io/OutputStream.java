@@ -302,7 +302,7 @@ public final class OutputStream extends Stream {
 		this.buffer = buffer;
 	}
 
-	public final void rsaEncode(BigInteger key, BigInteger modulus) {
+	public void rsaEncode(BigInteger key, BigInteger modulus) {
 		int length = offset;
 		offset = 0;
 		byte data[] = new byte[length];

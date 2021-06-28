@@ -25,7 +25,7 @@ public final class PkRank implements Serializable {
 		ranks = SerializableFilesManager.loadPKRanks();
 	}
 
-	public static final void save() {
+	public static void save() {
 		SerializableFilesManager.savePkRanks(ranks);
 	}
 

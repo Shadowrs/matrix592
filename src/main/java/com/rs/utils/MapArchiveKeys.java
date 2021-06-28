@@ -17,7 +17,7 @@ public final class MapArchiveKeys {
 	private final static HashMap<Integer, int[]> keys = new HashMap<Integer, int[]>();
 	private final static String PACKED_PATH = "data/map/archiveKeys/packed.mcx";
 
-	public static final int[] getMapKeys(int regionId) {
+	public static int[] getMapKeys(int regionId) {
 		return keys.get(regionId);
 	}
 
@@ -28,7 +28,7 @@ public final class MapArchiveKeys {
 			loadUnpackedKeys();
 	}
 
-	private static final void loadPackedKeys() {
+	private static void loadPackedKeys() {
 		try {
 			RandomAccessFile in = new RandomAccessFile(PACKED_PATH, "r");
 			FileChannel channel = in.getChannel();
@@ -47,7 +47,7 @@ public final class MapArchiveKeys {
 		}
 	}
 
-	public static final void loadUnpackedKeys() {
+	public static void loadUnpackedKeys() {
 		Logger.log("MapArchiveKeys", "Packing map containers xteas...");
 		try {
 			DataOutputStream out = new DataOutputStream(new FileOutputStream(PACKED_PATH));

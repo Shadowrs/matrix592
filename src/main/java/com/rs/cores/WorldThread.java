@@ -18,7 +18,7 @@ public final class WorldThread extends Thread {
 	}
 
 	@Override
-	public final void run() {
+	public void run() {
 		while (!CoresManager.shutdown) {
 			WORLD_CYCLE++; // made the cycle update at begin instead of end cuz at end theres 600ms then to next cycle
 			long currentTime = Utils.currentTimeMillis();

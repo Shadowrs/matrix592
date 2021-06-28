@@ -86,7 +86,7 @@ public final class World {
 	private static final EntityList<NPC> npcs = new EntityList<NPC>(Settings.NPCS_LIMIT);
 	private static final Map<Integer, Region> regions = Collections.synchronizedMap(new HashMap<Integer, Region>());
 
-	public static final void init() {
+	public static void init() {
 		addRestoreRunEnergyTask();
 		addDrainPrayerTask();
 		addRestoreHitPointsTask();
@@ -117,7 +117,7 @@ public final class World {
 		}, 0, 30, TimeUnit.SECONDS);
 	}
 
-	public static final void addIncreaseElapsedBonusMinutesTak() {
+	public static void addIncreaseElapsedBonusMinutesTak() {
 		CoresManager.fastExecutor.schedule(new TimerTask() {
 			@Override
 			public void run() {
@@ -151,7 +151,7 @@ public final class World {
 		}, 0, 600, TimeUnit.MILLISECONDS);
 	}
 
-	private static final void addRestoreSpecialAttackTask() {
+	private static void addRestoreSpecialAttackTask() {
 
 		CoresManager.fastExecutor.schedule(new TimerTask() {
 			@Override
@@ -171,42 +171,32 @@ public final class World {
 
 	private static boolean checkAgility;
 
-	private static final void addRestoreRunEnergyTask() {
-		CoresManager.fastExecutor.schedule(new TimerTask() {
-			@Override
-			public void run() {
-				try {
-					for (Player player : getPlayers()) {
-						if (player == null || player.isDead() || !player.isRunning() || (checkAgility && player.getSkills().getLevel(Skills.AGILITY) < 70))
-							continue;
-						player.restoreRunEnergy();
-					}
-					checkAgility = !checkAgility;
-				} catch (Throwable e) {
-					Logger.handle(e);
-				}
+	private static void addRestoreRunEnergyTask() {
+		try {
+			for (Player player : getPlayers()) {
+				if (player == null || player.isDead() || !player.isRunning() || (checkAgility && player.getSkills().getLevel(Skills.AGILITY) < 70))
+					continue;
+				player.restoreRunEnergy();
 			}
-		}, 0, 1000);
+			checkAgility = !checkAgility;
+		} catch (Throwable e) {
+			Logger.handle(e);
+		}
 	}
 
-	private static final void addDrainPrayerTask() {
-		CoresManager.fastExecutor.schedule(new TimerTask() {
-			@Override
-			public void run() {
-				try {
-					for (Player player : getPlayers()) {
-						if (player == null || player.isDead() || !player.isRunning())
-							continue;
-						player.getPrayer().processPrayerDrain();
-					}
-				} catch (Throwable e) {
-					Logger.handle(e);
-				}
+	private static void addDrainPrayerTask() {
+		try {
+			for (Player player : getPlayers()) {
+				if (player == null || player.isDead() || !player.isRunning())
+					continue;
+				player.getPrayer().processPrayerDrain();
 			}
-		}, 0, 600);
+		} catch (Throwable e) {
+			Logger.handle(e);
+		}
 	}
 
-	private static final void addRestoreHitPointsTask() {
+	private static void addRestoreHitPointsTask() {
 		CoresManager.fastExecutor.schedule(new TimerTask() {
 			@Override
 			public void run() {
@@ -228,7 +218,7 @@ public final class World {
 		}, 0, 6000);
 	}
 
-	private static final void addRestoreSkillsTask() {
+	private static void addRestoreSkillsTask() {
 		CoresManager.fastExecutor.schedule(new TimerTask() {
 			@Override
 			public void run() {
@@ -267,15 +257,15 @@ public final class World {
 
 	}
 
-	public static final Map<Integer, Region> getRegions() {
+	public static Map<Integer, Region> getRegions() {
 		return regions;
 	}
 
-	public static final Region getRegion(int id) {
+	public static Region getRegion(int id) {
 		return getRegion(id, false);
 	}
 
-	public static final Region getRegion(int id, boolean load) {
+	public static Region getRegion(int id, boolean load) {
 		Region region = regions.get(id);
 		if (region == null) {
 			region = new Region(id);
@@ -286,7 +276,7 @@ public final class World {
 		return region;
 	}
 
-	public static final void addPlayer(Player player) {
+	public static void addPlayer(Player player) {
 		players.add(player);
 		AntiFlood.add(player.getIP());
 	}
@@ -296,15 +286,15 @@ public final class World {
 		AntiFlood.remove(player.getIP());
 	}
 
-	public static final void addNPC(NPC npc) {
+	public static void addNPC(NPC npc) {
 		npcs.add(npc);
 	}
 
-	public static final void removeNPC(NPC npc) {
+	public static void removeNPC(NPC npc) {
 		npcs.remove(npc);
 	}
 
-	public static final NPC spawnNPC(int id, WorldTile tile, int mapAreaNameHash, boolean canBeAttackFromOutOfArea, boolean spawned) {
+	public static NPC spawnNPC(int id, WorldTile tile, int mapAreaNameHash, boolean canBeAttackFromOutOfArea, boolean spawned) {
 		NPC n = null;
 		HunterNPC hunterNPCs = HunterNPC.forId(id);
 		if (hunterNPCs != null && id == hunterNPCs.getNpcId())
@@ -423,11 +413,11 @@ public final class World {
 		return n;
 	}
 
-	public static final NPC spawnNPC(int id, WorldTile tile, int mapAreaNameHash, boolean canBeAttackFromOutOfArea) {
+	public static NPC spawnNPC(int id, WorldTile tile, int mapAreaNameHash, boolean canBeAttackFromOutOfArea) {
 		return spawnNPC(id, tile, mapAreaNameHash, canBeAttackFromOutOfArea, false);
 	}
 
-	public static final void updateEntityRegion(Entity entity) {
+	public static void updateEntityRegion(Entity entity) {
 		if (entity.hasFinished()) {
 			if (entity instanceof Player)
 				getRegion(entity.getLastRegionId()).removePlayerIndex(entity.getIndex());
@@ -524,7 +514,7 @@ public final class World {
 		return region.getMaskClipedOnly(tile.getPlane(), tile.getXInRegion(), tile.getYInRegion());
 	}
 
-	public static final boolean checkProjectileStep(int plane, int x, int y, int dir, int size) {
+	public static boolean checkProjectileStep(int plane, int x, int y, int dir, int size) {
 		int xOffset = Utils.DIRECTION_DELTA_X[dir];
 		int yOffset = Utils.DIRECTION_DELTA_Y[dir];
 		/*
@@ -625,11 +615,11 @@ public final class World {
 		return true;
 	}
 
-	public static final boolean checkWalkStep(int plane, int x, int y, int dir, int size) {
+	public static boolean checkWalkStep(int plane, int x, int y, int dir, int size) {
 		return checkWalkStep(plane, x, y, Utils.DIRECTION_DELTA_X[dir], Utils.DIRECTION_DELTA_Y[dir], size);
 	}
 
-	public static final boolean checkWalkStep(int plane, int x, int y, int xOffset, int yOffset, int size) {
+	public static boolean checkWalkStep(int plane, int x, int y, int xOffset, int yOffset, int size) {
 		if (size == 1) {
 			int mask = getMask(plane, x + xOffset, y + yOffset);
 			if (xOffset == -1 && yOffset == 0)
@@ -719,7 +709,7 @@ public final class World {
 		return true;
 	}
 
-	public static final boolean containsPlayer(String username) {
+	public static boolean containsPlayer(String username) {
 		for (Player p2 : players) {
 			if (p2 == null)
 				continue;
@@ -739,7 +729,7 @@ public final class World {
 		return null;
 	}
 
-	public static final Player getPlayerByDisplayName(String username) {
+	public static Player getPlayerByDisplayName(String username) {
 		String formatedUsername = Utils.formatPlayerNameForDisplay(username);
 		for (Player player : getPlayers()) {
 			if (player == null)
@@ -750,11 +740,11 @@ public final class World {
 		return null;
 	}
 
-	public static final EntityList<Player> getPlayers() {
+	public static EntityList<Player> getPlayers() {
 		return players;
 	}
 
-	public static final EntityList<NPC> getNPCs() {
+	public static EntityList<NPC> getNPCs() {
 		return npcs;
 	}
 
@@ -762,7 +752,7 @@ public final class World {
 
 	}
 
-	public static final void safeShutdown(final boolean restart, int delay) {
+	public static void safeShutdown(final boolean restart, int delay) {
 		if (exiting_start != 0)
 			return;
 		exiting_start = Utils.currentTimeMillis();
@@ -793,23 +783,23 @@ public final class World {
 		}, delay, TimeUnit.SECONDS);
 	}
 
-	public static final boolean isSpawnedObject(WorldObject object) {
+	public static boolean isSpawnedObject(WorldObject object) {
 		return getRegion(object.getRegionId()).getSpawnedObjects().contains(object);
 	}
 
-	public static final void spawnObject(WorldObject object) {
+	public static void spawnObject(WorldObject object) {
 		getRegion(object.getRegionId()).spawnObject(object, object.getPlane(), object.getXInRegion(), object.getYInRegion(), false);
 	}
 
-	public static final void unclipTile(WorldTile tile) {
+	public static void unclipTile(WorldTile tile) {
 		getRegion(tile.getRegionId()).unclip(tile.getPlane(), tile.getXInRegion(), tile.getYInRegion());
 	}
 
-	public static final void removeObject(WorldObject object) {
+	public static void removeObject(WorldObject object) {
 		getRegion(object.getRegionId()).removeObject(object, object.getPlane(), object.getXInRegion(), object.getYInRegion());
 	}
 
-	public static final void spawnObjectTemporary(final WorldObject object, long time) {
+	public static void spawnObjectTemporary(final WorldObject object, long time) {
 		spawnObject(object);
 		CoresManager.slowExecutor.schedule(new Runnable() {
 			@Override
@@ -826,7 +816,7 @@ public final class World {
 		}, time, TimeUnit.MILLISECONDS);
 	}
 
-	public static final boolean removeObjectTemporary(final WorldObject object, long time) {
+	public static boolean removeObjectTemporary(final WorldObject object, long time) {
 		removeObject(object);
 		CoresManager.slowExecutor.schedule(new Runnable() {
 			@Override
@@ -842,7 +832,7 @@ public final class World {
 		return true;
 	}
 
-	public static final void spawnTempGroundObject(final WorldObject object, final int replaceId, long time) {
+	public static void spawnTempGroundObject(final WorldObject object, final int replaceId, long time) {
 		spawnObject(object);
 		CoresManager.slowExecutor.schedule(new Runnable() {
 			@Override
@@ -857,32 +847,32 @@ public final class World {
 		}, time, TimeUnit.MILLISECONDS);
 	}
 
-	public static final WorldObject getStandartObject(WorldTile tile) {
+	public static WorldObject getStandartObject(WorldTile tile) {
 		return getRegion(tile.getRegionId()).getStandartObject(tile.getPlane(), tile.getXInRegion(), tile.getYInRegion());
 	}
 
-	public static final WorldObject getObjectWithType(WorldTile tile, int type) {
+	public static WorldObject getObjectWithType(WorldTile tile, int type) {
 		return getRegion(tile.getRegionId()).getObjectWithType(tile.getPlane(), tile.getXInRegion(), tile.getYInRegion(), type);
 	}
 
-	public static final WorldObject getObjectWithSlot(WorldTile tile, int slot) {
+	public static WorldObject getObjectWithSlot(WorldTile tile, int slot) {
 		return getRegion(tile.getRegionId()).getObjectWithSlot(tile.getPlane(), tile.getXInRegion(), tile.getYInRegion(), slot);
 	}
 
-	public static final boolean containsObjectWithId(WorldTile tile, int id) {
+	public static boolean containsObjectWithId(WorldTile tile, int id) {
 		return getRegion(tile.getRegionId()).containsObjectWithId(tile.getPlane(), tile.getXInRegion(), tile.getYInRegion(), id);
 	}
 
-	public static final WorldObject getObjectWithId(WorldTile tile, int id) {
+	public static WorldObject getObjectWithId(WorldTile tile, int id) {
 		return getRegion(tile.getRegionId()).getObjectWithId(tile.getPlane(), tile.getXInRegion(), tile.getYInRegion(), id);
 	}
 
-	public static final void addGroundItem(final Item item, final WorldTile tile) {
+	public static void addGroundItem(final Item item, final WorldTile tile) {
 		// adds item, not invisible, no owner, no time to disapear
 		addGroundItem(item, tile, null, false, -1, 2, -1);
 	}
 
-	public static final void addGroundItem(final Item item, final WorldTile tile, final Player owner/*
+	public static void addGroundItem(final Item item, final WorldTile tile, final Player owner/*
 																									 * null for default
 																									 */, boolean invisible, long hiddenTime/*
 																																			 * default 3 minutes
@@ -890,7 +880,7 @@ public final class World {
 		addGroundItem(item, tile, owner, invisible, hiddenTime, 2, 150);
 	}
 
-	public static final FloorItem addGroundItem(final Item item, final WorldTile tile, final Player owner/*
+	public static FloorItem addGroundItem(final Item item, final WorldTile tile, final Player owner/*
 																											 * null for default
 																											 */, boolean invisible, long hiddenTime/*
 																																					 * default 3 minutes
@@ -898,7 +888,7 @@ public final class World {
 		return addGroundItem(item, tile, owner, invisible, hiddenTime, type, 150);
 	}
 
-	public static final void turnPublic(FloorItem floorItem, int publicTime) {
+	public static void turnPublic(FloorItem floorItem, int publicTime) {
 		if (!floorItem.isInvisible())
 			return;
 		int regionId = floorItem.getTile().getRegionId();
@@ -926,7 +916,7 @@ public final class World {
 	}
 
 	@Deprecated
-	public static final void addGroundItemForever(Item item, final WorldTile tile) {
+	public static void addGroundItemForever(Item item, final WorldTile tile) {
 		int regionId = tile.getRegionId();
 		final FloorItem floorItem = new FloorItem(item, tile, true);
 		final Region region = getRegion(tile.getRegionId());
@@ -941,7 +931,7 @@ public final class World {
 	/*
 	 * type 0 - gold if not tradeable type 1 - gold if destroyable type 2 - no gold
 	 */
-	public static final FloorItem addGroundItem(final Item item, final WorldTile tile, final Player owner, boolean invisible, long hiddenTime/*
+	public static FloorItem addGroundItem(final Item item, final WorldTile tile, final Player owner, boolean invisible, long hiddenTime/*
 																																				 * default 3 minutes
 																																				 */, int type, final int publicTime) {
 		if (type != 2) {
@@ -988,7 +978,7 @@ public final class World {
 		return floorItem;
 	}
 
-	public static final void updateGroundItem(Item item, final WorldTile tile, final Player owner) {
+	public static void updateGroundItem(Item item, final WorldTile tile, final Player owner) {
 		final FloorItem floorItem = World.getRegion(tile.getRegionId()).getGroundItem(item.getId(), tile, owner);
 		if (floorItem == null) {
 			addGroundItem(item, tile, owner, true, 360);
@@ -1000,7 +990,7 @@ public final class World {
 
 	}
 
-	private static final void removeGroundItem(final FloorItem floorItem, long publicTime) {
+	private static void removeGroundItem(final FloorItem floorItem, long publicTime) {
 		CoresManager.slowExecutor.schedule(new Runnable() {
 			@Override
 			public void run() {
@@ -1022,11 +1012,11 @@ public final class World {
 		}, publicTime, TimeUnit.SECONDS);
 	}
 
-	public static final boolean removeGroundItem(Player player, FloorItem floorItem) {
+	public static boolean removeGroundItem(Player player, FloorItem floorItem) {
 		return removeGroundItem(player, floorItem, true);
 	}
 
-	public static final boolean removeGroundItem(Player player, final FloorItem floorItem, boolean add) {
+	public static boolean removeGroundItem(Player player, final FloorItem floorItem, boolean add) {
 		int regionId = floorItem.getTile().getRegionId();
 		Region region = getRegion(regionId);
 		if (!region.getGroundItemsSafe().contains(floorItem))
@@ -1063,11 +1053,11 @@ public final class World {
 		}
 	}
 
-	public static final void sendObjectAnimation(WorldObject object, Animation animation) {
+	public static void sendObjectAnimation(WorldObject object, Animation animation) {
 		sendObjectAnimation(null, object, animation);
 	}
 
-	public static final void sendObjectAnimation(Entity creator, WorldObject object, Animation animation) {
+	public static void sendObjectAnimation(Entity creator, WorldObject object, Animation animation) {
 		if (creator == null) {
 			for (Player player : World.getPlayers()) {
 				if (player == null || !player.hasStarted() || player.hasFinished() || !player.withinDistance(object))
@@ -1089,7 +1079,7 @@ public final class World {
 		}
 	}
 
-	public static final void sendGraphics(Entity creator, Graphics graphics, WorldTile tile) {
+	public static void sendGraphics(Entity creator, Graphics graphics, WorldTile tile) {
 		if (creator == null) {
 			for (Player player : World.getPlayers()) {
 				if (player == null || !player.hasStarted() || player.hasFinished() || !player.withinDistance(tile))
@@ -1111,7 +1101,7 @@ public final class World {
 		}
 	}
 
-	public static final void sendProjectile(Entity shooter, WorldTile startTile, WorldTile receiver, int gfxId, int startHeight, int endHeight, int speed, int delay, int curve, int startDistanceOffset) {
+	public static void sendProjectile(Entity shooter, WorldTile startTile, WorldTile receiver, int gfxId, int startHeight, int endHeight, int speed, int delay, int curve, int startDistanceOffset) {
 		for (int regionId : shooter.getMapRegionsIds()) {
 			List<Integer> playersIndexes = getRegion(regionId).getPlayerIndexes();
 			if (playersIndexes == null)
@@ -1125,7 +1115,7 @@ public final class World {
 		}
 	}
 
-	public static final void sendProjectile(WorldTile shooter, Entity receiver, int gfxId, int startHeight, int endHeight, int speed, int delay, int curve, int startDistanceOffset) {
+	public static void sendProjectile(WorldTile shooter, Entity receiver, int gfxId, int startHeight, int endHeight, int speed, int delay, int curve, int startDistanceOffset) {
 		for (int regionId : receiver.getMapRegionsIds()) {
 			List<Integer> playersIndexes = getRegion(regionId).getPlayerIndexes();
 			if (playersIndexes == null)
@@ -1139,7 +1129,7 @@ public final class World {
 		}
 	}
 
-	public static final void sendProjectile(Entity shooter, WorldTile receiver, int gfxId, int startHeight, int endHeight, int speed, int delay, int curve, int startDistanceOffset) {
+	public static void sendProjectile(Entity shooter, WorldTile receiver, int gfxId, int startHeight, int endHeight, int speed, int delay, int curve, int startDistanceOffset) {
 		for (int regionId : shooter.getMapRegionsIds()) {
 			List<Integer> playersIndexes = getRegion(regionId).getPlayerIndexes();
 			if (playersIndexes == null)
@@ -1153,7 +1143,7 @@ public final class World {
 		}
 	}
 
-	public static final void sendProjectile(Entity shooter, Entity receiver, int gfxId, int startHeight, int endHeight, int speed, int delay, int curve, int startDistanceOffset) {
+	public static void sendProjectile(Entity shooter, Entity receiver, int gfxId, int startHeight, int endHeight, int speed, int delay, int curve, int startDistanceOffset) {
 		for (int regionId : shooter.getMapRegionsIds()) {
 			List<Integer> playersIndexes = getRegion(regionId).getPlayerIndexes();
 			if (playersIndexes == null)
@@ -1168,7 +1158,7 @@ public final class World {
 		}
 	}
 
-	public static final boolean isMultiArea(WorldTile tile) {
+	public static boolean isMultiArea(WorldTile tile) {
 		int destX = tile.getX();
 		int destY = tile.getY();
 		int regionId = tile.getRegionId(); // try to avoid using it unless area
@@ -1231,7 +1221,7 @@ public final class World {
 		// multi
 	}
 
-	public static final boolean isPvpArea(WorldTile tile) {
+	public static boolean isPvpArea(WorldTile tile) {
 		return Wilderness.isAtWild(tile);
 	}
 
@@ -1251,7 +1241,7 @@ public final class World {
 		}
 	}
 
-	public static final void sendProjectile(WorldObject object, WorldTile startTile, WorldTile endTile, int gfxId, int startHeight, int endHeight, int speed, int delay, int curve, int startOffset) {
+	public static void sendProjectile(WorldObject object, WorldTile startTile, WorldTile endTile, int gfxId, int startHeight, int endHeight, int speed, int delay, int curve, int startOffset) {
 		for (Player pl : players) {
 			if (pl == null || !pl.withinDistance(object, 20))
 				continue;

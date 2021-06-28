@@ -10,7 +10,7 @@ public final class DialogueHandler {
 	private static final HashMap<Object, Class<? extends Dialogue>> handledDialogues = new HashMap<Object, Class<? extends Dialogue>>();
 
 	@SuppressWarnings({ "unchecked" })
-	public static final void init() {
+	public static void init() {
 		try {
 			Class<Dialogue>[] classes = Utils.getClasses("com.rs.game.player.dialogues.impl");
 			for (Class<Dialogue> c : classes) {
@@ -23,12 +23,12 @@ public final class DialogueHandler {
 		}
 	}
 
-	public static final void reload() {
+	public static void reload() {
 		handledDialogues.clear();
 		init();
 	}
 
-	public static final Dialogue getDialogue(Object key) {
+	public static Dialogue getDialogue(Object key) {
 		if (key instanceof Dialogue)
 			return (Dialogue) key;
 		Class<? extends Dialogue> classD = handledDialogues.get(key);

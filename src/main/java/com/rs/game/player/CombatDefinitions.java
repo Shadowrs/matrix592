@@ -249,7 +249,7 @@ public final class CombatDefinitions implements Serializable {
 		}
 	}
 
-	public static final int getMeleeDefenceBonus(int bonusId) {
+	public static int getMeleeDefenceBonus(int bonusId) {
 		if (bonusId == STAB_ATTACK)
 			return STAB_DEF;
 		if (bonusId == SLASH_DEF)
@@ -257,7 +257,7 @@ public final class CombatDefinitions implements Serializable {
 		return CRUSH_DEF;
 	}
 
-	public static final int getMeleeBonusStyle(int weaponId, int attackStyle) {
+	public static int getMeleeBonusStyle(int weaponId, int attackStyle) {
 		if (weaponId != -1) {
 			if (weaponId == -2) {
 				return CRUSH_ATTACK;
@@ -344,7 +344,7 @@ public final class CombatDefinitions implements Serializable {
 		}
 	}
 
-	public static final int getXpStyle(int weaponId, int attackStyle) {
+	public static int getXpStyle(int weaponId, int attackStyle) {
 		if (weaponId != -1 && weaponId != -2) {
 			String weaponName = ItemDefinitions.getItemDefinitions(weaponId).getName().toLowerCase();
 			if (weaponName.contains("whip")) {

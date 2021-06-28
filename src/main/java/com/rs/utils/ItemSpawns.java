@@ -20,12 +20,12 @@ import com.rs.game.item.Item;
 
 public final class ItemSpawns {
 
-	public static final void init() {
+	public static void init() {
 		if (!new File("data/items/packedSpawns").exists())
 			packItemSpawns();
 	}
 
-	private static final void packItemSpawns() {
+	private static void packItemSpawns() {
 		Logger.log("ItemSpawns", "Packing object spawns...");
 		if (!new File("data/items/packedSpawns").mkdir())
 			throw new RuntimeException("Couldn't create packedSpawns directory.");
@@ -58,7 +58,7 @@ public final class ItemSpawns {
 	}
 
 	@SuppressWarnings("deprecation")
-	public static final void loadItemSpawns(int regionId) {
+	public static void loadItemSpawns(int regionId) {
 		File file = new File("data/items/packedSpawns/" + regionId + ".is");
 		if (!file.exists())
 			return;
@@ -82,7 +82,7 @@ public final class ItemSpawns {
 		}
 	}
 
-	private static final void addItemSpawn(int itemId, int regionId, WorldTile tile) {
+	private static void addItemSpawn(int itemId, int regionId, WorldTile tile) {
 		try {
 			DataOutputStream out = new DataOutputStream(new FileOutputStream("data/items/packedSpawns/" + regionId + ".is", true));
 			out.writeShort(itemId);
