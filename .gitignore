@@ -14,3 +14,5 @@ data.zip
 run.bat
 src/configuration.cfg
 data/pkRanks.ser
+.gradle/
+build/

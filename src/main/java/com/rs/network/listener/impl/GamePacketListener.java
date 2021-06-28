@@ -1,6 +1,7 @@
 package com.rs.network.listener.impl;
 
 import com.rs.game.player.Player;
+import com.rs.io.InputStream;
 import com.rs.network.listener.NetworkListener;
 import com.rs.network.protocol.codec.game.GamePacketRequest;
 import io.netty.channel.ChannelHandlerContext;
@@ -35,9 +36,18 @@ public class GamePacketListener extends NetworkListener {
 		
 		GamePacketRequest request = (GamePacketRequest) msg;
 		if (request.getStream().getRemaining() > 0 && player.getSession().isRegistered() && !player.hasFinished()) {
-			synchronized (ctx.channel()) {
-				player.getPacketsDecoder().processPackets(request.getPacketId(), request.getStream(), request.getSize());
-			}
+			player.pendingPackets.add(new PendingPacket(request.getPacketId(), request.getSize(), request.getStream()));
+		}
+	}
+
+	public static class PendingPacket {
+		public int id, size;
+		public com.rs.io.InputStream stream;
+
+		public PendingPacket(int id, int size, InputStream stream) {
+			this.id = id;
+			this.size = size;
+			this.stream = stream;
 		}
 	}
 

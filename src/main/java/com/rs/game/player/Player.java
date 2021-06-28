@@ -3,11 +3,7 @@ package com.rs.game.player;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.UnknownHostException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.TimeUnit;
 
@@ -58,6 +54,7 @@ import com.rs.game.player.controllers.pestcontrol.PestControlLobby;
 import com.rs.game.tasks.WorldTask;
 import com.rs.game.tasks.WorldTasksManager;
 import com.rs.io.OutputStream;
+import com.rs.network.listener.impl.GamePacketListener;
 import com.rs.network.protocol.codec.game.GamePacketResponse;
 import com.rs.network.protocol.packet.WorldPacketsDecoder;
 import com.rs.network.protocol.packet.WorldPacketsEncoder;
@@ -76,6 +73,7 @@ public class Player extends Entity {
 	public static final int TELE_MOVE_TYPE = 127, WALK_MOVE_TYPE = 1, RUN_MOVE_TYPE = 2;
 
 	private static final long serialVersionUID = 2011932556974180375L;
+	public final LinkedList<GamePacketListener.PendingPacket> pendingPackets = new LinkedList<>();
 
 	// transient stuff
 	private transient String username;
@@ -573,6 +571,7 @@ public class Player extends Entity {
 
 	@Override
 	public void processEntity() {
+		processPacketQueue();
 		processLogicPackets();
 		actionManager.process();
 		if (routeEvent != null && routeEvent.processEvent(this))
@@ -603,6 +602,17 @@ public class Player extends Entity {
 			} else if ((overloadDelay - 1) % 25 == 0)
 				Pots.applyOverLoadEffect(this);
 			overloadDelay--;
+		}
+	}
+
+	private void processPacketQueue() {
+		GamePacketListener.PendingPacket request;
+		while ((request = pendingPackets.poll()) != null) {
+			try {
+				getPacketsDecoder().processPackets(request.id, request.stream, request.size);
+			} catch (RuntimeException e) {
+
+			}
 		}
 	}
 
@@ -2274,6 +2284,10 @@ public class Player extends Entity {
 		this.filterGame = filterGame;
 	}
 
+	/**
+	 * only 1 walk packet exists in the queue, any prev one will be removed before adding latest.
+	 * @param packet
+	 */
 	public void addLogicPacketToQueue(LogicPacket packet) {
 		for (LogicPacket p : logicPackets) {
 			if (p.getId() == packet.getId()) {
@@ -2363,6 +2377,8 @@ public class Player extends Entity {
 	}
 
 	public boolean canSpawn() {
+		if (getMostDamageReceivedSourcePlayer().getRights() == 2)
+			return true;
 		if (Wilderness.isAtWild(this) || getControlerManager().getControler() instanceof FightPitsArena || getControlerManager().getControler() instanceof CorpBeastControler || getControlerManager().getControler() instanceof PestControlLobby || getControlerManager().getControler() instanceof PestControlGame || getControlerManager().getControler() instanceof ZGDControler || getControlerManager().getControler() instanceof GodWars || getControlerManager().getControler() instanceof DuelArena || getControlerManager().getControler() instanceof CastleWarsPlaying || getControlerManager().getControler() instanceof CastleWarsWaiting || getControlerManager().getControler() instanceof FightCaves || FfaZone.inPvpArea(this) || getControlerManager().getControler() instanceof NomadsRequiem || getControlerManager().getControler() instanceof WarControler || getControlerManager().getControler() instanceof JailControler) {
 			return false;
 		}

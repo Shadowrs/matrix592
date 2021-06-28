@@ -228,8 +228,8 @@ public class Connection {
 		synchronized (ioWriteLock) {
 			int capacity = writeBuffer.length - writeBufferLength;
 			if (length > capacity) {
-				ioWriteThread.stop(new IOException("Buffer overflow!"));
-				return;
+				throw new RuntimeException("buffer overflow");
+				//ioWriteThread.stop(new IOException("Buffer overflow!"));
 			}
 
 			for (int i = 0; i < length; i++)
