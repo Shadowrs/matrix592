@@ -72,6 +72,8 @@ import com.rs.game.player.content.LivingRockCavern;
 import com.rs.game.player.controllers.JadinkoLair;
 import com.rs.game.player.controllers.Wilderness;
 import com.rs.game.route.Flags;
+import com.rs.game.tasks.WorldTask;
+import com.rs.game.tasks.WorldTasksManager;
 import com.rs.utils.AntiFlood;
 import com.rs.utils.Logger;
 import com.rs.utils.ShopsHandler;
@@ -87,15 +89,10 @@ public final class World {
 	private static final Map<Integer, Region> regions = Collections.synchronizedMap(new HashMap<Integer, Region>());
 
 	public static void init() {
-		addRestoreRunEnergyTask();
-		addDrainPrayerTask();
-		addRestoreHitPointsTask();
-		addRestoreSkillsTask();
-		addRestoreSpecialAttackTask();
-		addRestoreShopItemsTask();
-		addOwnedObjectsTask();
-		if (Settings.XP_BONUS_ENABLED)
-			addIncreaseElapsedBonusMinutesTak();
+
+		repeatEveryTick();
+		repeat30s();
+		repeatMinute();
 		LivingRockCavern.init();
 		SiphionActionNodes.init();
 		PuroPuro.initPuroImplings();
@@ -104,69 +101,86 @@ public final class World {
 		// SlaughterFieldsControler.load();
 	}
 
-	private static void addRestoreShopItemsTask() {
-		CoresManager.slowExecutor.scheduleWithFixedDelay(new Runnable() {
+	private static void repeatMinute() {
+		WorldTasksManager.schedule(new WorldTask() {
 			@Override
 			public void run() {
-				try {
-					ShopsHandler.restoreShops();
-				} catch (Throwable e) {
-					Logger.handle(e);
-				}
+				if (Settings.XP_BONUS_ENABLED)
+					addIncreaseElapsedBonusMinutesTak();
+
+				repeatMinute();
 			}
-		}, 0, 30, TimeUnit.SECONDS);
+		}, 100);
+	}
+
+	private static void repeatEveryTick() {
+		WorldTasksManager.schedule(new WorldTask() {
+			@Override
+			public void run() {
+				addRestoreRunEnergyTask();
+				addDrainPrayerTask();
+				addOwnedObjectsTask();
+
+				repeatEveryTick();
+			}
+		}, 0);
+	}
+
+	private static void repeat30s() {
+		WorldTasksManager.schedule(new WorldTask() {
+			@Override
+			public void run() {
+				addRestoreHitPointsTask();
+				addRestoreSkillsTask();
+				addRestoreSpecialAttackTask();
+				addRestoreShopItemsTask();
+
+				repeat30s();
+			}
+		}, 50);
+	}
+
+	private static void addRestoreShopItemsTask() {
+		try {
+			ShopsHandler.restoreShops();
+		} catch (Throwable e) {
+			Logger.handle(e);
+		}
 	}
 
 	public static void addIncreaseElapsedBonusMinutesTak() {
-		CoresManager.fastExecutor.schedule(new TimerTask() {
-			@Override
-			public void run() {
-				try {
-					for (Player player : getPlayers()) {
-						if (player == null || !player.isRunning())
-							continue;
-						if (!Settings.XP_BONUS_ENABLED) {
-							this.cancel();
-							return;
-						}
-						player.getSkills().increaseElapsedBonusMinues();
-					}
-				} catch (Throwable e) {
-					Logger.handle(e);
-				}
+		try {
+			if (!Settings.XP_BONUS_ENABLED) {
+				return;
 			}
-		}, 0, 60000);
+			for (Player player : getPlayers()) {
+				if (player == null || !player.isRunning())
+					continue;
+				player.getSkills().increaseElapsedBonusMinues();
+			}
+		} catch (Throwable e) {
+			Logger.handle(e);
+		}
 	}
 
 	private static void addOwnedObjectsTask() {
-		CoresManager.slowExecutor.scheduleWithFixedDelay(new Runnable() {
-			@Override
-			public void run() {
-				try {
-					OwnedObjectManager.processAll();
-				} catch (Throwable e) {
-					Logger.handle(e);
-				}
-			}
-		}, 0, 600, TimeUnit.MILLISECONDS);
+		try {
+			OwnedObjectManager.processAll();
+		} catch (Throwable e) {
+			Logger.handle(e);
+		}
 	}
 
 	private static void addRestoreSpecialAttackTask() {
-
-		CoresManager.fastExecutor.schedule(new TimerTask() {
-			@Override
-			public void run() {
-				try {
-					for (Player player : getPlayers()) {
-						if (player == null || player.isDead() || !player.isRunning())
-							continue;
-						player.getCombatDefinitions().restoreSpecialAttack();
-					}
-				} catch (Throwable e) {
-					Logger.handle(e);
-				}
+		try {
+			for (Player player : getPlayers()) {
+				if (player == null || player.isDead() || !player.isRunning())
+					continue;
+				player.getCombatDefinitions().restoreSpecialAttack();
 			}
-		}, 0, 30000);
+		} catch (Throwable e) {
+			Logger.handle(e);
+		}
 	}
 
 	private static boolean checkAgility;
@@ -197,63 +211,53 @@ public final class World {
 	}
 
 	private static void addRestoreHitPointsTask() {
-		CoresManager.fastExecutor.schedule(new TimerTask() {
-			@Override
-			public void run() {
-				try {
-					for (Player player : getPlayers()) {
-						if (player == null || player.isDead() || !player.isRunning())
-							continue;
-						player.restoreHitPoints();
-					}
-					for (NPC npc : npcs) {
-						if (npc == null || npc.isDead() || npc.hasFinished())
-							continue;
-						npc.restoreHitPoints();
-					}
-				} catch (Throwable e) {
-					Logger.handle(e);
-				}
+		try {
+			for (Player player : getPlayers()) {
+				if (player == null || player.isDead() || !player.isRunning())
+					continue;
+				player.restoreHitPoints();
 			}
-		}, 0, 6000);
+			for (NPC npc : npcs) {
+				if (npc == null || npc.isDead() || npc.hasFinished())
+					continue;
+				npc.restoreHitPoints();
+			}
+		} catch (Throwable e) {
+			Logger.handle(e);
+		}
 	}
 
 	private static void addRestoreSkillsTask() {
-		CoresManager.fastExecutor.schedule(new TimerTask() {
-			@Override
-			public void run() {
-				try {
-					for (Player player : getPlayers()) {
-						if (player == null || !player.isRunning())
-							continue;
-						int ammountTimes = player.getPrayer().usingPrayer(0, 8) ? 2 : 1;
-						if (player.isResting())
-							ammountTimes += 1;
-						boolean berserker = player.getPrayer().usingPrayer(1, 5);
-						b: for (int skill = 0; skill < 25; skill++) {
-							if (skill == Skills.SUMMONING || skill == Skills.PRAYER)
-								continue b;
-							c: for (int time = 0; time < ammountTimes; time++) {
-								int currentLevel = player.getSkills().getLevel(skill);
-								int normalLevel = player.getSkills().getLevelForXp(skill);
-								if (currentLevel > normalLevel && time == 0) {
-									if (skill == Skills.ATTACK || skill == Skills.STRENGTH || skill == Skills.DEFENCE || skill == Skills.RANGE || skill == Skills.MAGIC) {
-										if (berserker && Utils.getRandom(100) <= 15)
-											continue c;
-									}
-									player.getSkills().set(skill, currentLevel - 1);
-								} else if (currentLevel < normalLevel)
-									player.getSkills().set(skill, currentLevel + 1);
-								else
-									break c;
+		try {
+			for (Player player : getPlayers()) {
+				if (player == null || !player.isRunning())
+					continue;
+				int ammountTimes = player.getPrayer().usingPrayer(0, 8) ? 2 : 1;
+				if (player.isResting())
+					ammountTimes += 1;
+				boolean berserker = player.getPrayer().usingPrayer(1, 5);
+				b: for (int skill = 0; skill < 25; skill++) {
+					if (skill == Skills.SUMMONING || skill == Skills.PRAYER)
+						continue b;
+					c: for (int time = 0; time < ammountTimes; time++) {
+						int currentLevel = player.getSkills().getLevel(skill);
+						int normalLevel = player.getSkills().getLevelForXp(skill);
+						if (currentLevel > normalLevel && time == 0) {
+							if (skill == Skills.ATTACK || skill == Skills.STRENGTH || skill == Skills.DEFENCE || skill == Skills.RANGE || skill == Skills.MAGIC) {
+								if (berserker && Utils.getRandom(100) <= 15)
+									continue c;
 							}
-						}
+							player.getSkills().set(skill, currentLevel - 1);
+						} else if (currentLevel < normalLevel)
+							player.getSkills().set(skill, currentLevel + 1);
+						else
+							break c;
 					}
-				} catch (Throwable e) {
-					Logger.handle(e);
 				}
 			}
-		}, 0, 30000);
+		} catch (Throwable e) {
+			Logger.handle(e);
+		}
 
 	}
 
