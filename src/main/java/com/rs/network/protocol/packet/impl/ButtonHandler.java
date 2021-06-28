@@ -669,28 +669,12 @@ public class ButtonHandler {
 			else if (componentId >= 97 && componentId <= 116)
 				player.setGuestChatSetup(componentId - 97);
 		} else if (interfaceId == 271) {
-			CoresManager.fastExecutor.schedule(new TimerTask() {
-				@Override
-				public void run() {
-					try {
-						WorldTasksManager.schedule(new WorldTask() {
-
-							@Override
-							public void run() {
-								if (player.isDead())
-									return;
-								if (componentId == 8 || componentId == 42) {
-									player.getPrayer().switchPrayer(slotId);
-								} else if (componentId == 43 && player.getPrayer().isUsingQuickPrayer())
-									player.getPrayer().switchSettingQuickPrayer();
-							}
-						});
-					} catch (Throwable e) {
-						Logger.handle(e);
-					}
-				}
-			}, 300);
-
+			if (player.isDead())
+				return;
+			if (componentId == 8 || componentId == 42) {
+				player.getPrayer().switchPrayer(slotId);
+			} else if (componentId == 43 && player.getPrayer().isUsingQuickPrayer())
+				player.getPrayer().switchSettingQuickPrayer();
 		} else if (interfaceId == 320) {
 			player.stopAll();
 			int lvlupSkill = -1;
@@ -1151,28 +1135,12 @@ public class ButtonHandler {
 			}
 		} else if (interfaceId == 749) {
 			if (componentId == 1) {
-
-				CoresManager.fastExecutor.schedule(new TimerTask() {
-					@Override
-					public void run() {
-						try {
-							WorldTasksManager.schedule(new WorldTask() {
-
-								@Override
-								public void run() {
-									if (player.isDead())
-										return;
-									if (packetId == WorldPacketsDecoder.ACTION_BUTTON1_PACKET) // activate
-										player.getPrayer().switchQuickPrayers();
-									else if (packetId == WorldPacketsDecoder.ACTION_BUTTON2_PACKET) // switch
-										player.getPrayer().switchSettingQuickPrayer();
-								}
-							});
-						} catch (Throwable e) {
-							Logger.handle(e);
-						}
-					}
-				}, 300);
+				if (player.isDead())
+					return;
+				if (packetId == WorldPacketsDecoder.ACTION_BUTTON1_PACKET) // activate
+					player.getPrayer().switchQuickPrayers();
+				else if (packetId == WorldPacketsDecoder.ACTION_BUTTON2_PACKET) // switch
+					player.getPrayer().switchSettingQuickPrayer();
 			}
 
 		} else if (interfaceId == 11) {
@@ -1625,24 +1593,9 @@ public class ButtonHandler {
 	}
 
 	public static void submitSpecialRequest(final Player player) {
-		CoresManager.fastExecutor.schedule(new TimerTask() {
-			@Override
-			public void run() {
-				try {
-					WorldTasksManager.schedule(new WorldTask() {
-
-						@Override
-						public void run() {
-							if (player.isDead())
-								return;
-							player.getCombatDefinitions().switchUsingSpecialAttack();
-						}
-					}, 0);
-				} catch (Throwable e) {
-					Logger.handle(e);
-				}
-			}
-		}, 300);
+		if (player.isDead())
+			return;
+		player.getCombatDefinitions().switchUsingSpecialAttack();
 	}
 
 	public static void sendWear(Player player, int[] slotIds) {
