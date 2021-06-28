@@ -126,7 +126,6 @@ public class Player extends Entity {
 	private transient Runnable closeInterfacesEvent;
 	private transient long lastPublicMessage;
 	private transient long polDelay;
-	private transient List<Integer> switchItemCache;
 	private transient boolean disableEquip;
 	private transient MachineInformation machineInformation;
 	private transient boolean castedVeng;
@@ -383,7 +382,6 @@ public class Player extends Entity {
 		setDirection(Utils.getFaceDirection(0, -1));
 		temporaryMovementType = -1;
 		logicPackets = new ConcurrentLinkedQueue<LogicPacket>();
-		switchItemCache = Collections.synchronizedList(new ArrayList<Integer>());
 		initEntity();
 		World.addPlayer(this);
 		World.updateEntityRegion(this);
@@ -2397,10 +2395,6 @@ public class Player extends Entity {
 		this.polDelay = delay;
 	}
 
-	public List<Integer> getSwitchItemCache() {
-		return switchItemCache;
-	}
-
 	public int getMovementType() {
 		if (getTemporaryMoveType() != -1)
 			return getTemporaryMoveType();
@@ -2443,10 +2437,6 @@ public class Player extends Entity {
 		if (combatDefinitions.getSpecialAttackPercentage() < specAmt) {
 			getSocialManager().sendGameMessage("You don't have enough power left.");
 			combatDefinitions.desecreaseSpecialAttack(0);
-			return;
-		}
-		if (this.getSwitchItemCache().size() > 0) {
-			ButtonHandler.submitSpecialRequest(this);
 			return;
 		}
 		switch (weaponId) {

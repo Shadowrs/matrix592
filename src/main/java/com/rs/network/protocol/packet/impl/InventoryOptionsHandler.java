@@ -104,33 +104,8 @@ public class InventoryOptionsHandler {
 		} else {
 			if (player.isEquipDisabled())
 				return;
-			if (player.getSwitchItemCache().isEmpty()) {
-				player.getSwitchItemCache().add(slotId);
-				CoresManager.fastExecutor.schedule(new TimerTask() {
-					@Override
-					public void run() {
-						try {
-							WorldTasksManager.schedule(new WorldTask() {
-
-								@Override
-								public void run() {
-									List<Integer> slots = player.getSwitchItemCache();
-									int[] slot = new int[slots.size()];
-									for (int i = 0; i < slot.length; i++)
-										slot[i] = slots.get(i);
-									player.getSwitchItemCache().clear();
-									ButtonHandler.sendWear(player, slot);
-									player.stopAll(false, true, false);
-								}
-							}, 0);
-						} catch (Throwable e) {
-							Logger.handle(e);
-						}
-					}
-				}, 300);
-			} else if (!player.getSwitchItemCache().contains(slotId)) {
-				player.getSwitchItemCache().add(slotId);
-			}
+			ButtonHandler.sendWear(player, new int[] {slotId});
+			player.stopAll(false, true, false);
 		}
 	}
 

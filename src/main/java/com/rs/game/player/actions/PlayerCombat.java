@@ -1602,7 +1602,7 @@ public class PlayerCombat extends Action {
 					final Player other = (Player) target;
 					other.lock();
 					other.addFoodDelay(3000);
-					other.setDisableEquip(true);
+					other.setDisableEquip(true); // a version of 'lock'
 					WorldTasksManager.schedule(new WorldTask() {
 						@Override
 						public void run() {
