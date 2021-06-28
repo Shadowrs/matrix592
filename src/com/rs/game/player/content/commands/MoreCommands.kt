@@ -1,8 +1,9 @@
-package com.rs.game.player.content
+package com.rs.game.player.content.commands
 
 import com.rs.game.WorldTile
 import com.rs.game.item.Item
 import com.rs.game.player.Player
+import com.rs.game.player.content.Summoning
 import com.rs.game.player.content.Summoning.Pouch
 import com.rs.network.DummyChannel
 import com.rs.network.protocol.packet.impl.ButtonHandler
@@ -61,7 +62,7 @@ object MoreCommands {
                 bot.rights = 2
                 bot.start()
                 Commands.processCommand(bot, "master", true, false)
-                bot.nextWorldTile = WorldTile(player.x, player.y, player.plane)
+                bot.teleport(WorldTile(player.x, player.y, player.plane))
                 bot.controlerManager.startControler("Wilderness")
                 bot.hitpoints = Short.MAX_VALUE.toInt()
                 bot.equipment.equipmentHpIncrease = Short.MAX_VALUE - 990
@@ -69,6 +70,14 @@ object MoreCommands {
             }
             "wild" -> {
                 player.controlerManager.startControler("Wilderness")
+                return true
+            }
+            "debug" -> {
+                player.debugOn = !player.debugOn
+                return true
+            }
+            "con" -> {
+                player.debug("getControler "+player.controlerManager.name())
                 return true
             }
         }

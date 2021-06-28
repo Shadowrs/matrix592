@@ -19,7 +19,7 @@ import com.rs.game.player.RouteEvent;
 import com.rs.game.player.Skills;
 import com.rs.game.player.actions.PlayerCombat;
 import com.rs.game.player.actions.PlayerFollow;
-import com.rs.game.player.content.Commands;
+import com.rs.game.player.content.commands.Commands;
 import com.rs.game.player.content.ForumAuthManager;
 import com.rs.game.player.content.FriendChatsManager;
 import com.rs.game.player.content.Magic;

@@ -1,8 +1,8 @@
-package com.rs.game.player;
+package com.rs.game.player.content.commands;
 
 import com.rs.game.World;
 import com.rs.game.WorldTile;
-import com.rs.game.player.content.Commands;
+import com.rs.game.player.Player;
 import com.rs.game.player.content.TicketSystem;
 import com.rs.utils.Utils;
 
@@ -17,7 +17,7 @@ public class SuppportCmds {
                     player.message("You cannot tele anywhere from here.");
                     return true;
                 }
-                player.setNextWorldTile(new WorldTile(2667, 10396, 0));
+                player.teleport(new WorldTile(2667, 10396, 0));
                 return true;
             case "realnames":
                 for (int i = 10; i < World.getPlayers().size() + 10; i++)

@@ -1,6 +1,7 @@
-package com.rs.game.player;
+package com.rs.game.player.content.commands;
 
 import com.rs.game.World;
+import com.rs.game.player.Player;
 import com.rs.utils.Encrypt;
 import com.rs.utils.IPBanL;
 import com.rs.utils.SerializableFilesManager;

@@ -1,4 +1,4 @@
-package com.rs.game.player.content;
+package com.rs.game.player.content.commands;
 
 import com.rs.Launcher;
 import com.rs.Settings;
@@ -30,6 +30,7 @@ import com.rs.game.npc.others.Bork;
 import com.rs.game.player.Player;
 import com.rs.game.player.Skills;
 import com.rs.game.player.SlayerManager;
+import com.rs.game.player.content.*;
 import com.rs.game.player.content.grandExchange.GrandExchange;
 import com.rs.game.player.cutscenes.NexCutScene;
 import com.rs.game.route.Flags;
@@ -83,7 +84,7 @@ public class AdminCmds {
                 int plane = Integer.valueOf(cmd[0]);
                 int x = Integer.valueOf(cmd[1]) << 6 | Integer.valueOf(cmd[3]);
                 int y = Integer.valueOf(cmd[2]) << 6 | Integer.valueOf(cmd[4]);
-                player.setNextWorldTile(new WorldTile(x, y, plane));
+                player.teleport(new WorldTile(x, y, plane));
                 return true;
             }
         } else {
@@ -641,7 +642,7 @@ public class AdminCmds {
                 for (Player staff : World.getPlayers()) {
                     if (!staff.isSupporter())
                         continue;
-                    staff.setNextWorldTile(player);
+                    staff.teleport(player);
                     staff.message("You been teleported for a staff meeting by " + player.getDisplayName());
                 }
                 return true;
@@ -649,7 +650,7 @@ public class AdminCmds {
                 for (Player staff : World.getPlayers()) {
                     if (staff.getRights() != 1)
                         continue;
-                    staff.setNextWorldTile(player);
+                    staff.teleport(player);
                     staff.message("You been teleported for a staff meeting by " + player.getDisplayName());
                 }
                 return true;
@@ -657,7 +658,7 @@ public class AdminCmds {
                 for (Player staff : World.getPlayers()) {
                     if (!staff.isSupporter() && staff.getRights() != 1)
                         continue;
-                    staff.setNextWorldTile(player);
+                    staff.teleport(player);
                     staff.message("You been teleported for a staff meeting by " + player.getDisplayName());
                 }
                 return true;
@@ -665,7 +666,7 @@ public class AdminCmds {
                 for (Player p2 : World.getPlayers()) {
                     if (p2 == null || p2.getControlerManager().getControler() != null)
                         continue;
-                    p2.setNextWorldTile(player);
+                    p2.teleport(player);
                 }
                 return true;
             case "pickuppet":
@@ -712,7 +713,7 @@ public class AdminCmds {
                         @Override
                         public void run() {
                             _target.setNextAnimation(new Animation(-1));
-                            _target.setNextWorldTile(player);
+                            _target.teleport(player);
 
                         }
                     }, 5);
@@ -1562,7 +1563,7 @@ public class AdminCmds {
                 }
                 try {
                     player.resetWalkSteps();
-                    player.setNextWorldTile(new WorldTile(Integer.valueOf(cmd[1]), Integer.valueOf(cmd[2]), cmd.length >= 4 ? Integer.valueOf(cmd[3]) : player.getPlane()));
+                    player.teleport(new WorldTile(Integer.valueOf(cmd[1]), Integer.valueOf(cmd[2]), cmd.length >= 4 ? Integer.valueOf(cmd[3]) : player.getPlane()));
                 } catch (NumberFormatException e) {
                     player.getSocialManager().sendPanelBoxMessage("Use: ::tele coordX coordY plane");
                 }
@@ -1755,7 +1756,7 @@ public class AdminCmds {
                 for (Player staff : World.getPlayers()) {
                     if (staff.getRights() == 0)
                         continue;
-                    staff.setNextWorldTile(new WorldTile(2675, 10418, 0));
+                    staff.teleport(new WorldTile(2675, 10418, 0));
                     staff.message("You been teleported for a staff meeting by " + player.getDisplayName());
                 }
                 return true;

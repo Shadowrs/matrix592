@@ -1,4 +1,4 @@
-package com.rs.game.player.content;
+package com.rs.game.player.content.commands;
 
 import com.rs.Settings;
 import com.rs.game.World;
@@ -22,7 +22,7 @@ public class ModCommands {
                 if (target == null)
                     player.message("Couldn't find player " + name + ".");
                 else {
-                    player.setNextWorldTile(target);
+                    player.teleport(target);
                 }
                 return true;
             case "teletome":
@@ -41,7 +41,7 @@ public class ModCommands {
                         player.message("Unable to teleport a developer to you.");
                         return true;
                     }
-                    target.setNextWorldTile(player);
+                    target.teleport(player);
                 }
                 return true;
             case "sendhome":
@@ -57,7 +57,7 @@ public class ModCommands {
                     if (target.getNextWorldTile() == null) // if controler
                         // wont tele the
                         // player
-                        target.setNextWorldTile(Settings.START_PLAYER_LOCATION);
+                        target.teleport(Settings.START_PLAYER_LOCATION);
                     player.message("You have unnulled: " + target.getDisplayName() + ".");
                     return true;
                 }

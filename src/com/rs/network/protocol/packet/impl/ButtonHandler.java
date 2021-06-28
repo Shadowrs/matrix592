@@ -91,7 +91,7 @@ public class ButtonHandler {
 		final int slotId = stream.readUnsignedShortLE();
 		final int slotId2 = stream.readUnsignedShortLE();
 		if (Settings.DEBUG || player.debugOn) {
-			player.debug(packetId + "," + interfaceId + "," + componentId + "," + slotId + "," + slotId2);
+			player.debug("packet "+packetId + "," + interfaceId + "," + componentId + "," + slotId + "," + slotId2);
 		}
 
 		if (!player.getControlerManager().processButtonClick(interfaceId, componentId, slotId, slotId2, packetId))
@@ -1092,7 +1092,7 @@ public class ButtonHandler {
 		} else if (interfaceId == 650) {
 			if (componentId == 15) {
 				player.stopAll();
-				player.setNextWorldTile(new WorldTile(2974, 4384, player.getPlane()));
+				player.teleport(new WorldTile(2974, 4384, player.getPlane()));
 				player.getControlerManager().startControler("CorpBeastControler");
 			} else if (componentId == 16)
 				player.closeInterfaces();
@@ -1360,7 +1360,7 @@ public class ButtonHandler {
 			player.closeInterfaces();
 		else if (interfaceId == 374) {
 			if (componentId >= 5 && componentId <= 9)
-				player.setNextWorldTile(new WorldTile(FightPitsViewingOrb.ORB_TELEPORTS[componentId - 5]));
+				player.teleport(new WorldTile(FightPitsViewingOrb.ORB_TELEPORTS[componentId - 5]));
 			else if (componentId == 15)
 				player.stopAll();
 		} else if (interfaceId == 105 || interfaceId == 107 || interfaceId == 109 || interfaceId == 449)
@@ -1537,7 +1537,7 @@ public class ButtonHandler {
 	}
 
 	public static boolean sendWear2(Player player, int slotId, int itemId) {
-		player.debug(slotId + ", " + itemId);
+		player.debug("slot "+slotId + ", " + itemId);
 		if (player.hasFinished() || player.isDead())
 			return false;
 		player.stopAll(false, false);

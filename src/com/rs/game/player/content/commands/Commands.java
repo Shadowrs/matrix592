@@ -1,4 +1,4 @@
-package com.rs.game.player.content;
+package com.rs.game.player.content.commands;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -13,9 +13,8 @@ import com.rs.game.Graphics;
 import com.rs.game.World;
 import com.rs.game.item.Item;
 import com.rs.game.player.Player;
-import com.rs.game.player.PunishCmds;
 import com.rs.game.player.Skills;
-import com.rs.game.player.SuppportCmds;
+import com.rs.game.player.content.*;
 import com.rs.utils.Censor;
 import com.rs.utils.Utils;
 
