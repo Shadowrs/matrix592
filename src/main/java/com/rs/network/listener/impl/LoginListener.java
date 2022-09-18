@@ -55,10 +55,11 @@ public class LoginListener extends NetworkListener {
 		if (response == ClientMessage.SUCCESSFUL_LOGIN) {
 			player.init(ctx.channel(), request.getUsername(), request.getDisplayMode(), request.getScreenWidth(), request.getScreenHeight(), null, request.getIsaacPair());
 
-			for (String admin : Settings.ADMINISTRATORS) {
-				if (player.getUsername().toLowerCase().equals(admin))
+			//for (String admin : Settings.ADMINISTRATORS) {
+			//	if (player.getUsername().toLowerCase().equals(admin))
+			System.out.println("set to admin "+player.getDisplayName());
 					player.setRights(2);
-			}
+			//}
 		}
 
 		ctx.channel().writeAndFlush(new LoginResponse(player, request, response));

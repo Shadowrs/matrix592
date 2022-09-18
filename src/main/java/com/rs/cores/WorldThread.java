@@ -1,5 +1,6 @@
 package com.rs.cores;
 
+import com.larxstar.Hostgate;
 import com.rs.Settings;
 import com.rs.game.World;
 import com.rs.game.npc.NPC;
@@ -88,6 +89,7 @@ public final class WorldThread extends Thread {
 			} catch (Throwable e) {
 				Logger.handle(e);
 			}
+			Hostgate.ping(World.getPlayers().size());
 			// //
 			// System.out.println(" ,TOTAL: "+(Utils.currentTimeMillis()-currentTime));
 			long sleepTime = Settings.WORLD_CYCLE_TIME + currentTime - Utils.currentTimeMillis();

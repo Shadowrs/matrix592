@@ -78,7 +78,9 @@ import com.rs.utils.AntiFlood;
 import com.rs.utils.Logger;
 import com.rs.utils.ShopsHandler;
 import com.rs.utils.Utils;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public final class World {
 
 	public static int exiting_delay;
@@ -766,9 +768,11 @@ public final class World {
 				continue;
 			player.getPackets().sendSystemUpdate(delay);
 		}
+		log.info("safeShutdown");
 		CoresManager.slowExecutor.schedule(new Runnable() {
 			@Override
 			public void run() {
+				System.out.println("kicking all players");
 				try {
 					for (Player player : World.getPlayers()) {
 						if (player == null || !player.hasStarted())
@@ -776,12 +780,15 @@ public final class World {
 						player.realFinish(true);
 					}
 					Launcher.saveOtherFiles();
+					log.info("shutting down");
 					if (restart)
 						Launcher.restart();
 					else
 						Launcher.shutdown();
+					log.info("its over right");
 				} catch (Throwable e) {
 					Logger.handle(e);
+					log.error("wtf", e);
 				}
 			}
 		}, delay, TimeUnit.SECONDS);

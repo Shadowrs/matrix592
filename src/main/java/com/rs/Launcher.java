@@ -5,6 +5,8 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import com.alex.store.Index;
+import com.larxstar.Hostgate;
+import com.larxstar.HostgateLink;
 import com.rs.cache.Cache;
 import com.rs.cache.loaders.AttackSpeed;
 import com.rs.cache.loaders.EquipData;
@@ -27,7 +29,9 @@ import com.rs.network.Network;
 import com.rs.utils.*;
 import com.rs.utils.huffman.Huffman;
 import com.webrs.responder.Responder;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class Launcher {
 
 	public static void main(String[] args) throws Exception {
@@ -110,6 +114,7 @@ public class Launcher {
 		addFilesSavingTask();
 		addCleanMemoryTask();
 		addrecalcPricesTask();
+		Hostgate.connectHostgateBlockingStartup();
 	}
 
 	private static void addCleanMemoryTask() {
@@ -206,11 +211,12 @@ public class Launcher {
 	}
 
 	public static void closeServices() {
-		if (!Settings.HOSTED)
-			Responder.shutdown();
+		//if (!Settings.HOSTED)
+		//	Responder.shutdown();
 		// ServerChannelHandler.shutdown();
 		Network.shutdown();
 		CoresManager.shutdown();
+		log.info("closed services");
 	}
 
 	public static void restart() {

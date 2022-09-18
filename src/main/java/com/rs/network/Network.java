@@ -76,6 +76,8 @@ public class Network {
 	 * Shuts down the network.
 	 */
 	public static void shutdown() {
+		BOOTSTRAP.config().group().shutdownGracefully();
+		BOOTSTRAP.config().childGroup().shutdownGracefully();
 		CHANNELS.close().awaitUninterruptibly();
 	}
 
