@@ -1,22 +1,19 @@
 plugins {
-    id 'org.jetbrains.kotlin.jvm' version '1.5.0-RC'
+    id 'org.jetbrains.kotlin.jvm' version '1.7.10'
     id 'java'
     id 'idea'
-    // https://github.com/ben-manes/gradle-versions-plugin
-    id 'com.github.ben-manes.versions' version '0.17.0' apply false
     id 'application'
-
-    // https://github.com/johnrengelman/shadow
-    id 'com.github.johnrengelman.shadow' version '2.0.3' apply false
+    id 'com.github.johnrengelman.shadow' version '5.2.0'
+    id 'com.palantir.git-version' version '0.12.2'
 }
-apply plugin: 'com.github.ben-manes.versions'
 apply plugin: 'maven-publish'
 
 group 'org.example'
-version '1.0-SNAPSHOT'
+version '1.0'
+mainClassName = 'com.rs.Launcher'
 
-sourceCompatibility = JavaVersion.VERSION_15
-targetCompatibility = JavaVersion.VERSION_15
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
 
 repositories {
     mavenCentral()
@@ -30,11 +27,19 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
-    implementation 'com.google.guava:guava:25.0-jre'
-    implementation 'io.netty:netty-all:4.1.24.Final'
+    implementation 'com.google.guava:guava:31.1-jre'
+    implementation 'io.netty:netty-all:4.1.81.Final'
     implementation project('fs')
 }
 
 test {
     useJUnitPlatform()
+}
+compileKotlin {
+    kotlinOptions {
+        suppressWarnings = true
+        apiVersion = '1.7'
+        languageVersion = '1.7'
+        freeCompilerArgs += ['-Xopt-in=kotlin.RequiresOptIn', '-Xreport-perf']
+    }
 }
